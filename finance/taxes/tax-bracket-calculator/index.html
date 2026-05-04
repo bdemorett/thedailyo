@@ -89,6 +89,36 @@
                        "publisher":  {
                                          "@id":  "https://thedailyo.com/#organization"
                                      }
+                   },
+                   {
+                       "@type": "FAQPage",
+                       "@id": "https://thedailyo.com/finance/taxes/tax-bracket-calculator/#faq",
+                       "mainEntity": [
+                         {
+                           "@type": "Question",
+                           "name": "Is my whole income taxed at my tax bracket rate?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "No. Federal brackets are progressive. Your marginal bracket applies only to the portion of taxable income inside that bracket, not to all income."
+                           }
+                         },
+                         {
+                           "@type": "Question",
+                           "name": "Why is my tax bracket based on taxable income?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "Tax brackets apply after deductions and adjustments, so taxable income is the number that matters for bracket placement."
+                           }
+                         },
+                         {
+                           "@type": "Question",
+                           "name": "What is the difference between marginal and effective tax rate?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "Marginal rate is the rate on your next dollar of taxable income. Effective rate is an average rate, usually estimated tax divided by gross income or taxable income."
+                           }
+                         }
+                       ]
                    }
                ]
 }
@@ -176,6 +206,155 @@
           Want the full tax estimate? Try the <a href="/finance/taxes/federal-income-tax-calculator/">Federal Income Tax Calculator</a>.
         </div>
       </div>
+      <section class="panel content-section" aria-label="How this calculator works">
+        <h2>How this tax bracket calculator works</h2>
+        <p>
+          This calculator estimates your 2025 federal marginal tax bracket. It starts with gross income, subtracts
+          above-the-line or pre-tax deductions you enter, subtracts the standard deduction for your filing status, and
+          then finds where the remaining taxable income falls in the 2025 federal bracket table.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <h3>Taxable income</h3>
+            <p>
+              Your bracket is based on taxable income, not gross income. This simplified estimate subtracts deductions
+              you enter and the standard deduction for your filing status.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>Marginal bracket</h3>
+            <p>
+              The marginal bracket is the rate that applies to your next dollar of taxable income. It is not the rate
+              applied to every dollar you earn.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>Effective rates</h3>
+            <p>
+              The calculator shows estimated tax divided by gross income and by taxable income so you can see the
+              average rate alongside the top bracket.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel content-section" aria-label="How brackets work">
+        <h2>How federal tax brackets work</h2>
+        <p>
+          Federal income tax brackets are progressive. That means income is taxed in layers. The first layer of taxable
+          income is taxed at the lowest rate, the next layer at the next rate, and so on. Only the income inside a bracket
+          is taxed at that bracket's rate.
+        </p>
+        <p>
+          This is why moving into a higher bracket does not make all of your income taxed at that higher rate. It usually
+          means only the next portion of taxable income is taxed at the higher marginal rate.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Example">
+        <h2>Example: why your whole income is not taxed at one rate</h2>
+        <p>
+          Suppose a single filer has $80,000 of gross income. After deductions and the standard deduction, the calculator
+          estimates taxable income and finds the marginal bracket. Some taxable income may fall in the 10% bracket, more
+          may fall in the 12% bracket, and only the next layer may fall in a higher bracket.
+        </p>
+        <p>
+          The result is an estimated federal tax amount and an effective rate that is usually lower than the marginal
+          bracket. That average rate is often more useful for planning total tax, while the marginal bracket is useful
+          for understanding the tax impact of an extra dollar of income.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Marginal versus effective">
+        <h2>Marginal rate vs effective rate</h2>
+        <p>
+          Your marginal rate helps answer questions like, "How much federal tax might apply to an extra bonus, raise,
+          or side-income dollar?" Your effective rate helps answer, "What share of my gross income is estimated to go
+          toward regular federal income tax?"
+        </p>
+        <p>
+          Both numbers are estimates here. Credits, payroll taxes, state taxes, capital gains, self-employment tax, and
+          other tax rules can change the bigger tax picture.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="What this excludes">
+        <h2>What this calculator does not include</h2>
+        <p>
+          This page focuses on regular federal income tax brackets. It does not include state tax, local tax, payroll
+          taxes, self-employment tax, tax credits, capital gains rates, alternative minimum tax, net investment income
+          tax, or every deduction and adjustment that can apply to a real tax return.
+        </p>
+        <p>
+          Use this as a quick bracket estimate. For a fuller federal tax estimate, use the federal income tax calculator.
+          For paycheck planning, use the take-home pay calculator.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Sources and review">
+        <h2>Sources and review</h2>
+        <p>
+          This page uses TheDailyo's 2025 federal bracket and standard deduction tables for a simplified educational
+          estimate. Always confirm important tax decisions with official IRS guidance or a qualified tax professional.
+        </p>
+        <ul style="margin-left: 20px; color: var(--text-muted); line-height: 1.65;">
+          <li><a href="https://www.irs.gov/filing/federal-income-tax-rates-and-brackets" rel="nofollow noopener">IRS federal income tax rates and brackets</a></li>
+          <li><a href="https://www.irs.gov/filing/standard-deduction" rel="nofollow noopener">IRS standard deduction information</a></li>
+          <li><a href="/finance/taxes/guides/how-tax-brackets-work/">How Tax Brackets Work</a></li>
+          <li><a href="/disclaimer.html">TheDailyo educational-use disclaimer</a></li>
+        </ul>
+        <p class="help-text">Last reviewed: May 4, 2026.</p>
+      </section>
+
+      <section class="panel content-section" aria-label="FAQ">
+        <h2>FAQ</h2>
+        <h3>Is my whole income taxed at my tax bracket rate?</h3>
+        <p>
+          No. Federal brackets are progressive. Your marginal bracket applies only to the portion of taxable income
+          inside that bracket, not to all income.
+        </p>
+
+        <h3>Why is my tax bracket based on taxable income?</h3>
+        <p>
+          Tax brackets apply after deductions and adjustments, so taxable income is the number that matters for bracket
+          placement. Gross income is the starting point, but it is not usually the final taxable amount.
+        </p>
+
+        <h3>What is the difference between marginal and effective tax rate?</h3>
+        <p>
+          Marginal rate is the rate on your next dollar of taxable income. Effective rate is an average rate, usually
+          estimated tax divided by gross income or taxable income.
+        </p>
+
+        <h3>Does this include state tax brackets?</h3>
+        <p>
+          No. This calculator estimates federal brackets only. States have their own tax systems, and some states have
+          no broad wage income tax.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Related tools">
+        <h2>Related tools</h2>
+        <div class="list">
+          <a class="list-item" href="/finance/taxes/federal-income-tax-calculator/">
+            <div class="li-title">Federal Income Tax Calculator</div>
+            <div class="li-desc">Estimate regular federal income tax using taxable income and 2025 brackets.</div>
+          </a>
+          <a class="list-item" href="/finance/taxes/take-home-pay-calculator/">
+            <div class="li-title">Take-Home Pay Calculator</div>
+            <div class="li-desc">Estimate net pay after federal, payroll, and optional state taxes.</div>
+          </a>
+          <a class="list-item" href="/finance/taxes/1099-vs-w2-tax-calculator/">
+            <div class="li-title">1099 vs W-2 Tax Calculator</div>
+            <div class="li-desc">Compare employee and contractor tax estimates.</div>
+          </a>
+          <a class="list-item" href="/finance/taxes/guides/how-tax-brackets-work/">
+            <div class="li-title">How Tax Brackets Work</div>
+            <div class="li-desc">Learn the bracket math behind the calculator.</div>
+          </a>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
