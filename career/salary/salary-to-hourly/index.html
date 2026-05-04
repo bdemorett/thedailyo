@@ -1,0 +1,924 @@
+<!-- ==========================================
+FILE: /career/salary/salary-to-hourly/index.html
+Calculator standard (single-column layout + panel + form-grid + KPI cards + table-wrap)
+- main.css?v=4
+- GA4: G-LW4W6PG84Q
+- Canonical: /career/salary/salary-to-hourly/
+- Sitewide nav pills + Career breadcrumbs
+- One main table (no side-by-side tables)
+- Share link + local saved scenarios
+=========================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Salary to Hourly Calculator — TheDailyo</title>
+  <meta name="description" content="Convert annual salary to hourly pay with schedule, PTO/holidays, unpaid time off, bonus, shift differential, and overtime scenarios. Save scenarios and share links." />
+  <link rel="canonical" href="https://thedailyo.com/career/salary/salary-to-hourly/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- GA4 (match site) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense (keep) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145" crossorigin="anonymous"></script>
+
+  <!-- Page-specific only (keep small) -->
+  <style>
+    .two-col{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel h2{
+      font-size:1.1rem;
+      font-weight:900;
+      margin-bottom:8px;
+      color: var(--text-main);
+    }
+
+    .form-grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media(max-width:760px){ .form-grid{ grid-template-columns:1fr; } }
+
+    label{
+      display:block;
+      font-size:.9rem;
+      font-weight:900;
+      color: var(--text-main);
+      margin-bottom:6px;
+    }
+
+    input, select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,0.18);
+      background:#ffffff;
+      color: var(--text-main);
+      font-size:.95rem;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .inline{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .check{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:850;
+      color: var(--text-main);
+      user-select:none;
+    }
+    .check input{
+      width:auto;
+      box-shadow:none;
+    }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      padding:10px 18px;
+      border-radius:999px;
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 14px 28px rgba(79,124,255,0.25);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.03); }
+
+    .btn-ghost{
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .btn-ghost:hover{
+      transform:translateY(-1px);
+      border-color: rgba(79,124,255,0.35);
+      box-shadow: 0 16px 30px rgba(2,6,23,0.12);
+    }
+
+    .warn{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      background: rgba(255, 82, 82, 0.10);
+      border: 1px solid rgba(255, 82, 82, 0.25);
+      color: var(--text-main);
+      font-weight:850;
+      display:none;
+      line-height:1.55;
+    }
+
+    .small-note{
+      margin-top:10px;
+      color: var(--text-muted);
+      font-weight:800;
+      font-size:.9rem;
+      line-height:1.55;
+    }
+
+    .result{
+      margin-top:14px;
+      display:none;
+    }
+    .result h3{
+      font-size:1.02rem;
+      font-weight:950;
+      color: var(--text-main);
+      margin-bottom:10px;
+    }
+
+    .kpi-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+    @media(max-width:760px){ .kpi-grid{ grid-template-columns:1fr; } }
+
+    .kpi{
+      background:#ffffff;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      padding:14px;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.08);
+    }
+    .kpi-label{ font-size:.88rem; color: var(--text-muted); font-weight:850; }
+    .kpi-value{ margin-top:6px; font-size:1.1rem; font-weight:950; color: var(--text-main); }
+
+    .table-wrap{
+      margin-top:12px;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:920px;
+      background:#ffffff;
+    }
+    th, td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(15,23,42,0.10);
+      font-size:.9rem;
+      text-align:right;
+      white-space:nowrap;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:950;
+      z-index:1;
+    }
+    td:first-child, th:first-child{ text-align:left; }
+    tbody tr:hover td{ background: rgba(79,124,255,0.06); }
+
+    .pill{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      font-weight:850;
+      color: var(--text-main);
+      line-height:1.55;
+    }
+
+    .tiny{ font-size:.86rem; color: var(--text-muted); font-weight:800; line-height:1.55; }
+    .muted{ color: var(--text-muted); font-weight:800; }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/salary/salary-to-hourly/#webpage",
+                       "url":  "https://thedailyo.com/career/salary/salary-to-hourly/",
+                       "name":  "Salary to Hourly Calculator — TheDailyo",
+                       "description":  "Convert annual salary to hourly pay with schedule, PTO/holidays, unpaid time off, bonus, shift differential, and overtime scenarios. Save scenarios and share links.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/salary/salary-to-hourly/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Salary",
+                                                   "item":  "https://thedailyo.com/career/salary/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Salary To Hourly",
+                                                   "item":  "https://thedailyo.com/career/salary/salary-to-hourly/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/career/salary/salary-to-hourly/#calculator",
+                       "name":  "Salary to Hourly Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/career/salary/salary-to-hourly/",
+                       "description":  "Convert annual salary to hourly pay with schedule, PTO/holidays, unpaid time off, bonus, shift differential, and overtime scenarios. Save scenarios and share links.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Salary to Hourly Calculator</h1>
+      <p class="site-subtitle">Convert annual salary into hourly pay with PTO, bonus, shift differential, and overtime scenarios.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/salary/">Salary</a> <span class="crumb-sep">›</span>
+        Salary to Hourly
+      </div>
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">Calculator</h2>
+      <p class="section-subtitle">
+        This estimates hourly equivalents based on your schedule. “Hourly (paid)” uses paid hours. “Effective hourly (worked)” can subtract PTO from worked hours.
+      </p>
+
+      <div class="two-col">
+        <section class="panel" aria-label="Calculator">
+          <h2>Inputs</h2>
+
+          <div class="form-grid">
+            <div>
+              <label for="salary">Annual salary ($)</label>
+              <input id="salary" type="number" min="0" step="100" value="60000" inputmode="decimal" />
+              <div class="small-note">Base salary only (before bonus/shift diff/OT).</div>
+            </div>
+
+            <div>
+              <label for="hoursPerWeek">Hours per week</label>
+              <input id="hoursPerWeek" type="number" min="0" step="0.1" value="40" inputmode="decimal" />
+              <div class="small-note">Common: 40 or 37.5</div>
+            </div>
+
+            <div>
+              <label for="workDaysPerWeek">Work days per week</label>
+              <input id="workDaysPerWeek" type="number" min="1" max="7" step="1" value="5" inputmode="numeric" />
+              <div class="small-note">Used to convert paid days off → PTO hours.</div>
+            </div>
+
+            <div>
+              <label for="weeksPerYear">Weeks per year</label>
+              <input id="weeksPerYear" type="number" min="0" step="0.1" value="52" inputmode="decimal" />
+              <div class="small-note">Usually 52.</div>
+            </div>
+
+            <div>
+              <label for="unpaidWeeksOff">Unpaid weeks off</label>
+              <input id="unpaidWeeksOff" type="number" min="0" step="0.1" value="0" inputmode="decimal" />
+              <div class="small-note">Optional (reduces paid hours).</div>
+            </div>
+
+            <div>
+              <label for="paidDaysOff">Paid days off (PTO + holidays)</label>
+              <input id="paidDaysOff" type="number" min="0" step="0.5" value="15" inputmode="decimal" />
+              <div class="small-note">Typical: 10–30+ days.</div>
+            </div>
+          </div>
+
+          <h2 style="margin-top:14px;">Extras (optional)</h2>
+
+          <div class="form-grid">
+            <div>
+              <label for="bonusType">Bonus type</label>
+              <select id="bonusType">
+                <option value="0" selected>None</option>
+                <option value="percent">Percent of salary</option>
+                <option value="fixed">Fixed amount</option>
+              </select>
+              <div class="small-note" id="bonusHint">No bonus included.</div>
+            </div>
+
+            <div>
+              <label for="bonusValue">Bonus value</label>
+              <input id="bonusValue" type="number" min="0" step="0.1" value="10" inputmode="decimal" />
+              <div class="small-note">If percent: enter 10 for 10%.</div>
+            </div>
+
+            <div>
+              <label for="shiftDiff">Shift differential ($/hr)</label>
+              <input id="shiftDiff" type="number" min="0" step="0.01" value="0" inputmode="decimal" />
+              <div class="small-note">Estimated as shift diff × paid hours.</div>
+            </div>
+
+            <div>
+              <label for="includeOt">Include overtime scenario?</label>
+              <select id="includeOt">
+                <option value="0" selected>No</option>
+                <option value="1">Yes</option>
+              </select>
+              <div class="small-note">Scenario assumes OT is paid on top of salary.</div>
+            </div>
+
+            <div>
+              <label for="otHoursPerWeek">OT hours per week</label>
+              <input id="otHoursPerWeek" type="number" min="0" step="0.1" value="0" inputmode="decimal" />
+              <div class="small-note">Common: 5 hours/week.</div>
+            </div>
+
+            <div>
+              <label for="otMultiplier">OT multiplier</label>
+              <input id="otMultiplier" type="number" min="1" step="0.01" value="1.5" inputmode="decimal" />
+              <div class="small-note">Typical: 1.5</div>
+            </div>
+
+            <div>
+              <label for="otBaseMode">OT base rate</label>
+              <select id="otBaseMode">
+                <option value="base" selected>Salary-equivalent hourly</option>
+                <option value="blended">Salary-equivalent + shift diff</option>
+              </select>
+              <div class="small-note">Varies by employer.</div>
+            </div>
+
+            <div>
+              <label>&nbsp;</label>
+              <div class="inline">
+                <label class="check" for="countPtoAsNotWorked">
+                  <input id="countPtoAsNotWorked" type="checkbox" checked />
+                  Subtract PTO from worked hours (effective hourly)
+                </label>
+              </div>
+              <div class="small-note">Useful for comparing offers fairly.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="calcBtn" type="button">Calculate</button>
+            <button class="btn-ghost" id="copyLinkBtn" type="button">Copy share link</button>
+            <button class="btn-ghost" id="saveScenarioBtn" type="button">Save scenario</button>
+            <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+          </div>
+
+          <div class="warn" id="warn" aria-live="polite"></div>
+
+          <div class="result" id="result">
+            <h3>Summary</h3>
+
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Estimated annual pay</div>
+                <div class="kpi-value" id="kpiAnnual">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Estimated monthly pay</div>
+                <div class="kpi-value" id="kpiMonthly">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Hourly (paid hours)</div>
+                <div class="kpi-value" id="kpiHourlyPaid">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Effective hourly (worked hours)</div>
+                <div class="kpi-value" id="kpiHourlyWorked">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Paid hours / year</div>
+                <div class="kpi-value" id="kpiPaidHours">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Worked hours / year</div>
+                <div class="kpi-value" id="kpiWorkedHours">—</div>
+              </div>
+            </div>
+
+            <div class="pill" id="pillNotes">—</div>
+
+            <div class="table-wrap" aria-label="Salary to hourly breakdown table">
+              <table id="breakdownTable">
+                <thead>
+                  <tr>
+                    <th>Section</th>
+                    <th>Item</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="small-note" id="smartTip" style="margin-top:10px;"></div>
+          </div>
+        </section>
+
+        <aside class="panel" aria-label="Explanation">
+          <h2>How to interpret the results</h2>
+          <p>
+            “Hourly (paid hours)” spreads your total estimated annual pay across paid hours. “Effective hourly” can subtract PTO hours
+            from worked hours (if checked), which can make jobs with more PTO look better—even at the same salary.
+          </p>
+
+          <details class="faq">
+            <summary>What should I set for paid days off?</summary>
+            <p>Include PTO + paid holidays. Many employers are around 10–30 days total.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Is overtime always paid on top of salary?</summary>
+            <p>No. This is just a scenario tool. Some roles are exempt and do not pay OT.</p>
+          </details>
+
+          <p style="margin-top:10px;">
+            Related: <a href="/career/salary/hourly-to-salary/">Hourly to Salary</a>
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+
+    // ---------- Formatting ----------
+    function money(n, decimals=2){
+      const x = Number(n);
+      if(!isFinite(x)) return "—";
+      return x.toLocaleString("en-US",{style:"currency",currency:"USD",minimumFractionDigits:decimals,maximumFractionDigits:decimals});
+    }
+    function intMoney(n){
+      const x = Number(n);
+      if(!isFinite(x)) return "—";
+      return x.toLocaleString("en-US",{style:"currency",currency:"USD",minimumFractionDigits:0,maximumFractionDigits:0});
+    }
+    function fmt(n, d=1){
+      const x = Number(n);
+      if(!isFinite(x)) return "—";
+      return x.toLocaleString("en-US",{maximumFractionDigits:d});
+    }
+
+    function setWarn(msg){
+      const w = el("warn");
+      if(!msg){
+        w.style.display="none";
+        w.textContent="";
+        return;
+      }
+      w.textContent = msg;
+      w.style.display="block";
+    }
+
+    // ---------- Scenarios ----------
+    const SCEN_KEY = "thedailyo_salary_to_hourly_scenarios_v3";
+
+    function loadScenarios(){
+      try{
+        const raw = localStorage.getItem(SCEN_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      }catch{ return []; }
+    }
+    function saveScenarios(list){
+      localStorage.setItem(SCEN_KEY, JSON.stringify(list.slice(0,6)));
+    }
+
+    // ---------- URL params ----------
+    function getParams(){
+      const sp = new URLSearchParams(window.location.search);
+      const g = (k) => sp.get(k);
+      return {
+        s: g("s"),
+        hpw: g("hpw"),
+        dpw: g("dpw"),
+        wpy: g("wpy"),
+        uwo: g("uwo"),
+        pdo: g("pdo"),
+        bt: g("bt"),
+        bv: g("bv"),
+        sd: g("sd"),
+        iot: g("iot"),
+        ot: g("ot"),
+        otm: g("otm"),
+        otb: g("otb"),
+        pto: g("pto")
+      };
+    }
+
+    function applyParams(){
+      const p = getParams();
+      if(p.s !== null) el("salary").value = String(p.s);
+      if(p.hpw !== null) el("hoursPerWeek").value = String(p.hpw);
+      if(p.dpw !== null) el("workDaysPerWeek").value = String(p.dpw);
+      if(p.wpy !== null) el("weeksPerYear").value = String(p.wpy);
+      if(p.uwo !== null) el("unpaidWeeksOff").value = String(p.uwo);
+      if(p.pdo !== null) el("paidDaysOff").value = String(p.pdo);
+
+      if(p.bt !== null) el("bonusType").value = String(p.bt);
+      if(p.bv !== null) el("bonusValue").value = String(p.bv);
+      if(p.sd !== null) el("shiftDiff").value = String(p.sd);
+
+      if(p.iot !== null) el("includeOt").value = (p.iot === "1" || p.iot === "true") ? "1" : "0";
+      if(p.ot !== null) el("otHoursPerWeek").value = String(p.ot);
+      if(p.otm !== null) el("otMultiplier").value = String(p.otm);
+      if(p.otb !== null) el("otBaseMode").value = String(p.otb);
+
+      if(p.pto !== null) el("countPtoAsNotWorked").checked = (p.pto === "1" || p.pto === "true");
+    }
+
+    function updateURL(state){
+      const sp = new URLSearchParams();
+      for(const [k,v] of Object.entries(state)){
+        if(v === null || typeof v === "undefined") continue;
+        sp.set(k, String(v));
+      }
+      const newUrl = `${window.location.pathname}?${sp.toString()}`;
+      window.history.replaceState({}, "", newUrl);
+    }
+
+    async function copyShareLink(){
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        setWarn("Copied share link to clipboard.");
+        setTimeout(()=>setWarn(""), 1800);
+      }catch{
+        setWarn("Copy failed (browser permission). You can copy the URL from the address bar.");
+      }
+    }
+
+    // ---------- Core compute ----------
+    function compute(){
+      setWarn("");
+
+      const salary = Math.max(0, Number(el("salary").value || 0));
+      const hoursPerWeek = Math.max(0, Number(el("hoursPerWeek").value || 0));
+      const workDaysPerWeek = Math.min(7, Math.max(1, Number(el("workDaysPerWeek").value || 5)));
+      const weeksPerYear = Math.max(0, Number(el("weeksPerYear").value || 0));
+      const unpaidWeeksOff = Math.max(0, Number(el("unpaidWeeksOff").value || 0));
+      const paidDaysOff = Math.max(0, Number(el("paidDaysOff").value || 0));
+
+      const bonusType = el("bonusType").value; // 0 | percent | fixed
+      const bonusValue = Math.max(0, Number(el("bonusValue").value || 0));
+      const shiftDiff = Math.max(0, Number(el("shiftDiff").value || 0));
+
+      const includeOt = el("includeOt").value === "1";
+      const otHoursPerWeek = Math.max(0, Number(el("otHoursPerWeek").value || 0));
+      const otMultiplier = Math.max(1, Number(el("otMultiplier").value || 1.5));
+      const otBaseMode = el("otBaseMode").value; // base | blended
+      const countPtoAsNotWorked = el("countPtoAsNotWorked").checked;
+
+      if(!(weeksPerYear > 0)) return { ok:false, msg:"Weeks per year must be greater than 0." };
+      if(!(hoursPerWeek > 0)) return { ok:false, msg:"Hours per week must be greater than 0." };
+      if(!(salary > 0)) return { ok:false, msg:"Annual salary must be greater than 0." };
+
+      const paidWeeks = Math.max(0, weeksPerYear - Math.min(unpaidWeeksOff, weeksPerYear));
+      const paidHours = paidWeeks * hoursPerWeek;
+
+      if(!(paidHours > 0)) return { ok:false, msg:"Paid hours are 0. Reduce unpaid weeks off or increase weeks/year or hours/week." };
+
+      const hoursPerDay = hoursPerWeek / workDaysPerWeek;
+      const ptoHours = paidDaysOff * hoursPerDay;
+      const workedHours = countPtoAsNotWorked ? Math.max(0, paidHours - ptoHours) : paidHours;
+
+      // Bonus
+      let bonus = 0;
+      if(bonusType === "percent") bonus = salary * (bonusValue/100);
+      else if(bonusType === "fixed") bonus = bonusValue;
+
+      // Base hourly from salary (paid-hours basis)
+      const baseHourlyFromSalary = salary / paidHours;
+
+      // Shift diff annual estimate
+      const shiftAnnual = shiftDiff * paidHours;
+
+      // OT scenario (added on top)
+      const otAnnualHours = includeOt ? (otHoursPerWeek * paidWeeks) : 0;
+      const otBase = (otBaseMode === "blended") ? (baseHourlyFromSalary + shiftDiff) : baseHourlyFromSalary;
+      const otPay = includeOt ? (otAnnualHours * (otBase * otMultiplier)) : 0;
+
+      const annualTotal = salary + bonus + shiftAnnual + otPay;
+      const monthly = annualTotal / 12;
+
+      const hourlyPaidEq = annualTotal / paidHours;
+      const effHourly = workedHours > 0 ? (annualTotal / workedHours) : 0;
+
+      // Bonus hint
+      const bh = el("bonusHint");
+      if(bonusType === "0") bh.textContent = "No bonus included.";
+      else if(bonusType === "percent") bh.textContent = `${bonusValue}% bonus adds ${intMoney(bonus)} to annual pay.`;
+      else bh.textContent = `Fixed bonus adds ${intMoney(bonus)} to annual pay.`;
+
+      // Fill KPIs
+      el("kpiAnnual").textContent = intMoney(annualTotal);
+      el("kpiMonthly").textContent = money(monthly);
+      el("kpiHourlyPaid").textContent = money(hourlyPaidEq);
+      el("kpiHourlyWorked").textContent = workedHours > 0 ? money(effHourly) : "—";
+      el("kpiPaidHours").textContent = `${fmt(paidHours, 1)} hrs`;
+      el("kpiWorkedHours").textContent = workedHours > 0 ? `${fmt(workedHours, 1)} hrs` : "—";
+
+      const pill = [];
+      pill.push(`Paid weeks: ${fmt(paidWeeks, 1)} · Paid hours: ${fmt(paidHours, 1)}`);
+      pill.push(`PTO hours est.: ${fmt(ptoHours, 1)} · Worked hours: ${workedHours > 0 ? fmt(workedHours, 1) : "0"}`);
+      el("pillNotes").textContent = pill.join(" — ");
+
+      // Build ONE main table (sections + pay periods + scenarios)
+      const tbody = el("tbody");
+      tbody.innerHTML = "";
+
+      function addRow(section, item, value, notes){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${section}</td>
+          <td>${item}</td>
+          <td><strong>${value}</strong></td>
+          <td class="muted">${notes || ""}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+
+      // Components
+      addRow("Components", "Base salary", intMoney(salary), "Annual base salary");
+      addRow("Components", "Bonus", intMoney(bonus), bonusType === "0" ? "Not included" : (bonusType === "percent" ? `${bonusValue}% of salary` : "Fixed bonus"));
+      addRow("Components", "Shift differential (est.)", intMoney(shiftAnnual), shiftDiff > 0 ? `${money(shiftDiff)} × ${fmt(paidHours,1)} paid hrs` : "Not included");
+      addRow("Components", "Overtime pay (scenario)", intMoney(otPay), includeOt ? `${fmt(otAnnualHours,1)} OT hrs @ ${money(otBase)} × ${fmt(otMultiplier,2)}` : "Not included");
+      addRow("Components", "Total annual (est.)", intMoney(annualTotal), "Base + extras");
+
+      // Pay periods
+      const biweekly = annualTotal / 26;
+      const semimonthly = annualTotal / 24;
+      const weekly = paidWeeks > 0 ? (annualTotal / paidWeeks) : 0;
+
+      addRow("Pay periods", "Monthly", money(monthly), "Annual ÷ 12");
+      addRow("Pay periods", "Semi-monthly (24/yr)", money(semimonthly), "Common payroll schedule");
+      addRow("Pay periods", "Biweekly (26/yr)", money(biweekly), "Common payroll schedule");
+      addRow("Pay periods", "Weekly (paid weeks)", money(weekly), "Based on paid weeks");
+
+      // Hourly breakdown
+      addRow("Hourly", "Base salary hourly (paid hours)", money(baseHourlyFromSalary), "Salary ÷ paid hours");
+      addRow("Hourly", "Hourly (paid hours) incl. extras", money(hourlyPaidEq), "Total annual ÷ paid hours");
+      addRow("Hourly", "Effective hourly (worked hours)", workedHours > 0 ? money(effHourly) : "—", countPtoAsNotWorked ? "Subtracts PTO from worked hours" : "Does not subtract PTO");
+
+      // Scenario table rows (embedded)
+      const list = loadScenarios();
+      if(list.length){
+        list.forEach((s, i)=>{
+          addRow("Saved scenarios", s.name || `Scenario ${i+1}`, intMoney(s.annual), `Hourly: ${money(s.hourlyPaid)} · Eff: ${money(s.effHourly)}`);
+        });
+      } else {
+        addRow("Saved scenarios", "None yet", "—", "Click “Save scenario” to store comparisons on this device.");
+      }
+
+      // Smart tip
+      const tip = el("smartTip");
+      if(includeOt && otHoursPerWeek > 0){
+        tip.textContent = "Tip: If OT isn’t guaranteed, save two scenarios (with and without OT) and compare.";
+      } else if(paidDaysOff > 0){
+        tip.textContent = "Tip: PTO often increases effective hourly—two jobs with the same salary can have different value.";
+      } else {
+        tip.textContent = "Tip: For apples-to-apples comparisons, keep hours/week and paid weeks consistent across offers.";
+      }
+
+      // Update URL params
+      updateURL({
+        s: salary,
+        hpw: hoursPerWeek,
+        dpw: workDaysPerWeek,
+        wpy: weeksPerYear,
+        uwo: unpaidWeeksOff,
+        pdo: paidDaysOff,
+        bt: bonusType,
+        bv: bonusValue,
+        sd: shiftDiff,
+        iot: includeOt ? 1 : 0,
+        ot: otHoursPerWeek,
+        otm: otMultiplier,
+        otb: otBaseMode,
+        pto: countPtoAsNotWorked ? 1 : 0
+      });
+
+      // Show result
+      el("result").style.display = "block";
+
+      // Extra guard
+      if(countPtoAsNotWorked && paidDaysOff > 0 && workedHours <= 0){
+        setWarn("Worked hours became 0 because paid days off exceed paid working days. Reduce paid days off or uncheck the PTO option.");
+      }
+
+      return {
+        ok:true,
+        computed: { annualTotal, monthly, hourlyPaidEq, effHourly, paidHours, workedHours }
+      };
+    }
+
+    function calculate(){
+      const r = compute();
+      if(!r.ok){
+        el("result").style.display = "none";
+        setWarn(r.msg);
+      }
+    }
+
+    // ---------- Actions ----------
+    function saveScenario(){
+      const r = compute();
+      if(!r.ok) return;
+
+      const name = prompt("Name this scenario (e.g., “Offer A”, “With OT”, “More PTO”)");
+      if(name === null) return;
+
+      // Pull the latest computed values from the visible KPIs by re-reading compute values via URL params already set
+      // We'll re-run compute and capture values directly:
+      const salary = Math.max(0, Number(el("salary").value || 0));
+      const hoursPerWeek = Math.max(0, Number(el("hoursPerWeek").value || 0));
+      const weeksPerYear = Math.max(0, Number(el("weeksPerYear").value || 0));
+      const unpaidWeeksOff = Math.max(0, Number(el("unpaidWeeksOff").value || 0));
+      const paidWeeks = Math.max(0, weeksPerYear - Math.min(unpaidWeeksOff, weeksPerYear));
+
+      const note = `Salary ${intMoney(salary)} · ${fmt(hoursPerWeek,1)} hrs/wk · ${fmt(paidWeeks,1)} paid wks`;
+
+      // We need the computed numbers: easiest is to compute again and use the return values:
+      const state = compute();
+      if(!state.ok) return;
+
+      const annual = state.computed.annualTotal;
+      const hourlyPaid = state.computed.hourlyPaidEq;
+      const eff = state.computed.effHourly;
+
+      const list = loadScenarios();
+      list.unshift({
+        name: String(name || "Scenario").slice(0,40),
+        note,
+        annual,
+        hourlyPaid,
+        effHourly: eff,
+        createdAt: Date.now()
+      });
+      saveScenarios(list);
+
+      setWarn("Scenario saved (stored on this device).");
+      setTimeout(()=>setWarn(""), 1600);
+      calculate();
+    }
+
+    function reset(){
+      el("salary").value = 60000;
+      el("hoursPerWeek").value = 40;
+      el("workDaysPerWeek").value = 5;
+      el("weeksPerYear").value = 52;
+      el("unpaidWeeksOff").value = 0;
+      el("paidDaysOff").value = 15;
+
+      el("bonusType").value = "0";
+      el("bonusValue").value = 10;
+      el("shiftDiff").value = 0;
+
+      el("includeOt").value = "0";
+      el("otHoursPerWeek").value = 0;
+      el("otMultiplier").value = 1.5;
+      el("otBaseMode").value = "base";
+
+      el("countPtoAsNotWorked").checked = true;
+
+      setWarn("");
+      el("result").style.display = "none";
+      calculate();
+    }
+
+    function clearScenarios(){
+      localStorage.removeItem(SCEN_KEY);
+      setWarn("Cleared saved scenarios.");
+      setTimeout(()=>setWarn(""), 1600);
+      calculate();
+    }
+
+    // ---------- Events ----------
+    el("calcBtn").addEventListener("click", calculate);
+    el("copyLinkBtn").addEventListener("click", copyShareLink);
+    el("saveScenarioBtn").addEventListener("click", saveScenario);
+    el("resetBtn").addEventListener("click", reset);
+
+    // Optional: clear scenarios via typing command in console if you want; otherwise keep hidden
+    // window.clearSalaryToHourlyScenarios = clearScenarios;
+
+    ["salary","hoursPerWeek","workDaysPerWeek","weeksPerYear","unpaidWeeksOff","paidDaysOff",
+     "bonusType","bonusValue","shiftDiff","includeOt","otHoursPerWeek","otMultiplier","otBaseMode","countPtoAsNotWorked"
+    ].forEach(id=>{
+      const node = el(id);
+      const evt = (node.tagName === "SELECT" || node.type === "checkbox") ? "change" : "input";
+      node.addEventListener(evt, calculate);
+    });
+
+    // ---------- Init ----------
+    applyParams();
+    calculate();
+  </script>
+</body>
+</html>

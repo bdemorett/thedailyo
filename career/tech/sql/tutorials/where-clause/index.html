@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL WHERE Clause Explained — Filter Rows in SQL | TheDailyo</title>
+  <meta name="description" content="Learn how the SQL WHERE clause works with real examples. Filter rows using operators, AND, OR, IN, BETWEEN, LIKE, and NULL checks." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/where-clause/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL WHERE Clause Explained — Filter Rows in SQL | TheDailyo" />
+  <meta property="og:description" content="A beginner-friendly SQL WHERE clause tutorial with practical examples, result tables, and common mistakes." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/where-clause/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/where-clause/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/where-clause/",
+                       "name":  "SQL WHERE Clause Explained — Filter Rows in SQL | TheDailyo",
+                       "description":  "Learn how the SQL WHERE clause works with real examples. Filter rows using operators, AND, OR, IN, BETWEEN, LIKE, and NULL checks.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/where-clause/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Where Clause",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/where-clause/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL WHERE Clause Explained</h1>
+      <p class="site-subtitle">Learn how to filter SQL results using WHERE, comparison operators, AND, OR, IN, BETWEEN, LIKE, and NULL checks.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">WHERE Clause</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          The <code class="k">WHERE</code> clause filters rows in a SQL query. It tells SQL which rows should stay in the result and which rows should be excluded.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT column_name
+FROM table_name
+WHERE condition;</pre>
+        </div>
+
+        <p>
+          Without <code class="k">WHERE</code>, a query usually returns every row in the table. With <code class="k">WHERE</code>, you only get the rows that match the condition.
+        </p>
+
+        <div class="note">
+          <strong>Tip:</strong> If <code class="k">SELECT</code> means “what columns do I want?”, then <code class="k">WHERE</code> means “which rows do I want?”
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#sample-table">Sample table</a>
+          <a href="#why-where-matters">Why WHERE matters</a>
+          <a href="#basic-filtering">Basic filtering</a>
+          <a href="#comparison-operators">Comparison operators</a>
+          <a href="#and-or">AND and OR</a>
+          <a href="#in-between">IN and BETWEEN</a>
+          <a href="#like">LIKE text matching</a>
+          <a href="#null-checks">NULL checks</a>
+          <a href="#where-with-update-delete">WHERE with UPDATE and DELETE</a>
+          <a href="#common-mistakes">Common mistakes</a>
+          <a href="#practice-questions">Practice questions</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-table">
+        <h2>Sample table</h2>
+        <p>
+          To keep the examples consistent, imagine this <code class="k">employees</code> table:
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Employees table">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+                <td>Denver</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Evan</td>
+                <td>Sales</td>
+                <td>59000</td>
+                <td>Austin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          We’ll keep using this same table so you can focus on how the <code class="k">WHERE</code> clause changes the result.
+        </div>
+      </section>
+
+      <section class="panel prose" id="why-where-matters">
+        <h2>Why WHERE matters</h2>
+        <p>
+          In real work, you rarely want every row in a table. You usually want a smaller slice of the data:
+        </p>
+        <ul>
+          <li>employees in one department</li>
+          <li>orders above a certain dollar amount</li>
+          <li>customers in one city</li>
+          <li>records from a certain date range</li>
+        </ul>
+
+        <p>
+          That is what <code class="k">WHERE</code> is for. It turns a broad query into a useful one.
+        </p>
+
+        <div class="callout">
+          Without WHERE, SQL gives you all the rows. With WHERE, you tell SQL which rows actually matter.
+        </div>
+      </section>
+
+      <section class="panel prose" id="basic-filtering">
+        <h2>Basic filtering</h2>
+        <p>
+          The simplest use of WHERE is filtering rows by one condition.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+WHERE salary &gt; 60000;</pre>
+        </div>
+
+        <p>
+          This returns only employees with salary above 60000.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Basic filtering result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          The rows for Chris and Evan are removed because they do not meet the condition.
+        </div>
+      </section>
+
+      <section class="panel prose" id="comparison-operators">
+        <h2>Comparison operators</h2>
+        <p>
+          WHERE clauses often use comparison operators. These let you test values against a condition.
+        </p>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>=</strong><br>
+            Equal to
+          </div>
+          <div class="lesson-item">
+            <strong>&gt;</strong><br>
+            Greater than
+          </div>
+          <div class="lesson-item">
+            <strong>&lt;</strong><br>
+            Less than
+          </div>
+          <div class="lesson-item">
+            <strong>&gt;=</strong><br>
+            Greater than or equal to
+          </div>
+          <div class="lesson-item">
+            <strong>&lt;=</strong><br>
+            Less than or equal to
+          </div>
+          <div class="lesson-item">
+            <strong>!=</strong> or <strong>&lt;&gt;</strong><br>
+            Not equal to
+          </div>
+        </div>
+
+        <p>
+          Example:
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, department
+FROM employees
+WHERE department = 'IT';</pre>
+        </div>
+
+        <p>
+          This returns only IT employees.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Department equals IT result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>department</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ben</td>
+                <td>IT</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>IT</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel prose" id="and-or">
+        <h2>AND and OR</h2>
+        <p>
+          You can combine multiple conditions with <code class="k">AND</code> and <code class="k">OR</code>.
+        </p>
+
+        <h3>Using AND</h3>
+        <div class="code-block">
+<pre>SELECT name, department, salary
+FROM employees
+WHERE department = 'IT' AND salary &gt; 80000;</pre>
+        </div>
+
+        <p>
+          This returns only rows where both conditions are true.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="AND result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Using OR</h3>
+        <div class="code-block">
+<pre>SELECT name, department
+FROM employees
+WHERE department = 'IT' OR department = 'Sales';</pre>
+        </div>
+
+        <p>
+          This returns rows where either condition is true.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="OR result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>department</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>Sales</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>IT</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>IT</td>
+              </tr>
+              <tr>
+                <td>Evan</td>
+                <td>Sales</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          AND narrows the result. OR broadens the result.
+        </div>
+      </section>
+
+      <section class="panel prose" id="in-between">
+        <h2>IN and BETWEEN</h2>
+        <p>
+          <code class="k">IN</code> and <code class="k">BETWEEN</code> are cleaner shortcuts for common filtering patterns.
+        </p>
+
+        <h3>Using IN</h3>
+        <div class="code-block">
+<pre>SELECT name, department
+FROM employees
+WHERE department IN ('IT', 'Sales');</pre>
+        </div>
+
+        <p>
+          This is a cleaner version of writing multiple OR checks for the same column.
+        </p>
+
+        <h3>Using BETWEEN</h3>
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+WHERE salary BETWEEN 60000 AND 80000;</pre>
+        </div>
+
+        <p>
+          This returns salaries in that range, inclusive.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Between result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Use IN when checking a list of allowed values. Use BETWEEN when checking a range.
+        </div>
+      </section>
+
+      <section class="panel prose" id="like">
+        <h2>LIKE text matching</h2>
+        <p>
+          <code class="k">LIKE</code> is used for pattern matching with text.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name
+FROM employees
+WHERE name LIKE 'A%';</pre>
+        </div>
+
+        <p>
+          This returns names that start with A.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Like result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Common wildcards:
+        </p>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>%</strong><br>
+            Any number of characters
+          </div>
+          <div class="lesson-item">
+            <strong>_</strong><br>
+            One character
+          </div>
+        </div>
+
+        <div class="callout">
+          <code class="k">LIKE 'A%'</code> means “starts with A.” <code class="k">LIKE '%a'</code> means “ends with a.”
+        </div>
+      </section>
+
+      <section class="panel prose" id="null-checks">
+        <h2>NULL checks</h2>
+        <p>
+          NULL means “no value.” It is not the same as zero, blank text, or false.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name
+FROM employees
+WHERE city IS NULL;</pre>
+        </div>
+
+        <p>
+          If any rows had no city value, this query would return them.
+        </p>
+
+        <div class="callout">
+          Do not write <code class="k">city = NULL</code>. In SQL, you usually need <code class="k">IS NULL</code> or <code class="k">IS NOT NULL</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="where-with-update-delete">
+        <h2>WHERE with UPDATE and DELETE</h2>
+        <p>
+          WHERE is not only used with SELECT. It is also critical with <code class="k">UPDATE</code> and <code class="k">DELETE</code>.
+        </p>
+
+        <h3>UPDATE example</h3>
+        <div class="code-block">
+<pre>UPDATE employees
+SET city = 'Boston'
+WHERE employee_id = 2;</pre>
+        </div>
+
+        <p>
+          This changes only Ben’s city.
+        </p>
+
+        <h3>DELETE example</h3>
+        <div class="code-block">
+<pre>DELETE FROM employees
+WHERE employee_id = 3;</pre>
+        </div>
+
+        <p>
+          This deletes only Chris’s row.
+        </p>
+
+        <div class="warn">
+          Missing a WHERE clause in UPDATE or DELETE can affect every row in the table.
+        </div>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>using <code class="k">= NULL</code> instead of <code class="k">IS NULL</code></li>
+          <li>forgetting quotes around text values like <code class="k">'IT'</code></li>
+          <li>confusing AND and OR</li>
+          <li>writing conditions that are broader than intended</li>
+          <li>forgetting that WHERE is critical in UPDATE and DELETE queries</li>
+        </ul>
+
+        <div class="callout">
+          The most expensive beginner mistake is running UPDATE or DELETE without a careful WHERE clause.
+        </div>
+      </section>
+
+      <section class="panel prose" id="practice-questions">
+        <h2>Practice questions</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Return employees with salary above 70000.
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Return employees in the IT department.
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Return employees in IT or Sales.
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Return employees with salary between 60000 and 80000.
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Return employees whose name starts with A.
+          </div>
+          <div class="lesson-item">
+            <strong>6.</strong> Return employees whose city is Chicago and whose salary is above 60000.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          The WHERE clause is one of the most important parts of SQL because it controls which rows you actually work with.
+        </p>
+        <p>
+          Once you understand basic conditions, AND, OR, IN, BETWEEN, LIKE, and NULL checks, your queries become much more useful.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>SELECT = what columns</strong>, <strong>WHERE = what rows</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL topics and tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/select-statement/">SELECT Statement</a></strong><br>
+            Learn the base query structure before filtering rows.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/order-by/">ORDER BY</a></strong><br>
+            Learn how to sort rows after filtering them.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/group-by/">GROUP BY</a></strong><br>
+            Learn how to group filtered rows into summaries.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/sql-query-examples/">SQL Query Examples</a></strong><br>
+            See broader query patterns that combine SELECT, WHERE, GROUP BY, JOIN, and more.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

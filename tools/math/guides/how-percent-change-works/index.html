@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How Percent Change Works — TheDailyo</title>
+    <meta
+      name="description"
+      content="Learn how percent change works, how to calculate percentage increase and decrease, how to use the formula step by step, and how percent change differs from percent difference."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/tools/math/guides/how-percent-change-works/"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How Percent Change Works — TheDailyo" />
+    <meta
+      property="og:description"
+      content="A simple guide to percentage increase, percentage decrease, and how percent change is calculated."
+    />
+    <meta
+      property="og:url"
+      content="https://thedailyo.com/tools/math/guides/how-percent-change-works/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .article-wrap {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.15rem;
+        font-weight: 900;
+        margin: 0 0 10px;
+        color: var(--text-main);
+      }
+      .panel h3 {
+        font-size: 1rem;
+        font-weight: 900;
+        margin: 18px 0 8px;
+        color: var(--text-main);
+      }
+      .panel p,
+      .panel li {
+        color: var(--text-main);
+        line-height: 1.72;
+        font-size: 0.98rem;
+      }
+      .panel ul,
+      .panel ol {
+        margin: 8px 0 0 20px;
+        padding: 0;
+      }
+      .formula-box,
+      .example-box,
+      .note-box {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .formula-box strong,
+      .example-box strong,
+      .note-box strong {
+        color: var(--text-main);
+      }
+      .toc {
+        display: grid;
+        gap: 10px;
+      }
+      .toc a {
+        text-decoration: none;
+      }
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+      @media (max-width: 760px) {
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .mini-card {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .mini-card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 0.98rem;
+      }
+      .related-links {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/math/guides/how-percent-change-works/#webpage",
+                       "url":  "https://thedailyo.com/tools/math/guides/how-percent-change-works/",
+                       "name":  "How Percent Change Works — TheDailyo",
+                       "description":  "Learn how percent change works, how to calculate percentage increase and decrease, how to use the formula step by step, and how percent change differs from percent difference.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/math/guides/how-percent-change-works/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Math",
+                                                   "item":  "https://thedailyo.com/tools/math/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Guides",
+                                                   "item":  "https://thedailyo.com/tools/math/guides/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "How Percent Change Works",
+                                                   "item":  "https://thedailyo.com/tools/math/guides/how-percent-change-works/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "Article",
+                       "@id":  "https://thedailyo.com/tools/math/guides/how-percent-change-works/#article",
+                       "headline":  "How Percent Change Works — TheDailyo",
+                       "description":  "Learn how percent change works, how to calculate percentage increase and decrease, how to use the formula step by step, and how percent change differs from percent difference.",
+                       "author":  {
+                                      "@id":  "https://thedailyo.com/about.html#organization"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     },
+                       "mainEntityOfPage":  {
+                                                "@id":  "https://thedailyo.com/tools/math/guides/how-percent-change-works/#webpage"
+                                            }
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">How Percent Change Works</h1>
+        <p class="site-subtitle">
+          A simple guide to percentage increase, percentage decrease, and the
+          math behind percent change.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/tools/">Tools</a> <span class="crumb-sep">›</span>
+          <a href="/tools/math/">Math</a> <span class="crumb-sep">›</span>
+          <a href="/tools/math/guides/">Guides</a>
+          <span class="crumb-sep">›</span>
+          <span aria-current="page">How Percent Change Works</span>
+        </div>
+      </header>
+      <main id="main">
+        <div class="article-wrap">
+          <article class="panel">
+            <h2>Quick answer</h2>
+            <p>
+              Percent change measures how much a value moved up or down compared
+              with its original value. It answers a very specific question:
+              <strong
+                >how large was the change relative to where you started?</strong
+              >
+            </p>
+            <p>
+              This is why percent change is used so often for prices, salaries,
+              revenue, sales, traffic, grades, population, and investing. A raw
+              change by itself does not always tell the whole story. A $10
+              increase can be huge in one situation and small in another.
+            </p>
+            <div class="formula-box">
+              <strong>Main percent change formula:</strong><br />
+              <code>((new value − original value) ÷ original value) × 100</code>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Positive result</h3>
+                <p>A positive percent change means the value increased.</p>
+              </div>
+              <div class="mini-card">
+                <h3>Negative result</h3>
+                <p>A negative percent change means the value decreased.</p>
+              </div>
+            </div>
+          </article>
+          <section class="panel">
+            <h2>In this guide</h2>
+            <div class="toc">
+              <a href="#what-it-means">What percent change means</a>
+              <a href="#formula">The percent change formula</a>
+              <a href="#step-by-step">How to calculate it step by step</a>
+              <a href="#increase">Percentage increase examples</a>
+              <a href="#decrease">Percentage decrease examples</a>
+              <a href="#why-baseline-matters">Why the original value matters</a>
+              <a href="#percent-vs-difference"
+                >Percent change vs percent difference</a
+              >
+              <a href="#zero-case">What happens when the original value is 0</a>
+              <a href="#common-mistakes">Common mistakes</a>
+              <a href="#when-to-use">When to use percent change</a>
+            </div>
+          </section>
+          <section class="panel" id="what-it-means">
+            <h2>What percent change means</h2>
+            <p>
+              Percent change tells you how big a change is compared with the
+              starting value. That starting value is the baseline.
+            </p>
+            <p>
+              This matters because the same raw change can represent very
+              different percentages depending on what you started with.
+            </p>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Example A</h3>
+                <p>
+                  Going from 50 to 100 is a change of 50, which is a
+                  <strong>100% increase</strong>.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Example B</h3>
+                <p>
+                  Going from 500 to 550 is also a change of 50, but only a
+                  <strong>10% increase</strong>.
+                </p>
+              </div>
+            </div>
+            <p>
+              The absolute change is the same in both examples, but the percent
+              change is very different because the original value is different.
+            </p>
+          </section>
+          <section class="panel" id="formula">
+            <h2>The percent change formula</h2>
+            <p>The standard formula is:</p>
+            <div class="formula-box">
+              <code>((new value − original value) ÷ original value) × 100</code>
+            </div>
+            <p>You can break this into three simple steps:</p>
+            <ol>
+              <li>
+                Find the difference between the new value and the original value
+              </li>
+              <li>Divide that difference by the original value</li>
+              <li>Multiply by 100 to turn it into a percentage</li>
+            </ol>
+            <div class="note-box">
+              <strong>Key idea:</strong><br />
+              Percent change always uses the <strong>original value</strong> as
+              the denominator.
+            </div>
+          </section>
+          <section class="panel" id="step-by-step">
+            <h2>How to calculate percent change step by step</h2>
+            <p>
+              Suppose a value changes from <strong>80</strong> to
+              <strong>100</strong>.
+            </p>
+            <h3>Step 1: Find the difference</h3>
+            <div class="formula-box"><code>100 − 80 = 20</code></div>
+            <h3>Step 2: Divide by the original value</h3>
+            <div class="formula-box"><code>20 ÷ 80 = 0.25</code></div>
+            <h3>Step 3: Convert to a percent</h3>
+            <div class="formula-box"><code>0.25 × 100 = 25%</code></div>
+            <p>Result: the value increased by <strong>25%</strong>.</p>
+          </section>
+          <section class="panel" id="increase">
+            <h2>Percentage increase examples</h2>
+            <h3>Example 1: Price increase</h3>
+            <p>A product price goes from $40 to $50.</p>
+            <div class="formula-box">
+              <code>((50 − 40) ÷ 40) × 100 = 25%</code>
+            </div>
+            <p>The price increased by <strong>25%</strong>.</p>
+            <h3>Example 2: Revenue increase</h3>
+            <p>Revenue goes from 1,200 to 1,500.</p>
+            <div class="formula-box">
+              <code>((1500 − 1200) ÷ 1200) × 100 = 25%</code>
+            </div>
+            <p>Revenue increased by <strong>25%</strong>.</p>
+            <h3>Example 3: Website traffic increase</h3>
+            <p>Traffic goes from 2,000 visits to 2,600 visits.</p>
+            <div class="formula-box">
+              <code>((2600 − 2000) ÷ 2000) × 100 = 30%</code>
+            </div>
+            <p>Traffic increased by <strong>30%</strong>.</p>
+          </section>
+          <section class="panel" id="decrease">
+            <h2>Percentage decrease examples</h2>
+            <h3>Example 1: Salary decrease</h3>
+            <p>Income drops from $60,000 to $54,000.</p>
+            <div class="formula-box">
+              <code>((54000 − 60000) ÷ 60000) × 100 = -10%</code>
+            </div>
+            <p>The salary decreased by <strong>10%</strong>.</p>
+            <h3>Example 2: Product discount</h3>
+            <p>A product falls from $120 to $90.</p>
+            <div class="formula-box">
+              <code>((90 − 120) ÷ 120) × 100 = -25%</code>
+            </div>
+            <p>The price decreased by <strong>25%</strong>.</p>
+            <h3>Example 3: Score decline</h3>
+            <p>A test score goes from 92 to 83.</p>
+            <div class="formula-box">
+              <code>((83 − 92) ÷ 92) × 100 ≈ -9.78%</code>
+            </div>
+            <p>The score decreased by about <strong>9.8%</strong>.</p>
+            <div class="example-box">
+              <strong>Reading the sign:</strong><br />
+              Negative = decrease. Positive = increase.
+            </div>
+          </section>
+          <section class="panel" id="why-baseline-matters">
+            <h2>Why the original value matters</h2>
+            <p>
+              The original value matters because it defines the scale of the
+              change. A change of 20 units means something very different when
+              the starting value is 40 than when the starting value is 400.
+            </p>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>40 to 60</h3>
+                <p>Change = 20<br /><strong>50% increase</strong></p>
+              </div>
+              <div class="mini-card">
+                <h3>400 to 420</h3>
+                <p>Change = 20<br /><strong>5% increase</strong></p>
+              </div>
+            </div>
+            <p>
+              That is why percent change is often more informative than just
+              reporting the raw difference.
+            </p>
+          </section>
+          <section class="panel" id="percent-vs-difference">
+            <h2>Percent change vs percent difference</h2>
+            <p>These are not the same thing.</p>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Percent change</h3>
+                <p>
+                  Use when one value clearly comes first and the other is the
+                  updated value.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Percent difference</h3>
+                <p>
+                  Use when comparing two values without treating either one as
+                  the official baseline.
+                </p>
+              </div>
+            </div>
+            <p>Percent difference uses a different formula:</p>
+            <div class="formula-box">
+              <code>|A − B| ÷ ((A + B) ÷ 2) × 100</code>
+            </div>
+            <p>
+              Use percent change when the question is:
+              <em>How much did this change from where it started?</em>
+            </p>
+          </section>
+          <section class="panel" id="zero-case">
+            <h2>What happens when the original value is 0</h2>
+            <p>This is one of the most common trouble spots.</p>
+            <p>
+              If the original value is <strong>0</strong>, standard percent
+              change is undefined because the formula requires division by zero.
+            </p>
+            <div class="formula-box"><code>((new − 0) ÷ 0) × 100</code></div>
+            <p>
+              Since division by zero is not defined, there is no normal percent
+              change result.
+            </p>
+            <div class="note-box">
+              <strong>Practical rule:</strong><br />
+              If the original value is 0, you can still report the absolute
+              change, but not standard percent change.
+            </div>
+          </section>
+          <section class="panel" id="common-mistakes">
+            <h2>Common mistakes</h2>
+            <ul>
+              <li>Dividing by the new value instead of the original value</li>
+              <li>Forgetting to multiply by 100</li>
+              <li>Ignoring the negative sign on decreases</li>
+              <li>Mixing up percent change with percent difference</li>
+              <li>Trying to use the formula when the original value is 0</li>
+              <li>Rounding too early before finishing the math</li>
+            </ul>
+            <div class="note-box">
+              <strong>Good habit:</strong><br />
+              Do the full calculation first, then round the final percentage.
+            </div>
+          </section>
+          <section class="panel" id="when-to-use">
+            <h2>When to use percent change</h2>
+            <p>
+              Percent change is useful whenever you want to compare a new amount
+              with an old amount.
+            </p>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Common uses</h3>
+                <p>
+                  Prices, revenue, salary changes, sales growth, grades,
+                  investing, and traffic changes.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Best question</h3>
+                <p>
+                  How much did this go up or down compared with where it
+                  started?
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="panel">
+            <h2>Bottom line</h2>
+            <p>
+              Percent change measures movement relative to the original value.
+              Find the difference, divide by the starting value, and multiply by
+              100.
+            </p>
+            <div class="formula-box">
+              <strong>Main formula to remember:</strong><br />
+              <code>((new value − original value) ÷ original value) × 100</code>
+            </div>
+            <div class="related-links">
+              <a href="/tools/math/percentage-change-calculator/"
+                >Percentage Change Calculator</a
+              >
+              <a href="/tools/math/">Math Tools</a>
+              <a href="/tools/math/guides/">More Math Guides</a>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

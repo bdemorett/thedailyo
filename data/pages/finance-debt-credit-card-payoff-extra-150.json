@@ -1,0 +1,50 @@
+{
+  "key": "finance-debt-credit-card-payoff-extra-150",
+  "title": "Credit Card Payoff With $150 Extra Payment — TheDailyo",
+  "h1": "Credit Card Payoff With $150 Extra Payment",
+  "subtitle": "See how adding $150/month changes payoff time and interest.",
+  "description": "Calculate how an extra $150 monthly payment affects your credit card payoff timeline, interest paid, and total cost.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-extra-150/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "+$150 Extra", "href": "/finance/debt/credit-card-payoff-extra-150/" }
+  ],
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 200, "extra": 150 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>This page pre-fills an extra <strong>$150/month</strong>. Larger extra payments often have an outsized effect early by reducing principal faster.</p>",
+
+  "faq": [
+    { "q": "Is $150/month extra considered aggressive?", "a": "For many budgets, yes. It can significantly shorten payoff time—try different amounts to find a sustainable plan." },
+    { "q": "Should I focus on one card first?", "a": "Many people do. If you have multiple cards, consider snowball or avalanche strategies to decide which to prioritize." },
+    { "q": "Does this account for changing APR?", "a": "No—this assumes a constant APR. Use it for planning and adjust if your rate changes." }
+  ],
+
+  "related": [
+    { "title": "Extra $100 Payment", "desc": "Compare payoff speed with $100 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-100/" },
+    { "title": "Extra $200 Payment", "desc": "Compare payoff speed with $200 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-200/" },
+    { "title": "Fastest Way to Pay Off Credit Cards", "desc": "Model aggressive payoff scenarios.", "meta": "Strategy →", "href": "/finance/debt/credit-card-payoff-fastest-way/" },
+    { "title": "Debt Avalanche Calculator", "desc": "Highest-interest first payoff order.", "meta": "Strategy →", "href": "/finance/debt/avalanche/" }
+  ],
+
+  "affiliate": { "enabled": false, "headline": "Lower your APR and pay off faster", "offers": [] }
+}

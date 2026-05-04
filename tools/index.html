@@ -1,0 +1,324 @@
+<!-- ==========================================
+FILE: /tools/index.html
+UPDATED (FULL PAGE)
+Goal:
+- Use /finance hub layout structure + rhythm
+- Keep nav consistent sitewide
+- Remove internal-facing notes/tips (no "Next:" / roadmap notes)
+=========================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- GA4 (sitewide) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <title>Tools &amp; Calculators — TheDailyo</title>
+  <meta name="description" content="Everyday tools and quick calculators: time & dates, conversions, percent math, and practical utilities." />
+  <link rel="canonical" href="https://thedailyo.com/tools/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- AdSense (keep consistent across site) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <!-- Keep page CSS minimal (mirrors /finance) -->
+  <style>
+    .two-col{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media(max-width:900px){ .two-col{ grid-template-columns:1fr; } }
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel h3{
+      font-size:1.02rem;
+      font-weight:800;
+      margin-bottom:8px;
+      color: var(--text-main);
+    }
+    .panel p, .panel li{ color: var(--text-muted); line-height:1.65; }
+    .panel ul{ margin-left:18px; margin-top:10px; }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/#webpage",
+                       "url":  "https://thedailyo.com/tools/",
+                       "name":  "Tools \u0026 Calculators — TheDailyo",
+                       "description":  "Everyday tools and quick calculators: time \u0026 dates, conversions, percent math, and practical utilities.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/tools/#calculator",
+                       "name":  "Tools \u0026 Calculators — TheDailyo",
+                       "applicationCategory":  "UtilityApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/tools/",
+                       "description":  "Everyday tools and quick calculators: time \u0026 dates, conversions, percent math, and practical utilities.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Tools</h1>
+      <p class="site-subtitle">
+        Quick utilities and calculators for everyday questions — time, dates, conversions, and simple math.
+      </p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span> Tools
+      </div>
+    </header>
+
+    <main id="main" class="main">
+
+      <!-- START / PRIMARY FUNNEL -->
+      <h2 class="section-title">Start here</h2>
+      <p class="section-subtitle">
+        Choose a tool category below. If you’re not sure where to start, Time &amp; Dates is the most commonly used.
+      </p>
+
+      <div class="columns" aria-label="Top tool paths">
+        <a class="card" href="/tools/time/" aria-label="Time and date tools">
+          <div class="card-title">Time &amp; Dates (Start Here)</div>
+          <div class="card-desc">
+            Date difference, countdowns, workdays, age calculations, and calendar math.
+          </div>
+          <div class="card-meta">Go to Time &amp; Dates →</div>
+        </a>
+
+        <a class="card" href="/tools/conversions/" aria-label="Conversion tools">
+          <div class="card-title">Conversions</div>
+          <div class="card-desc">
+            Everyday unit conversions: temperature, distance, weight, volume, and more.
+          </div>
+          <div class="card-meta">Go to Conversions →</div>
+        </a>
+
+        <a class="card" href="/tools/math/percentage-change-calculator/" aria-label="Percent and math tools">
+          <div class="card-title">Percent &amp; Math</div>
+          <div class="card-desc">
+            Percent change, percent off, ratios, and quick calculation helpers.
+          </div>
+          <div class="card-meta">Go to Percent tools →</div>
+        </a>
+      </div>
+
+      <!-- TOOL CLUSTERS -->
+      <h2 class="section-title">Tool clusters</h2>
+      <p class="section-subtitle">
+        Tools are organized into clusters so you can find the right calculator quickly.
+      </p>
+
+      <div class="columns" aria-label="Tool clusters">
+        <a class="card" href="/tools/time/" aria-label="Time and dates cluster">
+          <div class="card-title">Time &amp; Dates</div>
+          <div class="card-desc">Date difference, countdowns, business days, and age tools.</div>
+          <div class="card-meta">Time tools →</div>
+        </a>
+
+        <a class="card" href="/tools/conversions/" aria-label="Conversions cluster">
+          <div class="card-title">Conversions</div>
+          <div class="card-desc">Temperature, distance, weight, volume, speed, and more.</div>
+          <div class="card-meta">Conversion tools →</div>
+        </a>
+
+        <a class="card" href="/tools/math/percentage-change-calculator/" aria-label="Percent cluster">
+          <div class="card-title">Percent &amp; Math</div>
+          <div class="card-desc">Percent change, percent off, markups, and common math helpers.</div>
+          <div class="card-meta">Percent tools →</div>
+        </a>
+      </div>
+
+      <div class="columns" style="margin-top:18px;" aria-label="More tool clusters">
+        <a class="card" href="/tools/" aria-disabled="true" onclick="return false;" style="opacity:.65;">
+          <div class="card-title">Text Tools</div>
+          <div class="card-desc">Word count, character count, and formatting helpers.</div>
+          <div class="card-meta">Coming soon →</div>
+        </a>
+
+        <a class="card" href="/tools/" aria-disabled="true" onclick="return false;" style="opacity:.65;">
+          <div class="card-title">Random &amp; Generators</div>
+          <div class="card-desc">Random number, dice, coin flips, and simple generators.</div>
+          <div class="card-meta">Coming soon →</div>
+        </a>
+
+        <a class="card" href="/tools/" aria-disabled="true" onclick="return false;" style="opacity:.65;">
+          <div class="card-title">Checklists</div>
+          <div class="card-desc">Simple printable checklists for common tasks and planning.</div>
+          <div class="card-meta">Coming soon →</div>
+        </a>
+      </div>
+
+      <!-- POPULAR TOOLS -->
+      <h2 class="section-title">Popular tools</h2>
+      <p class="section-subtitle">
+        A few high-use tools people visit the most.
+      </p>
+
+      <div class="list" aria-label="Popular tools">
+        <a class="list-item" href="/tools/time/date-difference/">
+          <div class="li-title">Date Difference Calculator</div>
+          <div class="li-desc">Calculate the number of days between two dates.</div>
+        </a>
+
+        <a class="list-item" href="/tools/time/countdown/">
+          <div class="li-title">Countdown Timer</div>
+          <div class="li-desc">Countdown to a date and time with a simple shareable page.</div>
+        </a>
+
+        <a class="list-item" href="/tools/math/percentage-change-calculator/">
+          <div class="li-title">Percent Change Calculator</div>
+          <div class="li-desc">Calculate percent increase or decrease between two values.</div>
+        </a>
+
+        <a class="list-item" href="/tools/conversions/fahrenheit-to-celsius/">
+          <div class="li-title">Fahrenheit to Celsius</div>
+          <div class="li-desc">Convert temperatures quickly with common reference values.</div>
+        </a>
+
+        <a class="list-item" href="/tools/conversions/miles-to-km/">
+          <div class="li-title">Miles to Kilometers</div>
+          <div class="li-desc">Convert miles to kilometers with fast examples.</div>
+        </a>
+      </div>
+
+      <!-- LEARN SECTION -->
+      <h2 class="section-title">Learn (quick guides)</h2>
+      <p class="section-subtitle">
+        Short explanations that make the tools easier to use.
+      </p>
+
+      <div class="list" aria-label="Tools guide pages">
+        <a class="list-item" href="/tools/time/guides/how-to-calculate-business-days/">
+          <div class="li-title">How to Calculate Business Days</div>
+          <div class="li-desc">A simple approach to counting weekdays and excluding holidays.</div>
+        </a>
+
+        <a class="list-item" href="/tools/math/guides/how-percent-change-works/">
+          <div class="li-title">How Percent Change Works</div>
+          <div class="li-desc">Increase vs decrease, common mistakes, and real examples.</div>
+        </a>
+
+        <a class="list-item" href="/tools/conversions/guides/temperature-conversions-explained/">
+          <div class="li-title">Temperature Conversions Explained</div>
+          <div class="li-desc">Fahrenheit vs Celsius and quick mental math shortcuts.</div>
+        </a>
+
+        <a class="list-item" href="/tools/conversions/guides/common-unit-conversions/">
+          <div class="li-title">Common Unit Conversions</div>
+          <div class="li-desc">A reference list of the most used everyday conversions.</div>
+        </a>
+      </div>
+
+      <!-- OPTIONAL: SMALL "EXPLORE" PANELS (finance-style minimal extra content) -->
+      <div class="two-col">
+        <section class="panel" aria-label="About Tools">
+          <h3>About these tools</h3>
+          <p>
+            These calculators are designed to answer specific questions quickly and clearly.
+            Results are generated instantly and are intended for everyday planning and reference.
+          </p>
+        </section>
+
+        <aside class="panel" aria-label="Explore more sections">
+          <h3>Explore more</h3>
+          <ul>
+            <li><a href="/finance/">Finance</a></li>
+            <li><a href="/career/">Career &amp; Income</a></li>
+            <li><a href="/health/">Health</a></li>
+            <li><a href="/business/">Business</a></li>
+          </ul>
+        </aside>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

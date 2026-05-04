@@ -1,0 +1,37 @@
+{
+  "tech": [
+    {
+     "year": 2018,
+      "title": "NASA InSight lands on Mars",
+      "description": "A robotic lander designed to study the deep interior of Mars successfully touches down on Mars.",
+      "link": "https://en.wikipedia.org/wiki/InSight",
+      "youtubeId": "A9Q-pXVISD4"
+    },
+    {
+      "year": 1947,
+      "title": "First transistor prototype",
+      "description": "Bell Labs researchers demonstrate the first working transistor, launching the modern electronics age."
+    }
+  ],
+  "news": [
+    {
+      "year": 1890,
+      "title": "First Army–Navy football game",
+      "description": "The United States Military Academy and Naval Academy play their first football game at West Point.",
+      "link": "https://en.wikipedia.org/wiki/Army%E2%80%93Navy_Game"
+    }
+  ],
+  "culture": [
+    {
+      "year": 2004,
+      "title": "World of Warcraft explodes in popularity",
+      "description": "Blizzard’s MMORPG becomes a cultural phenomenon and reshapes online gaming."
+    }
+  ],
+
+  "birthdays": [
+  { "year": 1898, "name": "C.S. Lewis", "description": "Author of The Chronicles of Narnia." },
+  { "year": 1976, "name": "Anna Faris", "description": "American actress and comedian." }
+]
+
+}

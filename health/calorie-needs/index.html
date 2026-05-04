@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <title>Calorie Needs Calculator — TheDailyo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="Calorie Needs Calculator (TDEE). Estimate your daily calories for maintenance, mild fat loss, or mild gain using height, weight, age, sex, and activity level." />
+  <link rel="canonical" href="https://thedailyo.com/health/calorie-needs/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Calorie Needs Calculator — TheDailyo" />
+  <meta property="og:description" content="Estimate daily calories (maintenance, mild loss, mild gain) using a simple TDEE calculator." />
+  <meta property="og:url" content="https://thedailyo.com/health/calorie-needs/" />
+  <meta name="twitter:card" content="summary" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/health/calorie-needs/#webpage",
+                       "url":  "https://thedailyo.com/health/calorie-needs/",
+                       "name":  "Calorie Needs Calculator — TheDailyo",
+                       "description":  "Calorie Needs Calculator (TDEE). Estimate your daily calories for maintenance, mild fat loss, or mild gain using height, weight, age, sex, and activity level.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/health/calorie-needs/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Health",
+                                                   "item":  "https://thedailyo.com/health/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Calorie Needs",
+                                                   "item":  "https://thedailyo.com/health/calorie-needs/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/health/calorie-needs/#calculator",
+                       "name":  "Calorie Needs Calculator — TheDailyo",
+                       "applicationCategory":  "HealthApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/health/calorie-needs/",
+                       "description":  "Calorie Needs Calculator (TDEE). Estimate your daily calories for maintenance, mild fat loss, or mild gain using height, weight, age, sex, and activity level.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Calorie Needs Calculator</h1>
+      <p class="site-subtitle">Estimate daily calories for maintenance, mild loss, or mild gain (educational only).</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/tools/time/">Time &amp; Dates</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/career/salary/">Work &amp; Salary</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span class="crumb-sep">›</span>
+  <a href="/health/">Health</a> <span class="crumb-sep">›</span>
+  <span aria-current="page">Calorie Needs</span>
+</div>
+
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">Estimate your daily calories (TDEE)</h2>
+      <p class="section-subtitle">
+        This calculator estimates your Total Daily Energy Expenditure (TDEE): your baseline needs (BMR) adjusted by activity level.
+        Results are estimates and not medical advice.
+      </p>
+
+      <div class="columns" style="grid-template-columns: 1fr;">
+        <div class="card" style="min-height:auto;">
+          <div class="calculator">
+            <div class="calc-grid">
+              <div class="field">
+                <label for="unit">Units</label>
+                <select id="unit">
+                  <option value="us" selected>US (feet/inches + pounds)</option>
+                  <option value="metric">Metric (cm + kg)</option>
+                </select>
+                <div class="help-text">Pick whichever unit system you already know.</div>
+              </div>
+
+              <div class="field">
+                <label for="sex">Sex</label>
+                <select id="sex">
+                  <option value="male" selected>Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <div class="help-text">Used for the BMR formula (Mifflin-St Jeor).</div>
+              </div>
+
+              <div class="field">
+                <label for="age">Age</label>
+                <input id="age" type="number" inputmode="numeric" min="0" placeholder="e.g., 30">
+              </div>
+
+              <!-- US height -->
+              <div class="field" id="usHeight">
+                <label>Height (US)</label>
+                <div class="calc-grid" style="grid-template-columns: 1fr 1fr;">
+                  <input id="feet" type="number" inputmode="numeric" min="0" placeholder="Feet (e.g., 5)">
+                  <input id="inches" type="number" inputmode="numeric" min="0" max="11" placeholder="Inches (e.g., 10)">
+                </div>
+              </div>
+
+              <!-- Metric height -->
+              <div class="field" id="metricHeight" style="display:none;">
+                <label for="cm">Height (cm)</label>
+                <input id="cm" type="number" inputmode="decimal" min="0" placeholder="e.g., 178">
+              </div>
+
+              <!-- US weight -->
+              <div class="field" id="usWeight">
+                <label for="lbs">Weight (lbs)</label>
+                <input id="lbs" type="number" inputmode="decimal" min="0" placeholder="e.g., 185">
+              </div>
+
+              <!-- Metric weight -->
+              <div class="field" id="metricWeight" style="display:none;">
+                <label for="kg">Weight (kg)</label>
+                <input id="kg" type="number" inputmode="decimal" min="0" placeholder="e.g., 84">
+              </div>
+
+              <div class="field">
+                <label for="activity">Activity level</label>
+                <select id="activity">
+                  <option value="1.2">Sedentary (little to no exercise)</option>
+                  <option value="1.375">Light (1–3 days/week)</option>
+                  <option value="1.55" selected>Moderate (3–5 days/week)</option>
+                  <option value="1.725">Very active (6–7 days/week)</option>
+                  <option value="1.9">Extra active (physical job + training)</option>
+                </select>
+                <div class="help-text">This multiplies BMR to estimate daily burn (TDEE).</div>
+              </div>
+
+              <div class="field">
+                <label for="goal">Goal</label>
+                <select id="goal">
+                  <option value="maintain" selected>Maintain weight</option>
+                  <option value="lose">Mild fat loss (≈ 0.5 lb/week)</option>
+                  <option value="gain">Mild gain (≈ 0.5 lb/week)</option>
+                </select>
+                <div class="help-text">Uses ±250 calories/day from maintenance.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-primary" id="calcBtn" type="button">Calculate</button>
+              <button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
+            </div>
+
+            <div class="result" id="result" style="display:none;"></div>
+            <div class="help-text" id="breakdown" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Quick guidance</h2>
+      <div class="info-grid" style="margin-top:12px;">
+        <div class="info-box">
+          <h3>Maintenance</h3>
+          <p>Your estimated daily calories to stay about the same weight over time.</p>
+        </div>
+        <div class="info-box">
+          <h3>Mild loss</h3>
+          <p>Often starts around 250 calories/day below maintenance (adjust over time).</p>
+        </div>
+        <div class="info-box">
+          <h3>Mild gain</h3>
+          <p>Often starts around 250 calories/day above maintenance (watch weekly trends).</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Important:</strong> This is an estimate and not medical advice. If you have health conditions, are pregnant, or have a history of disordered eating, consult a qualified professional.
+      </div>
+
+      <h2 class="section-title">FAQ</h2>
+      <details class="faq">
+        <summary>What formula does this use?</summary>
+        <p>It uses the Mifflin-St Jeor equation to estimate BMR (baseline calories), then multiplies by an activity factor to estimate TDEE.</p>
+      </details>
+      <details class="faq">
+        <summary>Why doesn’t this perfectly match my results?</summary>
+        <p>Real calorie needs vary by body composition, sleep, stress, job movement, and tracking accuracy. Use this as a starting point and adjust based on 2–4 weeks of trends.</p>
+      </details>
+      <details class="faq">
+        <summary>Can I use this for teens?</summary>
+        <p>It’s designed for adults. For children/teens, calorie needs can differ due to growth and should be handled with professional guidance.</p>
+      </details>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top: 6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const unit = document.getElementById("unit");
+      const sex = document.getElementById("sex");
+      const age = document.getElementById("age");
+      const activity = document.getElementById("activity");
+      const goal = document.getElementById("goal");
+
+      const usHeight = document.getElementById("usHeight");
+      const metricHeight = document.getElementById("metricHeight");
+      const usWeight = document.getElementById("usWeight");
+      const metricWeight = document.getElementById("metricWeight");
+
+      const feet = document.getElementById("feet");
+      const inches = document.getElementById("inches");
+      const cm = document.getElementById("cm");
+      const lbs = document.getElementById("lbs");
+      const kg = document.getElementById("kg");
+
+      const calcBtn = document.getElementById("calcBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      const result = document.getElementById("result");
+      const breakdown = document.getElementById("breakdown");
+
+      function showHideUnits() {
+        const isUS = unit.value === "us";
+        usHeight.style.display = isUS ? "" : "none";
+        usWeight.style.display = isUS ? "" : "none";
+        metricHeight.style.display = isUS ? "none" : "";
+        metricWeight.style.display = isUS ? "none" : "";
+      }
+
+      function showError(msg) {
+        result.style.display = "";
+        breakdown.style.display = "none";
+        result.textContent = msg;
+      }
+
+      function round(n) {
+        return Math.round(n);
+      }
+
+      function toMetric() {
+        // returns: heightCm, weightKg
+        const isUS = unit.value === "us";
+
+        if (isUS) {
+          const f = parseFloat(feet.value);
+          const i = parseFloat(inches.value);
+          const w = parseFloat(lbs.value);
+
+          if (!(f >= 0) || !(i >= 0) || !(w > 0)) return null;
+
+          const totalIn = (f * 12) + i;
+          if (!(totalIn > 0)) return null;
+
+          const heightCm = totalIn * 2.54;
+          const weightKg = w * 0.45359237;
+          return { heightCm, weightKg };
+        } else {
+          const hcm = parseFloat(cm.value);
+          const wkg = parseFloat(kg.value);
+
+          if (!(hcm > 0) || !(wkg > 0)) return null;
+          return { heightCm: hcm, weightKg: wkg };
+        }
+      }
+
+      function mifflinStJeorBmr(sexVal, weightKg, heightCm, ageYears) {
+        // BMR = 10w + 6.25h - 5a + s  (s=+5 male, -161 female)
+        const s = (sexVal === "male") ? 5 : -161;
+        return (10 * weightKg) + (6.25 * heightCm) - (5 * ageYears) + s;
+      }
+
+      function calc() {
+        const a = parseFloat(age.value);
+        if (!(a > 0)) return showError("Enter a valid age (e.g., 30).");
+
+        const m = toMetric();
+        if (!m) return showError("Enter a valid height and weight.");
+
+        const mult = parseFloat(activity.value);
+        if (!(mult > 0)) return showError("Choose an activity level.");
+
+        const bmr = mifflinStJeorBmr(sex.value, m.weightKg, m.heightCm, a);
+        const tdee = bmr * mult;
+
+        let target = tdee;
+        let label = "Maintenance calories";
+
+        if (goal.value === "lose") {
+          target = tdee - 250;
+          label = "Mild loss target";
+        } else if (goal.value === "gain") {
+          target = tdee + 250;
+          label = "Mild gain target";
+        }
+
+        // Guardrail (don’t show negative or silly low)
+        target = Math.max(target, 800);
+
+        result.style.display = "";
+        breakdown.style.display = "";
+
+        result.textContent = `${label}: ${round(target)} calories/day`;
+
+        breakdown.textContent =
+          `BMR (baseline): ${round(bmr)} cal/day · ` +
+          `Activity factor: ×${mult} · ` +
+          `Maintenance (TDEE): ${round(tdee)} cal/day. ` +
+          `Use this as a starting point and adjust based on 2–4 weeks of trends.`;
+      }
+
+      function reset() {
+        [age, feet, inches, cm, lbs, kg].forEach(el => el.value = "");
+        result.style.display = "none";
+        breakdown.style.display = "none";
+        result.textContent = "";
+        breakdown.textContent = "";
+      }
+
+      unit.addEventListener("change", () => {
+        showHideUnits();
+        reset();
+      });
+
+      calcBtn.addEventListener("click", calc);
+      resetBtn.addEventListener("click", reset);
+
+      showHideUnits();
+    })();
+  </script>
+</body>
+</html>

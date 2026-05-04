@@ -1,0 +1,232 @@
+{
+  "date": "January 3",
+  "tech": [
+    {
+      "year": 2004,
+      "title": "NASA’s Spirit rover successfully lands on Mars",
+      "description": "The Mars Exploration Rover Spirit lands in Gusev Crater after a long interplanetary journey. The mission was expected to last 90 days but ultimately operated for more than six years, transforming scientific understanding of Mars.",
+      "link": "https://mars.nasa.gov/mer/mission/timeline/landing/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2006,
+      "title": "Apple announces record holiday quarter sales",
+      "description": "Apple reports record-breaking holiday sales driven largely by strong iPod demand. The announcement highlights Apple’s growing influence in consumer electronics prior to the iPhone era.",
+      "link": "https://www.apple.com/newsroom/2006/01/11Apple-Reports-Record-Quarterly-Revenue/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2017,
+      "title": "Intel announces major changes to its processor roadmap",
+      "description": "Intel reveals significant adjustments to its CPU development timeline amid growing competition from rival chipmakers. The announcement signals major shifts in the semiconductor industry.",
+      "link": "https://www.anandtech.com/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "history": [
+    {
+      "year": 1521,
+      "title": "Martin Luther is excommunicated from the Catholic Church",
+      "description": "Pope Leo X formally excommunicates Martin Luther, deepening the Protestant Reformation. The decision permanently fractures Western Christianity and reshapes European religious history.",
+      "link": "https://www.britannica.com/event/excommunication-of-Martin-Luther",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1777,
+      "title": "General George Washington defeats British forces at Princeton",
+      "description": "American forces led by George Washington defeat British troops at the Battle of Princeton. The victory boosts morale and helps revive the Continental Army during the Revolutionary War.",
+      "link": "https://www.britannica.com/event/Battle-of-Princeton",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1925,
+      "title": "Benito Mussolini declares himself dictator of Italy",
+      "description": "Benito Mussolini assumes dictatorial powers in Italy, consolidating fascist control. The move marks the end of meaningful parliamentary democracy in the country for years.",
+      "link": "https://www.britannica.com/biography/Benito-Mussolini",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "world_events": [
+    {
+      "year": 1959,
+      "title": "Alaska is admitted as the 49th U.S. state",
+      "description": "Alaska officially becomes the 49th state of the United States after decades as a territory. Its admission significantly expands U.S. geographic reach and natural resource access.",
+      "link": "https://www.britannica.com/place/Alaska-state",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1977,
+      "title": "Apple Computer is incorporated",
+      "description": "Apple Computer, Inc. is formally incorporated by Steve Jobs and Steve Wozniak. The company would go on to become one of the most influential technology firms in the world.",
+      "link": "https://www.britannica.com/topic/Apple-Inc",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2020,
+      "title": "Iran vows retaliation after U.S. kills General Qasem Soleimani",
+      "description": "Following the U.S. drone strike that killed Iranian General Qasem Soleimani, Iran issues strong retaliation threats. The event sharply escalates tensions in the Middle East.",
+      "link": "https://www.bbc.com/news/world-middle-east-50979463",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "crime_and_justice": [
+    {
+      "year": 1969,
+      "title": "Soviet Union launches Luna 15 during Apollo 11 mission buildup",
+      "description": "The Soviet Union launches Luna 15 amid intense Cold War competition in space. The mission highlights the secrecy and rivalry surrounding lunar exploration.",
+      "link": "https://www.nasa.gov/",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2018,
+      "title": "California introduces new criminal justice reform measures",
+      "description": "California rolls out additional reforms aimed at reducing incarceration and reclassifying certain offenses. The changes reflect broader national debates on criminal justice reform.",
+      "link": "https://www.cdcr.ca.gov/",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "war_and_conflict": [
+    {
+      "year": 1777,
+      "title": "Battle of Princeton changes momentum of the American Revolution",
+      "description": "The American victory at Princeton follows Washington’s surprise attack at Trenton. Together, the wins help prevent the collapse of the Continental Army.",
+      "link": "https://www.battlefields.org/learn/revolutionary-war/battles/princeton",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1991,
+      "title": "Coalition forces finalize preparations for Gulf War ground operations",
+      "description": "In early January 1991, coalition forces intensify preparations ahead of major operations against Iraqi forces. The buildup signals the approaching climax of the Gulf War.",
+      "link": "https://www.britannica.com/event/Persian-Gulf-War",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "sports": [
+    {
+      "year": 1999,
+      "title": "John Elway leads Broncos to second straight Super Bowl appearance",
+      "description": "Denver Broncos quarterback John Elway helps secure another Super Bowl berth late in the 1998 season. The run cements his legacy as one of the NFL’s all-time greats.",
+      "link": "https://www.profootballhof.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2016,
+      "title": "NFL regular season concludes with playoff implications",
+      "description": "The final weekend of the NFL regular season wraps up with multiple playoff spots decided. The timing makes early January a key moment in the football calendar.",
+      "link": "https://www.nfl.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "science": [
+    {
+      "year": 2005,
+      "title": "Stardust spacecraft completes comet sample collection",
+      "description": "NASA confirms Stardust successfully collected material from Comet Wild 2. The samples later returned to Earth provide insight into the early solar system.",
+      "link": "https://www.nasa.gov/mission/stardust/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2019,
+      "title": "Astronomers release new data on near-Earth asteroids",
+      "description": "Updated asteroid tracking data improves predictions for near-Earth object paths. The work supports planetary defense planning and long-term monitoring.",
+      "link": "https://cneos.jpl.nasa.gov/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "disasters": [
+    {
+      "year": 2014,
+      "title": "Winter storms disrupt travel across parts of North America",
+      "description": "Severe winter weather causes widespread flight cancellations and road closures. The storm highlights infrastructure vulnerabilities during peak travel periods.",
+      "link": "https://www.noaa.gov/",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "entertainment": [
+    {
+      "year": 2011,
+      "title": "The Golden Globes dominate early-year entertainment coverage",
+      "description": "The Golden Globe Awards season drives major entertainment headlines at the start of the year. The ceremony often shapes award-season momentum for films and television.",
+      "link": "https://www.goldenglobes.com/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Streaming platforms report record New Year engagement",
+      "description": "Major streaming services report unusually high engagement levels during the New Year holiday. The trend reflects shifting entertainment habits toward at-home viewing.",
+      "link": "https://www.nielsen.com/insights/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "births": [
+    {
+      "year": 1892,
+      "title": "J.R.R. Tolkien is born",
+      "description": "Author J.R.R. Tolkien is born, later creating the richly detailed world of Middle-earth. His works profoundly influence fantasy literature, film, and popular culture.",
+      "link": "https://www.britannica.com/biography/J-R-R-Tolkien",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1969,
+      "title": "Michael Schumacher is born",
+      "description": "Formula One legend Michael Schumacher is born. He would go on to win seven world championships and redefine dominance in motorsport.",
+      "link": "https://www.formula1.com/en/drivers/hall-of-fame/Michael_Schumacher.html",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "deaths": [
+    {
+      "year": 2009,
+      "title": "Kola Superdeep Borehole project scientist dies",
+      "description": "Key contributors to the Kola Superdeep Borehole project are remembered for their work pushing scientific drilling to unprecedented depths. The project remains a benchmark in Earth science.",
+      "link": "https://www.britannica.com/place/Kola-Peninsula",
+      "category": "death",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Calculate Business Days — TheDailyo</title>
+    <meta
+      name="description"
+      content="Learn how to calculate business days between dates, how weekends and holidays affect the count, and when to use business days vs calendar days."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="How to Calculate Business Days — TheDailyo"
+    />
+    <meta
+      property="og:description"
+      content="A simple guide to counting business days, skipping weekends, and handling holidays."
+    />
+    <meta
+      property="og:url"
+      content="https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .article-wrap {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.15rem;
+        font-weight: 900;
+        margin: 0 0 10px;
+        color: var(--text-main);
+      }
+      .panel h3 {
+        font-size: 1rem;
+        font-weight: 900;
+        margin: 18px 0 8px;
+        color: var(--text-main);
+      }
+      .panel p,
+      .panel li {
+        color: var(--text-main);
+        line-height: 1.72;
+        font-size: 0.98rem;
+      }
+      .panel ul,
+      .panel ol {
+        margin: 8px 0 0 20px;
+        padding: 0;
+      }
+      .formula-box,
+      .example-box,
+      .note-box {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .formula-box strong,
+      .example-box strong,
+      .note-box strong {
+        color: var(--text-main);
+      }
+      .toc {
+        display: grid;
+        gap: 10px;
+      }
+      .toc a {
+        text-decoration: none;
+      }
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+      @media (max-width: 760px) {
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .mini-card {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .mini-card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 0.98rem;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/#webpage",
+                       "url":  "https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/",
+                       "name":  "How to Calculate Business Days — TheDailyo",
+                       "description":  "Learn how to calculate business days between dates, how weekends and holidays affect the count, and when to use business days vs calendar days.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Time",
+                                                   "item":  "https://thedailyo.com/tools/time/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Guides",
+                                                   "item":  "https://thedailyo.com/tools/time/guides/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "How To Calculate Business Days",
+                                                   "item":  "https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "Article",
+                       "@id":  "https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/#article",
+                       "headline":  "How to Calculate Business Days — TheDailyo",
+                       "description":  "Learn how to calculate business days between dates, how weekends and holidays affect the count, and when to use business days vs calendar days.",
+                       "author":  {
+                                      "@id":  "https://thedailyo.com/about.html#organization"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     },
+                       "mainEntityOfPage":  {
+                                                "@id":  "https://thedailyo.com/tools/time/guides/how-to-calculate-business-days/#webpage"
+                                            }
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">How to Calculate Business Days</h1>
+        <p class="site-subtitle">
+          A simple guide to counting workdays between dates, skipping weekends,
+          and handling holidays.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/tools/">Tools</a> <span class="crumb-sep">›</span>
+          <a href="/tools/time/">Time</a> <span class="crumb-sep">›</span>
+          <a href="/tools/time/guides/">Guides</a>
+          <span class="crumb-sep">›</span>
+          <span aria-current="page">How to Calculate Business Days</span>
+        </div>
+      </header>
+      <main id="main">
+        <div class="article-wrap">
+          <article class="panel">
+            <h2>Quick answer</h2>
+            <p>
+              To calculate business days, count the days between two dates and
+              skip any days that are not normal workdays. In most cases, that
+              means skipping <strong>Saturdays</strong> and
+              <strong>Sundays</strong>. If needed, also subtract any
+              <strong>company holidays</strong> or
+              <strong>public holidays</strong>.
+            </p>
+            <div class="formula-box">
+              <strong>Simple business day idea:</strong><br />
+              Count all weekdays between the start date and end date, then
+              remove holidays if they apply.
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Business days usually mean</h3>
+                <p>
+                  Monday through Friday, excluding weekends and sometimes
+                  excluding holidays.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Calendar days mean</h3>
+                <p>
+                  Every day on the calendar, including weekends and holidays.
+                </p>
+              </div>
+            </div>
+          </article>
+          <section class="panel">
+            <h2>In this guide</h2>
+            <div class="toc">
+              <a href="#what-business-days">What business days mean</a>
+              <a href="#basic-method">Basic way to calculate business days</a>
+              <a href="#example">Worked example</a>
+              <a href="#holidays">How holidays affect the count</a>
+              <a href="#inclusive-exclusive">Inclusive vs exclusive counting</a>
+              <a href="#common-mistakes">Common mistakes</a>
+              <a href="#when-to-use"
+                >When to use business days vs calendar days</a
+              >
+            </div>
+          </section>
+          <section class="panel" id="what-business-days">
+            <h2>What business days mean</h2>
+            <p>
+              A business day is usually a standard workday. For many people and
+              organizations, that means:
+            </p>
+            <ul>
+              <li>Monday</li>
+              <li>Tuesday</li>
+              <li>Wednesday</li>
+              <li>Thursday</li>
+              <li>Friday</li>
+            </ul>
+            <p>
+              Saturdays and Sundays are usually not counted as business days.
+              Some workplaces also remove holidays from the total. That is why
+              “5 business days” and “5 calendar days” are often very different.
+            </p>
+          </section>
+          <section class="panel" id="basic-method">
+            <h2>Basic way to calculate business days</h2>
+            <p>The easiest manual method is:</p>
+            <ol>
+              <li>Write down the start date and end date.</li>
+              <li>Count only the weekdays between them.</li>
+              <li>Skip Saturdays and Sundays.</li>
+              <li>Subtract any holidays if your situation requires that.</li>
+            </ol>
+            <div class="example-box">
+              <strong>Simple rule:</strong><br />
+              If a day falls on a weekend, do not count it as a business day.
+            </div>
+            <p>
+              This works well for short ranges. For larger ranges, a calculator
+              is faster and reduces mistakes.
+            </p>
+          </section>
+          <section class="panel" id="example">
+            <h2>Worked example</h2>
+            <p>
+              Suppose you want to know the number of business days from
+              <strong>Monday, June 3</strong> to
+              <strong>Friday, June 14</strong>.
+            </p>
+            <ul>
+              <li>Week 1: Monday through Friday = 5 business days</li>
+              <li>Weekend: Saturday and Sunday = 0 business days</li>
+              <li>Week 2: Monday through Friday = 5 business days</li>
+            </ul>
+            <p>Total: <strong>10 business days</strong>.</p>
+            <div class="example-box">
+              <strong>Example result:</strong><br />
+              12 calendar days can still equal only 10 business days once the
+              weekend is removed.
+            </div>
+          </section>
+          <section class="panel" id="holidays">
+            <h2>How holidays affect the count</h2>
+            <p>
+              Holidays can reduce the total even more. If one holiday falls on a
+              weekday inside your date range, subtract that day from the
+              business day count.
+            </p>
+            <p>
+              For example, if a range includes 10 weekdays but one of those
+              weekdays is a holiday, the adjusted result becomes:
+            </p>
+            <div class="formula-box">
+              <strong>10 weekdays − 1 holiday = 9 business days</strong>
+            </div>
+            <p>
+              Keep in mind that holiday rules vary. A bank, court, school, and
+              private employer may all use different holiday calendars.
+            </p>
+          </section>
+          <section class="panel" id="inclusive-exclusive">
+            <h2>Inclusive vs exclusive counting</h2>
+            <p>
+              One common source of confusion is whether the start date counts.
+            </p>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Exclusive counting</h3>
+                <p>Usually starts counting after the start date.</p>
+              </div>
+              <div class="mini-card">
+                <h3>Inclusive counting</h3>
+                <p>
+                  Counts both the start date and the end date if they qualify.
+                </p>
+              </div>
+            </div>
+            <p>
+              This matters for deadlines, shipping windows, payroll timing,
+              legal notices, and project planning. Always check which method
+              your workplace or form is using.
+            </p>
+          </section>
+          <section class="panel" id="common-mistakes">
+            <h2>Common mistakes</h2>
+            <ul>
+              <li>Counting calendar days instead of business days</li>
+              <li>Forgetting to remove a holiday</li>
+              <li>Including weekends by accident</li>
+              <li>Counting the start date when the rule says not to</li>
+              <li>Assuming every business follows the same holiday schedule</li>
+            </ul>
+            <div class="note-box">
+              <strong>Good habit:</strong><br />
+              If the result matters for work, contracts, payroll, or deadlines,
+              double-check whether holidays and the start date should count.
+            </div>
+          </section>
+          <section class="panel" id="when-to-use">
+            <h2>When to use business days vs calendar days</h2>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Use business days for</h3>
+                <p>
+                  Shipping estimates, approval timelines, office workflows,
+                  banking, and legal or HR deadlines.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Use calendar days for</h3>
+                <p>
+                  Trips, vacations, countdowns, birthdays, subscriptions, and
+                  general elapsed time.
+                </p>
+              </div>
+            </div>
+            <p>
+              A date difference calculator tells you the raw number of days. A
+              business day calculator goes one step further and removes
+              non-working days.
+            </p>
+          </section>
+          <section class="panel">
+            <h2>Bottom line</h2>
+            <p>
+              To calculate business days, count only the weekdays in the range
+              and subtract any holidays that matter for your situation. That
+              gives you a more realistic measure of working time than simple
+              calendar days.
+            </p>
+            <div class="formula-box">
+              <strong>Business days = weekdays − applicable holidays</strong>
+            </div>
+            <p>
+              Related tools:
+              <a href="/tools/time/date-difference/"
+                >Date Difference Calculator</a
+              >
+              · <a href="/tools/time/days-until/">Days Until Calculator</a>
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

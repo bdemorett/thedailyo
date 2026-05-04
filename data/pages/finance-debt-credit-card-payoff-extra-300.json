@@ -1,0 +1,50 @@
+{
+  "key": "finance-debt-credit-card-payoff-extra-300",
+  "title": "Credit Card Payoff With $300 Extra Payment — TheDailyo",
+  "h1": "Credit Card Payoff With $300 Extra Payment",
+  "subtitle": "See how adding $300/month changes payoff time and interest.",
+  "description": "Calculate how an extra $300 monthly payment affects your credit card payoff timeline, interest paid, and total cost.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-extra-300/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "+$300 Extra", "href": "/finance/debt/credit-card-payoff-extra-300/" }
+  ],
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 200, "extra": 300 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>This page pre-fills an extra <strong>$300/month</strong>. Larger extra payments reduce principal quickly, which typically cuts interest costs substantially.</p>",
+
+  "faq": [
+    { "q": "Is $300/month extra too much?", "a": "It depends on your budget. If it’s not sustainable, try smaller amounts and compare. Consistency matters." },
+    { "q": "What’s the fastest payoff approach?", "a": "Usually: stop new charges, pay as much as possible, and prioritize highest-interest debt (avalanche) while keeping minimums on others." },
+    { "q": "Can I model a payoff goal date?", "a": "Not directly on this version, but you can adjust payment/extra until the payoff timeline matches your goal." }
+  ],
+
+  "related": [
+    { "title": "Extra $200 Payment", "desc": "Compare payoff speed with $200 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-200/" },
+    { "title": "Extra $500 Payment", "desc": "See payoff results with $500 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-500/" },
+    { "title": "Fastest Way to Pay Off Credit Cards", "desc": "Model aggressive payoff scenarios.", "meta": "Strategy →", "href": "/finance/debt/credit-card-payoff-fastest-way/" },
+    { "title": "Debt Avalanche Calculator", "desc": "Highest-interest first strategy.", "meta": "Strategy →", "href": "/finance/debt/avalanche/" }
+  ],
+
+  "affiliate": { "enabled": false, "headline": "Lower your APR and pay off faster", "offers": [] }
+}

@@ -1,0 +1,243 @@
+{
+  "date": "January 8",
+
+  "tech": [
+    {
+      "year": 2002,
+      "title": "Microsoft releases Windows XP Media Center Edition preview",
+      "description": "Microsoft previews Media Center features designed to turn PCs into home entertainment hubs. The effort reflects early attempts to merge television, digital media, and personal computing.",
+      "link": "https://www.microsoft.com",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2007,
+      "title": "Apple iPhone rumors dominate CES discussions",
+      "description": "Days before its official unveiling, speculation about Apple’s first iPhone dominates technology media. Anticipation highlights growing consumer interest in touchscreen smartphones.",
+      "link": "https://www.apple.com",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2014,
+      "title": "Google announces major Android security updates",
+      "description": "Google outlines new security improvements for Android, focusing on malware detection and system hardening. The move reflects increasing concern over mobile security threats.",
+      "link": "https://blog.google",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2020,
+      "title": "Microsoft ends support for Windows 7",
+      "description": "Microsoft officially ends extended support for Windows 7, urging users to upgrade. The decision marks the end of one of the company’s most widely used operating systems.",
+      "link": "https://support.microsoft.com",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "Major AI models expand enterprise adoption",
+      "description": "Technology firms report rapid growth in enterprise use of generative AI tools. Businesses increasingly integrate AI for automation, analytics, and customer support.",
+      "link": "https://www.bbc.com",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "history": [
+    {
+      "year": 1918,
+      "title": "U.S. President Woodrow Wilson outlines Fourteen Points",
+      "description": "President Wilson presents principles aimed at ending World War I and preventing future conflicts. The speech influences postwar diplomacy and international relations.",
+      "link": "https://www.britannica.com",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1959,
+      "title": "Charles de Gaulle becomes President of France",
+      "description": "Charles de Gaulle assumes the French presidency during a period of political transition. His leadership reshapes France’s postwar government and foreign policy.",
+      "link": "https://www.britannica.com",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1973,
+      "title": "U.S. Supreme Court hears arguments in Roe v. Wade",
+      "description": "The Supreme Court hears key arguments in a case that will become one of the most significant decisions in U.S. legal history. The ruling later reshapes reproductive rights law.",
+      "link": "https://www.oyez.org",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2011,
+      "title": "Arizona shooting leads to national gun debate",
+      "description": "A mass shooting in Arizona reignites discussion about public safety and gun legislation. The event prompts renewed calls for policy review.",
+      "link": "https://www.history.com",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "Global markets react to rising inflation concerns",
+      "description": "Financial markets show volatility amid growing inflation fears. Central banks signal possible changes to monetary policy.",
+      "link": "https://www.reuters.com",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "science": [
+    {
+      "year": 2001,
+      "title": "Astronomers refine measurements of dark energy",
+      "description": "New observations improve understanding of dark energy’s role in cosmic expansion. Findings deepen insight into the universe’s long-term behavior.",
+      "link": "https://www.nasa.gov",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2016,
+      "title": "Zika virus research accelerates worldwide",
+      "description": "Scientists increase collaboration to understand Zika’s health effects. Research focuses on transmission and long-term risks.",
+      "link": "https://www.who.int",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Fusion energy experiment achieves milestone",
+      "description": "Researchers report a breakthrough in fusion energy efficiency. The result renews optimism about future clean energy sources.",
+      "link": "https://www.energy.gov",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "disasters": [
+    {
+      "year": 2009,
+      "title": "Severe winter storms impact central Europe",
+      "description": "Heavy snow and ice disrupt transportation across several countries. Emergency services respond to widespread outages.",
+      "link": "https://www.bbc.com",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2018,
+      "title": "Earthquake strikes Caribbean region",
+      "description": "A strong earthquake causes structural damage and power outages. Authorities assess infrastructure and public safety risks.",
+      "link": "https://www.usgs.gov",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "entertainment": [
+    {
+      "year": 1997,
+      "title": "‘Jerry Maguire’ continues box office success",
+      "description": "The film remains popular weeks after release, driven by strong word of mouth. Its themes resonate with audiences worldwide.",
+      "link": "https://www.boxofficemojo.com",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2019,
+      "title": "Streaming platforms announce major content investments",
+      "description": "Entertainment companies reveal expanded budgets for original programming. The move reflects intense competition for subscribers.",
+      "link": "https://variety.com",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2024,
+      "title": "Award season momentum builds in Hollywood",
+      "description": "Studios launch campaigns for major film awards. Analysts track shifting favorites among critics and audiences.",
+      "link": "https://www.hollywoodreporter.com",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "sports": [
+    {
+      "year": 2000,
+      "title": "NFL playoffs set following regular season finale",
+      "description": "Teams secure postseason berths after the final week of games. Fans anticipate matchups leading toward the Super Bowl.",
+      "link": "https://www.nfl.com",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2010,
+      "title": "College football bowl season kicks off",
+      "description": "Teams begin postseason bowl games across the United States. The games highlight standout performances and coaching strategies.",
+      "link": "https://www.espn.com",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "NBA midseason trade discussions intensify",
+      "description": "Teams explore roster changes ahead of the trade deadline. Analysts debate potential playoff impacts.",
+      "link": "https://www.nba.com",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1942,
+      "title": "Stephen Hawking born",
+      "description": "Theoretical physicist Stephen Hawking is born in Oxford, England. His work later transforms understanding of black holes and cosmology.",
+      "link": "https://www.britannica.com",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1985,
+      "title": "Amber Benson born",
+      "description": "American actress and writer known for television and film roles. She later expands her career into directing and publishing.",
+      "link": "https://www.imdb.com",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 1642,
+      "title": "Galileo Galilei dies",
+      "description": "Astronomer Galileo Galilei dies in Italy after transforming scientific observation. His work laid foundations for modern physics and astronomy.",
+      "link": "https://www.britannica.com",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

@@ -1,0 +1,527 @@
+<!-- ==========================================
+FILE: /finance/investing/guides/how-compound-interest-works/index.html
+GUIDE PAGE (non-calculator)
+- Matches TheDailyo layout + main.css?v=4
+- GA4: G-LW4W6PG84Q
+- AdSense kept
+- Finance > Investing > Guides breadcrumbs
+- Clear sections + examples + FAQ
+=========================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How Compound Interest Works — TheDailyo</title>
+  <meta name="description" content="A clear guide to compound interest: the formula, compounding frequency, contributions, inflation, taxes, and examples. Learn how savings and investments grow over time." />
+  <link rel="canonical" href="https://thedailyo.com/finance/investing/guides/how-compound-interest-works/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- GA4 (sitewide) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <!-- Page-specific only (keep small) -->
+  <style>
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+      margin-top:14px;
+    }
+    .prose p{ line-height:1.7; }
+    .callout{
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      background:#fff;
+      padding:14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      margin-top:12px;
+    }
+    .callout strong{ font-weight:950; }
+    .list-tight li{ margin:6px 0; }
+    .table-wrap{
+      margin-top:12px;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+    table{ width:100%; border-collapse:collapse; min-width:820px; background:#fff; }
+    th, td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(15,23,42,0.10);
+      font-size:.92rem;
+      text-align:left;
+      white-space:nowrap;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#fff;
+      font-weight:950;
+      z-index:1;
+      color: var(--text-main);
+    }
+    td.right, th.right{ text-align:right; }
+    tbody tr:hover td{ background: rgba(79,124,255,0.06); }
+    .toc{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+    @media(max-width:800px){ .toc{ grid-template-columns:1fr; } }
+    .toc a{
+      display:block;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border-subtle);
+      background:#fff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      font-weight:900;
+      color: var(--text-main);
+      text-decoration:none;
+    }
+    .toc a:hover{ border-color: rgba(79,124,255,0.35); }
+    code.k{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      background: rgba(2,6,23,0.06);
+      padding:2px 6px;
+      border-radius:10px;
+      font-weight:850;
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/investing/guides/how-compound-interest-works/#webpage",
+                       "url":  "https://thedailyo.com/finance/investing/guides/how-compound-interest-works/",
+                       "name":  "How Compound Interest Works — TheDailyo",
+                       "description":  "A clear guide to compound interest: the formula, compounding frequency, contributions, inflation, taxes, and examples. Learn how savings and investments grow over time.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/investing/guides/how-compound-interest-works/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Investing",
+                                                   "item":  "https://thedailyo.com/finance/investing/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Guides",
+                                                   "item":  "https://thedailyo.com/finance/investing/guides/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "How Compound Interest Works",
+                                                   "item":  "https://thedailyo.com/finance/investing/guides/how-compound-interest-works/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "Article",
+                       "@id":  "https://thedailyo.com/finance/investing/guides/how-compound-interest-works/#article",
+                       "headline":  "How Compound Interest Works — TheDailyo",
+                       "description":  "A clear guide to compound interest: the formula, compounding frequency, contributions, inflation, taxes, and examples. Learn how savings and investments grow over time.",
+                       "author":  {
+                                      "@id":  "https://thedailyo.com/about.html#organization"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     },
+                       "mainEntityOfPage":  {
+                                                "@id":  "https://thedailyo.com/finance/investing/guides/how-compound-interest-works/#webpage"
+                                            }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">How Compound Interest Works</h1>
+      <p class="site-subtitle">A practical, plain-English guide to how money grows over time (plus examples you can copy).</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/finance/">Finance</a> <span class="crumb-sep">›</span>
+        <a href="/finance/investing/">Investing</a> <span class="crumb-sep">›</span>
+        <span>Guides</span> <span class="crumb-sep">›</span>
+        How Compound Interest Works
+      </div>
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">Quick idea</h2>
+      <p class="section-subtitle">
+        Compound interest means you earn returns on your original money <em>and</em> on the returns you’ve already earned.
+        Over time, that “returns-on-returns” effect can become the biggest part of your growth.
+      </p>
+
+      <section class="panel prose">
+        <h2>Table of contents</h2>
+        <div class="toc" aria-label="Table of contents">
+          <a href="#simple-vs-compound">Simple vs compound interest</a>
+          <a href="#formula">The compound interest formula</a>
+          <a href="#frequency">Compounding frequency (APY vs APR)</a>
+          <a href="#contributions">Adding contributions over time</a>
+          <a href="#timing">Contribution timing (beginning vs end)</a>
+          <a href="#inflation">Inflation: “today’s dollars”</a>
+          <a href="#taxes">Taxes and “tax drag”</a>
+          <a href="#examples">Examples you can copy</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="callout">
+          <strong>Try it live:</strong>
+          Use the <a href="/finance/investing/compound-interest-calculator/">Compound Interest Calculator</a> to model your exact scenario
+          (contributions, compounding frequency, inflation-adjusted results, and a simple tax-drag option).
+        </div>
+      </section>
+
+      <section class="panel prose" id="simple-vs-compound">
+        <h2>Simple vs compound interest</h2>
+        <p>
+          <strong>Simple interest</strong> only earns on the original principal. If you put in $10,000 at 5% simple interest,
+          you earn $500 per year, every year (as long as the principal stays the same).
+        </p>
+        <p>
+          <strong>Compound interest</strong> earns on the growing balance. In early years, the growth looks similar to simple interest.
+          In later years, the interest itself becomes a bigger number because the balance is bigger.
+        </p>
+
+        <div class="callout">
+          <strong>Why compounding feels “slow” at first:</strong> early on, your balance is small, so the interest earned is small.
+          The real magic shows up after many compounding periods.
+        </div>
+      </section>
+
+      <section class="panel prose" id="formula">
+        <h2>The compound interest formula</h2>
+        <p>
+          The standard formula (no ongoing contributions) is:
+        </p>
+        <p>
+          <code class="k">A = P (1 + r/n)^(n·t)</code>
+        </p>
+        <ul class="list-tight">
+          <li><strong>A</strong> = ending amount</li>
+          <li><strong>P</strong> = starting principal (your initial balance)</li>
+          <li><strong>r</strong> = annual interest rate (as a decimal, so 7% = 0.07)</li>
+          <li><strong>n</strong> = number of compounding periods per year (12 monthly, 365 daily, etc.)</li>
+          <li><strong>t</strong> = time in years</li>
+        </ul>
+
+        <div class="callout">
+          <strong>With contributions:</strong> the math can be done with annuity formulas, but most real-life cases
+          (contribution timing + different frequencies + taxes + inflation) are easiest to compute with a step-by-step schedule,
+          which is what calculators do.
+        </div>
+      </section>
+
+      <section class="panel prose" id="frequency">
+        <h2>Compounding frequency (APY vs APR)</h2>
+        <p>
+          If you compound more frequently (monthly vs yearly), you earn a tiny bit more because interest is credited sooner.
+          The difference is usually small at normal rates, but it’s real.
+        </p>
+
+        <div class="callout">
+          <strong>APR</strong> is typically the nominal rate. <strong>APY</strong> is the effective rate after compounding.
+          For the same APR, higher compounding frequency → slightly higher APY.
+        </div>
+
+        <p>Effective APY formula:</p>
+        <p><code class="k">APY = (1 + r/n)^n − 1</code></p>
+      </section>
+
+      <section class="panel prose" id="contributions">
+        <h2>Adding contributions over time</h2>
+        <p>
+          Contributions often matter more than the rate in the first few years. If you add money monthly,
+          your account grows from both:
+        </p>
+        <ul class="list-tight">
+          <li>New contributions you add</li>
+          <li>Returns earned on the whole balance (including prior contributions)</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Practical rule:</strong> early on, contributions are the main driver. Later on, compounding becomes the main driver.
+        </div>
+      </section>
+
+      <section class="panel prose" id="timing">
+        <h2>Contribution timing (beginning vs end)</h2>
+        <p>
+          If you contribute at the <strong>beginning</strong> of the period, that money has more time to grow.
+          Beginning-of-period contributions will always end higher than end-of-period contributions (all else equal).
+        </p>
+        <ul class="list-tight">
+          <li><strong>End of period:</strong> contribution after interest is applied (common assumption)</li>
+          <li><strong>Beginning of period:</strong> contribution before interest is applied (slightly higher ending value)</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Real life:</strong> payroll contributions to a 401(k) happen throughout the year, so your real result is “somewhere in between.”
+          But modeling both can show the range.
+        </div>
+      </section>
+
+      <section class="panel prose" id="inflation">
+        <h2>Inflation: “today’s dollars”</h2>
+        <p>
+          A balance of $200,000 in 20 years will not buy what $200,000 buys today.
+          Inflation-adjusting (a “real” view) helps you understand future purchasing power.
+        </p>
+
+        <div class="callout">
+          <strong>Simple inflation adjustment:</strong>
+          take your future nominal value and divide by <code class="k">(1 + i)^t</code>,
+          where <code class="k">i</code> is inflation and <code class="k">t</code> is years.
+        </div>
+
+        <p class="muted">
+          Inflation is unpredictable; using a steady average rate is just a planning tool.
+        </p>
+      </section>
+
+      <section class="panel prose" id="taxes">
+        <h2>Taxes and “tax drag”</h2>
+        <p>
+          In taxable accounts, investment gains can be taxed (interest, dividends, and realized capital gains).
+          Taxes reduce how much money stays invested, which reduces compounding—this is sometimes called <strong>tax drag</strong>.
+        </p>
+
+        <div class="callout">
+          <strong>Good to know:</strong> tax-advantaged accounts (like many retirement accounts) can reduce or defer taxes,
+          which can improve compounding.
+        </div>
+
+        <p class="muted">
+          Tax rules vary by country, state, and account type. This is educational only.
+        </p>
+      </section>
+
+      <section class="panel prose" id="examples">
+        <h2>Examples you can copy</h2>
+        <p class="section-subtitle">These are simplified examples to build intuition.</p>
+
+        <div class="table-wrap" aria-label="Compound interest examples table">
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th class="right">Start</th>
+                <th class="right">Rate</th>
+                <th class="right">Years</th>
+                <th class="right">Contribution</th>
+                <th class="right">Big takeaway</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>One-time deposit</td>
+                <td class="right">$10,000</td>
+                <td class="right">7%</td>
+                <td class="right">20</td>
+                <td class="right">None</td>
+                <td class="right">Time does the heavy lifting</td>
+              </tr>
+              <tr>
+                <td>Monthly contributions</td>
+                <td class="right">$1,000</td>
+                <td class="right">7%</td>
+                <td class="right">20</td>
+                <td class="right">$200/mo</td>
+                <td class="right">Contributions dominate early</td>
+              </tr>
+              <tr>
+                <td>Higher rate, same time</td>
+                <td class="right">$10,000</td>
+                <td class="right">9%</td>
+                <td class="right">20</td>
+                <td class="right">None</td>
+                <td class="right">Rate matters, but time still wins</td>
+              </tr>
+              <tr>
+                <td>Same rate, more time</td>
+                <td class="right">$10,000</td>
+                <td class="right">7%</td>
+                <td class="right">30</td>
+                <td class="right">None</td>
+                <td class="right">Extra decade is huge</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <strong>Want exact numbers?</strong>
+          Plug your inputs into the <a href="/finance/investing/compound-interest-calculator/">Compound Interest Calculator</a>
+          and switch between monthly/yearly tables to see the “shape” of growth.
+        </div>
+
+        <div class="callout">
+          <strong>Rule of 72 (quick mental math):</strong>
+          divide 72 by your annual rate to estimate doubling time.
+          Example: at 8% return, <code class="k">72/8 ≈ 9</code> years to double (rough estimate).
+        </div>
+      </section>
+
+      <section class="panel prose" id="mistakes">
+        <h2>Common mistakes</h2>
+        <ul class="list-tight">
+          <li><strong>Mixing APR and APY:</strong> for savings, APY is usually what you actually earn.</li>
+          <li><strong>Ignoring fees:</strong> even small annual fees reduce compounding long-term.</li>
+          <li><strong>Forgetting inflation:</strong> nominal balances can look big but buy less.</li>
+          <li><strong>Assuming a fixed rate:</strong> markets vary; use ranges and scenarios.</li>
+          <li><strong>Counting taxes wrong:</strong> taxable vs tax-advantaged accounts compound differently.</li>
+        </ul>
+      </section>
+
+      <section class="panel prose" id="faq">
+        <h2>FAQ</h2>
+
+        <details class="faq">
+          <summary>Is compounding always a good thing?</summary>
+          <p>
+            Compounding helps investments grow, but it also works against you with debt (credit cards, high APR loans).
+            If you’re paying high APR, paying debt down can be a “guaranteed return” compared to investing.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>What rate should I use?</summary>
+          <p>
+            Use something realistic for the account type (savings vs bonds vs diversified stocks). For planning, try multiple rates (e.g., 5%, 7%, 9%)
+            and treat them as scenarios—not promises.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>What’s the difference between nominal and real returns?</summary>
+          <p>
+            Nominal return is the quoted rate. Real return subtracts inflation (roughly). Real return is what matters for purchasing power.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Does contribution timing really matter?</summary>
+          <p>
+            It can—especially over long time frames. Beginning-of-period contributions earn interest for more time, so they end higher.
+            The difference is usually modest but consistent.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>What about deposits made throughout the month?</summary>
+          <p>
+            Then your result is between “beginning” and “end” assumptions. A schedule-based calculator is best for modeling this realistically.
+          </p>
+        </details>
+
+        <div class="callout">
+          <strong>Next:</strong>
+          <a href="/finance/investing/compound-interest-calculator/">Compound Interest Calculator</a> ·
+          <a href="/finance/investing/">Investing Hub</a> ·
+          <a href="/finance/debt/">Debt Payoff Tools</a>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Related investing tools</h2>
+        <div class="columns" style="margin-top:14px;">
+          <a class="card" href="/finance/investing/compound-interest-calculator/">
+            <div class="card-title">Compound Interest Calculator</div>
+            <div class="card-desc">Contributions, compounding frequency, inflation-adjusted mode, and tax drag option.</div>
+            <div class="card-meta">Calculate →</div>
+          </a>
+          <a class="card" href="/finance/investing/">
+            <div class="card-title">Investing Hub</div>
+            <div class="card-desc">Browse investing calculators and guides.</div>
+            <div class="card-meta">Explore →</div>
+          </a>
+          <a class="card" href="/finance/debt/">
+            <div class="card-title">Debt Payoff Tools</div>
+            <div class="card-desc">Paying high APR debt can beat investing returns mathematically.</div>
+            <div class="card-meta">Go to Debt →</div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1060 @@
+<!-- ==============================================
+FILE: /finance/debt/debt-snowball-calculator/index.html
+No JSON. Full standalone calculator page.
+Standard: single-column calculator layout (like your amortization calculator)
+- main.css?v=4
+- GA4: G-LW4W6PG84Q
+- AdSense kept
+- Share link (query params)
+- Copy table + CSV
+- Snowball logic: pay minimums, then apply extra to smallest balance first, roll freed payments
+=============================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Debt Snowball Calculator — TheDailyo</title>
+  <meta name="description" content="Debt Snowball calculator: prioritize the smallest balance first to build momentum. Enter multiple debts, APRs, and minimum payments to estimate payoff time and total interest." />
+  <link rel="canonical" href="https://thedailyo.com/finance/debt/debt-snowball-calculator/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- GA4 (match site) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <!-- Page-specific only (keep small) -->
+  <style>
+    .two-col{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel h2{
+      font-size:1.1rem;
+      font-weight:900;
+      margin-bottom:8px;
+      color: var(--text-main);
+    }
+
+    .form-grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media(max-width:760px){ .form-grid{ grid-template-columns:1fr; } }
+
+    label{
+      display:block;
+      font-size:.9rem;
+      font-weight:900;
+      color: var(--text-main);
+      margin-bottom:6px;
+    }
+
+    input, select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,0.18);
+      background:#ffffff;
+      color: var(--text-main);
+      font-size:.95rem;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .inline{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      padding:10px 18px;
+      border-radius:999px;
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 14px 28px rgba(79,124,255,0.25);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.03); }
+
+    .btn-ghost{
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .btn-ghost:hover{
+      transform:translateY(-1px);
+      border-color: rgba(79,124,255,0.35);
+      box-shadow: 0 16px 30px rgba(2,6,23,0.12);
+    }
+
+    .warn{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      background: rgba(255, 82, 82, 0.10);
+      border: 1px solid rgba(255, 82, 82, 0.25);
+      color: var(--text-main);
+      font-weight:850;
+      display:none;
+      line-height:1.5;
+    }
+
+    .result{
+      margin-top:14px;
+    }
+    .result h3{
+      font-size:1.02rem;
+      font-weight:950;
+      color: var(--text-main);
+      margin-bottom:10px;
+    }
+
+    .kpi-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+    @media(max-width:760px){ .kpi-grid{ grid-template-columns:1fr; } }
+
+    .kpi{
+      background:#ffffff;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      padding:14px;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.08);
+    }
+    .kpi-label{ font-size:.88rem; color: var(--text-muted); font-weight:850; }
+    .kpi-value{ margin-top:6px; font-size:1.1rem; font-weight:950; color: var(--text-main); }
+
+    .table-wrap{
+      margin-top:12px;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:980px;
+      background:#ffffff;
+    }
+    th, td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(15,23,42,0.10);
+      font-size:.9rem;
+      text-align:right;
+      white-space:nowrap;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:950;
+      z-index:1;
+    }
+    td:first-child, th:first-child{ text-align:left; }
+    tbody tr:hover td{ background: rgba(79,124,255,0.06); }
+
+    .small-note{
+      margin-top:10px;
+      color: var(--text-muted);
+      font-weight:800;
+      font-size:.9rem;
+      line-height:1.55;
+    }
+
+    .debts-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .debts-head h3{
+      margin:0;
+      font-size:1.02rem;
+      font-weight:950;
+      color: var(--text-main);
+    }
+
+    .mini-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .row-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr 0.9fr;
+      gap:10px;
+    }
+    @media(max-width:900px){ .row-grid{ grid-template-columns:1fr; } }
+
+    .row-card{
+      background:#ffffff;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      padding:12px;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+
+    .row-card .row-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .row-card .row-title{
+      font-weight:950;
+      color:var(--text-main);
+      font-size:.95rem;
+    }
+    .row-card .row-del{
+      border:1px solid var(--border-subtle);
+      background:#fff;
+      color:var(--text-main);
+      border-radius:999px;
+      padding:6px 10px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .row-card .row-del:hover{
+      border-color: rgba(79,124,255,0.35);
+    }
+
+    .hint{
+      color: var(--text-muted);
+      font-weight:850;
+      font-size:.85rem;
+      margin-top:6px;
+      line-height:1.45;
+    }
+
+    details.faq{
+      margin-top:10px;
+      border:1px solid var(--border-subtle);
+      border-radius:14px;
+      padding:10px 12px;
+      background:#ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+    details.faq summary{
+      cursor:pointer;
+      font-weight:950;
+      color: var(--text-main);
+    }
+    details.faq p{
+      margin-top:8px;
+      color: var(--text-muted);
+      line-height:1.6;
+      font-weight:800;
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/debt/debt-snowball-calculator/#webpage",
+                       "url":  "https://thedailyo.com/finance/debt/debt-snowball-calculator/",
+                       "name":  "Debt Snowball Calculator — TheDailyo",
+                       "description":  "Debt Snowball calculator: prioritize the smallest balance first to build momentum. Enter multiple debts, APRs, and minimum payments to estimate payoff time and total interest.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/debt/debt-snowball-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Debt",
+                                                   "item":  "https://thedailyo.com/finance/debt/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Debt Snowball Calculator",
+                                                   "item":  "https://thedailyo.com/finance/debt/debt-snowball-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/finance/debt/debt-snowball-calculator/#calculator",
+                       "name":  "Debt Snowball Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/finance/debt/debt-snowball-calculator/",
+                       "description":  "Debt Snowball calculator: prioritize the smallest balance first to build momentum. Enter multiple debts, APRs, and minimum payments to estimate payoff time and total interest.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Debt Snowball Calculator</h1>
+      <p class="site-subtitle">Pay the smallest balance first to build momentum, then roll payments forward.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/finance/">Finance</a> <span class="crumb-sep">›</span>
+        <a href="/finance/debt/">Debt</a> <span class="crumb-sep">›</span>
+        Debt Snowball Calculator
+      </div>
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">Calculator</h2>
+      <p class="section-subtitle">
+        Add your debts with balances, APR, and minimum payments. Set an extra monthly amount to accelerate payoff.
+        Snowball pays extra to the <strong>smallest balance</strong> first. Prefer interest-first? Try
+        <a href="/finance/debt/debt-avalanche-calculator/">Debt Avalanche Calculator</a>.
+      </p>
+
+      <div class="two-col">
+        <section class="panel" aria-label="Debt Snowball Calculator">
+          <h2>Inputs</h2>
+
+          <div class="form-grid">
+            <div>
+              <label for="extra">Extra monthly payment ($)</label>
+              <input id="extra" type="number" min="0" step="0.01" value="0" inputmode="decimal" />
+              <div class="hint">This extra amount is added on top of all minimum payments and rolled to the next debt when one is paid off.</div>
+            </div>
+
+            <div>
+              <label for="rounding">Rounding</label>
+              <select id="rounding">
+                <option value="cent" selected>Nearest cent</option>
+                <option value="dollar">Nearest dollar</option>
+              </select>
+              <div class="hint">Some lenders round interest differently. This is an estimate.</div>
+            </div>
+
+            <div>
+              <label for="maxMonths">Max months (safety cap)</label>
+              <input id="maxMonths" type="number" min="12" step="12" value="600" inputmode="numeric" />
+              <div class="hint">Prevents endless schedules if payments are too low.</div>
+            </div>
+
+            <div>
+              <label for="startMonth">Start month (optional)</label>
+              <input id="startMonth" type="month" value="" />
+              <div class="hint">Used to show payoff month and dates in the schedule.</div>
+            </div>
+          </div>
+
+          <div class="debts-head">
+            <h3>Debts</h3>
+            <div class="mini-actions">
+              <button class="btn-ghost" id="addDebtBtn" type="button">Add debt</button>
+              <button class="btn-ghost" id="loadExampleBtn" type="button">Load example</button>
+              <button class="btn-ghost" id="clearDebtsBtn" type="button">Clear debts</button>
+            </div>
+          </div>
+
+          <div id="debtsWrap" style="margin-top:10px;"></div>
+
+          <div class="actions">
+            <button class="btn-primary" id="calcBtn" type="button">Calculate snowball</button>
+            <button class="btn-ghost" id="copyLinkBtn" type="button">Copy share link</button>
+            <button class="btn-ghost" id="copyBtn" type="button">Copy table</button>
+            <button class="btn-ghost" id="csvBtn" type="button">Download CSV</button>
+            <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+          </div>
+
+          <div class="warn" id="warn" aria-live="polite"></div>
+
+          <div class="result" id="result" style="display:none;">
+            <h3>Summary</h3>
+
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Total monthly payment</div>
+                <div class="kpi-value" id="kMonthly">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Payoff time</div>
+                <div class="kpi-value" id="kTime">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Total interest (estimate)</div>
+                <div class="kpi-value" id="kInterest">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Payoff month</div>
+                <div class="kpi-value" id="kPayoffMonth">—</div>
+              </div>
+            </div>
+
+            <div class="table-wrap" aria-label="Snowball schedule table">
+              <table id="scheduleTable">
+                <thead id="thead"></thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="small-note">
+              This calculator assumes no new charges and that minimum payments stay constant. Verify APR rules, fees, and statement cycles with your lender.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-label="How it works">
+          <h2>How it works</h2>
+          <p>
+            Snowball means you pay minimums on all debts, then apply your extra amount to the smallest balance first.
+            When that debt hits $0, its payment (minimum + extra) “rolls” to the next smallest balance.
+          </p>
+
+          <details class="faq">
+            <summary>Is snowball or avalanche better?</summary>
+            <p>Avalanche usually minimizes interest. Snowball can be easier to stick with. The best method is the one you’ll follow consistently.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Does this include new purchases?</summary>
+            <p>No. It assumes you stop adding new charges and make consistent payments.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Why might results differ from my statement?</summary>
+            <p>Lenders can vary by daily interest, statement timing, rounding, and fees. This is a planning estimate.</p>
+          </details>
+
+          <p style="margin-top:10px;">
+            Related: <a href="/finance/debt/credit-card-payoff-calculator/">Credit Card Payoff Calculator</a>
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+
+    // ---------- Formatting ----------
+    function money(n){
+      if(!isFinite(n)) return "—";
+      return n.toLocaleString(undefined,{style:"currency",currency:"USD"});
+    }
+    function num(n){
+      if(!isFinite(n)) return "—";
+      return n.toLocaleString(undefined,{maximumFractionDigits: 2});
+    }
+    function setWarn(msg){
+      const w = el("warn");
+      if(!msg){
+        w.style.display="none";
+        w.textContent="";
+        return;
+      }
+      w.textContent = msg;
+      w.style.display="block";
+    }
+
+    function parseStartMonth(value){
+      if(!value) return null;
+      const parts = value.split("-");
+      if(parts.length !== 2) return null;
+      const y = Number(parts[0]);
+      const m = Number(parts[1]);
+      if(!isFinite(y) || !isFinite(m) || m < 1 || m > 12) return null;
+      return new Date(y, m-1, 1);
+    }
+    function addMonths(date, months){
+      return new Date(date.getFullYear(), date.getMonth() + months, 1);
+    }
+    function ymLabel(d){
+      const mo = d.toLocaleString(undefined, { month: "short" });
+      return `${mo} ${d.getFullYear()}`;
+    }
+
+    function roundMoney(x, mode){
+      if(!isFinite(x)) return x;
+      if(mode === "dollar") return Math.round(x);
+      return Math.round(x * 100) / 100;
+    }
+
+    // ---------- Debts UI ----------
+    const debtsWrap = el("debtsWrap");
+
+    function debtRowTemplate(d){
+      const id = d.id;
+      const name = d.name ?? "";
+      const bal = d.balance ?? "";
+      const apr = d.apr ?? "";
+      const min = d.min ?? "";
+
+      const div = document.createElement("div");
+      div.className = "row-card";
+      div.dataset.id = id;
+
+      div.innerHTML = `
+        <div class="row-top">
+          <div class="row-title">Debt</div>
+          <button class="row-del" type="button" data-del="${id}">Remove</button>
+        </div>
+
+        <div class="row-grid">
+          <div>
+            <label for="name_${id}">Name</label>
+            <input id="name_${id}" type="text" value="${escapeHtml(name)}" placeholder="e.g., Visa, Car loan" />
+          </div>
+          <div>
+            <label for="bal_${id}">Balance ($)</label>
+            <input id="bal_${id}" type="number" min="0" step="0.01" value="${escapeAttr(bal)}" inputmode="decimal" />
+          </div>
+          <div>
+            <label for="apr_${id}">APR (%)</label>
+            <input id="apr_${id}" type="number" min="0" step="0.01" value="${escapeAttr(apr)}" inputmode="decimal" />
+          </div>
+          <div>
+            <label for="min_${id}">Minimum payment ($/mo)</label>
+            <input id="min_${id}" type="number" min="0" step="0.01" value="${escapeAttr(min)}" inputmode="decimal" />
+          </div>
+        </div>
+
+        <div class="hint">Tip: For credit cards, minimums vary. Use your typical minimum to estimate.</div>
+      `;
+
+      return div;
+    }
+
+    function escapeHtml(s){
+      return String(s ?? "").replace(/[&<>"']/g,(m)=>({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+    function escapeAttr(s){
+      return escapeHtml(s).replace(/"/g,"&quot;");
+    }
+
+    function uid(){
+      return Math.random().toString(16).slice(2,10);
+    }
+
+    function getDebtIds(){
+      return Array.from(debtsWrap.querySelectorAll(".row-card")).map(x=>x.dataset.id);
+    }
+
+    function addDebt(d = {}){
+      const id = uid();
+      const row = debtRowTemplate({ id, ...d });
+      debtsWrap.appendChild(row);
+    }
+
+    function removeDebt(id){
+      const row = debtsWrap.querySelector(`.row-card[data-id="${id}"]`);
+      if(row) row.remove();
+    }
+
+    debtsWrap.addEventListener("click", (e)=>{
+      const btn = e.target.closest("[data-del]");
+      if(!btn) return;
+      removeDebt(btn.getAttribute("data-del"));
+    });
+
+    el("addDebtBtn").addEventListener("click", ()=>{
+      addDebt({ name:"", balance:"", apr:"", min:"" });
+    });
+
+    el("clearDebtsBtn").addEventListener("click", ()=>{
+      debtsWrap.innerHTML = "";
+      setWarn("");
+      el("result").style.display = "none";
+      updateURLFromState(); // keep other settings
+    });
+
+    el("loadExampleBtn").addEventListener("click", ()=>{
+      debtsWrap.innerHTML = "";
+      addDebt({ name:"Card A", balance: 1800, apr: 24.99, min: 55 });
+      addDebt({ name:"Card B", balance: 5200, apr: 19.99, min: 140 });
+      addDebt({ name:"Personal loan", balance: 9000, apr: 10.5, min: 210 });
+      setWarn("");
+      calculate();
+    });
+
+    // ---------- Read/Write state ----------
+    function getDebts(){
+      const ids = getDebtIds();
+      return ids.map(id=>{
+        const name = (el(`name_${id}`)?.value || "").trim();
+        const balance = Number(el(`bal_${id}`)?.value);
+        const apr = Number(el(`apr_${id}`)?.value);
+        const min = Number(el(`min_${id}`)?.value);
+        return { id, name, balance, apr, min };
+      });
+    }
+
+    function validate(debts, extra, maxMonths){
+      if(!Array.isArray(debts) || debts.length === 0) return "Add at least one debt.";
+      if(!(maxMonths >= 12)) return "Max months must be at least 12.";
+
+      let any = false;
+      for(const d of debts){
+        if(!(d.balance > 0)) return "Each debt needs a balance greater than $0.";
+        if(!(d.apr >= 0)) return "APR must be 0 or higher.";
+        if(!(d.min > 0)) return "Each debt needs a minimum payment greater than $0.";
+        any = true;
+      }
+      if(!any) return "Add at least one debt.";
+
+      // Make sure minimums are enough to cover first-month interest for each debt
+      for(const d of debts){
+        const r = (d.apr/100)/12;
+        const firstInterest = d.balance * r;
+        if(d.apr > 0 && d.min <= firstInterest - 0.005){
+          return `Minimum payment for "${d.name || "Debt"}" looks too low to reduce the balance (it may grow). Increase the minimum or adjust inputs.`;
+        }
+      }
+
+      if(!(extra >= 0)) return "Extra payment must be 0 or higher.";
+      return "";
+    }
+
+    // ---------- Snowball engine ----------
+    function simulateSnowball(debtsIn, extraMonthly, maxMonths, roundingMode){
+      // Copy debts
+      const debts = debtsIn.map((d, idx)=>({
+        name: (d.name || `Debt ${idx+1}`),
+        balance: Number(d.balance),
+        apr: Number(d.apr),
+        min: Number(d.min)
+      }));
+
+      let month = 0;
+      let totalInterest = 0;
+
+      const rows = [];
+
+      const sumMin = () => debts.reduce((s,d)=>s + (d.balance > 0 ? d.min : 0), 0);
+      const baseMonthly = sumMin();
+      const totalMonthly = baseMonthly + extraMonthly;
+
+      while(month < maxMonths){
+        month++;
+
+        // Determine target: smallest balance > 0
+        const active = debts.filter(d=>d.balance > 0.000001);
+        if(active.length === 0) break;
+
+        active.sort((a,b)=>a.balance - b.balance);
+        const target = active[0];
+
+        // Step 1: accrue interest on all active debts
+        let interestThisMonth = 0;
+        for(const d of debts){
+          if(d.balance <= 0.000001) continue;
+          const r = (d.apr/100)/12;
+          const interest = d.balance * r;
+          d.balance = d.balance + interest;
+          interestThisMonth += interest;
+        }
+
+        // Step 2: pay minimums to all active debts
+        let paidThisMonth = 0;
+        let extraPool = extraMonthly;
+
+        for(const d of debts){
+          if(d.balance <= 0.000001) continue;
+          let pay = d.min;
+
+          // avoid overpay
+          if(pay > d.balance) pay = d.balance;
+
+          d.balance = d.balance - pay;
+          paidThisMonth += pay;
+
+          // if debt paid off by minimum payment, its unused portion doesn't exist (we already capped to balance)
+        }
+
+        // Step 3: apply extra pool to current target; if it pays off, roll remainder to next smallest, same month
+        while(extraPool > 0.000001){
+          const stillActive = debts.filter(d=>d.balance > 0.000001);
+          if(stillActive.length === 0) break;
+
+          stillActive.sort((a,b)=>a.balance - b.balance);
+          const t = stillActive[0];
+
+          let payExtra = extraPool;
+          if(payExtra > t.balance) payExtra = t.balance;
+
+          t.balance = t.balance - payExtra;
+          paidThisMonth += payExtra;
+          extraPool -= payExtra;
+        }
+
+        // rounding output values (does not affect internal balances beyond display)
+        totalInterest += interestThisMonth;
+
+        const remaining = debts.reduce((s,d)=>s + Math.max(0, d.balance), 0);
+        const activeCount = debts.filter(d=>d.balance > 0.000001).length;
+
+        const row = {
+          month,
+          paid: roundMoney(paidThisMonth, roundingMode),
+          interest: roundMoney(interestThisMonth, roundingMode),
+          remaining: roundMoney(remaining, roundingMode),
+          debtsRemaining: activeCount
+        };
+
+        // Snapshot of top 3 smallest balances (for readability)
+        const snap = debts
+          .filter(d=>d.balance > 0.000001)
+          .sort((a,b)=>a.balance - b.balance)
+          .slice(0,3)
+          .map(d=>`${d.name}: ${money(roundMoney(d.balance, roundingMode))}`)
+          .join(" · ");
+
+        row.focus = snap || "—";
+
+        rows.push(row);
+
+        if(remaining <= 0.01) break;
+      }
+
+      const paidOff = debts.every(d=>d.balance <= 0.01);
+      return { rows, months: month, totalInterest: roundMoney(totalInterest, roundingMode), baseMonthly, totalMonthly, paidOff };
+    }
+
+    // ---------- Rendering ----------
+    function renderTable(rows){
+      const thead = el("thead");
+      const tbody = el("tbody");
+
+      thead.innerHTML = `
+        <tr>
+          <th>Month</th>
+          <th>Paid</th>
+          <th>Interest</th>
+          <th>Remaining</th>
+          <th>Debts left</th>
+          <th style="text-align:left;">Smallest balances (snapshot)</th>
+        </tr>
+      `;
+      tbody.innerHTML = "";
+
+      for(const r of rows){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${r.month}</td>
+          <td>${money(r.paid)}</td>
+          <td>${money(r.interest)}</td>
+          <td>${money(r.remaining)}</td>
+          <td>${r.debtsRemaining}</td>
+          <td style="text-align:left;">${escapeHtml(r.focus)}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    // ---------- Copy/CSV ----------
+    function tableToTSV(table){
+      const rows = Array.from(table.querySelectorAll("tr"));
+      return rows.map(tr => {
+        const cells = Array.from(tr.querySelectorAll("th,td"));
+        return cells.map(td => td.textContent.replace(/\s+/g, " ").trim()).join("\t");
+      }).join("\n");
+    }
+
+    function tableToCSV(table){
+      const rows = Array.from(table.querySelectorAll("tr"));
+      return rows.map(tr => {
+        const cells = Array.from(tr.querySelectorAll("th,td"));
+        return cells.map(td => {
+          const raw = td.textContent.replace(/\s+/g," ").trim();
+          const escaped = raw.replace(/"/g,'""');
+          return `"${escaped}"`;
+        }).join(",");
+      }).join("\n");
+    }
+
+    async function copyTable(){
+      const t = el("scheduleTable");
+      const text = tableToTSV(t);
+      try{
+        await navigator.clipboard.writeText(text);
+        setWarn("Copied table to clipboard.");
+        setTimeout(()=>setWarn(""), 1600);
+      }catch{
+        setWarn("Copy failed (browser permission). You can still download CSV.");
+      }
+    }
+
+    function downloadCSV(filename){
+      const t = el("scheduleTable");
+      const csv = tableToCSV(t);
+      const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // ---------- URL params ----------
+    // We keep it simple:
+    // extra, rounding, maxMonths, start, and debts as repeated params:
+    // name1, bal1, apr1, min1 ... nameN, balN, aprN, minN
+    function applyParams(){
+      const sp = new URLSearchParams(location.search);
+
+      if(sp.has("extra")) el("extra").value = sp.get("extra");
+      if(sp.has("rounding")) el("rounding").value = sp.get("rounding");
+      if(sp.has("max")) el("maxMonths").value = sp.get("max");
+      if(sp.has("start")) el("startMonth").value = sp.get("start");
+
+      // debts
+      let i = 1;
+      let addedAny = false;
+      while(sp.has(`bal${i}`) || sp.has(`apr${i}`) || sp.has(`min${i}`) || sp.has(`name${i}`)){
+        const name = sp.get(`name${i}`) ?? "";
+        const bal = sp.get(`bal${i}`) ?? "";
+        const apr = sp.get(`apr${i}`) ?? "";
+        const min = sp.get(`min${i}`) ?? "";
+        addDebt({ name, balance: bal, apr, min });
+        addedAny = true;
+        i++;
+        if(i > 20) break;
+      }
+
+      if(!addedAny){
+        // default: two empty rows to start
+        addDebt({ name:"", balance:"", apr:"", min:"" });
+        addDebt({ name:"", balance:"", apr:"", min:"" });
+      }
+    }
+
+    function updateURLFromState(){
+      const sp = new URLSearchParams();
+
+      sp.set("extra", String(Number(el("extra").value) || 0));
+      sp.set("rounding", el("rounding").value);
+      sp.set("max", String(Number(el("maxMonths").value) || 600));
+
+      const start = el("startMonth").value;
+      if(start) sp.set("start", start);
+
+      const debts = getDebts();
+      debts.forEach((d, idx)=>{
+        const i = idx + 1;
+        sp.set(`name${i}`, d.name || `Debt ${i}`);
+        sp.set(`bal${i}`, String(Number(d.balance) || 0));
+        sp.set(`apr${i}`, String(Number(d.apr) || 0));
+        sp.set(`min${i}`, String(Number(d.min) || 0));
+      });
+
+      const url = `${location.pathname}?${sp.toString()}`;
+      history.replaceState({}, "", url);
+      return `${location.origin}${url}`;
+    }
+
+    async function copyShareLink(){
+      const url = updateURLFromState();
+      try{
+        await navigator.clipboard.writeText(url);
+        setWarn("Copied share link to clipboard.");
+        setTimeout(()=>setWarn(""), 1600);
+      }catch{
+        setWarn("Copy failed. You can copy the URL from the address bar.");
+      }
+    }
+
+    // ---------- Main calculate ----------
+    function calculate(){
+      setWarn("");
+
+      const extra = Math.max(0, Number(el("extra").value || 0));
+      const rounding = el("rounding").value;
+      const maxMonths = Number(el("maxMonths").value || 600);
+
+      const debts = getDebts().map(d=>({
+        name: (d.name || "").trim(),
+        balance: Number(d.balance),
+        apr: Number(d.apr),
+        min: Number(d.min)
+      }));
+
+      const err = validate(debts, extra, maxMonths);
+      if(err){
+        el("result").style.display = "none";
+        setWarn(err);
+        return;
+      }
+
+      const sim = simulateSnowball(debts, extra, maxMonths, rounding);
+
+      // KPIs
+      el("result").style.display = "block";
+      el("kMonthly").textContent = money(sim.totalMonthly);
+      el("kTime").textContent = sim.paidOff ? `${sim.months.toLocaleString()} months` : `${sim.months.toLocaleString()} months shown`;
+      el("kInterest").textContent = money(sim.totalInterest);
+
+      const startDate = parseStartMonth(el("startMonth").value);
+      if(startDate && sim.paidOff){
+        const payoffDate = addMonths(startDate, sim.months - 1);
+        el("kPayoffMonth").textContent = ymLabel(payoffDate);
+      } else if(el("startMonth").value && !sim.paidOff){
+        el("kPayoffMonth").textContent = "Not paid off (cap reached)";
+      } else {
+        el("kPayoffMonth").textContent = "—";
+      }
+
+      renderTable(sim.rows);
+
+      // Update URL for easy sharing
+      updateURLFromState();
+
+      if(!sim.paidOff){
+        setWarn("Note: schedule reached the safety cap before all debts hit $0. Increase minimums/extra or raise the max months cap.");
+      }
+    }
+
+    // ---------- Events ----------
+    el("calcBtn").addEventListener("click", calculate);
+    el("copyBtn").addEventListener("click", copyTable);
+    el("csvBtn").addEventListener("click", ()=>downloadCSV("debt-snowball-schedule.csv"));
+    el("copyLinkBtn").addEventListener("click", copyShareLink);
+
+    el("resetBtn").addEventListener("click", ()=>{
+      el("extra").value = 0;
+      el("rounding").value = "cent";
+      el("maxMonths").value = 600;
+      el("startMonth").value = "";
+      debtsWrap.innerHTML = "";
+      addDebt({ name:"", balance:"", apr:"", min:"" });
+      addDebt({ name:"", balance:"", apr:"", min:"" });
+      el("result").style.display = "none";
+      setWarn("");
+      history.replaceState({}, "", location.pathname);
+    });
+
+    // Optional: auto-recalc on changes (like your amortization page)
+    const autoIds = ["extra","rounding","maxMonths","startMonth"];
+    autoIds.forEach(id=>{
+      el(id).addEventListener("change", ()=>calculate());
+    });
+    debtsWrap.addEventListener("change", (e)=>{
+      const t = e.target;
+      if(t && (t.tagName === "INPUT" || t.tagName === "SELECT")) calculate();
+    });
+
+    // ---------- Init ----------
+    applyParams();
+    // Calculate once (only if rows have values; still safe to run)
+    calculate();
+  </script>
+</body>
+</html>

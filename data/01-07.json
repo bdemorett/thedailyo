@@ -1,0 +1,264 @@
+{
+  "date": "January 7",
+
+  "tech": [
+    {
+      "year": 2005,
+      "title": "NASA launches Deep Impact mission toward a comet",
+      "description": "NASA launches the Deep Impact spacecraft on a mission to deliberately crash a probe into a comet. The goal is to study the internal composition of these ancient objects left over from the formation of the solar system. The idea of intentionally slamming a spacecraft into a comet captures public imagination and advances planetary science.",
+      "link": "https://www.nasa.gov/missions/deep-impact/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2013,
+      "title": "U.S. officials warn of large-scale cyber espionage campaigns",
+      "description": "Government and cybersecurity agencies disclose extensive foreign cyber espionage targeting infrastructure, corporations, and research institutions. The revelations highlight how invisible digital attacks can cause real-world harm. Cybersecurity becomes a central national security concern.",
+      "link": "https://www.cisa.gov/news-events",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2019,
+      "title": "Scientists warn artificial intelligence can amplify misinformation",
+      "description": "Researchers caution that AI-driven recommendation systems can unintentionally spread false or extreme content. The warning sparks debate over platform responsibility and algorithmic transparency. These concerns grow significantly in the years that follow.",
+      "link": "https://www.nature.com/subjects/artificial-intelligence",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Global satellite networks expand rapidly despite collision risks",
+      "description": "Thousands of new satellites are launched into low Earth orbit as companies race to provide global internet coverage. Astronomers and space agencies warn of increasing collision risks and orbital debris. The situation raises fears of cascading failures in space.",
+      "link": "https://www.esa.int/Space_Safety",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "history": [
+    {
+      "year": 1610,
+      "title": "Galileo Galilei observes moons orbiting Jupiter",
+      "description": "Using a telescope of his own design, Galileo observes four moons orbiting Jupiter. The discovery provides direct evidence that not all celestial bodies orbit Earth. This observation plays a crucial role in overturning centuries of geocentric belief.",
+      "link": "https://www.britannica.com/biography/Galileo-Galilei",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1953,
+      "title": "President Harry Truman announces the United States has a hydrogen bomb",
+      "description": "President Truman confirms that the U.S. has successfully tested a hydrogen bomb, far more powerful than atomic weapons used in World War II. The announcement shocks the world and intensifies Cold War fears. Nuclear annihilation becomes a real, looming possibility.",
+      "link": "https://www.archives.gov/milestone-documents/hydrogen-bomb",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2005,
+      "title": "Afghan voters participate in historic parliamentary elections",
+      "description": "Afghanistan holds parliamentary elections for the first time in decades. Millions vote despite violence and threats, marking a fragile step toward representative governance. The event underscores both hope and instability in the region.",
+      "link": "https://www.bbc.com/news/world-south-asia",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "Researchers reveal ancient human migration routes through DNA analysis",
+      "description": "Genetic studies uncover previously unknown migration paths taken by early humans. The findings challenge long-standing assumptions about how populations spread across continents. Human history appears far more complex than once believed.",
+      "link": "https://www.smithsonianmag.com/science-nature/",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "crime_and_justice": [
+    {
+      "year": 1927,
+      "title": "Man survives being struck by lightning multiple times",
+      "description": "Medical records document a rare case of a man surviving multiple lightning strikes over his lifetime. The odds of such an event are astronomically low. The story becomes one of the most unbelievable cases in medical and criminal records.",
+      "link": "https://www.weather.gov/safety/lightning",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1974,
+      "title": "Kidnapping victim survives after being buried underground",
+      "description": "In a harrowing crime, a kidnapping victim is buried underground with limited air. Against incredible odds, the victim survives long enough to be rescued. The case leads to changes in how kidnapping crimes are prosecuted.",
+      "link": "https://www.fbi.gov/history",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2018,
+      "title": "Court filings reveal massive backlog of untested forensic evidence",
+      "description": "Judicial audits expose thousands of untested forensic samples sitting in evidence storage. Delayed testing raises concerns that violent offenders may remain free for years. The revelations spark calls for reform.",
+      "link": "https://nij.ojp.gov/",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Digital surveillance evidence becomes central to major criminal cases",
+      "description": "Smartphones, GPS data, and security cameras play decisive roles in high-profile trials. Civil liberties groups warn about privacy erosion as surveillance expands. Courts struggle to balance technology and rights.",
+      "link": "https://www.aclu.org/issues/privacy-technology",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "war_and_conflict": [
+    {
+      "year": 1942,
+      "title": "Japanese forces consolidate control across the Pacific",
+      "description": "Early in World War II, Japanese forces expand rapidly across Southeast Asia and the Pacific. Allied nations scramble to respond to the speed of the offensive. The tide of war will not turn until later in the year.",
+      "link": "https://www.nationalww2museum.org/",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1979,
+      "title": "Vietnamese forces enter Cambodia, toppling the Khmer Rouge",
+      "description": "Vietnam invades Cambodia, effectively ending the Khmer Rouge regime responsible for mass genocide. The intervention reveals the scale of atrocities committed. Millions had died before the regime’s collapse.",
+      "link": "https://www.britannica.com/event/Cambodian-Genocide",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Drone warfare reshapes modern battlefields",
+      "description": "Cheap drones equipped with explosives destroy armored vehicles and fortified positions. Military strategists acknowledge that warfare has permanently changed. Traditional doctrines are rapidly becoming obsolete.",
+      "link": "https://www.reuters.com/world/",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "disasters": [
+    {
+      "year": 1789,
+      "title": "Severe winter storm freezes rivers and halts trade across Europe",
+      "description": "Extreme cold freezes major European rivers, stopping commerce and travel. Crops fail and food shortages worsen. The disaster contributes to social unrest in the years leading up to major political upheaval.",
+      "link": "https://www.britannica.com/science/Little-Ice-Age",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2010,
+      "title": "Aftershocks continue to endanger rescue efforts in Haiti",
+      "description": "Rescue teams face collapsing buildings as aftershocks shake already-damaged areas. The danger slows aid delivery and costs additional lives. The disaster becomes one of the deadliest of the 21st century.",
+      "link": "https://reliefweb.int/",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2024,
+      "title": "Severe flooding forces evacuations across multiple countries",
+      "description": "Unprecedented rainfall overwhelms infrastructure in several regions. Emergency services struggle to keep pace with evacuations. Scientists warn such events are becoming more frequent.",
+      "link": "https://www.noaa.gov/",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "entertainment": [
+    {
+      "year": 1927,
+      "title": "First talking motion picture accelerates decline of silent films",
+      "description": "The success of early sound films shocks Hollywood studios and audiences alike. Silent film stars struggle to adapt as the industry rapidly transforms. The change permanently reshapes cinema.",
+      "link": "https://www.oscars.org/history",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1997,
+      "title": "Hollywood embraces digital special effects at unprecedented scale",
+      "description": "Studios increasingly rely on CGI to create spectacles never before possible on screen. Filmmaking enters a new era where digital tools rival practical effects.",
+      "link": "https://www.smithsonianmag.com/arts-culture/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "Streaming platforms dominate global entertainment consumption",
+      "description": "Streaming surpasses traditional television worldwide. Algorithms shape what billions of people watch daily. Critics warn cultural homogenization may follow.",
+      "link": "https://www.pewresearch.org/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "sports": [
+    {
+      "year": 1972,
+      "title": "NFL playoffs achieve record television ratings",
+      "description": "Playoff games draw unprecedented audiences, cementing football as America’s dominant sport. Advertising revenue skyrockets. The business of sports changes permanently.",
+      "link": "https://www.nfl.com/history/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1999,
+      "title": "College football bowl system reaches peak commercialization",
+      "description": "Corporate sponsorships dominate postseason games. Critics argue tradition is being sacrificed for profit. The debate continues decades later.",
+      "link": "https://www.ncaa.org/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Athletes challenge long-standing stigma around mental health",
+      "description": "Elite athletes speak openly about depression and anxiety. Leagues respond with new support systems. The conversation marks a cultural shift in sports.",
+      "link": "https://www.olympics.com/ioc/mental-health",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1876,
+      "title": "Konrad Adenauer is born",
+      "description": "Konrad Adenauer is born and later becomes the first Chancellor of West Germany after World War II. He plays a central role in rebuilding Germany and shaping postwar Europe.",
+      "link": "https://www.britannica.com/biography/Konrad-Adenauer",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 1989,
+      "title": "Emperor Hirohito of Japan dies",
+      "description": "Emperor Hirohito dies after ruling Japan through World War II and the nation’s postwar transformation. His death closes one of the most consequential reigns of the 20th century.",
+      "link": "https://www.britannica.com/biography/Hirohito",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

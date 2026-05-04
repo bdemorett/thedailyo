@@ -1,0 +1,128 @@
+{
+  "tech": [
+    {
+      "year": 1998,
+      "title": "International Space Station receives its first crew module",
+      "description": "The Unity node is launched aboard Space Shuttle Endeavour, becoming one of the core connecting modules of the ISS.",
+      "link": "https://en.wikipedia.org/wiki/Unity_(ISS_module)",
+      "category": "space"
+    },
+    {
+      "year": 2006,
+      "title": "NASA reveals water evidence on Mars",
+      "description": "New images show liquid water may still flow on Mars today, reshaping theories about Martian geology.",
+      "link": "https://en.wikipedia.org/wiki/Water_on_Mars",
+      "category": "science"
+    },
+    {
+      "year": 1956,
+      "title": "IBM introduces the world’s first hard disk drive",
+      "description": "The IBM 305 RAMAC ushers in modern data storage, replacing punch cards with magnetic disk memory.",
+      "link": "https://en.wikipedia.org/wiki/IBM_305_RAMAC",
+      "category": "tech"
+    }
+  ],
+
+  "history": [
+    {
+      "year": 771,
+      "title": "Charlemagne becomes sole ruler of the Frankish Kingdom",
+      "description": "Following the death of his brother Carloman, Charlemagne becomes the undisputed king of the Franks.",
+      "link": "https://en.wikipedia.org/wiki/Charlemagne",
+      "category": "politics"
+    },
+    {
+      "year": 1791,
+      "title": "First edition of The Observer published",
+      "description": "The British newspaper 'The Observer' is first printed, becoming the world’s oldest Sunday newspaper.",
+      "link": "https://en.wikipedia.org/wiki/The_Observer",
+      "category": "world"
+    },
+    {
+      "year": 1991,
+      "title": "Pan Am ceases operations",
+      "description": "After decades as one of the world’s most iconic airlines, Pan American World Airways shuts down due to financial collapse.",
+      "link": "https://en.wikipedia.org/wiki/Pan_American_World_Airways",
+      "category": "economics"
+    }
+  ],
+
+  "world_events": [
+    {
+      "year": 1945,
+      "title": "Flight 19 disappears in the Bermuda Triangle",
+      "description": "A squadron of five U.S. Navy torpedo bombers vanishes during a training flight, fueling decades of speculation about the Bermuda Triangle.",
+      "link": "https://en.wikipedia.org/wiki/Flight_19",
+      "category": "mystery"
+    },
+    {
+      "year": 1978,
+      "title": "Dianne Feinstein becomes San Francisco’s first female mayor",
+      "description": "Following the assassination of Mayor George Moscone, Feinstein assumes office, beginning a long political career.",
+      "link": "https://en.wikipedia.org/wiki/Dianne_Feinstein",
+      "category": "politics"
+    },
+    {
+      "year": 2005,
+      "title": "Civil unrest escalates in France",
+      "description": "Riots spread across French cities amid social tension, youth unrest, and clashes with police.",
+      "link": "https://en.wikipedia.org/wiki/2005_French_riots",
+      "category": "crime"
+    },
+    {
+      "year": 2014,
+      "title": "Typhoon Hagupit makes landfall in the Philippines",
+      "description": "A powerful typhoon strikes Eastern Samar, forcing the evacuation of hundreds of thousands of residents.",
+      "link": "https://en.wikipedia.org/wiki/Typhoon_Hagupit_(2014)",
+      "category": "disaster"
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1969,
+      "title": "Birth of Jay-Z",
+      "description": "American rapper, mogul, and entrepreneur who becomes one of the most influential figures in hip-hop history.",
+      "link": "https://en.wikipedia.org/wiki/Jay-Z",
+      "category": "entertainment"
+    },
+    {
+      "year": 1982,
+      "title": "Birth of Orlando Brown",
+      "description": "American actor known for 'That’s So Raven' and Disney Channel roles.",
+      "link": "https://en.wikipedia.org/wiki/Orlando_Brown_(actor)",
+      "category": "entertainment"
+    },
+    {
+      "year": 1949,
+      "title": "Birth of Jeff Bridges",
+      "description": "Academy Award-winning American actor known for 'The Big Lebowski', 'Crazy Heart', and 'True Grit.'",
+      "link": "https://en.wikipedia.org/wiki/Jeff_Bridges",
+      "category": "entertainment"
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 1993,
+      "title": "Death of Frank Zappa",
+      "description": "American musician and composer known for his experimental rock, satire, and genre-blending originality.",
+      "link": "https://en.wikipedia.org/wiki/Frank_Zappa",
+      "category": "entertainment"
+    },
+    {
+      "year": 1872,
+      "title": "Death of Horace Greeley",
+      "description": "American newspaper editor and founder of the New-York Tribune, known for his political activism and the phrase 'Go West, young man.'",
+      "link": "https://en.wikipedia.org/wiki/Horace_Greeley",
+      "category": "literature"
+    },
+    {
+      "year": 2021,
+      "title": "Death of Bob Dole",
+      "description": "American senator and longtime political figure who served as U.S. Senate Majority Leader and was the 1996 Republican presidential nominee.",
+      "link": "https://en.wikipedia.org/wiki/Bob_Dole",
+      "category": "politics"
+    }
+  ]
+}

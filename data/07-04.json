@@ -1,0 +1,25 @@
+{
+  "tech": [
+    {
+      "year": 1976,
+      "title": "Apple I hits the market",
+      "description": "Apple Computer sells its first batch of Apple I computers, helping kickstart the personal computing revolution.",
+      "link": "https://en.wikipedia.org/wiki/Apple_I"
+    }
+  ],
+  "news": [
+    {
+      "year": 1776,
+      "title": "U.S. Declaration of Independence",
+      "description": "The Continental Congress adopts the Declaration of Independence, announcing the separation from Great Britain.",
+      "link": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence"
+    }
+  ],
+  "culture": [
+    {
+      "year": 1996,
+      "title": "Independence Day tops the box office",
+      "description": "The sci-fi film 'Independence Day' dominates theaters, becoming a defining ’90s blockbuster."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "tech": [
+    {
+      "year": 1969,
+      "title": "Initial ARPANET four-node network completed",
+      "description": "The University of Utah comes online as the fourth node on ARPANET, completing the original four-node experimental computer network that will grow into today's internet.",
+      "link": "https://psu.pb.unizin.org/ist110/chapter/1-4-history-of-the-internet/",
+      "category": "tech"
+    },
+    {
+      "year": 1965,
+      "title": "First PhD dissertation in computer science is presented",
+      "description": "J. Barkley Rosser presents what is widely regarded as the first PhD dissertation in computer science, helping establish computing as its own academic discipline.",
+      "link": "https://www.computerhistory.org/tdih/december/5/",
+      "category": "science"
+    }
+  ],
+  "history": [
+    {
+      "year": 1872,
+      "title": "Ghost ship Mary Celeste found abandoned in the Atlantic",
+      "description": "The British brig Dei Gratia sights the American merchant ship Mary Celeste sailing erratically near the Azores. The ship is seaworthy and provisioned, but the crew has mysteriously vanished.",
+      "link": "https://www.history.com/this-day-in-history/the-mary-celeste-is-found",
+      "category": "world"
+    },
+    {
+      "year": 1933,
+      "title": "Prohibition ends in the United States",
+      "description": "Utah becomes the 36th state to ratify the 21st Amendment, officially repealing the 18th Amendment and ending Prohibition after nearly 14 years of nationwide alcohol bans.",
+      "link": "https://apnews.com/article/today-in-history-december-5-21st-amendment-prohibition-7f0b1a437a5c4c8e8d2fe735ef3a1da2",
+      "category": "politics"
+    },
+    {
+      "year": 1945,
+      "title": "Flight 19 disappears over the Bermuda Triangle",
+      "description": "Five U.S. Navy torpedo bombers on a training mission vanish over the Atlantic, along with a rescue plane sent to search for them, helping fuel legends of the Bermuda Triangle.",
+      "link": "https://www.history.com/this-day-in-history/flight-19-vanishes",
+      "category": "disaster"
+    },
+    {
+      "year": 1952,
+      "title": "Great Smog of London begins",
+      "description": "A thick, toxic smog caused by coal burning settles over London for five days, killing thousands and eventually leading to major clean air legislation in the United Kingdom.",
+      "link": "https://www.history.com/news/great-smog-of-london",
+      "category": "disaster"
+    },
+    {
+      "year": 1925,
+      "title": "Irish Free State–Northern Ireland border deal reached",
+      "description": "Britain, the Irish Free State, and Northern Ireland sign an agreement in London that abandons plans to redraw the border and eases the Free State's financial obligations to Britain.",
+      "link": "https://www.thetimes.com/article/from-the-archive-irish-treaty-to-banish-nightmares-kg2jlpsmq",
+      "category": "politics"
+    }
+  ],
+  "births": [
+    {
+      "year": 1782,
+      "title": "Martin Van Buren born",
+      "description": "Future 8th president of the United States, Martin Van Buren, is born in Kinderhook, New York. He will serve one term in the White House from 1837 to 1841.",
+      "link": "https://www.onthisday.com/birthdays/martin-van-buren",
+      "category": "politics"
+    },
+    {
+      "year": 1901,
+      "title": "Walt Disney born",
+      "description": "Animator and entertainment entrepreneur Walt Disney, co-founder of the Disney studio and creator of Mickey Mouse and Disneyland, is born in Chicago, Illinois.",
+      "link": "https://www.britannica.com/biography/Walt-Disney",
+      "category": "entertainment"
+    },
+    {
+      "year": 1901,
+      "title": "Werner Heisenberg born",
+      "description": "German theoretical physicist Werner Heisenberg, a pioneer of quantum mechanics best known for the uncertainty principle, is born in Würzburg, Germany.",
+      "link": "https://www.britannica.com/biography/Werner-Heisenberg",
+      "category": "science"
+    }
+  ],
+  "deaths": [
+    {
+      "year": 1791,
+      "title": "Composer Wolfgang Amadeus Mozart dies",
+      "description": "Prolific Austrian composer Wolfgang Amadeus Mozart, whose symphonies, operas, and concertos reshape Western music, dies in Vienna at age 35.",
+      "link": "https://www.britannica.com/biography/Wolfgang-Amadeus-Mozart",
+      "category": "entertainment"
+    },
+    {
+      "year": 2013,
+      "title": "Nelson Mandela dies at 95",
+      "description": "Nelson Mandela, anti-apartheid leader, political prisoner, and South Africa’s first Black president, dies in Johannesburg after decades as a global symbol of reconciliation.",
+      "link": "https://apnews.com/article/today-in-history-december-5-nelson-mandela-dies-ecfe3bbda96ab8ebcbc3dc237d966f75",
+      "category": "politics"
+    }
+  ]
+}

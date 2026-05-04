@@ -1,0 +1,104 @@
+{
+  "date": "12/01",
+  "tech": [
+    {
+      "year": 1988,
+      "title": "World’s First Computer Virus Spreads Widely",
+      "description": "The Morris Worm, one of the earliest known computer worms, became the first to gain major public attention after infecting thousands of systems.",
+      "link": "https://en.wikipedia.org/wiki/Morris_worm"
+    },
+    {
+      "year": 2016,
+      "title": "SpaceX Successfully Tests Key Landing Technologies",
+      "description": "SpaceX completed tests that advanced its development of reusable rocket landing systems, critical to lowering spaceflight costs.",
+      "link": "https://en.wikipedia.org/wiki/SpaceX"
+    },
+    {
+      "year": 2017,
+      "title": "cryptocurrency Market Hits $300 Billion",
+      "description": "The combined value of all cryptocurrencies surpassed $300 billion for the first time in history.",
+      "link": "https://en.wikipedia.org/wiki/Cryptocurrency"
+    }
+  ],
+  "history": [
+    {
+      "year": 1913,
+      "title": "Ford Introduces the Moving Assembly Line",
+      "description": "Henry Ford’s use of the first moving assembly line revolutionized manufacturing and drastically lowered production time.",
+      "link": "https://en.wikipedia.org/wiki/Assembly_line"
+    },
+    {
+      "year": 1955,
+      "title": "Rosa Parks Refuses to Give Up Bus Seat",
+      "description": "Rosa Parks’ arrest in Montgomery, Alabama sparked the Montgomery Bus Boycott and became a key moment in the U.S. Civil Rights Movement.",
+      "link": "https://en.wikipedia.org/wiki/Rosa_Parks"
+    },
+    {
+      "year": 1990,
+      "title": "Channel Tunnel Meets in the Middle",
+      "description": "Workers digging from the UK and France broke through, creating the first land connection between Britain and mainland Europe in over 8,000 years.",
+      "link": "https://en.wikipedia.org/wiki/Channel_Tunnel"
+    }
+  ],
+  "world_events": [
+    {
+      "year": 1989,
+      "title": "Cold War Symbol Falls: East Germany Ends Travel Restrictions",
+      "description": "East Germany officially ended restrictions on citizens traveling to the West, further accelerating the collapse of the Berlin Wall.",
+      "link": "https://en.wikipedia.org/wiki/Berlin_Wall"
+    },
+    {
+      "year": 2009,
+      "title": "Lisbon Treaty Takes Effect",
+      "description": "The Treaty of Lisbon, reforming the structure and leadership of the European Union, officially came into force.",
+      "link": "https://en.wikipedia.org/wiki/Treaty_of_Lisbon"
+    },
+    {
+      "year": 2019,
+      "title": "UN Declares Global Climate Emergency Findings",
+      "description": "The UN reported record levels of greenhouse gases and warned of increasing climate-related threats worldwide.",
+      "link": "https://en.wikipedia.org/wiki/United_Nations"
+    }
+  ],
+  "births": [
+    {
+      "year": 1935,
+      "title": "Woody Allen Born",
+      "description": "American filmmaker, comedian, and writer known for his extensive filmography and unique comedic style.",
+      "link": "https://en.wikipedia.org/wiki/Woody_Allen"
+    },
+    {
+      "year": 1988,
+      "title": "Zoë Kravitz Born",
+      "description": "American actress, singer, and model known for roles in ‘The Batman’ and the ‘Divergent’ series.",
+      "link": "https://en.wikipedia.org/wiki/Zo%C3%AB_Kravitz"
+    },
+    {
+      "year": 1990,
+      "title": "Sarah Silverman Born",
+      "description": "American comedian and writer known for her satirical approach to comedy and social topics.",
+      "link": "https://en.wikipedia.org/wiki/Sarah_Silverman"
+    }
+  ],
+  "deaths": [
+    {
+      "year": 1947,
+      "title": "Aleister Crowley Dies",
+      "description": "British occultist, writer, and mountaineer known for founding the religion of Thelema.",
+      "link": "https://en.wikipedia.org/wiki/Aleister_Crowley"
+    },
+    {
+      "year": 2012,
+      "title": "Chris Stamp Dies",
+      "description": "British music producer and manager of iconic rock bands including The Who.",
+      "link": "https://en.wikipedia.org/wiki/Chris_Stamp"
+    },
+    {
+      "year": 2021,
+      "title": "Lee Elder Dies",
+      "description": "American professional golfer who broke racial barriers by becoming the first Black golfer to compete in the Masters Tournament.",
+      "link": "https://en.wikipedia.org/wiki/Lee_Elder"
+    }
+  ]
+}
+

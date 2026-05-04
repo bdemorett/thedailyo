@@ -1,0 +1,50 @@
+{
+  "key": "finance-debt-credit-card-payoff-extra-200",
+  "title": "Credit Card Payoff With $200 Extra Payment — TheDailyo",
+  "h1": "Credit Card Payoff With $200 Extra Payment",
+  "subtitle": "See how adding $200/month changes payoff time and interest.",
+  "description": "Calculate how an extra $200 monthly payment affects your credit card payoff timeline, interest paid, and total cost.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-extra-200/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "+$200 Extra", "href": "/finance/debt/credit-card-payoff-extra-200/" }
+  ],
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 200, "extra": 200 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>This page pre-fills an extra <strong>$200/month</strong>. Paying more than the minimum can dramatically reduce both payoff time and total interest.</p>",
+
+  "faq": [
+    { "q": "What if I can only do $200 extra temporarily?", "a": "Even a temporary boost can help. Try it for a few months, then reduce it and compare results." },
+    { "q": "Will this eliminate debt faster than snowball/avalanche?", "a": "Strategy affects which debts you pay first; extra payment affects how much you pay. Combining both is often best." },
+    { "q": "Does this include balance transfer promos?", "a": "No—promo APR periods and fees aren’t included. Use this as a baseline estimate." }
+  ],
+
+  "related": [
+    { "title": "Extra $100 Payment", "desc": "Compare payoff speed with $100 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-100/" },
+    { "title": "Extra $300 Payment", "desc": "See payoff results with $300 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-300/" },
+    { "title": "Payoff With Extra Payments", "desc": "Customize any extra amount.", "meta": "Payoff →", "href": "/finance/debt/credit-card-payoff-with-extra-payments/" },
+    { "title": "Debt Snowball Calculator", "desc": "Motivation-first payoff strategy.", "meta": "Strategy →", "href": "/finance/debt/snowball/" }
+  ],
+
+  "affiliate": { "enabled": false, "headline": "Lower your APR and pay off faster", "offers": [] }
+}

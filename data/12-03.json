@@ -1,0 +1,135 @@
+{
+  "tech": [
+    {
+      "year": 1992,
+      "title": "First SMS (text message) ever sent",
+      "description": "Engineer Neil Papworth sends the world’s first SMS message reading 'Merry Christmas' from a computer to a mobile phone on the Vodafone network.",
+      "link": "https://en.wikipedia.org/wiki/SMS",
+      "category": "tech",
+      "youtubeId":"GYGXAzcPVpU"
+    },
+    {
+      "year": 2005,
+      "title": "XBox 360 releases in Europe",
+      "description": "Microsoft officially launches the Xbox 360 console in Europe, accelerating the global console wars between Sony and Nintendo.",
+      "link": "https://en.wikipedia.org/wiki/Xbox_360",
+      "category": "tech",
+      "youtubeId":"ZCmwCSO9d9I"
+    },
+    {
+      "year": 1984,
+      "title": "Bhopal disaster leaks begin triggering global safety reforms",
+      "description": "Although the major gas leak occurred on December 2–3, the unfolding crisis on this day led to major changes in chemical safety regulations worldwide.",
+      "link": "https://en.wikipedia.org/wiki/Bhopal_disaster",
+      "category": "science",
+      "youtubeId":"FHJs3TwgsUQ"
+    }
+  ],
+
+  "history": [
+    {
+      "year": 1910,
+      "title": "Neon lighting demonstrated for the first time",
+      "description": "French inventor Georges Claude publicly displays the first neon lighting tubes at the Paris Motor Show, leading to decades of neon signage across the world.",
+      "link": "https://en.wikipedia.org/wiki/Neon_lamp",
+      "category": "science",
+      "youtubeId":"-tVvG7MmhLg"
+    },
+    {
+      "year": 1967,
+      "title": "First successful human heart transplant",
+      "description": "Dr. Christiaan Barnard performs the world’s first successful human heart transplant in Cape Town, South Africa.",
+      "link": "https://en.wikipedia.org/wiki/Christiaan_Barnard",
+      "category": "science",
+      "youtubeId":"BUHJvtjB5WM"
+    },
+    {
+      "year": 1989,
+      "title": "George H. W. Bush and Mikhail Gorbachev declare the Cold War over",
+      "description": "At the Malta Summit, the leaders of the United States and Soviet Union announce that the decades-long Cold War is effectively ending.",
+      "link": "https://en.wikipedia.org/wiki/Malta_Summit",
+      "category": "politics",
+      "youtubeId":"LBVwzXUfnf8"
+    }
+  ],
+
+  "world_events": [
+    {
+      "year": 1971,
+      "title": "Pakistan civil war intensifies as India enters the conflict",
+      "description": "India formally joins the Bangladesh Liberation War, leading to a rapid escalation and eventual independence of Bangladesh.",
+      "link": "https://en.wikipedia.org/wiki/Indo-Pakistani_War_of_1971",
+      "category": "war"
+    },
+    {
+      "year": 1984,
+      "title": "Union Carbide gas leak kills thousands in continuing Bhopal disaster",
+      "description": "The effects of the toxic methyl isocyanate gas leak continue into December 3, making it one of history’s worst industrial catastrophes.",
+      "link": "https://en.wikipedia.org/wiki/Bhopal_disaster",
+      "category": "disaster"
+    },
+    {
+      "year": 2009,
+      "title": "Iconic Dubai Frame skyscraper's structural completion",
+      "description": "Dubai completes the structure of the Dubai Frame, which later becomes one of the city's most recognizable architectural landmarks.",
+      "link": "https://en.wikipedia.org/wiki/Dubai_Frame",
+      "category": "world"
+    },
+    {
+      "year": 2014,
+      "title": "New York grand jury declines to indict officer in Eric Garner case",
+      "description": "A major national controversy erupts in the United States after a grand jury decides not to indict NYPD officer Daniel Pantaleo over the death of Eric Garner.",
+      "link": "https://en.wikipedia.org/wiki/Death_of_Eric_Garner",
+      "category": "crime",
+      "youtubeId":"2XNk1vAfh3U"
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1857,
+      "title": "Birth of Joseph Conrad",
+      "description": "Polish-British writer best known for 'Heart of Darkness' and other works exploring morality and colonialism.",
+      "link": "https://en.wikipedia.org/wiki/Joseph_Conrad",
+      "category": "literature"
+    },
+    {
+      "year": 1960,
+      "title": "Birth of Julianne Moore",
+      "description": "American actress known for her roles in drama and independent films, including 'Still Alice' and 'Boogie Nights.'",
+      "link": "https://en.wikipedia.org/wiki/Julianne_Moore",
+      "category": "entertainment"
+    },
+    {
+      "year": 1985,
+      "title": "Birth of Amanda Seyfried",
+      "description": "American actress and singer known for films such as 'Mamma Mia!', 'Mean Girls', and 'Les Misérables.'",
+      "link": "https://en.wikipedia.org/wiki/Amanda_Seyfried",
+      "category": "entertainment"
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 1919,
+      "title": "Death of Pierre-Auguste Renoir",
+      "description": "French painter and leading Impressionist known for his vibrant light and saturated color.",
+      "link": "https://en.wikipedia.org/wiki/Pierre-Auguste_Renoir",
+      "category": "art"
+    },
+    {
+      "year": 1999,
+      "title": "Death of Scatman John",
+      "description": "American musician known for his unique blend of scat singing and dance music, including his hit 'Scatman (Ski-Ba-Bop-Ba-Dop-Bop)'.",
+      "link": "https://en.wikipedia.org/wiki/Scatman_John",
+      "category": "entertainment"
+    },
+    {
+      "year": 2017,
+      "title": "Death of Shashi Kapoor",
+      "description": "Legendary Indian actor and filmmaker who starred in more than 150 films and became a major figure in Indian cinema.",
+      "link": "https://en.wikipedia.org/wiki/Shashi_Kapoor",
+      "category": "entertainment"
+    }
+  ]
+}

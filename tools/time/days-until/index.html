@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Days Until Calculator — TheDailyo</title>
+  <meta name="description" content="Calculate how many days until a future date or how many days since a past date. See total days, weeks, months, and a quick countdown summary." />
+  <link rel="canonical" href="https://thedailyo.com/tools/time/days-until/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <style>
+    .two-col{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel h2{
+      font-size:1.1rem;
+      font-weight:900;
+      margin-bottom:8px;
+      color: var(--text-main);
+    }
+
+    .form-grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    @media(max-width:760px){ .form-grid{ grid-template-columns:1fr; } }
+
+    label{
+      display:block;
+      font-size:.9rem;
+      font-weight:900;
+      color: var(--text-main);
+      margin-bottom:6px;
+    }
+
+    input, select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,0.18);
+      background:#ffffff;
+      color: var(--text-main);
+      font-size:.95rem;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .inline{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .check{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:850;
+      color: var(--text-main);
+      user-select:none;
+    }
+    .check input{
+      width:auto;
+      box-shadow:none;
+    }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      padding:10px 18px;
+      border-radius:999px;
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 14px 28px rgba(79,124,255,0.25);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.03); }
+
+    .btn-ghost{
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .btn-ghost:hover{
+      transform:translateY(-1px);
+      border-color: rgba(79,124,255,0.35);
+      box-shadow: 0 16px 30px rgba(2,6,23,0.12);
+    }
+
+    .warn{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      background: rgba(255, 82, 82, 0.10);
+      border: 1px solid rgba(255, 82, 82, 0.25);
+      color: var(--text-main);
+      font-weight:850;
+      display:none;
+    }
+
+    .result{
+      margin-top:14px;
+      display:none;
+    }
+    .result h3{
+      font-size:1.02rem;
+      font-weight:950;
+      color: var(--text-main);
+      margin-bottom:10px;
+    }
+
+    .kpi-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+    @media(max-width:760px){ .kpi-grid{ grid-template-columns:1fr; } }
+
+    .kpi{
+      background:#ffffff;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      padding:14px;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.08);
+    }
+    .kpi-label{ font-size:.88rem; color: var(--text-muted); font-weight:850; }
+    .kpi-value{ margin-top:6px; font-size:1.1rem; font-weight:950; color: var(--text-main); }
+
+    .table-wrap{
+      margin-top:12px;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:760px;
+      background:#ffffff;
+    }
+    th, td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(15,23,42,0.10);
+      font-size:.9rem;
+      text-align:right;
+      white-space:nowrap;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:950;
+      z-index:1;
+    }
+    td:first-child, th:first-child{ text-align:left; }
+    tbody tr:hover td{ background: rgba(79,124,255,0.06); }
+
+    .small-note{
+      margin-top:10px;
+      color: var(--text-muted);
+      font-weight:800;
+      font-size:.9rem;
+      line-height:1.55;
+    }
+
+    .summary-box{
+      margin-top:12px;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      padding:14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height:1.65;
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/time/days-until/#webpage",
+                       "url":  "https://thedailyo.com/tools/time/days-until/",
+                       "name":  "Days Until Calculator — TheDailyo",
+                       "description":  "Calculate how many days until a future date or how many days since a past date. See total days, weeks, months, and a quick countdown summary.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/time/days-until/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Time",
+                                                   "item":  "https://thedailyo.com/tools/time/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Days Until",
+                                                   "item":  "https://thedailyo.com/tools/time/days-until/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/tools/time/days-until/#calculator",
+                       "name":  "Days Until Calculator — TheDailyo",
+                       "applicationCategory":  "UtilityApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/tools/time/days-until/",
+                       "description":  "Calculate how many days until a future date or how many days since a past date. See total days, weeks, months, and a quick countdown summary.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Days Until Calculator</h1>
+      <p class="site-subtitle">Find how many days until a future date or how many days since a past date, with a simple date breakdown.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/tools/">Tools</a> <span class="crumb-sep">›</span>
+        <a href="/tools/time/">Time</a> <span class="crumb-sep">›</span>
+        Days Until Calculator
+      </div>
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">Calculator</h2>
+      <p class="section-subtitle">
+        Choose a target date to see the number of days until that date or how many days since it passed. Great for birthdays, deadlines, holidays, trips, and events.
+      </p>
+
+      <div class="two-col">
+        <section class="panel" aria-label="Calculator">
+          <h2>Inputs</h2>
+
+          <div class="form-grid">
+            <div>
+              <label for="targetDate">Target date</label>
+              <input id="targetDate" type="date" value="" />
+              <div class="small-note">Pick the date you want to count toward or count back from.</div>
+            </div>
+
+            <div>
+              <label for="countMode">Count mode</label>
+              <select id="countMode">
+                <option value="exclusive" selected>Exclude today</option>
+                <option value="inclusive">Include today</option>
+              </select>
+              <div class="small-note">Use include today if you want the current day counted in the total.</div>
+            </div>
+
+            <div>
+              <label for="breakdownMode">Breakdown style</label>
+              <select id="breakdownMode">
+                <option value="calendar" selected>Calendar breakdown</option>
+                <option value="simple">Simple totals only</option>
+              </select>
+              <div class="small-note">Calendar breakdown shows years, months, and days between dates.</div>
+            </div>
+
+            <div>
+              <label>&nbsp;</label>
+              <div class="inline">
+                <label class="check" for="useCustomStart">
+                  <input id="useCustomStart" type="checkbox" />
+                  Use custom start date
+                </label>
+              </div>
+              <div class="small-note">By default, the calculator compares the target date to today.</div>
+            </div>
+
+            <div id="customStartWrap" style="display:none;">
+              <label for="startDate">Start date</label>
+              <input id="startDate" type="date" value="" />
+              <div class="small-note">Optional custom starting date instead of today.</div>
+            </div>
+
+            <div>
+              <label for="formatMode">Display format</label>
+              <select id="formatMode">
+                <option value="short" selected>Short</option>
+                <option value="long">Long</option>
+              </select>
+              <div class="small-note">Controls summary wording.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="calcBtn" type="button">Calculate</button>
+            <button class="btn-ghost" id="copyBtn" type="button">Copy results</button>
+            <button class="btn-ghost" id="shareBtn" type="button">Copy share link</button>
+            <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+          </div>
+
+          <div class="warn" id="warn" aria-live="polite"></div>
+
+          <div class="result" id="result">
+            <h3>Results</h3>
+
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Total days</div>
+                <div class="kpi-value" id="kpiDays">—</div>
+              </div>
+
+              <div class="kpi">
+                <div class="kpi-label">Status</div>
+                <div class="kpi-value" id="kpiStatus">—</div>
+              </div>
+
+              <div class="kpi">
+                <div class="kpi-label">Weeks + days</div>
+                <div class="kpi-value" id="kpiWeeksDays">—</div>
+              </div>
+
+              <div class="kpi">
+                <div class="kpi-label">Calendar breakdown</div>
+                <div class="kpi-value" id="kpiCalendar">—</div>
+              </div>
+            </div>
+
+            <div class="summary-box" id="summaryBox">—</div>
+
+            <div class="table-wrap" aria-label="Date calculation breakdown">
+              <table id="resultsTable">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="small-note" id="tipBox">
+              Tip: “Days until” uses whole calendar days. Time of day is ignored.
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel" aria-label="Explanation">
+          <h2>How it works</h2>
+          <p>
+            This calculator compares a start date and an end date, then returns the difference in days.
+            You can count from today or use a custom start date.
+          </p>
+
+          <p>
+            “Exclude today” is usually best for countdowns. “Include today” is helpful when you want to count both the start day and end day as part of the total.
+          </p>
+
+          <details class="faq" style="margin-top:12px;">
+            <summary>What does “calendar breakdown” mean?</summary>
+            <p>It shows the difference as years, months, and days instead of just total days.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Why does the number change depending on include or exclude?</summary>
+            <p>Because including today adds 1 day to the count whenever the dates are different.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Does this account for time zones?</summary>
+            <p>It uses local calendar dates only. It is intended for day-based counting, not hour-by-hour timing.</p>
+          </details>
+
+          <p style="margin-top:10px;">
+            Related: <a href="/tools/time/">Time Tools</a>
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+    const DAY_MS = 24 * 60 * 60 * 1000;
+
+    function setWarn(msg){
+      const w = el("warn");
+      if(!msg){
+        w.style.display = "none";
+        w.textContent = "";
+        return;
+      }
+      w.textContent = msg;
+      w.style.display = "block";
+    }
+
+    function toYMD(date){
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+
+    function parseDateInput(value){
+      if(!value) return null;
+      const parts = value.split("-").map(Number);
+      if(parts.length !== 3 || parts.some(n => !Number.isFinite(n))) return null;
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function startOfDay(date){
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    function addDays(date, days){
+      const d = new Date(date);
+      d.setDate(d.getDate() + days);
+      return d;
+    }
+
+    function diffDays(a, b){
+      const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+      const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+      return Math.round((utcB - utcA) / DAY_MS);
+    }
+
+    function plural(n, word){
+      return `${n} ${word}${Math.abs(n) === 1 ? "" : "s"}`;
+    }
+
+    function formatLongDate(d){
+      return d.toLocaleDateString(undefined, {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    }
+
+    function calendarDiff(start, end){
+      let sign = 1;
+      let a = new Date(start);
+      let b = new Date(end);
+
+      if(a > b){
+        sign = -1;
+        const tmp = a;
+        a = b;
+        b = tmp;
+      }
+
+      let years = b.getFullYear() - a.getFullYear();
+      let months = b.getMonth() - a.getMonth();
+      let days = b.getDate() - a.getDate();
+
+      if(days < 0){
+        months -= 1;
+        const prevMonthLastDay = new Date(b.getFullYear(), b.getMonth(), 0).getDate();
+        days += prevMonthLastDay;
+      }
+
+      if(months < 0){
+        years -= 1;
+        months += 12;
+      }
+
+      return { years, months, days, sign };
+    }
+
+    function formatCalendarDiff(obj, longMode){
+      const parts = [];
+      if(obj.years) parts.push(plural(obj.years, "year"));
+      if(obj.months) parts.push(plural(obj.months, "month"));
+      if(obj.days || parts.length === 0) parts.push(plural(obj.days, "day"));
+
+      if(!longMode) return parts.join(", ");
+
+      if(parts.length === 1) return parts[0];
+      if(parts.length === 2) return `${parts[0]} and ${parts[1]}`;
+      return `${parts[0]}, ${parts[1]}, and ${parts[2]}`;
+    }
+
+    function getParams(){
+      const sp = new URLSearchParams(window.location.search);
+      return {
+        t: sp.get("t"),
+        s: sp.get("s"),
+        cs: sp.get("cs"),
+        c: sp.get("c"),
+        b: sp.get("b"),
+        f: sp.get("f")
+      };
+    }
+
+    function applyParams(){
+      const p = getParams();
+      const today = startOfDay(new Date());
+
+      el("targetDate").value = p.t || toYMD(addDays(today, 30));
+      el("startDate").value = p.s || toYMD(today);
+      el("useCustomStart").checked = (p.cs === "1");
+      el("countMode").value = (p.c === "inclusive") ? "inclusive" : "exclusive";
+      el("breakdownMode").value = (p.b === "simple") ? "simple" : "calendar";
+      el("formatMode").value = (p.f === "long") ? "long" : "short";
+
+      toggleCustomStart();
+    }
+
+    function buildShareURL(){
+      const sp = new URLSearchParams();
+      sp.set("t", el("targetDate").value);
+
+      if(el("useCustomStart").checked){
+        sp.set("s", el("startDate").value);
+        sp.set("cs", "1");
+      }
+
+      sp.set("c", el("countMode").value);
+      sp.set("b", el("breakdownMode").value);
+      sp.set("f", el("formatMode").value);
+
+      return `${window.location.origin}${window.location.pathname}?${sp.toString()}`;
+    }
+
+    function toggleCustomStart(){
+      el("customStartWrap").style.display = el("useCustomStart").checked ? "" : "none";
+    }
+
+    function buildRows(startDate, targetDate, totalDays, inclusiveDays, weeks, leftoverDays, calText, status){
+      const tbody = el("tbody");
+      tbody.innerHTML = "";
+
+      const rows = [
+        ["Start date", formatLongDate(startDate), "Comparison starts here"],
+        ["Target date", formatLongDate(targetDate), "Date you entered"],
+        ["Day count (exclude today)", String(totalDays), "Whole calendar-day difference"],
+        ["Day count (include today)", String(inclusiveDays), "Adds 1 day when dates differ"],
+        ["Weeks + days", `${weeks} week${weeks===1?"":"s"}, ${leftoverDays} day${leftoverDays===1?"":"s"}`, "Based on total absolute days"],
+        ["Calendar breakdown", calText, "Years, months, and days"],
+        ["Status", status, "Whether the target is future, past, or today"]
+      ];
+
+      rows.forEach(([metric, value, notes])=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${metric}</td>
+          <td><strong>${value}</strong></td>
+          <td>${notes}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function calculate(){
+      setWarn("");
+
+      const today = startOfDay(new Date());
+      const targetDate = parseDateInput(el("targetDate").value);
+      const useCustomStart = el("useCustomStart").checked;
+      const startDate = useCustomStart ? parseDateInput(el("startDate").value) : today;
+      const countMode = el("countMode").value;
+      const breakdownMode = el("breakdownMode").value;
+      const formatMode = el("formatMode").value;
+      const longMode = formatMode === "long";
+
+      if(!targetDate){
+        el("result").style.display = "none";
+        return setWarn("Choose a valid target date.");
+      }
+
+      if(!startDate){
+        el("result").style.display = "none";
+        return setWarn("Choose a valid start date.");
+      }
+
+      const rawDays = diffDays(startDate, targetDate);
+      const absDays = Math.abs(rawDays);
+      const inclusiveDays = rawDays === 0 ? 1 : absDays + 1;
+      const shownDays = countMode === "inclusive" ? inclusiveDays : absDays;
+      const weeks = Math.floor(absDays / 7);
+      const leftoverDays = absDays % 7;
+
+      let status = "Today";
+      if(rawDays > 0) status = "Future date";
+      if(rawDays < 0) status = "Past date";
+
+      const cal = calendarDiff(startDate, targetDate);
+      const calText = breakdownMode === "simple"
+        ? `${plural(absDays, "day")}`
+        : formatCalendarDiff(cal, longMode);
+
+      el("kpiDays").textContent = `${shownDays}`;
+      el("kpiStatus").textContent = status;
+      el("kpiWeeksDays").textContent = `${weeks}w ${leftoverDays}d`;
+      el("kpiCalendar").textContent = calText;
+
+      const summary = el("summaryBox");
+      if(rawDays > 0){
+        if(countMode === "inclusive"){
+          summary.innerHTML = `<strong>Summary:</strong> There are <strong>${shownDays}</strong> days including today until <strong>${formatLongDate(targetDate)}</strong>.`;
+        } else {
+          summary.innerHTML = `<strong>Summary:</strong> There are <strong>${shownDays}</strong> days until <strong>${formatLongDate(targetDate)}</strong>.`;
+        }
+      } else if(rawDays < 0){
+        if(countMode === "inclusive"){
+          summary.innerHTML = `<strong>Summary:</strong> <strong>${shownDays}</strong> days including the start/end dates have passed since <strong>${formatLongDate(targetDate)}</strong>.`;
+        } else {
+          summary.innerHTML = `<strong>Summary:</strong> <strong>${shownDays}</strong> days have passed since <strong>${formatLongDate(targetDate)}</strong>.`;
+        }
+      } else {
+        summary.innerHTML = `<strong>Summary:</strong> The target date is <strong>today</strong>.`;
+      }
+
+      buildRows(startDate, targetDate, absDays, inclusiveDays, weeks, leftoverDays, calText, status);
+
+      const tipBox = el("tipBox");
+      if(breakdownMode === "simple"){
+        tipBox.textContent = "Tip: Simple totals focus on total days. Switch to calendar breakdown if you want years, months, and days.";
+      } else if(rawDays > 0){
+        tipBox.textContent = "Tip: For countdowns, most people use “Exclude today.”";
+      } else if(rawDays < 0){
+        tipBox.textContent = "Tip: This can also be used as a “days since” calculator for anniversaries, launches, or milestones.";
+      } else {
+        tipBox.textContent = "Tip: If the date is today, the exclusive difference is 0 days.";
+      }
+
+      el("result").style.display = "block";
+    }
+
+    async function copyResults(){
+      if(el("result").style.display === "none"){
+        calculate();
+      }
+      if(el("result").style.display === "none") return;
+
+      const text = [
+        `Start date: ${el("tbody").rows[0].cells[1].textContent}`,
+        `Target date: ${el("tbody").rows[1].cells[1].textContent}`,
+        `Total days: ${el("kpiDays").textContent}`,
+        `Status: ${el("kpiStatus").textContent}`,
+        `Weeks + days: ${el("kpiWeeksDays").textContent}`,
+        `Calendar breakdown: ${el("kpiCalendar").textContent}`
+      ].join("\n");
+
+      try{
+        await navigator.clipboard.writeText(text);
+        setWarn("Copied results to clipboard.");
+        setTimeout(()=>setWarn(""), 1800);
+      } catch(e){
+        setWarn("Copy failed. Try again or copy manually.");
+      }
+    }
+
+    async function copyShareLink(){
+      try{
+        await navigator.clipboard.writeText(buildShareURL());
+        setWarn("Copied share link to clipboard.");
+        setTimeout(()=>setWarn(""), 1800);
+      } catch(e){
+        setWarn("Copy failed. You can copy the URL from the address bar.");
+      }
+    }
+
+    function reset(){
+      const today = startOfDay(new Date());
+      el("targetDate").value = toYMD(addDays(today, 30));
+      el("startDate").value = toYMD(today);
+      el("useCustomStart").checked = false;
+      el("countMode").value = "exclusive";
+      el("breakdownMode").value = "calendar";
+      el("formatMode").value = "short";
+      toggleCustomStart();
+      setWarn("");
+      calculate();
+    }
+
+    el("calcBtn").addEventListener("click", calculate);
+    el("copyBtn").addEventListener("click", copyResults);
+    el("shareBtn").addEventListener("click", copyShareLink);
+    el("resetBtn").addEventListener("click", reset);
+    el("useCustomStart").addEventListener("change", ()=>{ toggleCustomStart(); calculate(); });
+
+    ["targetDate", "startDate", "countMode", "breakdownMode", "formatMode"].forEach(id=>{
+      el(id).addEventListener("change", calculate);
+    });
+
+    applyParams();
+    calculate();
+  </script>
+</body>
+</html>

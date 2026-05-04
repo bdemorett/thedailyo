@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL Joins Explained — Beginner Guide | TheDailyo</title>
+  <meta name="description" content="Learn how SQL joins work with simple examples. Understand INNER JOIN, LEFT JOIN, join keys, missing matches, and how tables connect in real queries." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/joins-explained/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL Joins Explained — Beginner Guide | TheDailyo" />
+  <meta property="og:description" content="A beginner-friendly SQL joins tutorial with clear examples of how tables connect." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/joins-explained/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/joins-explained/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/joins-explained/",
+                       "name":  "SQL Joins Explained — Beginner Guide | TheDailyo",
+                       "description":  "Learn how SQL joins work with simple examples. Understand INNER JOIN, LEFT JOIN, join keys, missing matches, and how tables connect in real queries.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/joins-explained/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Sql Joins Explained",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/joins-explained/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL Joins Explained</h1>
+      <p class="site-subtitle">Learn how SQL joins connect tables together, with simple examples for INNER JOIN, LEFT JOIN, matching keys, and missing rows.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">SQL Joins Explained</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          A SQL join combines rows from two tables using a related column, often called a key. Joins are how you take data that is stored separately and bring it together in one result.
+        </p>
+        <p>
+          In beginner terms, a join answers questions like:
+        </p>
+        <ul>
+          <li>Which customers placed which orders?</li>
+          <li>Which employees belong to which departments?</li>
+          <li>Which products have sales records and which do not?</li>
+        </ul>
+
+        <div class="note">
+          <strong>Tip:</strong> If SQL tables feel confusing, remember this: tables are often split on purpose, and joins are the tool that reconnects them.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#why-joins-exist">Why joins exist</a>
+          <a href="#sample-tables">Sample tables</a>
+          <a href="#join-key">What the join key does</a>
+          <a href="#inner-join">INNER JOIN</a>
+          <a href="#left-join">LEFT JOIN</a>
+          <a href="#compare-results">Compare the results</a>
+          <a href="#missing-rows">Finding missing matches</a>
+          <a href="#when-to-use">When to use each join</a>
+          <a href="#common-mistakes">Common mistakes</a>
+          <a href="#practice-questions">Practice questions</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="why-joins-exist">
+        <h2>Why joins exist</h2>
+        <p>
+          In real databases, information is usually split across multiple tables instead of crammed into one giant table.
+        </p>
+        <p>
+          For example:
+        </p>
+        <ul>
+          <li>A <code class="k">customers</code> table stores customer names</li>
+          <li>An <code class="k">orders</code> table stores purchases</li>
+          <li>A <code class="k">departments</code> table stores department details</li>
+        </ul>
+        <p>
+          This design keeps data cleaner and avoids repeating the same values over and over. But it also means you need joins to see related data together.
+        </p>
+
+        <div class="callout">
+          Without joins, you often only see part of the story. With joins, you can connect the pieces.
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-tables">
+        <h2>Sample tables</h2>
+        <p>
+          Suppose you have these two tables:
+        </p>
+
+        <h3>customers</h3>
+        <div class="table-wrap prose-table" aria-label="Customers table">
+          <table>
+            <thead>
+              <tr>
+                <th>customer_id</th>
+                <th>name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>orders</h3>
+        <div class="table-wrap prose-table" aria-label="Orders table">
+          <table>
+            <thead>
+              <tr>
+                <th>order_id</th>
+                <th>customer_id</th>
+                <th>amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>101</td>
+                <td>1</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>102</td>
+                <td>2</td>
+                <td>75</td>
+              </tr>
+              <tr>
+                <td>103</td>
+                <td>2</td>
+                <td>20</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Notice that Chris and Dana do not have matching rows in the <code class="k">orders</code> table. That matters a lot when you choose a join type.
+        </div>
+      </section>
+
+      <section class="panel prose" id="join-key">
+        <h2>What the join key does</h2>
+        <p>
+          A join works because both tables share a related column. In this example, that column is <code class="k">customer_id</code>.
+        </p>
+
+        <div class="code-block">
+<pre>ON c.customer_id = o.customer_id</pre>
+        </div>
+
+        <p>
+          That line tells SQL how rows in one table connect to rows in the other table.
+        </p>
+        <p>
+          If the join key is wrong, your results will be wrong. This is one of the most common beginner mistakes.
+        </p>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>Good join key:</strong> one column in each table that truly refers to the same entity.
+          </div>
+          <div class="lesson-item">
+            <strong>Bad join key:</strong> two columns that happen to look similar but do not actually represent the same relationship.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose" id="inner-join">
+        <h2>INNER JOIN</h2>
+        <p>
+          <code class="k">INNER JOIN</code> returns only rows where the join condition matches in both tables.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT c.customer_id, c.name, o.order_id, o.amount
+FROM customers c
+INNER JOIN orders o
+  ON c.customer_id = o.customer_id;</pre>
+        </div>
+
+        <p>
+          This query returns:
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Inner join result table">
+          <table>
+            <thead>
+              <tr>
+                <th>customer_id</th>
+                <th>name</th>
+                <th>order_id</th>
+                <th>amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>101</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>102</td>
+                <td>75</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>103</td>
+                <td>20</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Chris and Dana do not appear because they have no matching order rows.
+        </div>
+      </section>
+
+      <section class="panel prose" id="left-join">
+        <h2>LEFT JOIN</h2>
+        <p>
+          <code class="k">LEFT JOIN</code> returns all rows from the left table, plus matching rows from the right table.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT c.customer_id, c.name, o.order_id, o.amount
+FROM customers c
+LEFT JOIN orders o
+  ON c.customer_id = o.customer_id;</pre>
+        </div>
+
+        <p>
+          This query returns:
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Left join result table">
+          <table>
+            <thead>
+              <tr>
+                <th>customer_id</th>
+                <th>name</th>
+                <th>order_id</th>
+                <th>amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>101</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>102</td>
+                <td>75</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>103</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>NULL</td>
+                <td>NULL</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>NULL</td>
+                <td>NULL</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Chris and Dana are preserved because <code class="k">LEFT JOIN</code> keeps every row from the left table.
+        </div>
+      </section>
+
+      <section class="panel prose" id="compare-results">
+        <h2>Compare the results</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>INNER JOIN:</strong> only rows with a match on both sides survive.
+          </div>
+          <div class="lesson-item">
+            <strong>LEFT JOIN:</strong> all left-table rows survive, even if the right side is missing.
+          </div>
+          <div class="lesson-item">
+            <strong>Missing right-side matches:</strong> show up as <code class="k">NULL</code> values in a LEFT JOIN.
+          </div>
+        </div>
+
+        <div class="callout">
+          Memory trick: <strong>INNER = overlap only</strong>. <strong>LEFT = keep the left table intact</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="missing-rows">
+        <h2>Finding missing matches</h2>
+        <p>
+          One of the most useful LEFT JOIN patterns is finding rows that do not have a match in another table.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT c.customer_id, c.name
+FROM customers c
+LEFT JOIN orders o
+  ON c.customer_id = o.customer_id
+WHERE o.order_id IS NULL;</pre>
+        </div>
+
+        <p>
+          This returns customers with no orders.
+        </p>
+
+        <div class="callout">
+          This pattern shows up all the time in real work: customers without orders, products without sales, employees without managers, and more.
+        </div>
+      </section>
+
+      <section class="panel prose" id="when-to-use">
+        <h2>When to use each join</h2>
+
+        <h3>Use INNER JOIN when:</h3>
+        <ul>
+          <li>you only care about confirmed matches</li>
+          <li>unmatched rows should be excluded</li>
+          <li>you want related records only</li>
+        </ul>
+
+        <h3>Use LEFT JOIN when:</h3>
+        <ul>
+          <li>you need all rows from the main table</li>
+          <li>you want to preserve missing relationships</li>
+          <li>you are looking for unmatched rows</li>
+        </ul>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>Joining on the wrong columns</li>
+          <li>Using <code class="k">INNER JOIN</code> when you actually needed to keep unmatched rows</li>
+          <li>Forgetting that a LEFT JOIN can produce <code class="k">NULL</code> values on the right side</li>
+          <li>Adding a <code class="k">WHERE</code> filter that accidentally removes unmatched LEFT JOIN rows</li>
+          <li>Assuming one row in one table always matches one row in the other table</li>
+        </ul>
+
+        <div class="warn">
+          Be careful with filters after a <code class="k">LEFT JOIN</code>. Some filters can accidentally make the result behave more like an <code class="k">INNER JOIN</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="practice-questions">
+        <h2>Practice questions</h2>
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Write an INNER JOIN between customers and orders.
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Write a LEFT JOIN that keeps all customers.
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Find customers who do not have any orders.
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Explain why Ben appears more than once in the joined results.
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Explain why Chris appears in LEFT JOIN results but not INNER JOIN results.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          Joins connect tables. They let you take related data that lives in separate places and see it together in one query result.
+        </p>
+        <p>
+          Start by mastering <code class="k">INNER JOIN</code> and <code class="k">LEFT JOIN</code>. Those two join types cover a huge share of real beginner and intermediate SQL work.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>INNER = only shared matches</strong>. <strong>LEFT = keep everything on the left</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL topics and tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/inner-vs-left-join/">INNER vs LEFT JOIN</a></strong><br>
+            See a more direct side-by-side comparison of the most common join types.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/group-by/">GROUP BY</a></strong><br>
+            Learn how to summarize grouped data after you join tables together.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/aggregate-functions/">Aggregate Functions</a></strong><br>
+            Understand COUNT, SUM, AVG, MIN, and MAX for reporting and analysis.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

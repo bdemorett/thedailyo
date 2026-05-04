@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL Aggregate Functions Explained — COUNT, SUM, AVG, MIN, MAX | TheDailyo</title>
+  <meta name="description" content="Learn SQL aggregate functions like COUNT, SUM, AVG, MIN, and MAX with simple examples. Understand how to summarize data in SQL." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/aggregate-functions/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL Aggregate Functions Explained — COUNT, SUM, AVG, MIN, MAX | TheDailyo" />
+  <meta property="og:description" content="A beginner-friendly guide to SQL aggregate functions with clear examples and use cases." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/aggregate-functions/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/aggregate-functions/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/aggregate-functions/",
+                       "name":  "SQL Aggregate Functions Explained — COUNT, SUM, AVG, MIN, MAX | TheDailyo",
+                       "description":  "Learn SQL aggregate functions like COUNT, SUM, AVG, MIN, and MAX with simple examples. Understand how to summarize data in SQL.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/aggregate-functions/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Aggregate Functions",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/aggregate-functions/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL Aggregate Functions Explained</h1>
+      <p class="site-subtitle">Learn how to summarize data using COUNT, SUM, AVG, MIN, and MAX in SQL.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">Aggregate Functions</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          SQL aggregate functions summarize data across multiple rows and return a single value.
+        </p>
+        <p>
+          The most common ones are:
+        </p>
+        <ul>
+          <li><code class="k">COUNT()</code> → how many rows</li>
+          <li><code class="k">SUM()</code> → total value</li>
+          <li><code class="k">AVG()</code> → average value</li>
+          <li><code class="k">MIN()</code> → smallest value</li>
+          <li><code class="k">MAX()</code> → largest value</li>
+        </ul>
+
+        <div class="note">
+          <strong>Tip:</strong> If your question sounds like “how many,” “total,” or “average,” you probably need an aggregate function.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#sample-table">Sample table</a>
+          <a href="#count">COUNT()</a>
+          <a href="#sum">SUM()</a>
+          <a href="#avg">AVG()</a>
+          <a href="#min-max">MIN() and MAX()</a>
+          <a href="#with-group-by">Using with GROUP BY</a>
+          <a href="#nulls">How NULL values behave</a>
+          <a href="#when-to-use">When to use them</a>
+          <a href="#common-mistakes">Common mistakes</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-table">
+        <h2>Sample table</h2>
+        <p>
+          Imagine this <code class="k">employees</code> table:
+        </p>
+
+        <div class="table-wrap prose-table">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Ana</td><td>Sales</td><td>62000</td><td>Chicago</td></tr>
+              <tr><td>2</td><td>Ben</td><td>IT</td><td>78000</td><td>Dallas</td></tr>
+              <tr><td>3</td><td>Chris</td><td>HR</td><td>56000</td><td>Chicago</td></tr>
+              <tr><td>4</td><td>Dana</td><td>IT</td><td>85000</td><td>Denver</td></tr>
+              <tr><td>5</td><td>Evan</td><td>Sales</td><td>59000</td><td>Austin</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          We’ll use this table for all examples so you can clearly see how each function works.
+        </div>
+      </section>
+
+      <section class="panel prose" id="count">
+        <h2>COUNT()</h2>
+        <p>
+          <code class="k">COUNT()</code> tells you how many rows exist.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT COUNT(*) AS total_employees
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This returns the total number of rows in the table.
+        </p>
+
+        <div class="callout">
+          <code class="k">COUNT(*)</code> counts all rows, even if some columns contain NULL values.
+        </div>
+      </section>
+
+      <section class="panel prose" id="sum">
+        <h2>SUM()</h2>
+        <p>
+          <code class="k">SUM()</code> adds up numeric values.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT SUM(salary) AS total_salary
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This returns the total salary across all employees.
+        </p>
+
+        <div class="callout">
+          Use <code class="k">SUM()</code> for totals like revenue, expenses, quantities, or salaries.
+        </div>
+      </section>
+
+      <section class="panel prose" id="avg">
+        <h2>AVG()</h2>
+        <p>
+          <code class="k">AVG()</code> calculates the average value.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT AVG(salary) AS avg_salary
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This returns the average salary.
+        </p>
+
+        <div class="callout">
+          <code class="k">AVG()</code> ignores NULL values when calculating the average.
+        </div>
+      </section>
+
+      <section class="panel prose" id="min-max">
+        <h2>MIN() and MAX()</h2>
+        <p>
+          <code class="k">MIN()</code> returns the smallest value.  
+          <code class="k">MAX()</code> returns the largest value.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT MIN(salary) AS lowest_salary,
+       MAX(salary) AS highest_salary
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This shows the lowest and highest salaries in the table.
+        </p>
+      </section>
+
+      <section class="panel prose" id="with-group-by">
+        <h2>Using aggregate functions with GROUP BY</h2>
+        <p>
+          Aggregate functions become much more powerful when combined with <code class="k">GROUP BY</code>.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;</pre>
+        </div>
+
+        <p>
+          This returns one row per department with a count of employees.
+        </p>
+
+        <div class="callout">
+          Think of it as: “Group first, then summarize each group.”
+        </div>
+      </section>
+
+      <section class="panel prose" id="nulls">
+        <h2>How NULL values behave</h2>
+        <ul>
+          <li><code class="k">COUNT(*)</code> counts all rows</li>
+          <li><code class="k">COUNT(column)</code> ignores NULL values</li>
+          <li><code class="k">SUM()</code> and <code class="k">AVG()</code> ignore NULL values</li>
+        </ul>
+
+        <div class="callout">
+          NULL does not mean zero. It means “no value,” and most aggregate functions skip it.
+        </div>
+      </section>
+
+      <section class="panel prose" id="when-to-use">
+        <h2>When to use aggregate functions</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>Use COUNT:</strong> number of users, orders, or rows
+          </div>
+          <div class="lesson-item">
+            <strong>Use SUM:</strong> total revenue, total cost, total quantity
+          </div>
+          <div class="lesson-item">
+            <strong>Use AVG:</strong> average salary, average order value
+          </div>
+          <div class="lesson-item">
+            <strong>Use MIN/MAX:</strong> lowest/highest values
+          </div>
+        </div>
+
+        <div class="callout">
+          If your question involves summarizing data instead of listing individual rows, use aggregate functions.
+        </div>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>Using aggregate functions without understanding GROUP BY</li>
+          <li>Mixing normal columns and aggregates without grouping properly</li>
+          <li>Forgetting that NULL values are ignored</li>
+          <li>Using COUNT(column) and expecting it to count NULL rows</li>
+        </ul>
+
+        <div class="warn">
+          If you combine normal columns with aggregate functions, SQL usually requires those columns to be included in GROUP BY.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Practice questions</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Count how many employees exist
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Find total salary across all employees
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Find average salary
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Find highest and lowest salary
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Count employees per department using GROUP BY
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          Aggregate functions let you summarize data quickly and answer high-level questions.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>COUNT = how many</strong>, <strong>SUM = total</strong>, <strong>AVG = average</strong>, <strong>MIN/MAX = extremes</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/group-by/">GROUP BY</a></strong><br>
+            Learn how to group rows before applying aggregate functions.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/joins-explained/">SQL Joins Explained</a></strong><br>
+            Learn how to combine tables before summarizing data.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/select-statement/">SELECT Statement</a></strong><br>
+            Learn how to retrieve data before summarizing it.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

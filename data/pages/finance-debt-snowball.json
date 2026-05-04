@@ -1,0 +1,95 @@
+{
+  "id": "debt-snowball",
+  "category": "finance",
+  "subcategory": "debt",
+  "title": "Debt Snowball Calculator",
+  "shortTitle": "Debt Snowball",
+  "description": "Pay off the smallest balance first to build momentum and motivation. Enter multiple balances, rates, and minimums to build your payoff plan.",
+  "canonicalPath": "/finance/debt/debt-snowball/",
+  "dataSource": "/data/pages/finance-debt-snowball.json",
+
+  "calculatorType": "debt_snowball_v1",
+  "calculatorConfig": {
+    "defaultBudget": 500,
+    "defaultDebts": [
+      { "name": "Card A", "balance": 600, "apr": 21.99, "minPayment": 30 },
+      { "name": "Card B", "balance": 3200, "apr": 24.99, "minPayment": 85 }
+    ]
+  },
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Debt Snowball", "href": "/finance/debt/debt-snowball/" }
+  ],
+
+  "inputs": [
+    {
+      "key": "monthlyBudget",
+      "label": "Total Monthly Payment Budget",
+      "type": "currency",
+      "default": 500,
+      "help": "The total amount you can pay each month across all debts."
+    },
+    {
+      "key": "debts",
+      "label": "Debts",
+      "type": "debtList",
+      "minItems": 1,
+      "defaultItems": [
+        { "name": "Card A", "balance": 600, "apr": 21.99, "minPayment": 30 },
+        { "name": "Card B", "balance": 3200, "apr": 24.99, "minPayment": 85 }
+      ],
+      "columns": [
+        { "key": "name", "label": "Name", "type": "text" },
+        { "key": "balance", "label": "Balance", "type": "currency" },
+        { "key": "apr", "label": "APR %", "type": "percent" },
+        { "key": "minPayment", "label": "Min Payment", "type": "currency" }
+      ]
+    }
+  ],
+
+  "logic": {
+    "engine": "debtPayoff",
+    "method": "snowball",
+    "assumptions": {
+      "interestCompounding": "monthly",
+      "newChargesIncluded": false,
+      "feesIncluded": false,
+      "rounding": "cents"
+    }
+  },
+
+  "outputs": [
+    { "key": "monthsToDebtFree", "label": "Months to Debt-Free", "format": "integer" },
+    { "key": "debtFreeDate", "label": "Debt-Free Date", "format": "monthYear" },
+    { "key": "totalInterestPaid", "label": "Total Interest Paid", "format": "currency" },
+    { "key": "totalPaid", "label": "Total Paid", "format": "currency" }
+  ],
+
+  "table": {
+    "key": "payoffSchedule",
+    "title": "Payoff Schedule",
+    "columns": [
+      { "key": "month", "label": "Month", "format": "monthYear" },
+      { "key": "payment", "label": "Payment", "format": "currency" },
+      { "key": "interest", "label": "Interest", "format": "currency" },
+      { "key": "principal", "label": "Principal", "format": "currency" },
+      { "key": "remainingBalance", "label": "Remaining Balance", "format": "currency" }
+    ]
+  },
+
+  "contentBlocks": [
+    {
+      "type": "note",
+      "text": "The snowball method focuses on the smallest balance first. It may cost more interest than avalanche, but many people stick with it because of early wins."
+    }
+  ],
+
+  "relatedLinks": [
+    { "label": "Debt Avalanche Calculator", "href": "/finance/debt/debt-avalanche/" },
+    { "label": "Credit Card Payoff Calculator", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "Debt Hub", "href": "/finance/debt/" }
+  ]
+}

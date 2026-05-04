@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <title>Steps to Miles Calculator — TheDailyo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="Convert steps to miles and kilometers. Choose an average step length, enter a custom step length, or estimate from height. Educational estimates only." />
+  <link rel="canonical" href="https://thedailyo.com/health/steps-to-miles/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Steps to Miles Calculator — TheDailyo" />
+  <meta property="og:description" content="Convert steps to miles and kilometers using step length (average, custom, or estimated from height)." />
+  <meta property="og:url" content="https://thedailyo.com/health/steps-to-miles/" />
+  <meta name="twitter:card" content="summary" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/health/steps-to-miles/#webpage",
+                       "url":  "https://thedailyo.com/health/steps-to-miles/",
+                       "name":  "Steps to Miles Calculator — TheDailyo",
+                       "description":  "Convert steps to miles and kilometers. Choose an average step length, enter a custom step length, or estimate from height. Educational estimates only.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/health/steps-to-miles/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Health",
+                                                   "item":  "https://thedailyo.com/health/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Steps To Miles",
+                                                   "item":  "https://thedailyo.com/health/steps-to-miles/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/health/steps-to-miles/#calculator",
+                       "name":  "Steps to Miles Calculator — TheDailyo",
+                       "applicationCategory":  "HealthApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/health/steps-to-miles/",
+                       "description":  "Convert steps to miles and kilometers. Choose an average step length, enter a custom step length, or estimate from height. Educational estimates only.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Steps to Miles Calculator</h1>
+      <p class="site-subtitle">Convert steps to miles and kilometers (with simple assumptions).</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/tools/time/">Time &amp; Dates</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/career/salary/">Work &amp; Salary</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span class="crumb-sep">›</span>
+  <a href="/health/">Health</a> <span class="crumb-sep">›</span>
+  <span aria-current="page">Steps to Miles</span>
+</div>
+
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">Convert steps to distance</h2>
+      <p class="section-subtitle">
+        Steps-to-distance depends on stride length. This tool uses a selected step length (average, custom, or estimated from height)
+        to convert steps into miles and kilometers.
+      </p>
+
+      <div class="columns" style="grid-template-columns: 1fr;">
+        <div class="card" style="min-height:auto;">
+          <div class="calculator">
+            <div class="calc-grid">
+              <div class="field">
+                <label for="steps">Steps</label>
+                <input id="steps" type="number" inputmode="numeric" min="0" placeholder="e.g., 10000">
+                <div class="help-text">Enter total steps from your phone, watch, or pedometer.</div>
+              </div>
+
+              <div class="field">
+                <label for="mode">Step length method</label>
+                <select id="mode">
+                  <option value="avg" selected>Average step length (simple)</option>
+                  <option value="custom">Custom step length</option>
+                  <option value="height">Estimate step length from height</option>
+                </select>
+                <div class="help-text">Custom or height-based is often closer than “average.”</div>
+              </div>
+
+              <!-- Average -->
+              <div class="field" id="avgWrap">
+                <label for="avgStep">Average step length</label>
+                <select id="avgStep">
+                  <option value="0.762" selected>Average adult (30 inches / 0.762 m)</option>
+                  <option value="0.70">Shorter stride (27.6 in / 0.70 m)</option>
+                  <option value="0.80">Longer stride (31.5 in / 0.80 m)</option>
+                </select>
+                <div class="help-text">These are common approximations. Real stride varies.</div>
+              </div>
+
+              <!-- Custom -->
+              <div class="field" id="customWrap" style="display:none;">
+                <label for="customVal">Custom step length</label>
+                <div class="calc-grid" style="grid-template-columns: 1fr 1fr;">
+                  <input id="customVal" type="number" inputmode="decimal" min="0" step="0.01" placeholder="e.g., 30">
+                  <select id="customUnit">
+                    <option value="in" selected>inches</option>
+                    <option value="cm">cm</option>
+                    <option value="m">meters</option>
+                  </select>
+                </div>
+                <div class="help-text">If you know your stride length, use it for best accuracy.</div>
+              </div>
+
+              <!-- Height-based -->
+              <div class="field" id="heightWrap" style="display:none;">
+                <label>Height (optional estimate)</label>
+                <div class="calc-grid" style="grid-template-columns: 1fr 1fr;">
+                  <input id="feet" type="number" inputmode="numeric" min="0" placeholder="Feet (e.g., 5)">
+                  <input id="inches" type="number" inputmode="numeric" min="0" max="11" placeholder="Inches (e.g., 10)">
+                </div>
+                <div class="help-text">
+                  Uses a simple estimate: step length ≈ 0.415 × height (in meters).
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="pace">Walking pace (optional)</label>
+                <select id="pace">
+                  <option value="" selected>Skip time estimate</option>
+                  <option value="20">20 min/mile (easy)</option>
+                  <option value="18">18 min/mile (average)</option>
+                  <option value="15">15 min/mile (brisk)</option>
+                  <option value="12">12 min/mile (fast walk)</option>
+                </select>
+                <div class="help-text">Optional: shows approximate time based on selected pace.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-primary" id="calcBtn" type="button">Convert</button>
+              <button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
+            </div>
+
+            <div class="result" id="result" style="display:none;"></div>
+            <div class="help-text" id="details" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Quick references</h2>
+      <div class="info-grid" style="margin-top:12px;">
+        <div class="info-box">
+          <h3>10,000 steps</h3>
+          <p>Often ~4–5 miles depending on stride length.</p>
+        </div>
+        <div class="info-box">
+          <h3>Stride matters</h3>
+          <p>Taller people usually go farther per step than shorter people.</p>
+        </div>
+        <div class="info-box">
+          <h3>Best accuracy</h3>
+          <p>Use custom stride length if you can measure it.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Note:</strong> This is an estimate. Terrain, pace, device accuracy, and stride length can change real distance.
+      </div>
+
+      <h2 class="section-title">FAQ</h2>
+      <details class="faq">
+        <summary>How does the conversion work?</summary>
+        <p>Distance = steps × step length. Then we convert meters to miles/kilometers.</p>
+      </details>
+      <details class="faq">
+        <summary>What step length should I use?</summary>
+        <p>If you can measure your stride (custom), use that. Otherwise, the “average” option is a reasonable starting point.</p>
+      </details>
+      <details class="faq">
+        <summary>Why estimate step length from height?</summary>
+        <p>Height correlates with stride length. It can be closer than a generic “average,” but still isn’t perfect.</p>
+      </details>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top: 6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const stepsEl = document.getElementById("steps");
+      const modeEl = document.getElementById("mode");
+
+      const avgWrap = document.getElementById("avgWrap");
+      const avgStepEl = document.getElementById("avgStep");
+
+      const customWrap = document.getElementById("customWrap");
+      const customValEl = document.getElementById("customVal");
+      const customUnitEl = document.getElementById("customUnit");
+
+      const heightWrap = document.getElementById("heightWrap");
+      const feetEl = document.getElementById("feet");
+      const inchesEl = document.getElementById("inches");
+
+      const paceEl = document.getElementById("pace");
+
+      const calcBtn = document.getElementById("calcBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      const result = document.getElementById("result");
+      const details = document.getElementById("details");
+
+      const METERS_PER_MILE = 1609.344;
+
+      function showError(msg) {
+        result.style.display = "";
+        details.style.display = "none";
+        result.textContent = msg;
+      }
+
+      function showMode() {
+        const mode = modeEl.value;
+        avgWrap.style.display = (mode === "avg") ? "" : "none";
+        customWrap.style.display = (mode === "custom") ? "" : "none";
+        heightWrap.style.display = (mode === "height") ? "" : "none";
+      }
+
+      function getStepLengthMeters() {
+        const mode = modeEl.value;
+
+        if (mode === "avg") {
+          return parseFloat(avgStepEl.value);
+        }
+
+        if (mode === "custom") {
+          const v = parseFloat(customValEl.value);
+          if (!(v > 0)) return null;
+
+          const u = customUnitEl.value;
+          if (u === "m") return v;
+          if (u === "cm") return v / 100;
+          // inches
+          return v * 0.0254;
+        }
+
+        // height-based estimate: step length ≈ 0.415 × height
+        const f = parseFloat(feetEl.value);
+        const i = parseFloat(inchesEl.value);
+
+        if (!(f >= 0) || !(i >= 0)) return null;
+        const totalIn = (f * 12) + i;
+        if (!(totalIn > 0)) return null;
+
+        const heightM = totalIn * 0.0254;
+        return 0.415 * heightM;
+      }
+
+      function fmt(n, digits) {
+        const p = Math.pow(10, digits);
+        return (Math.round(n * p) / p).toFixed(digits);
+      }
+
+      function convert() {
+        const steps = parseFloat(stepsEl.value);
+        if (!(steps > 0)) return showError("Enter a valid number of steps (e.g., 10000).");
+
+        const stepLenM = getStepLengthMeters();
+        if (!(stepLenM > 0)) {
+          if (modeEl.value === "custom") return showError("Enter a valid custom step length.");
+          if (modeEl.value === "height") return showError("Enter a valid height to estimate step length.");
+          return showError("Choose a step length option.");
+        }
+
+        const meters = steps * stepLenM;
+        const km = meters / 1000;
+        const miles = meters / METERS_PER_MILE;
+
+        result.style.display = "";
+        details.style.display = "";
+
+        const milesTxt = fmt(miles, 2);
+        const kmTxt = fmt(km, 2);
+
+        let timeTxt = "";
+        const pace = paceEl.value ? parseFloat(paceEl.value) : null;
+        if (pace && pace > 0) {
+          const totalMin = miles * pace;
+          const hrs = Math.floor(totalMin / 60);
+          const mins = Math.round(totalMin % 60);
+          timeTxt = ` · Estimated time: ${hrs > 0 ? (hrs + "h ") : ""}${mins}m (at ${pace} min/mile).`;
+        }
+
+        result.textContent = `${steps.toLocaleString()} steps ≈ ${milesTxt} miles (${kmTxt} km).`;
+
+        const stepLenIn = stepLenM / 0.0254;
+        details.textContent =
+          `Assumption: step length ≈ ${fmt(stepLenM, 3)} m (${fmt(stepLenIn, 1)} in).` + timeTxt;
+      }
+
+      function reset() {
+        stepsEl.value = "";
+        customValEl.value = "";
+        feetEl.value = "";
+        inchesEl.value = "";
+        paceEl.value = "";
+
+        result.style.display = "none";
+        details.style.display = "none";
+        result.textContent = "";
+        details.textContent = "";
+      }
+
+      modeEl.addEventListener("change", () => {
+        showMode();
+        // keep fields, but clear results so people don’t mistake old output for new mode
+        result.style.display = "none";
+        details.style.display = "none";
+      });
+
+      calcBtn.addEventListener("click", convert);
+      resetBtn.addEventListener("click", reset);
+
+      showMode();
+    })();
+  </script>
+</body>
+</html>

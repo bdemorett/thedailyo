@@ -1,0 +1,436 @@
+<!-- ======================================
+FILE: /finance/debt/loan-payment/index.html
+Matches the Finance hub page styling (main.css v4)
+- Uses: nav-pills/nav-pill, header-gradient-line, section-title/subtitle, panel, details.faq
+- Adds ONLY minimal page-specific CSS needed for form layout + buttons + result KPIs
+====================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Payment Calculator — TheDailyo</title>
+  <meta name="description" content="Calculate monthly loan payments from principal, APR, and term. Includes total interest and total cost." />
+  <link rel="canonical" href="https://thedailyo.com/finance/debt/loan-payment/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Page-specific only (keep this small) -->
+  <style>
+    /* Match the finance page’s “two-col” feel */
+    .two-col{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media(max-width:900px){ .two-col{ grid-template-columns:1fr; } }
+
+    /* Panel: finance page uses .panel but main.css doesn't define it yet.
+       So we alias panel to the card look (same tokens) */
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel h2, .panel h3{ color: var(--text-main); }
+    .panel h2{ font-size:1.1rem; font-weight:800; margin-bottom:8px; }
+    .panel h3{ font-size:1.02rem; font-weight:800; margin-bottom:8px; }
+
+    /* Form layout */
+    .form-grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media(max-width:700px){ .form-grid{ grid-template-columns:1fr; } }
+
+    label{
+      display:block;
+      font-size:.9rem;
+      font-weight:800;
+      color: var(--text-main);
+      margin-bottom:6px;
+    }
+    input, select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,0.18);
+      background:#ffffff;
+      color: var(--text-main);
+      font-size:.95rem;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    /* Buttons: reuse search-button styling from main.css */
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn-primary{
+      padding:10px 18px;
+      border-radius:999px;
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow: 0 14px 28px rgba(79,124,255,0.25);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.03); }
+
+    .btn-ghost{
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:800;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .btn-ghost:hover{
+      transform:translateY(-1px);
+      border-color: rgba(79,124,255,0.35);
+      box-shadow: 0 16px 30px rgba(2,6,23,0.12);
+    }
+
+    /* Alerts + results */
+    .warn{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      background: rgba(255, 82, 82, 0.10);
+      border: 1px solid rgba(255, 82, 82, 0.25);
+      color: var(--text-main);
+      font-weight:700;
+      display:none;
+    }
+
+    .result{
+      margin-top:14px;
+    }
+    .kpi-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+    @media(max-width:700px){ .kpi-grid{ grid-template-columns:1fr; } }
+
+    .kpi{
+      background:#ffffff;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      padding:14px;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.08);
+    }
+    .kpi-label{ color: var(--text-muted); font-size:.88rem; font-weight:700; }
+    .kpi-value{ color: var(--text-main); font-size:1.1rem; font-weight:900; margin-top:6px; }
+
+    .next-link{ margin-top:12px; }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/debt/loan-payment/#webpage",
+                       "url":  "https://thedailyo.com/finance/debt/loan-payment/",
+                       "name":  "Loan Payment Calculator — TheDailyo",
+                       "description":  "Calculate monthly loan payments from principal, APR, and term. Includes total interest and total cost.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/debt/loan-payment/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Debt",
+                                                   "item":  "https://thedailyo.com/finance/debt/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Loan Payment",
+                                                   "item":  "https://thedailyo.com/finance/debt/loan-payment/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/finance/debt/loan-payment/#calculator",
+                       "name":  "Loan Payment Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/finance/debt/loan-payment/",
+                       "description":  "Calculate monthly loan payments from principal, APR, and term. Includes total interest and total cost.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <div id="site-header-slot"></div>
+
+<script>
+window.PAGE_META = {
+  title: "PAGE TITLE HERE",
+  subtitle: "PAGE SUBTITLE HERE",
+  breadcrumbs: [
+    { label: "Home", href: "/" }
+    // add the rest for this page
+  ]
+};
+</script>
+<script>
+window.PAGE_META = {
+  title: "Loan Payment Calculator",
+  subtitle: "Estimate a fixed-rate monthly loan payment",
+  breadcrumbs: [
+    { label: "Home", href: "/" },
+    { label: "Finance", href: "/finance/" },
+    { label: "Loans", href: "/finance/loans/" },
+    { label: "Loan Payment Calculator" }
+  ]
+};
+</script>
+<script src="/assets/js/layout.js"></script>
+
+    <main id="main">
+      <h2 class="section-title">Calculator</h2>
+      <p class="section-subtitle">
+        Estimate a fixed-rate monthly payment. This uses a standard amortizing loan formula and does not include fees, taxes, or insurance.
+      </p>
+
+      <div class="two-col" aria-label="Loan payment calculator and explanation">
+        <section class="panel" aria-label="Loan Payment Inputs">
+          <h2>Inputs</h2>
+
+          <div class="form-grid">
+            <div>
+              <label for="principal">Loan amount ($)</label>
+              <input id="principal" type="number" min="0" step="0.01" value="25000" inputmode="decimal" />
+            </div>
+
+            <div>
+              <label for="apr">APR (%)</label>
+              <input id="apr" type="number" min="0" step="0.01" value="6.5" inputmode="decimal" />
+            </div>
+
+            <div>
+              <label for="term">Term</label>
+              <input id="term" type="number" min="0" step="1" value="60" inputmode="numeric" />
+            </div>
+
+            <div>
+              <label for="termType">Term type</label>
+              <select id="termType">
+                <option value="months" selected>Months</option>
+                <option value="years">Years</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="calcBtn" type="button">Calculate</button>
+            <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+          </div>
+
+          <div class="warn" id="warn" aria-live="polite"></div>
+
+          <div class="result" id="result" style="display:none;">
+            <h3>Results</h3>
+
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Monthly payment</div>
+                <div class="kpi-value" id="pmt">—</div>
+              </div>
+
+              <div class="kpi">
+                <div class="kpi-label">Total interest</div>
+                <div class="kpi-value" id="interest">—</div>
+              </div>
+
+              <div class="kpi">
+                <div class="kpi-label">Total cost</div>
+                <div class="kpi-value" id="total">—</div>
+              </div>
+
+              <div class="kpi">
+                <div class="kpi-label">Payments</div>
+                <div class="kpi-value" id="n">—</div>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:14px;">
+              Tip: compare offers by running scenarios (lower APR, shorter term, bigger down payment).
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel" aria-label="Explanation">
+          <h2>How it works</h2>
+          <p>
+            For a fixed-rate loan, your payment is the same each month. Early payments contain more interest; later payments contain more principal.
+            To see the month-by-month breakdown, use the amortization schedule tool.
+          </p>
+
+          <details class="faq">
+            <summary>What if APR is 0%?</summary>
+            <p>Then the payment is simply principal ÷ number of payments.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Does this include fees?</summary>
+            <p>No. Origination fees, closing costs, and insurance are not included.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Is this financial advice?</summary>
+            <p>No—this is educational. Verify loan terms with your lender.</p>
+          </details>
+
+          <p class="next-link">
+            Next: <a href="/finance/debt/amortization-schedule-calculator/">Amortization Schedule</a>
+          </p>
+        </aside>
+      </div>
+
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-subtitle">Quick notes about estimates and why lenders can differ.</p>
+
+      <details class="faq">
+        <summary>Why might my lender’s payment be different?</summary>
+        <p>
+          Some lenders include fees, escrow (tax/insurance), rounding rules, or different interest timing. This tool is a clean estimate.
+        </p>
+      </details>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+
+    function money(n){
+      if(!isFinite(n)) return "—";
+      return n.toLocaleString(undefined, { style:"currency", currency:"USD" });
+    }
+
+    function setWarn(msg){
+      const w = el("warn");
+      if(!msg){
+        w.style.display = "none";
+        w.textContent = "";
+        return;
+      }
+      w.textContent = msg;
+      w.style.display = "block";
+    }
+
+    function calcPayment(P, aprPct, n){
+      const r = (aprPct/100)/12;
+      if(n <= 0) return NaN;
+      if(r === 0) return P / n;
+      return P * (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+    }
+
+    function calculate(){
+      const P = Number(el("principal").value);
+      const apr = Number(el("apr").value);
+      const term = Number(el("term").value);
+      const type = el("termType").value;
+
+      setWarn("");
+
+      if(!(P > 0)) return setWarn("Enter a loan amount greater than 0.");
+      if(!(apr >= 0)) return setWarn("APR must be 0 or higher.");
+      if(!(term > 0)) return setWarn("Enter a term greater than 0.");
+
+      const n = (type === "years") ? Math.round(term * 12) : Math.round(term);
+      if(n <= 0) return setWarn("Term is too small after converting to months.");
+
+      const pmt = calcPayment(P, apr, n);
+      if(!isFinite(pmt) || pmt <= 0) return setWarn("Could not calculate payment with these inputs.");
+
+      const total = pmt * n;
+      const interest = total - P;
+
+      el("result").style.display = "block";
+      el("pmt").textContent = money(pmt);
+      el("interest").textContent = money(interest);
+      el("total").textContent = money(total);
+      el("n").textContent = n.toLocaleString();
+    }
+
+    el("calcBtn").addEventListener("click", calculate);
+    el("resetBtn").addEventListener("click", () => {
+      el("principal").value = 25000;
+      el("apr").value = 6.5;
+      el("term").value = 60;
+      el("termType").value = "months";
+      el("result").style.display = "none";
+      setWarn("");
+    });
+
+    calculate();
+  </script>
+</body>
+</html>

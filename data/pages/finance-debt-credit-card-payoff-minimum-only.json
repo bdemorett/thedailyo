@@ -1,0 +1,85 @@
+{
+  "key": "finance-debt-credit-card-payoff-minimum-only",
+
+  "title": "Credit Card Payoff With Minimum Payment Only — TheDailyo",
+  "h1": "Credit Card Payoff With Minimum Payment Only",
+  "subtitle": "See how long it takes when you only pay the minimum.",
+  "description": "Estimate payoff time and total interest when making only minimum credit card payments.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-minimum-only/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "Minimum Payment Only", "href": "/finance/debt/credit-card-payoff-minimum-only/" }
+  ],
+
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 150, "extra": 0 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>Minimum payments often barely reduce principal. This calculator shows how interest compounds when payments are kept low. Try increasing your payment or adding an extra amount to see how quickly the payoff timeline improves.</p>",
+
+  "faq": [
+    {
+      "q": "Why can minimum payments take so long?",
+      "a": "A large share of your early payments can go to interest, so principal drops slowly. Paying more than the minimum usually reduces interest and payoff time substantially."
+    },
+    {
+      "q": "What if my minimum payment changes each month?",
+      "a": "This calculator assumes a consistent monthly payment. In reality, minimum payments can change as your balance changes, so use this as a planning estimate."
+    },
+    {
+      "q": "Does this include fees or new purchases?",
+      "a": "No. Fees, daily compounding, and new charges can change real results. For best accuracy, compare with your statement terms."
+    }
+  ],
+
+  "related": [
+    {
+      "title": "Credit Card Payoff Calculator",
+      "desc": "View the standard payoff estimate.",
+      "meta": "Payoff →",
+      "href": "/finance/debt/credit-card-payoff/"
+    },
+    {
+      "title": "Payoff With Extra Payments",
+      "desc": "See how adding extra money reduces payoff time.",
+      "meta": "Payoff →",
+      "href": "/finance/debt/credit-card-payoff-with-extra-payments/"
+    },
+    {
+      "title": "Fastest Way to Pay Off Credit Cards",
+      "desc": "Model aggressive payoff scenarios and strategy tips.",
+      "meta": "Strategy →",
+      "href": "/finance/debt/credit-card-payoff-fastest-way/"
+    },
+    {
+      "title": "Debt Snowball Calculator",
+      "desc": "Pay off smaller balances first for motivation.",
+      "meta": "Strategy →",
+      "href": "/finance/debt/snowball/"
+    }
+  ],
+
+  "affiliate": {
+    "enabled": false,
+    "headline": "Lower your APR and pay off faster",
+    "offers": []
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "key": "finance-debt-credit-card-payoff-extra-500",
+  "title": "Credit Card Payoff With $500 Extra Payment — TheDailyo",
+  "h1": "Credit Card Payoff With $500 Extra Payment",
+  "subtitle": "See how adding $500/month changes payoff time and interest.",
+  "description": "Calculate how an extra $500 monthly payment affects your credit card payoff timeline, interest paid, and total cost.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-extra-500/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "+$500 Extra", "href": "/finance/debt/credit-card-payoff-extra-500/" }
+  ],
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 200, "extra": 500 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>This page pre-fills an extra <strong>$500/month</strong>. Very large extra payments can eliminate high-interest debt much faster by rapidly reducing principal.</p>",
+
+  "faq": [
+    { "q": "What’s a realistic way to free up $500/month?", "a": "Common approaches include budgeting cuts, temporary side income, or using a short-term aggressive plan until the balance is reduced." },
+    { "q": "Should I consider a balance transfer instead?", "a": "Sometimes. If you qualify, a lower promo APR can reduce interest. Compare fees and payoff speed using different APR values." },
+    { "q": "Does this guarantee my payoff date?", "a": "No—this is an estimate. Real cards may compound daily and include fees, which can change results." }
+  ],
+
+  "related": [
+    { "title": "Extra $300 Payment", "desc": "Compare payoff speed with $300 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-300/" },
+    { "title": "Payoff With Extra Payments", "desc": "Customize any extra amount.", "meta": "Payoff →", "href": "/finance/debt/credit-card-payoff-with-extra-payments/" },
+    { "title": "Credit Card Payoff Calculator", "desc": "Standard payoff estimate with no extra.", "meta": "Payoff →", "href": "/finance/debt/credit-card-payoff/" },
+    { "title": "Debt Snowball Calculator", "desc": "Motivation-first payoff strategy.", "meta": "Strategy →", "href": "/finance/debt/snowball/" }
+  ],
+
+  "affiliate": { "enabled": false, "headline": "Lower your APR and pay off faster", "offers": [] }
+}

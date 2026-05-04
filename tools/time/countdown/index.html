@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Calculator — TheDailyo</title>
+    <meta
+      name="description"
+      content="Create a live countdown to any future date and time. See days, hours, minutes, and seconds remaining, copy results, and generate a shareable link."
+    />
+    <link rel="canonical" href="https://thedailyo.com/tools/time/countdown/" />
+    <meta name="robots" content="index,follow" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .two-col {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+      .form-grid {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.18);
+        background: #ffffff;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 14px 28px rgba(79, 124, 255, 0.25);
+        transition:
+          transform 0.12s ease,
+          filter 0.12s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+      .btn-ghost {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+      .btn-ghost:hover {
+        transform: translateY(-1px);
+        border-color: rgba(79, 124, 255, 0.35);
+        box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+      }
+      .warn {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 82, 82, 0.1);
+        border: 1px solid rgba(255, 82, 82, 0.25);
+        color: var(--text-main);
+        font-weight: 850;
+        display: none;
+        line-height: 1.55;
+      }
+      .warn.good {
+        background: rgba(79, 124, 255, 0.1);
+        border-color: rgba(79, 124, 255, 0.22);
+      }
+      .result {
+        margin-top: 14px;
+        display: none;
+      }
+      .result h3 {
+        font-size: 1.02rem;
+        font-weight: 950;
+        color: var(--text-main);
+        margin-bottom: 10px;
+      }
+      .kpi-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kpi {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.08);
+      }
+      .kpi-label {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        font-weight: 850;
+      }
+      .kpi-value {
+        margin-top: 6px;
+        font-size: 1.25rem;
+        font-weight: 950;
+        color: var(--text-main);
+      }
+      .kpi-sub {
+        margin-top: 6px;
+        font-size: 0.88rem;
+        font-weight: 850;
+        color: var(--text-muted);
+        line-height: 1.45;
+      }
+      .table-wrap {
+        margin-top: 12px;
+        overflow: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.06);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 760px;
+        background: #ffffff;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        font-size: 0.9rem;
+        text-align: right;
+        white-space: nowrap;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 950;
+        z-index: 1;
+      }
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+      tbody tr:hover td {
+        background: rgba(79, 124, 255, 0.06);
+      }
+      .small-note {
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .formula {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        color: var(--text-main);
+        line-height: 1.65;
+        overflow: auto;
+      }
+      .countdown-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 12px;
+      }
+      @media (max-width: 760px) {
+        .countdown-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      .countdown-box {
+        background: #ffffff;
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 16px 12px;
+        text-align: center;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.08);
+      }
+      .countdown-number {
+        font-size: 1.6rem;
+        font-weight: 950;
+        color: var(--text-main);
+        line-height: 1.1;
+      }
+      .countdown-label {
+        margin-top: 6px;
+        font-size: 0.85rem;
+        font-weight: 850;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/time/countdown/#webpage",
+                       "url":  "https://thedailyo.com/tools/time/countdown/",
+                       "name":  "Countdown Calculator — TheDailyo",
+                       "description":  "Create a live countdown to any future date and time. See days, hours, minutes, and seconds remaining, copy results, and generate a shareable link.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/time/countdown/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Time",
+                                                   "item":  "https://thedailyo.com/tools/time/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Countdown",
+                                                   "item":  "https://thedailyo.com/tools/time/countdown/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/tools/time/countdown/#calculator",
+                       "name":  "Countdown Calculator — TheDailyo",
+                       "applicationCategory":  "UtilityApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/tools/time/countdown/",
+                       "description":  "Create a live countdown to any future date and time. See days, hours, minutes, and seconds remaining, copy results, and generate a shareable link.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">Countdown Calculator</h1>
+        <p class="site-subtitle">
+          Create a live countdown to any future date and time.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/tools/">Tools</a> <span class="crumb-sep">›</span>
+          <a href="/tools/time/">Time</a>
+          <span class="crumb-sep">›</span> Countdown Calculator
+        </div>
+      </header>
+      <main id="main">
+        <h2 class="section-title">Calculator</h2>
+        <p class="section-subtitle">
+          Choose a future date and time to create a live countdown. Great for
+          holidays, birthdays, launches, events, and deadlines.
+        </p>
+        <div class="two-col">
+          <section class="panel" aria-label="Countdown calculator">
+            <h2>Inputs</h2>
+            <div class="form-grid">
+              <div>
+                <label for="eventName">Event name (optional)</label>
+                <input
+                  id="eventName"
+                  type="text"
+                  maxlength="80"
+                  placeholder="e.g., Vacation, Launch day, Wedding"
+                />
+                <div class="small-note">
+                  Used in the countdown summary and share link.
+                </div>
+              </div>
+              <div>
+                <label for="displayMode">Display mode</label>
+                <select id="displayMode">
+                  <option value="live" selected>Live countdown</option>
+                  <option value="static">Static calculation</option>
+                </select>
+                <div class="small-note">Live mode updates every second.</div>
+              </div>
+              <div>
+                <label for="targetDate">Target date</label>
+                <input id="targetDate" type="date" value="" />
+              </div>
+              <div>
+                <label for="targetTime">Target time</label>
+                <input id="targetTime" type="time" value="00:00" />
+              </div>
+              <div>
+                <label for="showSeconds">Seconds</label>
+                <select id="showSeconds">
+                  <option value="1" selected>Show seconds</option>
+                  <option value="0">Hide seconds</option>
+                </select>
+                <div class="small-note">
+                  Hiding seconds makes the countdown less jumpy.
+                </div>
+              </div>
+              <div>
+                <label for="pastMode">If target is in the past</label>
+                <select id="pastMode">
+                  <option value="since" selected>Show time since</option>
+                  <option value="zero">Clamp to zero</option>
+                </select>
+                <div class="small-note">
+                  Choose whether past targets become a “since” timer or stop at
+                  zero.
+                </div>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn-primary" id="calcBtn" type="button">
+                Start countdown
+              </button>
+              <button class="btn-ghost" id="copyBtn" type="button">
+                Copy results
+              </button>
+              <button class="btn-ghost" id="shareBtn" type="button">
+                Copy share link
+              </button>
+              <button class="btn-ghost" id="resetBtn" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="warn" id="warn" aria-live="polite"></div>
+            <div class="result" id="result">
+              <h3>Countdown</h3>
+              <div class="countdown-strip">
+                <div class="countdown-box">
+                  <div class="countdown-number" id="daysBox">—</div>
+                  <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-box">
+                  <div class="countdown-number" id="hoursBox">—</div>
+                  <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-box">
+                  <div class="countdown-number" id="minutesBox">—</div>
+                  <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-box">
+                  <div class="countdown-number" id="secondsBox">—</div>
+                  <div class="countdown-label">Seconds</div>
+                </div>
+              </div>
+              <div class="kpi-grid">
+                <div class="kpi">
+                  <div class="kpi-label">Target date/time</div>
+                  <div class="kpi-value" id="kpiTarget">—</div>
+                  <div class="kpi-sub" id="kpiTargetSub">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Status</div>
+                  <div class="kpi-value" id="kpiStatus">—</div>
+                  <div class="kpi-sub" id="kpiStatusSub">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Total hours</div>
+                  <div class="kpi-value" id="kpiHours">—</div>
+                  <div class="kpi-sub">Whole elapsed/remaining hours.</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Total minutes</div>
+                  <div class="kpi-value" id="kpiMinutes">—</div>
+                  <div class="kpi-sub">Whole elapsed/remaining minutes.</div>
+                </div>
+              </div>
+              <div class="formula" id="summaryBox">—</div>
+              <div class="table-wrap" aria-label="Countdown details table">
+                <table id="resultsTable">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Value</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody"></tbody>
+                </table>
+              </div>
+              <div class="small-note" id="tipBox">
+                Tip: Live mode updates every second using your device’s local
+                time.
+              </div>
+            </div>
+          </section>
+          <aside class="panel" aria-label="Explanation">
+            <h2>How it works</h2>
+            <p>
+              A countdown subtracts the current date and time from a future
+              target date and time. The remaining milliseconds are then
+              converted into days, hours, minutes, and seconds.
+            </p>
+            <div class="formula">
+              <strong>Basic countdown formula</strong><br />
+              <code>target time − current time</code>
+            </div>
+            <div class="formula">
+              <strong>Display breakdown</strong><br />
+              <code>milliseconds → days, hours, minutes, seconds</code>
+            </div>
+            <details class="faq" style="margin-top: 12px">
+              <summary>Why can countdowns differ by device?</summary>
+              <p>
+                Because the countdown uses the local date and time on the device
+                viewing the page.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>What happens when the target time passes?</summary>
+              <p>
+                You can either show time since the target passed, or clamp the
+                countdown to zero.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>Why is this useful?</summary>
+              <p>
+                Countdowns are useful for launches, holidays, deadlines, exams,
+                birthdays, vacations, and special events.
+              </p>
+            </details>
+            <p style="margin-top: 10px">
+              Related:
+              <a href="/tools/time/days-until/">Days Until Calculator</a>
+            </p>
+          </aside>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const el = (id) => document.getElementById(id);
+      let timerId = null;
+      function setWarn(msg, good = false) {
+        const w = el("warn");
+        if (!msg) {
+          w.style.display = "none";
+          w.classList.remove("good");
+          w.textContent = "";
+          return;
+        }
+        w.style.display = "block";
+        w.classList.toggle("good", !!good);
+        w.textContent = msg;
+      }
+      function toYMD(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      }
+      function formatDateTime(date) {
+        return date.toLocaleString(undefined, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+        });
+      }
+      function parseTarget(dateStr, timeStr) {
+        if (!dateStr) return null;
+        const time = timeStr && timeStr.trim() ? timeStr : "00:00";
+        const dt = new Date(`${dateStr}T${time}`);
+        return Number.isFinite(dt.getTime()) ? dt : null;
+      }
+      function buildShareURL() {
+        const sp = new URLSearchParams();
+        const name = el("eventName").value.trim();
+        if (name) sp.set("n", name);
+        sp.set("d", el("targetDate").value);
+        sp.set("t", el("targetTime").value || "00:00");
+        sp.set("dm", el("displayMode").value);
+        sp.set("ss", el("showSeconds").value);
+        sp.set("pm", el("pastMode").value);
+        return `${window.location.origin}${window.location.pathname}?${sp.toString()}`;
+      }
+      function getParams() {
+        const sp = new URLSearchParams(window.location.search);
+        return {
+          n: sp.get("n"),
+          d: sp.get("d"),
+          t: sp.get("t"),
+          dm: sp.get("dm"),
+          ss: sp.get("ss"),
+          pm: sp.get("pm"),
+        };
+      }
+      function applyParams() {
+        const p = getParams();
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        el("eventName").value = p.n || "";
+        el("targetDate").value = p.d || toYMD(tomorrow);
+        el("targetTime").value = p.t || "00:00";
+        el("displayMode").value = p.dm === "static" ? "static" : "live";
+        el("showSeconds").value = p.ss === "0" ? "0" : "1";
+        el("pastMode").value = p.pm === "zero" ? "zero" : "since";
+      }
+      function cleanURL() {
+        if (window.location.search) {
+          window.history.replaceState({}, "", window.location.pathname);
+        }
+      }
+      function stopTimer() {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      }
+      function splitDuration(ms) {
+        const totalSeconds = Math.floor(ms / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        return { totalSeconds, days, hours, minutes, seconds };
+      }
+      function updateDisplay(target, opts) {
+        const now = new Date();
+        let diff = target.getTime() - now.getTime();
+        let status = "Remaining";
+        let statusSub = "Future target";
+        let displayMs = diff;
+        if (diff < 0) {
+          if (opts.pastMode === "zero") {
+            displayMs = 0;
+            status = "Complete";
+            statusSub = "Target has passed";
+          } else {
+            displayMs = Math.abs(diff);
+            status = "Since";
+            statusSub = "Target is in the past";
+          }
+        } else if (diff === 0) {
+          status = "Now";
+          statusSub = "Target time reached";
+        }
+        const parts = splitDuration(displayMs);
+        const totalHours = Math.floor(displayMs / (1000 * 60 * 60));
+        const totalMinutes = Math.floor(displayMs / (1000 * 60));
+        el("daysBox").textContent = parts.days.toLocaleString();
+        el("hoursBox").textContent = parts.hours.toLocaleString();
+        el("minutesBox").textContent = parts.minutes.toLocaleString();
+        el("secondsBox").textContent = opts.showSeconds
+          ? parts.seconds.toLocaleString()
+          : "—";
+        el("secondsBox").parentElement.style.display = opts.showSeconds
+          ? ""
+          : "none";
+        el("kpiTarget").textContent = formatDateTime(target);
+        el("kpiTargetSub").textContent = opts.name
+          ? `Event: ${opts.name}`
+          : "No custom event label";
+        el("kpiStatus").textContent = status;
+        el("kpiStatusSub").textContent = statusSub;
+        el("kpiHours").textContent = totalHours.toLocaleString();
+        el("kpiMinutes").textContent = totalMinutes.toLocaleString();
+        const summary = el("summaryBox");
+        if (diff > 0) {
+          summary.innerHTML = `<strong>Summary:</strong> ${opts.name ? `<strong>${opts.name}</strong> is ` : ""}<strong>${parts.days}</strong> days, <strong>${parts.hours}</strong> hours, <strong>${parts.minutes}</strong> minutes${opts.showSeconds ? `, and <strong>${parts.seconds}</strong> seconds` : ""} away.`;
+        } else if (diff < 0 && opts.pastMode === "since") {
+          summary.innerHTML = `<strong>Summary:</strong> ${opts.name ? `<strong>${opts.name}</strong> was ` : ""}<strong>${parts.days}</strong> days, <strong>${parts.hours}</strong> hours, <strong>${parts.minutes}</strong> minutes${opts.showSeconds ? `, and <strong>${parts.seconds}</strong> seconds` : ""} ago.`;
+        } else {
+          summary.innerHTML = `<strong>Summary:</strong> ${opts.name ? `<strong>${opts.name}</strong> ` : "The target "}has been reached.`;
+        }
+        buildRows(target, now, parts, totalHours, totalMinutes, status, opts);
+        const tipBox = el("tipBox");
+        if (opts.displayMode === "live") {
+          tipBox.textContent =
+            "Tip: Live mode updates every second using your device’s local time.";
+        } else {
+          tipBox.textContent =
+            "Tip: Static mode calculates once and does not keep ticking.";
+        }
+      }
+      function buildRows(
+        target,
+        now,
+        parts,
+        totalHours,
+        totalMinutes,
+        status,
+        opts,
+      ) {
+        const tbody = el("tbody");
+        tbody.innerHTML = "";
+        const rows = [
+          [
+            "Current time",
+            formatDateTime(now),
+            "Uses your device’s local time.",
+          ],
+          ["Target time", formatDateTime(target), "The date/time you entered."],
+          [
+            "Status",
+            status,
+            opts.pastMode === "since"
+              ? "Past targets can show elapsed time since."
+              : "Past targets clamp to zero.",
+          ],
+          ["Days", String(parts.days), "Whole remaining or elapsed days."],
+          [
+            "Hours",
+            String(parts.hours),
+            "Remaining or elapsed hours after days.",
+          ],
+          [
+            "Minutes",
+            String(parts.minutes),
+            "Remaining or elapsed minutes after hours.",
+          ],
+          [
+            "Seconds",
+            opts.showSeconds ? String(parts.seconds) : "Hidden",
+            "Can be turned off in display settings.",
+          ],
+          [
+            "Total hours",
+            totalHours.toLocaleString(),
+            "Whole remaining/elapsed hours.",
+          ],
+          [
+            "Total minutes",
+            totalMinutes.toLocaleString(),
+            "Whole remaining/elapsed minutes.",
+          ],
+          [
+            "Mode",
+            opts.displayMode === "live"
+              ? "Live countdown"
+              : "Static calculation",
+            "Live mode updates every second.",
+          ],
+        ];
+        rows.forEach(([metric, value, notes]) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = ` <td>${metric}</td> <td><strong>${value}</strong></td> <td>${notes}</td> `;
+          tbody.appendChild(tr);
+        });
+      }
+      function readOptions() {
+        return {
+          name: el("eventName").value.trim(),
+          displayMode: el("displayMode").value,
+          showSeconds: el("showSeconds").value === "1",
+          pastMode: el("pastMode").value,
+        };
+      }
+      function calculate() {
+        stopTimer();
+        setWarn("");
+        const target = parseTarget(
+          el("targetDate").value,
+          el("targetTime").value,
+        );
+        if (!target) {
+          el("result").style.display = "none";
+          setWarn("Choose a valid target date and time.");
+          return;
+        }
+        const opts = readOptions();
+        el("result").style.display = "block";
+        updateDisplay(target, opts);
+        if (opts.displayMode === "live") {
+          timerId = setInterval(() => updateDisplay(target, opts), 1000);
+        }
+      }
+      async function copyResults() {
+        if (el("result").style.display === "none") {
+          calculate();
+        }
+        if (el("result").style.display === "none") return;
+        const text = [
+          `Event: ${el("eventName").value.trim() || "None"}`,
+          `Target: ${el("kpiTarget").textContent}`,
+          `Status: ${el("kpiStatus").textContent}`,
+          `Days: ${el("daysBox").textContent}`,
+          `Hours: ${el("hoursBox").textContent}`,
+          `Minutes: ${el("minutesBox").textContent}`,
+          `Seconds: ${el("secondsBox").textContent}`,
+        ].join("\n");
+        try {
+          await navigator.clipboard.writeText(text);
+          setWarn("Copied results to clipboard.", true);
+          setTimeout(() => setWarn(""), 1800);
+        } catch {
+          setWarn("Copy failed. Try again or copy manually.");
+        }
+      }
+      async function copyShareLink() {
+        const target = parseTarget(
+          el("targetDate").value,
+          el("targetTime").value,
+        );
+        if (!target) {
+          setWarn("Choose a valid target date and time first.");
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(buildShareURL());
+          setWarn("Copied share link to clipboard.", true);
+          setTimeout(() => setWarn(""), 1800);
+        } catch {
+          setWarn("Copy failed. You can copy the URL from the address bar.");
+        }
+      }
+      function reset() {
+        stopTimer();
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        el("eventName").value = "";
+        el("targetDate").value = toYMD(tomorrow);
+        el("targetTime").value = "00:00";
+        el("displayMode").value = "live";
+        el("showSeconds").value = "1";
+        el("pastMode").value = "since";
+        history.replaceState({}, "", location.pathname);
+        setWarn("");
+        calculate();
+      }
+      el("calcBtn").addEventListener("click", calculate);
+      el("copyBtn").addEventListener("click", copyResults);
+      el("shareBtn").addEventListener("click", copyShareLink);
+      el("resetBtn").addEventListener("click", reset);
+      [
+        "eventName",
+        "targetDate",
+        "targetTime",
+        "displayMode",
+        "showSeconds",
+        "pastMode",
+      ].forEach((id) => {
+        const node = el(id);
+        const evt = node.tagName === "SELECT" ? "change" : "input";
+        node.addEventListener(evt, () => {
+          if (id === "eventName") return;
+          calculate();
+        });
+      });
+      applyParams();
+      cleanURL();
+      calculate();
+    </script>
+  </body>
+</html>

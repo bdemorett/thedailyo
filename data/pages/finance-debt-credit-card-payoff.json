@@ -1,0 +1,85 @@
+{
+  "key": "finance-debt-credit-card-payoff",
+
+  "title": "Credit Card Payoff Calculator — TheDailyo",
+  "h1": "Credit Card Payoff Calculator",
+  "subtitle": "Estimate payoff time, total interest, and the impact of extra payments.",
+  "description": "Estimate how long it takes to pay off a credit card balance, total interest paid, and how extra payments change the payoff timeline.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" }
+  ],
+
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 200, "extra": 0 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>Each month, interest is added to the current balance using a monthly rate (APR ÷ 12). Your payment then reduces the balance. Adding extra payments reduces both payoff time and interest.</p>",
+
+  "faq": [
+    {
+      "q": "Why does it say “not paid off”?",
+      "a": "If your payment is too low to reduce the balance (often when it barely covers interest), the payoff can take an extremely long time. Increase the payment or add extra to model a payoff plan."
+    },
+    {
+      "q": "Does this include fees or a changing APR?",
+      "a": "No. Fees, promo rates, and daily compounding can change real results. Use this as a clean estimate, then compare to your statement."
+    },
+    {
+      "q": "Is this financial advice?",
+      "a": "No—this is educational. Consider a professional for decisions with big consequences."
+    }
+  ],
+
+  "related": [
+  {
+    "title": "Payoff With Extra Payments",
+    "desc": "See how adding extra money reduces payoff time and interest.",
+    "meta": "Payoff →",
+    "href": "/finance/debt/credit-card-payoff-extra/"
+  },
+  {
+    "title": "Debt Snowball Calculator",
+    "desc": "Compare the snowball method for faster motivation.",
+    "meta": "Strategy →",
+    "href": "/finance/debt/snowball/"
+  },
+  {
+    "title": "Debt Avalanche Calculator",
+    "desc": "Pay off highest-interest debt first to save more.",
+    "meta": "Strategy →",
+    "href": "/finance/debt/avalanche/"
+  },
+  {
+    "title": "Loan Payment Calculator",
+    "desc": "Estimate payments if you consolidate your debt.",
+    "meta": "Loans →",
+    "href": "/finance/debt/loan-payment/"
+  }
+]
+,
+
+  "affiliate": {
+    "enabled": false,
+    "headline": "Lower your APR and pay off faster",
+    "offers": []
+  }
+}

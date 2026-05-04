@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Tutorial for Beginners — TheDailyo</title>
+    <meta
+      name="description"
+      content="Learn SQL basics with simple examples. This beginner-friendly SQL tutorial covers SELECT, WHERE, ORDER BY, INSERT, UPDATE, DELETE, JOIN, GROUP BY, and more."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/career/tech/sql/tutorials/sql-tutorial/"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="SQL Tutorial for Beginners — TheDailyo"
+    />
+    <meta
+      property="og:description"
+      content="A beginner-friendly SQL tutorial with examples for querying, filtering, sorting, joins, grouping, and updating data."
+    />
+    <meta
+      property="og:url"
+      content="https://thedailyo.com/career/tech/sql/tutorials/sql-tutorial/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+        margin-top: 14px;
+      }
+      .panel h2 {
+        font-size: 1.15rem;
+        font-weight: 900;
+        margin: 0 0 10px;
+        color: var(--text-main);
+      }
+      .panel h3 {
+        font-size: 1.02rem;
+        font-weight: 900;
+        margin: 18px 0 8px;
+        color: var(--text-main);
+      }
+      .panel p,
+      .panel li {
+        color: var(--text-muted);
+        line-height: 1.72;
+      }
+      .panel ul,
+      .panel ol {
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+      .code-block {
+        margin-top: 12px;
+        background: #0f172a;
+        color: #e5eefc;
+        border-radius: 16px;
+        padding: 14px;
+        overflow: auto;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.18);
+      }
+      .code-block pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 0.92rem;
+        line-height: 1.65;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+      .callout {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        color: var(--text-main);
+        line-height: 1.65;
+      }
+      .lesson-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .lesson-item {
+        background: #ffffff;
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 14px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .lesson-item strong {
+        color: var(--text-main);
+      }
+      .table-wrap {
+        margin-top: 12px;
+        overflow: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.06);
+      }
+      .table-wrap table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 760px;
+        background: #ffffff;
+      }
+      .table-wrap th,
+      .table-wrap td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        font-size: 0.92rem;
+        text-align: left;
+        vertical-align: top;
+        white-space: nowrap;
+      }
+      .table-wrap th {
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 950;
+      }
+      .table-wrap tbody tr:hover td {
+        background: rgba(79, 124, 255, 0.06);
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/sql-tutorial/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/sql-tutorial/",
+                       "name":  "SQL Tutorial for Beginners — TheDailyo",
+                       "description":  "Learn SQL basics with simple examples. This beginner-friendly SQL tutorial covers SELECT, WHERE, ORDER BY, INSERT, UPDATE, DELETE, JOIN, GROUP BY, and more.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/sql-tutorial/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Sql Tutorial",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/sql-tutorial/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">SQL Tutorial for Beginners</h1>
+        <p class="site-subtitle">
+          Learn the core SQL commands with simple examples, plain-English
+          explanations, and practical beginner steps.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/career/">Career &amp; Income</a>
+          <span class="crumb-sep">›</span> <a href="/career/tech/">Tech</a>
+          <span class="crumb-sep">›</span> <a href="/career/tech/sql/">SQL</a>
+          <span class="crumb-sep">›</span>
+          <a href="/career/tech/sql/">Tutorials</a>
+          <span class="crumb-sep">›</span>
+          <span aria-current="page">SQL Tutorial</span>
+        </div>
+      </header>
+      <main id="main">
+        <section class="panel">
+          <h2>Quick answer</h2>
+          <p>
+            SQL stands for <strong>Structured Query Language</strong>. It is
+            used to work with data inside relational databases. With SQL, you
+            can read records, filter rows, sort results, group information, join
+            related tables, and change data when needed.
+          </p>
+          <p>
+            If you are brand new, the most important commands to learn first
+            are: <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>,
+            <code>ORDER BY</code>, and <code>GROUP BY</code>.
+          </p>
+          <div class="note">
+            Tip: SQL gets much easier once you stop thinking of it as “coding”
+            and start thinking of it as asking a database clear questions.
+          </div>
+        </section>
+        <section class="panel">
+          <h2>In this tutorial</h2>
+          <div class="list" aria-label="Tutorial sections">
+            <a class="list-item" href="#what-sql-is">
+              <div class="li-title">What SQL is</div>
+              <div class="li-desc">
+                Understand what SQL does and why companies use it.
+              </div>
+            </a>
+            <a class="list-item" href="#sample-table">
+              <div class="li-title">Sample table</div>
+              <div class="li-desc">
+                Use one simple example table for the rest of the tutorial.
+              </div>
+            </a>
+            <a class="list-item" href="#select">
+              <div class="li-title">SELECT</div>
+              <div class="li-desc">Return data from a table.</div>
+            </a>
+            <a class="list-item" href="#where">
+              <div class="li-title">WHERE</div>
+              <div class="li-desc">Filter rows based on conditions.</div>
+            </a>
+            <a class="list-item" href="#order-by">
+              <div class="li-title">ORDER BY</div>
+              <div class="li-desc">Sort your results.</div>
+            </a>
+            <a class="list-item" href="#group-by">
+              <div class="li-title">GROUP BY</div>
+              <div class="li-desc">
+                Summarize data with totals, counts, and averages.
+              </div>
+            </a>
+            <a class="list-item" href="#join">
+              <div class="li-title">JOIN</div>
+              <div class="li-desc">Combine related tables.</div>
+            </a>
+            <a class="list-item" href="#insert-update-delete">
+              <div class="li-title">INSERT, UPDATE, DELETE</div>
+              <div class="li-desc">Add, change, or remove rows.</div>
+            </a>
+            <a class="list-item" href="#practice">
+              <div class="li-title">Practice questions</div>
+              <div class="li-desc">
+                Simple exercises to help you remember what you learned.
+              </div>
+            </a>
+          </div>
+        </section>
+        <section class="panel" id="what-sql-is">
+          <h2>What SQL is</h2>
+          <p>
+            SQL is the standard language for relational databases. A relational
+            database stores data in tables made of rows and columns. Each row is
+            one record. Each column stores one kind of value.
+          </p>
+          <p>
+            For example, a company might store employee data, sales data, order
+            data, customer records, or inventory in database tables. SQL is how
+            you pull that information out and work with it.
+          </p>
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>Common use</h3>
+              <p>
+                Read data for reports, dashboards, payroll checks, finance
+                summaries, or app features.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>Common jobs</h3>
+              <p>
+                Analysts, developers, BI teams, operations, product teams, and
+                many technical business roles.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>Why learn it</h3>
+              <p>
+                SQL is one of the most practical career skills because it helps
+                you work directly with real business data.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="panel" id="sample-table">
+          <h2>Sample table</h2>
+          <p>
+            For this tutorial, imagine you have an <code>employees</code> table
+            like this:
+          </p>
+          <div class="table-wrap" aria-label="Sample employees table">
+            <table>
+              <thead>
+                <tr>
+                  <th>employee_id</th>
+                  <th>name</th>
+                  <th>department</th>
+                  <th>salary</th>
+                  <th>city</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Ana</td>
+                  <td>Sales</td>
+                  <td>62000</td>
+                  <td>Chicago</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ben</td>
+                  <td>IT</td>
+                  <td>78000</td>
+                  <td>Dallas</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Chris</td>
+                  <td>HR</td>
+                  <td>56000</td>
+                  <td>Chicago</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Dana</td>
+                  <td>IT</td>
+                  <td>85000</td>
+                  <td>Denver</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Every query below will use this table so the examples stay simple.
+          </p>
+        </section>
+        <section class="panel" id="select">
+          <h2>SELECT: return data</h2>
+          <p>
+            The <code>SELECT</code> statement is how you read data from a table.
+          </p>
+          <h3>Select all columns</h3>
+          <div class="code-block"><pre>SELECT * FROM employees;</pre></div>
+          <p>The <code>*</code> means all columns.</p>
+          <h3>Select only certain columns</h3>
+          <div class="code-block">
+            <pre>SELECT name, department, salary FROM employees;</pre>
+          </div>
+          <div class="callout">
+            In real work, it is usually better to select only the columns you
+            need instead of using <code>*</code>.
+          </div>
+        </section>
+        <section class="panel" id="where">
+          <h2>WHERE: filter rows</h2>
+          <p>
+            The <code>WHERE</code> clause lets you return only the rows that
+            match a condition.
+          </p>
+          <h3>Employees in IT</h3>
+          <div class="code-block">
+            <pre>
+SELECT name, salary FROM employees WHERE department = 'IT';</pre
+            >
+          </div>
+          <h3>Employees earning more than 60000</h3>
+          <div class="code-block">
+            <pre>
+SELECT name, salary FROM employees WHERE salary &gt; 60000;</pre
+            >
+          </div>
+          <h3>Multiple conditions</h3>
+          <div class="code-block">
+            <pre>
+SELECT name, department, city FROM employees WHERE department = 'IT' AND city = 'Dallas';</pre
+            >
+          </div>
+        </section>
+        <section class="panel" id="order-by">
+          <h2>ORDER BY: sort results</h2>
+          <p>Use <code>ORDER BY</code> when you want the results sorted.</p>
+          <h3>Lowest to highest salary</h3>
+          <div class="code-block">
+            <pre>SELECT name, salary FROM employees ORDER BY salary ASC;</pre>
+          </div>
+          <h3>Highest to lowest salary</h3>
+          <div class="code-block">
+            <pre>SELECT name, salary FROM employees ORDER BY salary DESC;</pre>
+          </div>
+          <h3>Sort by department, then salary</h3>
+          <div class="code-block">
+            <pre>
+SELECT name, department, salary FROM employees ORDER BY department ASC, salary DESC;</pre
+            >
+          </div>
+        </section>
+        <section class="panel" id="group-by">
+          <h2>GROUP BY: summarize data</h2>
+          <p>
+            <code>GROUP BY</code> is used with aggregate functions like:
+            <code>COUNT()</code>, <code>SUM()</code>, <code>AVG()</code>,
+            <code>MIN()</code>, and <code>MAX()</code>.
+          </p>
+          <h3>Count employees by department</h3>
+          <div class="code-block">
+            <pre>
+SELECT department, COUNT(*) AS employee_count FROM employees GROUP BY department;</pre
+            >
+          </div>
+          <h3>Average salary by department</h3>
+          <div class="code-block">
+            <pre>
+SELECT department, AVG(salary) AS avg_salary FROM employees GROUP BY department;</pre
+            >
+          </div>
+          <div class="callout">
+            Think of <code>GROUP BY</code> as “bundle similar rows together,
+            then calculate something about each bundle.”
+          </div>
+        </section>
+        <section class="panel" id="join">
+          <h2>JOIN: combine related tables</h2>
+          <p>A join connects rows from two tables using a shared key.</p>
+          <p>Imagine you also have a <code>departments</code> table:</p>
+          <div class="table-wrap" aria-label="Sample departments table">
+            <table>
+              <thead>
+                <tr>
+                  <th>department</th>
+                  <th>manager</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sales</td>
+                  <td>Maria</td>
+                </tr>
+                <tr>
+                  <td>IT</td>
+                  <td>Jordan</td>
+                </tr>
+                <tr>
+                  <td>HR</td>
+                  <td>Lee</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Example INNER JOIN</h3>
+          <div class="code-block">
+            <pre>
+SELECT e.name, e.department, d.manager FROM employees e INNER JOIN departments d ON e.department = d.department;</pre
+            >
+          </div>
+          <p>
+            This returns each employee with the manager of that employee’s
+            department.
+          </p>
+        </section>
+        <section class="panel" id="insert-update-delete">
+          <h2>INSERT, UPDATE, and DELETE</h2>
+          <p>These commands change data rather than just reading it.</p>
+          <h3>INSERT a new row</h3>
+          <div class="code-block">
+            <pre>
+INSERT INTO employees (employee_id, name, department, salary, city) VALUES (5, 'Evan', 'Sales', 59000, 'Austin');</pre
+            >
+          </div>
+          <h3>UPDATE a row</h3>
+          <div class="code-block">
+            <pre>
+UPDATE employees SET salary = 80000 WHERE employee_id = 2;</pre
+            >
+          </div>
+          <h3>DELETE a row</h3>
+          <div class="code-block">
+            <pre>DELETE FROM employees WHERE employee_id = 5;</pre>
+          </div>
+          <div class="warn">
+            Be careful: running <code>UPDATE</code> or
+            <code>DELETE</code> without a <code>WHERE</code> clause can affect
+            the whole table.
+          </div>
+        </section>
+        <section class="panel" id="practice">
+          <h2>Practice questions</h2>
+          <div class="lesson-list">
+            <div class="lesson-item">
+              <strong>1.</strong> Write a query to show all employees in
+              Chicago.
+            </div>
+            <div class="lesson-item">
+              <strong>2.</strong> Write a query to show the highest salary
+              first.
+            </div>
+            <div class="lesson-item">
+              <strong>3.</strong> Write a query to count how many employees are
+              in each department.
+            </div>
+            <div class="lesson-item">
+              <strong>4.</strong> Write a query to show employee names and
+              department managers.
+            </div>
+            <div class="lesson-item">
+              <strong>5.</strong> Write a query to change Chris’s city to
+              Dallas.
+            </div>
+          </div>
+          <div class="note">
+            Practice matters more than memorization. Writing small queries every
+            day helps more than reading ten articles in a row.
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Common beginner mistakes</h2>
+          <ul>
+            <li>
+              Forgetting the <code>WHERE</code> clause in <code>UPDATE</code> or
+              <code>DELETE</code>
+            </li>
+            <li>Using <code>SELECT *</code> for everything</li>
+            <li>Assuming the database will sort rows automatically</li>
+            <li>Getting confused about text values versus numeric values</li>
+            <li>
+              Trying to learn joins before understanding simple SELECT queries
+            </li>
+          </ul>
+        </section>
+        <section class="panel">
+          <h2>Bottom line</h2>
+          <p>
+            SQL is one of the most practical skills you can learn for working
+            with data. Start with the basics: <code>SELECT</code>,
+            <code>WHERE</code>, and <code>ORDER BY</code>. Then move into
+            <code>GROUP BY</code> and joins once you are comfortable reading and
+            filtering rows.
+          </p>
+          <div class="callout">
+            Good beginner goal: be able to read a table, filter rows, sort
+            results, summarize data, and join one related table.
+          </div>
+          <p style="margin-top: 12px">
+            Related: <a href="/career/tech/sql/">SQL Hub</a> ·
+            <a href="/career/tech/sql/tutorials/select-statement/"
+              >SELECT Statement</a
+            >
+            ·
+            <a href="/career/tech/sql/"
+              >How SQL Is Used at Work</a
+            >
+          </p>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

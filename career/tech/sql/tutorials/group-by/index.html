@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL GROUP BY Explained — Beginner Guide | TheDailyo</title>
+  <meta name="description" content="Learn how SQL GROUP BY works with simple examples. Understand grouping, counts, totals, averages, and how GROUP BY works with aggregate functions." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/group-by/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL GROUP BY Explained — Beginner Guide | TheDailyo" />
+  <meta property="og:description" content="A beginner-friendly SQL GROUP BY tutorial with examples for counts, sums, averages, and grouped summaries." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/group-by/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/group-by/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/group-by/",
+                       "name":  "SQL GROUP BY Explained — Beginner Guide | TheDailyo",
+                       "description":  "Learn how SQL GROUP BY works with simple examples. Understand grouping, counts, totals, averages, and how GROUP BY works with aggregate functions.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/group-by/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Group By",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/group-by/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL GROUP BY Explained</h1>
+      <p class="site-subtitle">Learn how GROUP BY works in SQL, with simple examples for counts, totals, averages, and grouped summaries.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">GROUP BY</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          <code class="k">GROUP BY</code> is used in SQL to combine rows that share the same value in one or more columns.
+          Once rows are grouped, you usually use aggregate functions like
+          <code class="k">COUNT()</code>,
+          <code class="k">SUM()</code>,
+          <code class="k">AVG()</code>,
+          <code class="k">MIN()</code>, or
+          <code class="k">MAX()</code>
+          to summarize each group.
+        </p>
+        <p>
+          In beginner terms, <code class="k">GROUP BY</code> answers questions like:
+        </p>
+        <ul>
+          <li>How many employees are in each department?</li>
+          <li>What is the average salary in each city?</li>
+          <li>How much total revenue came from each product category?</li>
+        </ul>
+
+        <div class="note">
+          <strong>Tip:</strong> If you want one summary for each category instead of one summary for the whole table, you probably need <code class="k">GROUP BY</code>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#sample-table">Sample table</a>
+          <a href="#what-group-by-does">What GROUP BY does</a>
+          <a href="#count-example">Count by group</a>
+          <a href="#sum-example">Sum by group</a>
+          <a href="#avg-example">Average by group</a>
+          <a href="#multiple-columns">Group by multiple columns</a>
+          <a href="#having">Using HAVING</a>
+          <a href="#when-to-use">When to use GROUP BY</a>
+          <a href="#common-mistakes">Common mistakes</a>
+          <a href="#practice-questions">Practice questions</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-table">
+        <h2>Sample table</h2>
+        <p>
+          To keep the examples simple, imagine this <code class="k">employees</code> table:
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Employees table">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+                <td>Denver</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Evan</td>
+                <td>Sales</td>
+                <td>59000</td>
+                <td>Austin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          We’ll use this same table throughout the guide so you can see how GROUP BY changes the result shape.
+        </div>
+      </section>
+
+      <section class="panel prose" id="what-group-by-does">
+        <h2>What GROUP BY does</h2>
+        <p>
+          <code class="k">GROUP BY</code> takes rows that have the same value in a chosen column and puts them into buckets.
+        </p>
+        <p>
+          For example, if you group by <code class="k">department</code>, all Sales rows go into one bucket, all IT rows go into one bucket, and all HR rows go into one bucket.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department
+FROM employees
+GROUP BY department;</pre>
+        </div>
+
+        <p>
+          That would return one row per department.
+        </p>
+
+        <div class="callout">
+          By itself, <code class="k">GROUP BY</code> is not very exciting. The real power comes when you combine it with aggregate functions like <code class="k">COUNT()</code>, <code class="k">SUM()</code>, and <code class="k">AVG()</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="count-example">
+        <h2>Count rows in each group</h2>
+        <p>
+          One of the most common uses of <code class="k">GROUP BY</code> is counting how many rows fall into each category.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;</pre>
+        </div>
+
+        <p>
+          This gives you one row per department, along with the number of employees in each department.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Employee count by department">
+          <table>
+            <thead>
+              <tr>
+                <th>department</th>
+                <th>employee_count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sales</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>IT</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>HR</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Think of this as: “Group employees by department, then count each group.”
+        </div>
+      </section>
+
+      <section class="panel prose" id="sum-example">
+        <h2>Get totals for each group</h2>
+        <p>
+          You can also total numeric values within each group using <code class="k">SUM()</code>.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department;</pre>
+        </div>
+
+        <p>
+          This returns the total salary cost for each department.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Total salary by department">
+          <table>
+            <thead>
+              <tr>
+                <th>department</th>
+                <th>total_salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sales</td>
+                <td>121000</td>
+              </tr>
+              <tr>
+                <td>IT</td>
+                <td>163000</td>
+              </tr>
+              <tr>
+                <td>HR</td>
+                <td>56000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <code class="k">SUM()</code> is useful for totals such as revenue, quantity sold, hours worked, or salary expense.
+        </div>
+      </section>
+
+      <section class="panel prose" id="avg-example">
+        <h2>Get averages for each group</h2>
+        <p>
+          Averages are another common use of grouped summaries.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department;</pre>
+        </div>
+
+        <p>
+          This shows the average salary in each department.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Average salary by department">
+          <table>
+            <thead>
+              <tr>
+                <th>department</th>
+                <th>avg_salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sales</td>
+                <td>60500</td>
+              </tr>
+              <tr>
+                <td>IT</td>
+                <td>81500</td>
+              </tr>
+              <tr>
+                <td>HR</td>
+                <td>56000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Once you understand this pattern, you can swap in <code class="k">COUNT()</code>, <code class="k">SUM()</code>, <code class="k">AVG()</code>, <code class="k">MIN()</code>, or <code class="k">MAX()</code> depending on what you want to measure.
+        </div>
+      </section>
+
+      <section class="panel prose" id="multiple-columns">
+        <h2>Group by multiple columns</h2>
+        <p>
+          You can group by more than one column if you want more specific buckets.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, city, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department, city;</pre>
+        </div>
+
+        <p>
+          This creates groups for each department-and-city combination instead of grouping only by department.
+        </p>
+
+        <div class="callout">
+          More grouped columns means smaller, more detailed buckets.
+        </div>
+      </section>
+
+      <section class="panel prose" id="having">
+        <h2>Using HAVING with GROUP BY</h2>
+        <p>
+          <code class="k">WHERE</code> filters rows before grouping. <code class="k">HAVING</code> filters grouped results after grouping.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 1;</pre>
+        </div>
+
+        <p>
+          This returns only departments with more than one employee.
+        </p>
+
+        <div class="callout">
+          Use <code class="k">WHERE</code> for row-level filtering. Use <code class="k">HAVING</code> for group-level filtering after the grouped results already exist.
+        </div>
+      </section>
+
+      <section class="panel prose" id="when-to-use">
+        <h2>When to use GROUP BY</h2>
+        <p>
+          Use <code class="k">GROUP BY</code> when you want one result per category instead of one big result for the whole table.
+        </p>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>Use it for counts:</strong> employees per department, orders per customer, products per category.
+          </div>
+          <div class="lesson-item">
+            <strong>Use it for totals:</strong> total revenue by month, total salary by department, total sales by region.
+          </div>
+          <div class="lesson-item">
+            <strong>Use it for averages:</strong> average salary by city, average order size by customer type.
+          </div>
+        </div>
+
+        <div class="callout">
+          If your question sounds like “for each department,” “for each city,” or “for each customer,” that is a strong sign you need <code class="k">GROUP BY</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>Using a normal column with an aggregate function without adding that normal column to <code class="k">GROUP BY</code></li>
+          <li>Confusing <code class="k">WHERE</code> and <code class="k">HAVING</code></li>
+          <li>Grouping by too many columns and accidentally creating tiny buckets</li>
+          <li>Forgetting that each group returns one summary row</li>
+          <li>Using <code class="k">GROUP BY</code> when a normal <code class="k">SELECT</code> would have been enough</li>
+        </ul>
+
+        <div class="warn">
+          If you select a normal column and an aggregate function together, SQL usually expects the normal column to appear in the <code class="k">GROUP BY</code> clause.
+        </div>
+      </section>
+
+      <section class="panel prose" id="practice-questions">
+        <h2>Practice questions</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Count how many employees are in each city.
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Find the total salary for each department.
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Find the average salary by city.
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Group by department and city together.
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Show only groups with more than one row using <code class="k">HAVING</code>.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          <code class="k">GROUP BY</code> is one of the most important SQL skills because it lets you summarize data by category.
+        </p>
+        <p>
+          Once you understand how to group rows and apply aggregate functions, you can answer a huge number of real reporting and analysis questions.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>GROUP BY = make buckets, then summarize each bucket.</strong>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL topics and tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/aggregate-functions/">Aggregate Functions</a></strong><br>
+            Learn COUNT, SUM, AVG, MIN, and MAX, which are commonly used with GROUP BY.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/joins-explained/">SQL Joins Explained</a></strong><br>
+            Learn how tables connect before grouping joined data together.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/inner-vs-left-join/">INNER JOIN vs LEFT JOIN</a></strong><br>
+            See how join types affect the rows you group and summarize.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

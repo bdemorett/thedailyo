@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL ORDER BY Explained — Sort Results (ASC & DESC) | TheDailyo</title>
+  <meta name="description" content="Learn how SQL ORDER BY works with simple examples. Sort results ascending or descending by one or multiple columns." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/order-by/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL ORDER BY Explained — Sort Results (ASC & DESC) | TheDailyo" />
+  <meta property="og:description" content="A beginner-friendly guide to SQL ORDER BY with examples for sorting one or multiple columns." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/order-by/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/order-by/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/order-by/",
+                       "name":  "SQL ORDER BY Explained — Sort Results (ASC \u0026 DESC) | TheDailyo",
+                       "description":  "Learn how SQL ORDER BY works with simple examples. Sort results ascending or descending by one or multiple columns.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/order-by/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Order By",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/order-by/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL ORDER BY Explained</h1>
+      <p class="site-subtitle">Learn how to sort SQL results correctly using ORDER BY, ASC, DESC, and multiple columns.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">ORDER BY</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          <code class="k">ORDER BY</code> sorts the rows returned by a query.
+          If you do not use <code class="k">ORDER BY</code>, SQL does not guarantee the order of the results.
+        </p>
+        <ul>
+          <li><code class="k">ASC</code> means ascending order, like A to Z or lowest to highest</li>
+          <li><code class="k">DESC</code> means descending order, like Z to A or highest to lowest</li>
+        </ul>
+
+        <div class="note">
+          <strong>Tip:</strong> If you leave off <code class="k">ASC</code> or <code class="k">DESC</code>, SQL usually defaults to ascending order.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#sample-table">Sample table</a>
+          <a href="#why-order-by-matters">Why ORDER BY matters</a>
+          <a href="#ascending-order">Ascending order</a>
+          <a href="#descending-order">Descending order</a>
+          <a href="#multiple-columns">Sort by multiple columns</a>
+          <a href="#text-vs-number">Text vs number sorting</a>
+          <a href="#with-group-by">Use ORDER BY with GROUP BY</a>
+          <a href="#null-values">How NULL values behave</a>
+          <a href="#common-mistakes">Common mistakes</a>
+          <a href="#practice-questions">Practice questions</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-table">
+        <h2>Sample table</h2>
+        <p>
+          Imagine this <code class="k">employees</code> table:
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Employees table">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+                <td>Denver</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Evan</td>
+                <td>Sales</td>
+                <td>59000</td>
+                <td>Austin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          We’ll use this table for the examples so you can see exactly how sorting changes the output.
+        </div>
+      </section>
+
+      <section class="panel prose" id="why-order-by-matters">
+        <h2>Why ORDER BY matters</h2>
+        <p>
+          Without <code class="k">ORDER BY</code>, the database can return rows in whatever order is convenient internally. That order may look stable at first, but you should not rely on it.
+        </p>
+        <p>
+          In real work, sorting matters because you often want:
+        </p>
+        <ul>
+          <li>highest salary first</li>
+          <li>alphabetical customer lists</li>
+          <li>newest records first</li>
+          <li>top-performing categories at the top of a report</li>
+        </ul>
+
+        <div class="callout">
+          Beginner rule: if the display order matters, use <code class="k">ORDER BY</code>. Never assume SQL will “just know” the order you want.
+        </div>
+      </section>
+
+      <section class="panel prose" id="ascending-order">
+        <h2>Ascending order</h2>
+        <p>
+          Ascending order goes from smallest to largest for numbers, and usually A to Z for text.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+ORDER BY salary ASC;</pre>
+        </div>
+
+        <p>
+          This sorts salaries from lowest to highest.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Ascending salary results">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Chris</td>
+                <td>56000</td>
+              </tr>
+              <tr>
+                <td>Evan</td>
+                <td>59000</td>
+              </tr>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Writing <code class="k">ASC</code> is optional in many databases because ascending is the default, but it can make your intent clearer.
+        </div>
+      </section>
+
+      <section class="panel prose" id="descending-order">
+        <h2>Descending order</h2>
+        <p>
+          Descending order goes from largest to smallest for numbers, and usually Z to A for text.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+ORDER BY salary DESC;</pre>
+        </div>
+
+        <p>
+          This sorts salaries from highest to lowest.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Descending salary results">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Evan</td>
+                <td>59000</td>
+              </tr>
+              <tr>
+                <td>Chris</td>
+                <td>56000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <code class="k">DESC</code> is very common in dashboards, leaderboards, and “top N” style queries.
+        </div>
+      </section>
+
+      <section class="panel prose" id="multiple-columns">
+        <h2>Sort by multiple columns</h2>
+        <p>
+          You can sort by more than one column. SQL applies the sort from left to right.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, department, salary
+FROM employees
+ORDER BY department ASC, salary DESC;</pre>
+        </div>
+
+        <p>
+          This means:
+        </p>
+        <ul>
+          <li>first sort by <code class="k">department</code> alphabetically</li>
+          <li>then sort by <code class="k">salary</code> highest to lowest within each department</li>
+        </ul>
+
+        <div class="table-wrap prose-table" aria-label="Multi-column sort results">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Evan</td>
+                <td>Sales</td>
+                <td>59000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Think of this like sorting in layers: first one rule, then another rule inside each group.
+        </div>
+      </section>
+
+      <section class="panel prose" id="text-vs-number">
+        <h2>Text vs number sorting</h2>
+        <p>
+          Sorting numbers and text follows different logic:
+        </p>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>Numbers</strong><br>
+            Sorted by value, like 1, 2, 3 or 56000, 59000, 62000.
+          </div>
+          <div class="lesson-item">
+            <strong>Text</strong><br>
+            Sorted alphabetically, like A to Z or Z to A.
+          </div>
+        </div>
+
+        <p>
+          For example:
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, department
+FROM employees
+ORDER BY name ASC;</pre>
+        </div>
+
+        <p>
+          That would sort names alphabetically: Ana, Ben, Chris, Dana, Evan.
+        </p>
+
+        <div class="callout">
+          Sorting text is based on string rules, not on what feels logically “most important.”
+        </div>
+      </section>
+
+      <section class="panel prose" id="with-group-by">
+        <h2>Use ORDER BY with GROUP BY</h2>
+        <p>
+          ORDER BY is often used after <code class="k">GROUP BY</code> so you can sort summaries.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department
+ORDER BY employee_count DESC;</pre>
+        </div>
+
+        <p>
+          This sorts departments by employee count from highest to lowest.
+        </p>
+
+        <div class="callout">
+          GROUP BY summarizes the data. ORDER BY controls how those summaries are displayed.
+        </div>
+      </section>
+
+      <section class="panel prose" id="null-values">
+        <h2>How NULL values behave</h2>
+        <p>
+          NULL values can behave differently depending on the database engine, but they are usually treated as missing values rather than normal text or numbers.
+        </p>
+        <p>
+          In many systems:
+        </p>
+        <ul>
+          <li>NULL values may appear first in descending order</li>
+          <li>NULL values may appear last in ascending order</li>
+        </ul>
+
+        <div class="callout">
+          <code class="k">NULL</code> does not mean zero. It means “no value.”
+        </div>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>forgetting to use <code class="k">DESC</code> when you want highest values first</li>
+          <li>assuming results will stay in a specific order without <code class="k">ORDER BY</code></li>
+          <li>sorting by the wrong column</li>
+          <li>not understanding that multi-column sorts are applied from left to right</li>
+          <li>thinking the database will automatically know the “best” order</li>
+        </ul>
+
+        <div class="warn">
+          SQL does not guarantee result order unless you explicitly use <code class="k">ORDER BY</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="practice-questions">
+        <h2>Practice questions</h2>
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Sort employees by salary ascending.
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Sort employees by salary descending.
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Sort employees by department, then by salary highest to lowest.
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Sort employees alphabetically by name.
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Group employees by department and sort the grouped results by count.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          <code class="k">ORDER BY</code> controls how query results are sorted. That makes it one of the most important finishing steps in a SQL query.
+        </p>
+        <p>
+          Once you understand ascending, descending, and multi-column sorting, your query results become much easier to read and much more useful.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>ASC = smallest to largest</strong>, <strong>DESC = largest to smallest</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL topics and tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/where-clause/">WHERE Clause</a></strong><br>
+            Learn how to filter rows before sorting them.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/group-by/">GROUP BY</a></strong><br>
+            Learn how to group rows before sorting grouped summaries.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/aggregate-functions/">Aggregate Functions</a></strong><br>
+            Understand COUNT, SUM, AVG, MIN, and MAX before sorting summarized results.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

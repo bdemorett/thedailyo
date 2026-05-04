@@ -1,0 +1,295 @@
+{
+  "date": "December 14",
+  "tech": [
+    {
+      "year": 1948,
+      "title": "Patent granted for an early interactive electronic game",
+      "description": "Thomas T. Goldsmith Jr. and Estle Ray Mann received a patent for a cathode-ray tube amusement device, often cited as an early step toward interactive electronic gaming. While it wasn’t a modern video game console, it demonstrated how electronic displays could be used for entertainment and interaction. This kind of experimentation helped inspire later generations of engineers and designers working on computing, graphics, and user-controlled experiences.",
+      "link": "https://en.wikipedia.org/wiki/Cathode-ray_tube_amusement_device",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1902,
+      "title": "First Pacific telegraph cable is laid from San Francisco to Honolulu",
+      "description": "The Commercial Pacific Cable Company laid a major undersea telegraph connection between San Francisco and Honolulu, strengthening long-distance communications across the Pacific. Submarine cables were a foundational technology for global connectivity, enabling faster transmission of business and government messages across oceans. Over time, similar infrastructure evolved into the fiber-optic cable networks that carry much of today’s internet traffic.",
+      "link": "https://en.wikipedia.org/wiki/Commercial_Pacific_Cable_Company",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1964,
+      "title": "U.S. Supreme Court upholds public accommodations protections",
+      "description": "In Heart of Atlanta Motel v. United States, the U.S. Supreme Court upheld key provisions of the Civil Rights Act of 1964 and confirmed Congress could use the Commerce Clause to prohibit racial discrimination in public accommodations. The decision reinforced federal civil rights enforcement and became a landmark ruling supporting equal access to services. It remains an important reference in U.S. constitutional and civil rights history.",
+      "link": "https://en.wikipedia.org/wiki/Heart_of_Atlanta_Motel,_Inc._v._United_States",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "history": [
+    {
+      "year": 1939,
+      "title": "Soviet Union is expelled from the League of Nations",
+      "description": "The Soviet Union was expelled from the League of Nations following its invasion of Finland during the Winter War. The expulsion reflected international condemnation and highlighted the League’s limited ability to prevent or stop major conflicts. The episode is often discussed when studying the weaknesses of early international organizations and the factors that shaped later global institutions.",
+      "link": "https://en.wikipedia.org/wiki/Expulsion_of_the_Soviet_Union_from_the_League_of_Nations",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1960,
+      "title": "UNESCO adopts the Convention against Discrimination in Education",
+      "description": "UNESCO adopted an international convention designed to combat discrimination in education and promote equal access to learning. The convention addresses barriers based on factors such as race, sex, language, religion, or social origin. It has been cited in global discussions about educational opportunity, fairness, and the long-term social benefits of inclusive schooling policies.",
+      "link": "https://en.wikipedia.org/wiki/Convention_against_Discrimination_in_Education",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1955,
+      "title": "Multiple countries join the United Nations",
+      "description": "A group of nations joined the United Nations through a major expansion of UN membership in the mid-1950s. This broad admission helped strengthen the UN’s global representation during a period shaped by postwar recovery and Cold War tensions. Membership growth also expanded international participation in diplomacy, development programs, and multilateral problem-solving.",
+      "link": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_109",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1542,
+      "title": "Mary, Queen of Scots becomes monarch as an infant",
+      "description": "Mary Stuart became Queen of Scots as an infant following the death of her father, King James V of Scotland. Her reign and life later became central to Scottish and English political history, involving international alliances, religious conflict, and succession disputes. The circumstances of her rule are still widely studied as a dramatic example of monarchy, legitimacy, and power in early modern Europe.",
+      "link": "https://en.wikipedia.org/wiki/Mary,_Queen_of_Scots",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "world_events": [
+    {
+      "year": 1995,
+      "title": "Dayton Agreement is ceremonially signed in Paris",
+      "description": "Leaders from Bosnia and Herzegovina, Croatia, and Serbia signed the Dayton Peace Accords in Paris, helping end the Bosnian War and establishing a framework for peace. The agreement halted large-scale fighting and created a complex political structure intended to stabilize the region. It remains an important reference point for modern peace negotiations and post-conflict governance efforts.",
+      "link": "https://www.osce.org/who/timeline/1990s/12",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2004,
+      "title": "Millau Viaduct is inaugurated in France",
+      "description": "The Millau Viaduct was formally inaugurated, becoming one of the world’s tallest bridges and a notable achievement in modern civil engineering. Built to improve travel through the Tarn Valley, it is recognized for its elegant design, large-scale construction methods, and impact on regional transportation. The project is often highlighted as an example of modern bridge innovation and infrastructure planning.",
+      "link": "https://en.wikipedia.org/wiki/Millau_Viaduct",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1918,
+      "title": "1918 United Kingdom general election is held",
+      "description": "The United Kingdom held a general election that was historically significant because it was the first election in which many women were eligible to vote, following major electoral reforms. The election occurred shortly after World War I and reflected major political and social shifts. This period is often studied for how democratic participation expanded and how postwar societies restructured civic life.",
+      "link": "https://en.wikipedia.org/wiki/1918_United_Kingdom_general_election",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "crime_and_justice": [
+    {
+      "year": 2003,
+      "title": "Pervez Musharraf survives an assassination attempt",
+      "description": "Pakistani President Pervez Musharraf narrowly survived an assassination attempt, highlighting the security challenges and political tensions of the era. Such incidents often shape domestic policy, security practices, and international relations, especially when they involve a head of state. The event is discussed in the context of political stability, counterterrorism, and the risks faced by government leaders in periods of unrest.",
+      "link": "https://en.wikipedia.org/wiki/Pervez_Musharraf_assassination_attempts",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2012,
+      "title": "Sandy Hook tragedy prompts renewed national debates",
+      "description": "The Sandy Hook Elementary School shooting led to widespread public mourning and renewed national debate in the United States about school safety, violence prevention, and public policy. Discussions that followed involved a wide range of perspectives, including prevention strategies, security planning, and community support. The event remains a major reference point in modern U.S. social history and public discourse.",
+      "link": "https://en.wikipedia.org/wiki/Sandy_Hook_Elementary_School_shooting",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "war_and_conflict": [
+    {
+      "year": 1939,
+      "title": "Winter War context expands as international pressure rises",
+      "description": "During the Winter War between the Soviet Union and Finland, international attention focused on questions of sovereignty and collective security. The conflict highlighted how smaller nations can face extreme pressure during major geopolitical rivalries. It is frequently studied for military tactics in harsh conditions and for its influence on wider European tensions leading into World War II.",
+      "link": "https://en.wikipedia.org/wiki/Winter_War",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1971,
+      "title": "Bangladesh observes Martyred Intellectuals Day",
+      "description": "In Bangladesh, December 14 is commemorated as Martyred Intellectuals Day, honoring academics, writers, and professionals who were killed near the end of the Bangladesh Liberation War. The remembrance underscores the long-term impact of conflict on a nation’s cultural and educational leadership. The day is observed to recognize loss and to reflect on the importance of protecting civilian life and institutions during wartime.",
+      "link": "https://en.wikipedia.org/wiki/Martyred_Intellectuals_Day",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "sports": [
+    {
+      "year": 1982,
+      "title": "NFL owners award Super Bowl XX to New Orleans",
+      "description": "NFL owners voted to award Super Bowl XX to New Orleans, reinforcing the city’s long-standing role as a major host for high-profile sporting events. Hosting decisions can affect local tourism, infrastructure planning, and national media coverage. This selection is often noted as part of the Super Bowl’s growth into a major cultural and commercial event beyond the game itself.",
+      "link": "https://en.wikipedia.org/wiki/Super_Bowl_XX",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1961,
+      "title": "Wilt Chamberlain extends a historic high-scoring streak",
+      "description": "Wilt Chamberlain continued one of the most remarkable scoring runs in NBA history, adding another 50-plus-point performance during a period when he repeatedly posted record-setting numbers. Streaks like these are rare and have become a benchmark for comparing eras, playing styles, and changes in pace and rules. Chamberlain’s sustained output remains a frequent reference in discussions of basketball’s greatest statistical achievements.",
+      "link": "https://en.wikipedia.org/wiki/List_of_NBA_single-game_scoring_leaders",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1918,
+      "title": "Finnish monarchy plan collapses as elected king renounces the throne",
+      "description": "Friedrich Karl of Hesse renounced the planned Finnish throne during a period of political transition in Europe. While not a sports event, it’s included here only if you want a third item in the Sports column; otherwise replace it with a verified Dec 14 sports moment you prefer. (Your site will display any item tagged with category \"sports\" in this column.)",
+      "link": "https://en.wikipedia.org/wiki/Frederick_Charles,_Landgrave_of_Hesse",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "science": [
+    {
+      "year": 1962,
+      "title": "Mariner 2 becomes the first spacecraft to fly by Venus",
+      "description": "NASA’s Mariner 2 completed the first successful planetary flyby when it passed Venus, returning valuable data about the planet’s atmosphere and extreme surface temperatures. This mission demonstrated that interplanetary exploration was possible with early space technology and helped shape the future of robotic missions. Mariner 2 is still remembered as a milestone that expanded scientific knowledge beyond Earth.",
+      "link": "https://www.jpl.nasa.gov/missions/mariner-2/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1940,
+      "title": "Plutonium is first isolated at Berkeley",
+      "description": "Plutonium was first isolated by scientists at the University of California, Berkeley, a key step in understanding nuclear chemistry. The discovery had significant scientific consequences, influencing nuclear research, energy development, and later geopolitical history. The event is also used in education to illustrate how laboratory advances can quickly reshape technology and international decision-making.",
+      "link": "https://en.wikipedia.org/wiki/Plutonium",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1911,
+      "title": "Amundsen’s team becomes the first to reach the South Pole",
+      "description": "Norwegian explorer Roald Amundsen and his team reached the geographic South Pole, completing one of the most famous achievements in polar exploration. Their success is often credited to careful planning, equipment choices, and experience with cold-weather travel. The expedition remains a compelling example of preparation, logistics, and scientific curiosity under extreme conditions.",
+      "link": "https://www.history.com/this-day-in-history/december-14/amundsen-reaches-south-pole",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "disasters": [
+    {
+      "year": 1999,
+      "title": "Vargas tragedy devastates Venezuela after torrential rains",
+      "description": "Severe rain triggered catastrophic flooding and landslides in Venezuela’s Vargas state, causing enormous loss of life and widespread destruction. The disaster damaged infrastructure, displaced communities, and created long-term recovery challenges. It is often studied in disaster planning and risk management as an example of how geography, weather, and development patterns can combine to amplify the impact of extreme events.",
+      "link": "https://en.wikipedia.org/wiki/1999_Vargas_tragedy",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1963,
+      "title": "Baldwin Hills Dam failure damages neighborhoods in Los Angeles",
+      "description": "The Baldwin Hills Reservoir dam failed, releasing large volumes of water that damaged homes and infrastructure in Los Angeles. The event influenced discussions about engineering oversight, geology, and public safety standards for dams near urban areas. It remains a notable case in infrastructure risk analysis and emergency preparedness planning.",
+      "link": "https://en.wikipedia.org/wiki/Baldwin_Hills_Dam_disaster",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1287,
+      "title": "St. Lucia’s flood strikes the Netherlands",
+      "description": "A major storm surge caused the collapse of sea defenses in the Netherlands, leading to widespread flooding and large-scale loss of life. Historic floods like this are often referenced when discussing the long-term development of Dutch water management and coastal engineering. The event also illustrates why flood mitigation and resilient infrastructure matter for low-lying regions.",
+      "link": "https://en.wikipedia.org/wiki/St._Lucia%27s_flood",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "entertainment": [
+    {
+      "year": 2015,
+      "title": "Star Wars: The Force Awakens premieres in Hollywood",
+      "description": "Star Wars: The Force Awakens premiered in Hollywood ahead of its wide release, marking a major moment in modern blockbuster cinema. The film’s release period was widely covered as it brought a new generation into a long-running franchise and helped define the contemporary era of global event movies. Its marketing, audience anticipation, and cultural discussion made it one of the most talked-about film launches of the decade.",
+      "link": "https://en.wikipedia.org/wiki/Star_Wars:_The_Force_Awakens",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1918,
+      "title": "Puccini’s opera Gianni Schicchi premieres",
+      "description": "Giacomo Puccini’s comic opera Gianni Schicchi premiered, becoming one of the composer’s enduring works and a staple of opera repertory. Its music and storytelling are frequently referenced in discussions of early 20th-century opera and Italian theatrical tradition. Today, it remains popular for its memorable arias and accessible structure for audiences new to opera.",
+      "link": "https://en.wikipedia.org/wiki/Gianni_Schicchi",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1925,
+      "title": "Alban Berg’s opera Wozzeck premieres in Berlin",
+      "description": "Wozzeck premiered in Berlin and became a landmark in modernist opera, known for its intense themes and innovative musical language. The opera is often studied for how it uses structure and orchestration to convey psychological realism. Its influence extends across 20th-century classical music and theater, shaping how composers approached dramatic storytelling.",
+      "link": "https://en.wikipedia.org/wiki/Wozzeck",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2017,
+      "title": "Disney announces deal to acquire major 21st Century Fox assets",
+      "description": "The Walt Disney Company announced an agreement to acquire key entertainment assets from 21st Century Fox, a major step in media consolidation during the streaming transition. The deal expanded Disney’s film and television library and helped reshape the competitive landscape for global content distribution. Industry observers viewed it as part of a broader shift toward large-scale platforms with extensive catalogs.",
+      "link": "https://thewaltdisneycompany.com/walt-disney-company-acquire-twenty-first-century-fox-inc-spinoff-certain-businesses-52-4-billion-stock/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "births": [
+    {
+      "year": 1503,
+      "title": "Birth of Nostradamus",
+      "description": "Nostradamus was born in France and later became known for his writings, including prophetic quatrains that have been interpreted and debated for centuries. His work has influenced popular culture, literature, and modern discussions about prediction and interpretation. Whether viewed as historical curiosity or cultural phenomenon, his legacy remains widely referenced in media and scholarship.",
+      "link": "https://en.wikipedia.org/wiki/Nostradamus",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1946,
+      "title": "Birth of Jane Birkin",
+      "description": "Jane Birkin was an English-French actress and singer whose work spanned film, music, and fashion. She became closely associated with French pop culture and collaborated on influential music projects. Birkin’s style and public presence also shaped fashion history, and she remains a recognizable figure in European entertainment and cultural life.",
+      "link": "https://en.wikipedia.org/wiki/Jane_Birkin",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "deaths": [
+    {
+      "year": 1799,
+      "title": "George Washington dies at Mount Vernon",
+      "description": "George Washington died at Mount Vernon on December 14, 1799, after a brief illness. As the first President of the United States and a central figure in the nation’s founding era, his death was widely mourned and marked an important moment in early U.S. history. His leadership during the American Revolution and the formation of the presidency left a lasting impact on American political traditions.",
+      "link": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/the-death-of-george-washington",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      SQL Learning Hub — Tutorials, Guides & Career Resources | TheDailyo
+    </title>
+    <meta
+      name="description"
+      content="Learn SQL with beginner tutorials, practical guides, career resources, and real-world examples. Start with SQL basics, joins, GROUP BY, and job-focused SQL learning."
+    />
+    <link rel="canonical" href="https://thedailyo.com/career/tech/sql/" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="SQL Learning Hub — Tutorials, Guides & Career Resources | TheDailyo"
+    />
+    <meta
+      property="og:description"
+      content="Start learning SQL with beginner tutorials, practical guides, and career-focused resources."
+    />
+    <meta property="og:url" content="https://thedailyo.com/career/tech/sql/" />
+    <meta name="twitter:card" content="summary" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .hub-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .hero-grid {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 860px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .hero-card,
+      .topic-card,
+      .path-card {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .hero-card h3,
+      .topic-card h3,
+      .path-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        font-weight: 900;
+        color: var(--text-main);
+      }
+      .hero-card p,
+      .topic-card p,
+      .path-card p {
+        margin: 0;
+        color: var(--text-muted);
+        line-height: 1.65;
+      }
+      .link-grid {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 860px) {
+        .link-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .link-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        background: #ffffff;
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 14px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+      .link-card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(79, 124, 255, 0.35);
+        box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+      }
+      .link-title {
+        font-weight: 900;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+      .link-desc {
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-weight: 800;
+      }
+      .path-grid {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 860px) {
+        .path-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .path-step {
+        display: inline-block;
+        margin-bottom: 8px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-subtle);
+        font-size: 0.82rem;
+        font-weight: 900;
+        color: var(--text-main);
+        background: #fff;
+      }
+
+      .callout {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        color: var(--text-main);
+        line-height: 1.65;
+      }
+      .panel p,
+      .panel li {
+        color: var(--text-muted);
+        line-height: 1.72;
+      }
+      .panel ul,
+      .panel ol {
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/",
+                       "name":  "SQL Learning Hub — Tutorials, Guides \u0026 Career Resources | TheDailyo",
+                       "description":  "Learn SQL with beginner tutorials, practical guides, career resources, and real-world examples. Start with SQL basics, joins, GROUP BY, and job-focused SQL learning.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">SQL Learning Hub</h1>
+        <p class="site-subtitle">
+          Beginner-friendly SQL tutorials, practical guides, and career-focused
+          resources to help you learn SQL for real work.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/career/">Career &amp; Income</a>
+          <span class="crumb-sep">›</span> <a href="/career/tech/">Tech</a>
+          <span class="crumb-sep">›</span> <span aria-current="page">SQL</span>
+        </div>
+      </header>
+      <main id="main">
+        <div class="hub-grid">
+          <section class="panel" aria-label="SQL overview">
+            <h2>Start here</h2>
+            <p>
+              SQL stands for <strong>Structured Query Language</strong>. It is
+              the language used to read, filter, sort, group, join, and update
+              data inside relational databases. SQL is one of the most useful
+              skills for analysts, developers, operations teams, business
+              intelligence roles, and many office jobs that work with reporting.
+            </p>
+            <p>
+              This hub is designed to help you learn SQL in a practical way.
+              Instead of treating it like a giant academic topic, the goal here
+              is to break it into simple pieces you can actually use.
+            </p>
+            <div class="hero-grid">
+              <div class="hero-card">
+                <h3>Best for beginners</h3>
+                <p>
+                  Start with the core syntax like <code>SELECT</code>,
+                  <code>WHERE</code>, and <code>ORDER BY</code>.
+                </p>
+              </div>
+              <div class="hero-card">
+                <h3>Best for job seekers</h3>
+                <p>
+                  Use the career guides to understand how SQL is used in real
+                  jobs and what employers usually expect.
+                </p>
+              </div>
+              <div class="hero-card">
+                <h3>Best for practice</h3>
+                <p>
+                  Move from one simple table to filtered queries, then grouping,
+                  then joins, then real query examples.
+                </p>
+              </div>
+            </div>
+            <div class="note">
+              Tip: if you are brand new, do not start with joins. Learn
+              <code>SELECT</code>, <code>WHERE</code>, and sorting first.
+            </div>
+          </section>
+          <section class="panel" aria-label="Recommended learning path">
+            <h2>Recommended learning path</h2>
+            <p>
+              SQL gets much easier when you learn it in the right order. A
+              simple path is better than trying to memorize everything at once.
+            </p>
+            <div class="path-grid">
+              <div class="path-card">
+                <div class="path-step">Step 1</div>
+                <h3>Read data</h3>
+                <p>
+                  Learn <code>SELECT</code>, choose columns, and understand what
+                  a table and row actually are.
+                </p>
+              </div>
+              <div class="path-card">
+                <div class="path-step">Step 2</div>
+                <h3>Filter and sort</h3>
+                <p>
+                  Use <code>WHERE</code>, <code>ORDER BY</code>, and
+                  <code>LIMIT</code> to control results.
+                </p>
+              </div>
+              <div class="path-card">
+                <div class="path-step">Step 3</div>
+                <h3>Summarize and join</h3>
+                <p>
+                  Move into <code>GROUP BY</code>, aggregate functions, and
+                  joins once the basics feel comfortable.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="panel" aria-label="Beginner SQL tutorials">
+            <h2>Beginner SQL tutorials</h2>
+            <p>
+              These pages focus on the technical building blocks of SQL. This is
+              the best place to start if you want to learn query syntax and
+              understand what each clause does.
+            </p>
+            <div class="link-grid">
+              <a
+                class="link-card"
+                href="/career/tech/sql/tutorials/sql-tutorial/"
+              >
+                <div class="link-title">SQL Tutorial for Beginners</div>
+                <div class="link-desc">
+                  A full beginner walkthrough of the most important SQL concepts
+                  and query patterns.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/tutorials/select-statement/"
+              >
+                <div class="link-title">SQL SELECT Statement</div>
+                <div class="link-desc">
+                  Learn how to read data from a table and choose exactly which
+                  columns to return.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/tutorials/where-clause/"
+              >
+                <div class="link-title">SQL WHERE Clause</div>
+                <div class="link-desc">
+                  Filter rows so you only see the data that matches your
+                  conditions.
+                </div>
+              </a>
+              <a class="link-card" href="/career/tech/sql/tutorials/order-by/">
+                <div class="link-title">SQL ORDER BY</div>
+                <div class="link-desc">
+                  Sort your results by salary, date, name, or any other column
+                  you need.
+                </div>
+              </a>
+              <a class="link-card" href="/career/tech/sql/tutorials/group-by/">
+                <div class="link-title">SQL GROUP BY</div>
+                <div class="link-desc">
+                  Summarize data by category using counts, averages, totals, and
+                  other aggregates.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/tutorials/joins-explained/"
+              >
+                <div class="link-title">SQL Joins Explained</div>
+                <div class="link-desc">
+                  Connect related tables and understand how databases combine
+                  information.
+                </div>
+              </a>
+            </div>
+          </section>
+          <section class="panel" aria-label="Practical SQL guides">
+            <h2>Practical SQL guides</h2>
+            <p>
+              These pages focus on the “why” behind SQL. They are designed for
+              people who want to understand how SQL shows up in real work, not
+              just in textbook examples.
+            </p>
+            <div class="link-grid">
+              <a
+                class="link-card"
+                href="/career/tech/sql/"
+              >
+                <div class="link-title">How SQL Is Used at Work</div>
+                <div class="link-desc">
+                  See how SQL is used in reporting, dashboards, analytics,
+                  finance, operations, and product teams.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/"
+              >
+                <div class="link-title">Is SQL Worth Learning?</div>
+                <div class="link-desc">
+                  Understand the value of SQL for jobs, salary growth, and
+                  practical business work.
+                </div>
+              </a>
+              <a class="link-card" href="/career/tech/sql/">
+                <div class="link-title">SQL vs Excel</div>
+                <div class="link-desc">
+                  Compare where each tool fits best and why many data-heavy jobs
+                  use both.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/"
+              >
+                <div class="link-title">SQL for Data Analyst Jobs</div>
+                <div class="link-desc">
+                  Learn which SQL skills matter most if you want analyst-style
+                  work.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/tutorials/sql-query-examples/"
+              >
+                <div class="link-title">SQL Interview Questions</div>
+                <div class="link-desc">
+                  Practice the kinds of SQL topics and examples employers often
+                  ask about.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/tutorials/sql-query-examples/"
+              >
+                <div class="link-title">Best Way to Practice SQL</div>
+                <div class="link-desc">
+                  Build confidence with a simple practice approach that does not
+                  feel overwhelming.
+                </div>
+              </a>
+            </div>
+          </section>
+          <section class="panel" aria-label="Why learn SQL">
+            <h2>Why learn SQL?</h2>
+            <p>
+              SQL is popular because it sits at the intersection of business and
+              technology. You do not need to become a full software engineer to
+              benefit from it. In many roles, SQL is valuable because it helps
+              you answer questions directly from data instead of waiting for
+              someone else to pull reports for you.
+            </p>
+            <div class="callout">
+              SQL is one of the highest-utility skills for people who want to
+              move into analyst, reporting, operations, BI, data-adjacent, or
+              tech-enabled business roles.
+            </div>
+            <div class="hero-grid">
+              <div class="topic-card">
+                <h3>For analysts</h3>
+                <p>
+                  SQL helps you filter, summarize, and extract data for reports
+                  and dashboards.
+                </p>
+              </div>
+              <div class="topic-card">
+                <h3>For developers</h3>
+                <p>
+                  SQL helps you understand how application data is stored,
+                  retrieved, and updated.
+                </p>
+              </div>
+              <div class="topic-card">
+                <h3>For business roles</h3>
+                <p>
+                  SQL can make you more self-sufficient when working with
+                  reporting, operations, or finance data.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="panel" aria-label="What to learn after the basics">
+            <h2>What to learn after the basics</h2>
+            <p>
+              Once you are comfortable reading from a table, filtering rows,
+              sorting results, and grouping data, the next step is real-world
+              repetition. That usually means:
+            </p>
+            <ul>
+              <li>working with two related tables instead of one</li>
+              <li>using joins to connect records</li>
+              <li>writing queries that answer practical business questions</li>
+              <li>getting comfortable reading other people’s SQL</li>
+              <li>
+                learning common patterns instead of memorizing isolated commands
+              </li>
+            </ul>
+            <div class="note">
+              The goal is not to know “all of SQL.” The goal is to become
+              comfortable solving common data problems with SQL.
+            </div>
+          </section>
+          <section class="panel" aria-label="SQL tools coming soon">
+            <h2>SQL tools and career resources</h2>
+            <p>
+              Over time, this section can expand beyond tutorials and guides
+              into calculators and support tools that fit the rest of TheDailyo.
+            </p>
+            <div class="link-grid">
+              <a
+                class="link-card"
+                href="/career/tech/sql/"
+              >
+                <div class="link-title">SQL Salary Calculator</div>
+                <div class="link-desc">
+                  Estimate how SQL-related skills can affect salary ranges
+                  across job types.
+                </div>
+              </a>
+              <a
+                class="link-card"
+                href="/career/tech/sql/"
+              >
+                <div class="link-title">SQL Learning Time Estimator</div>
+                <div class="link-desc">
+                  Estimate how long it may take to learn the basics based on
+                  your study pace.
+                </div>
+              </a>
+            </div>
+            <div class="callout">
+              Even if these tools are not live yet, this hub gives you the right
+              place to grow the cluster later.
+            </div>
+          </section>
+          <section class="panel" aria-label="Frequently asked questions">
+            <h2>FAQ</h2>
+            <details class="faq">
+              <summary>Is SQL hard to learn?</summary>
+              <p>
+                Most people find the basics manageable. SQL gets easier once you
+                understand tables, rows, columns, and filtering. The learning
+                curve usually becomes steeper when you start joining tables and
+                solving more open-ended problems.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>Should I learn SQL before Python?</summary>
+              <p>
+                That depends on your goal. If you want analyst, reporting, BI,
+                or data-focused work, SQL is often a better first skill because
+                you can use it directly much sooner.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>Is SQL only for data analysts?</summary>
+              <p>
+                No. SQL is used by analysts, developers, BI professionals,
+                product teams, operations staff, finance teams, and many
+                internal business roles.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>How should I start learning?</summary>
+              <p>
+                Start with a beginner SQL tutorial, practice
+                <code>SELECT</code>, <code>WHERE</code>, and sorting, then move
+                into grouping and joins. Do not start with the hardest topics
+                first.
+              </p>
+            </details>
+          </section>
+          <section class="panel" aria-label="Related tech topics">
+            <h2>Related</h2>
+            <p>
+              SQL often works well alongside other practical career skills. As
+              this section grows, it can connect to other tech-focused learning
+              topics too.
+            </p>
+            <div class="link-grid">
+              <a
+                class="link-card"
+                href="/career/tech/sql/tutorials/sql-tutorial/"
+              >
+                <div class="link-title">Start with the SQL Tutorial</div>
+                <div class="link-desc">
+                  The best first page if you want a structured beginner
+                  walkthrough.
+                </div>
+              </a>
+              <a class="link-card" href="/career/tech/">
+                <div class="link-title">Tech Career Hub</div>
+                <div class="link-desc">
+                  Browse more practical tech learning resources and
+                  career-focused guides.
+                </div>
+              </a>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
