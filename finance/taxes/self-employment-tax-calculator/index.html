@@ -324,6 +324,36 @@
                        "publisher":  {
                                          "@id":  "https://thedailyo.com/#organization"
                                      }
+                   },
+                   {
+                       "@type": "FAQPage",
+                       "@id": "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/#faq",
+                       "mainEntity": [
+                         {
+                           "@type": "Question",
+                           "name": "Is self-employment tax the same as income tax?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "No. Self-employment tax covers Social Security and Medicare taxes for self-employed income. Regular federal income tax is separate."
+                           }
+                         },
+                         {
+                           "@type": "Question",
+                           "name": "Do business expenses reduce self-employment tax?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "Yes. Ordinary business expenses can reduce net profit, and net profit is the starting point for this estimate."
+                           }
+                         },
+                         {
+                           "@type": "Question",
+                           "name": "Why enter W-2 wages?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "W-2 wages can use up part or all of the Social Security wage base, which can change the Social Security portion of self-employment tax."
+                           }
+                         }
+                       ]
                    }
                ]
 }
@@ -503,6 +533,168 @@
             </div>
           </section>
         </div>
+        <section class="panel content-section" aria-label="How this calculator works">
+          <h2>How this self-employment tax calculator works</h2>
+          <p>
+            This calculator estimates self-employment tax from annual net profit. It multiplies net profit by 92.35%
+            to estimate net earnings subject to self-employment tax, applies the Social Security portion up to the wage
+            base, applies Medicare tax to net earnings, and shows the estimated half-SE-tax deduction.
+          </p>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <h3>Net profit</h3>
+              <p>
+                Use estimated Schedule C net profit after ordinary business expenses. This is different from gross
+                revenue because expenses reduce the profit used for the estimate.
+              </p>
+            </div>
+            <div class="info-box">
+              <h3>Social Security portion</h3>
+              <p>
+                The Social Security part is estimated at 12.4% of net earnings, limited by the Social Security wage
+                base after any W-2 wages already counted.
+              </p>
+            </div>
+            <div class="info-box">
+              <h3>Medicare portion</h3>
+              <p>
+                The Medicare part is estimated at 2.9% of net earnings in this simplified calculator. Additional
+                Medicare Tax is not included.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel content-section" aria-label="Net profit explanation">
+          <h2>What net profit means</h2>
+          <p>
+            Net profit is business income after business expenses. For many sole proprietors and freelancers, this is
+            the profit number that flows from Schedule C. If you earned $60,000 from clients and had $10,000 of ordinary
+            business expenses, your estimated net profit would be $50,000.
+          </p>
+          <p>
+            Do not enter gross revenue unless you have no business expenses. If you enter revenue instead of profit, the
+            calculator may overstate self-employment tax.
+          </p>
+        </section>
+
+        <section class="panel content-section" aria-label="92.35 percent adjustment">
+          <h2>Why 92.35% of net profit is used</h2>
+          <p>
+            Self-employment tax is generally calculated on net earnings from self-employment, not directly on 100% of
+            net profit. A common simplified way to estimate net earnings is to multiply net profit by 92.35%.
+          </p>
+          <p>
+            The calculator uses that 92.35% adjustment before applying the Social Security and Medicare portions. This
+            mirrors the usual self-employment tax worksheet structure, while keeping the page simple enough for quick
+            planning.
+          </p>
+        </section>
+
+        <section class="panel content-section" aria-label="Half SE deduction">
+          <h2>What the half-SE-tax deduction means</h2>
+          <p>
+            The half-SE-tax deduction is an income-tax deduction equal to half of estimated self-employment tax. It does
+            not reduce self-employment tax itself. Instead, it may reduce income subject to regular federal income tax.
+          </p>
+          <p>
+            This calculator shows the deduction estimate separately because it is useful when comparing 1099 income,
+            estimating federal income tax, or planning quarterly payments.
+          </p>
+        </section>
+
+        <section class="panel content-section" aria-label="Example">
+          <h2>Example: estimating self-employment tax</h2>
+          <p>
+            If a freelancer has $50,000 of net profit, the calculator first estimates net earnings by multiplying by
+            92.35%. It then applies the 12.4% Social Security portion up to the wage base and the 2.9% Medicare portion
+            to net earnings. The result is the estimated self-employment tax.
+          </p>
+          <p>
+            If that freelancer also had W-2 wages during the year, those wages can reduce the remaining Social Security
+            wage base available for self-employment income. That is why the calculator includes an optional W-2 wages
+            field.
+          </p>
+        </section>
+
+        <section class="panel content-section" aria-label="What this excludes">
+          <h2>What this estimate does not include</h2>
+          <p>
+            This calculator estimates Social Security and Medicare self-employment tax. It does not include regular
+            federal income tax, state income tax, local tax, the qualified business income deduction, tax credits,
+            retirement contributions, health insurance deductions, Additional Medicare Tax, or entity-specific tax rules.
+          </p>
+          <p>
+            For a fuller contractor estimate, pair this page with the 1099 vs W-2 calculator, federal income tax
+            calculator, and quarterly estimated tax calculator.
+          </p>
+        </section>
+
+        <section class="panel content-section" aria-label="Sources and review">
+          <h2>Sources and review</h2>
+          <p>
+            This page is based on general U.S. self-employment tax concepts for educational planning. Always confirm
+            important tax decisions with official IRS guidance or a qualified tax professional.
+          </p>
+          <ul style="margin-left: 20px; color: var(--text-muted); line-height: 1.65;">
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes" rel="nofollow noopener">IRS self-employment tax guidance</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-se-form-1040" rel="nofollow noopener">IRS Schedule SE information</a></li>
+            <li><a href="https://www.ssa.gov/oact/cola/cbb.html" rel="nofollow noopener">Social Security contribution and benefit base</a></li>
+            <li><a href="/disclaimer.html">TheDailyo educational-use disclaimer</a></li>
+          </ul>
+          <p class="help-text">Last reviewed: May 4, 2026.</p>
+        </section>
+
+        <section class="panel content-section" aria-label="Additional FAQ">
+          <h2>FAQ</h2>
+          <h3>Is self-employment tax the same as income tax?</h3>
+          <p>
+            No. Self-employment tax covers Social Security and Medicare taxes for self-employed income. Regular federal
+            income tax is separate and may also apply to the same business profit.
+          </p>
+
+          <h3>Do business expenses reduce self-employment tax?</h3>
+          <p>
+            Yes, ordinary business expenses can reduce net profit, and net profit is the starting point for this
+            estimate. That is why the calculator asks for net profit rather than gross revenue.
+          </p>
+
+          <h3>Why enter W-2 wages?</h3>
+          <p>
+            W-2 wages can use up part or all of the Social Security wage base. If you had employee wages and
+            self-employed income in the same year, entering W-2 wages can make the Social Security portion estimate
+            more realistic.
+          </p>
+
+          <h3>Does this calculate quarterly payments?</h3>
+          <p>
+            No. This page estimates self-employment tax only. Use the quarterly estimated tax calculator to split an
+            annual tax estimate into simple quarterly payments.
+          </p>
+        </section>
+
+        <section class="panel content-section" aria-label="Related tools">
+          <h2>Related tools</h2>
+          <div class="list">
+            <a class="list-item" href="/finance/taxes/1099-vs-w2-tax-calculator/">
+              <div class="li-title">1099 vs W-2 Tax Calculator</div>
+              <div class="li-desc">Compare employee and contractor take-home estimates.</div>
+            </a>
+            <a class="list-item" href="/finance/taxes/quarterly-estimated-tax-calculator/">
+              <div class="li-title">Quarterly Estimated Tax Calculator</div>
+              <div class="li-desc">Plan simple federal estimated tax payments.</div>
+            </a>
+            <a class="list-item" href="/finance/taxes/federal-income-tax-calculator/">
+              <div class="li-title">Federal Income Tax Calculator</div>
+              <div class="li-desc">Estimate regular federal income tax from taxable income.</div>
+            </a>
+            <a class="list-item" href="/finance/taxes/guides/what-is-self-employment-tax/">
+              <div class="li-title">What Is Self-Employment Tax?</div>
+              <div class="li-desc">Learn the basics behind the calculator.</div>
+            </a>
+          </div>
+        </section>
       </main>
       <footer class="site-footer">
         <div>© 2026 TheDailyo — All Rights Reserved.</div>
