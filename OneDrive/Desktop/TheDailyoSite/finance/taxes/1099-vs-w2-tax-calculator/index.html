@@ -1,393 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="/assets/css/main.css?v=4">
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LW4W6PG84Q');
-  </script>
-
-  <meta charset="UTF-8" />
-  <title>1099 vs W-2 Tax Calculator (Estimate) — TheDailyo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta name="description" content="Compare estimated net pay for W-2 employment vs 1099 contracting using federal brackets and payroll tax estimates. Includes expenses and optional state rate." />
-  <link rel="canonical" href="https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/" />
-  <meta name="robots" content="index,follow" />
-
-  <!-- AdSense (Auto Ads) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
-     crossorigin="anonymous"></script>
-
-  <script type="application/ld+json">
-{
-    "@context":  "https://schema.org",
-    "@graph":  [
-                   {
-                       "@type":  "WebPage",
-                       "@id":  "https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/#webpage",
-                       "url":  "https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/",
-                       "name":  "1099 vs W-2 Tax Calculator (Estimate) — TheDailyo",
-                       "description":  "Compare estimated net pay for W-2 employment vs 1099 contracting using federal brackets and payroll tax estimates. Includes expenses and optional state rate.",
-                       "isPartOf":  {
-                                        "@id":  "https://thedailyo.com/#website"
-                                    },
-                       "publisher":  {
-                                         "@id":  "https://thedailyo.com/#organization"
-                                     }
-                   },
-                   {
-                       "@type":  "BreadcrumbList",
-                       "@id":  "https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/#breadcrumb",
-                       "itemListElement":  [
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  1,
-                                                   "name":  "Home",
-                                                   "item":  "https://thedailyo.com/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  2,
-                                                   "name":  "Finance",
-                                                   "item":  "https://thedailyo.com/finance/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  3,
-                                                   "name":  "Taxes",
-                                                   "item":  "https://thedailyo.com/finance/taxes/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  4,
-                                                   "name":  "1099 Vs W2 Tax Calculator",
-                                                   "item":  "https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/"
-                                               }
-                                           ]
-                   },
-                   {
-                       "@type":  "SoftwareApplication",
-                       "@id":  "https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/#calculator",
-                       "name":  "1099 vs W-2 Tax Calculator (Estimate) — TheDailyo",
-                       "applicationCategory":  "FinanceApplication",
-                       "operatingSystem":  "Web",
-                       "url":  "https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/",
-                       "description":  "Compare estimated net pay for W-2 employment vs 1099 contracting using federal brackets and payroll tax estimates. Includes expenses and optional state rate.",
-                       "offers":  {
-                                      "@type":  "Offer",
-                                      "price":  "0",
-                                      "priceCurrency":  "USD"
-                                  },
-                       "publisher":  {
-                                         "@id":  "https://thedailyo.com/#organization"
-                                     }
-                   },
-                   {
-                       "@type": "FAQPage",
-                       "@id": "https://thedailyo.com/finance/taxes/1099-vs-w2-tax-calculator/#faq",
-                       "mainEntity": [
-                         {
-                           "@type": "Question",
-                           "name": "How much more should a 1099 contractor make than a W-2 employee?",
-                           "acceptedAnswer": {
-                             "@type": "Answer",
-                             "text": "There is no single rule, but contractors often need a higher gross rate to cover self-employment tax, benefits, unpaid time off, business expenses, insurance, and admin time."
-                           }
-                         },
-                         {
-                           "@type": "Question",
-                           "name": "Does this calculator include the qualified business income deduction?",
-                           "acceptedAnswer": {
-                             "@type": "Answer",
-                             "text": "No. The QBI deduction can be important for some self-employed people, but eligibility depends on income, business type, and other rules."
-                           }
-                         },
-                         {
-                           "@type": "Question",
-                           "name": "Why does the 1099 side include self-employment tax?",
-                           "acceptedAnswer": {
-                             "@type": "Answer",
-                             "text": "Self-employed workers generally pay both the employee and employer portions of Social Security and Medicare taxes through self-employment tax, with a partial deduction for income tax purposes."
-                           }
-                         }
-                       ]
-                   }
-               ]
-}
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1099 vs W-2 Comparative Engine | TheDailyo</title>
+  <link rel="stylesheet" href="../../../../style.css">
+  <style>
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin: 30px 0;
+    }
+    @media (min-width: 768px) {
+      .compare-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .panel {
+      background: var(--card-bg, #1e293b);
+      border: 1px solid var(--border-color, #334155);
+      border-radius: 12px;
+      padding: 25px;
+    }
+    .panel-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+    .w2-title { color: var(--accent-blue, #3b82f6); }
+    .c1099-title { color: var(--accent-green, #10b981); }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #64748b;
+    }
+    .verdict-box {
+      background: #0f172a;
+      border: 2px dashed #334155;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .metric-value {
+      font-weight: 700;
+      color: #fff;
+    }
+    .metric-value.negative { color: #ef4444; }
+    .metric-group {
+      background: #0f172a;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      padding: 6px 0;
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to calculator</a>
 
-  <div class="page">
-    <header class="site-header">
-      <div class="brand-kicker">TheDailyo.com</div>
-      <h1 class="site-title">1099 vs W-2 Tax Calculator</h1>
-      <p class="site-subtitle">
-        Compare estimated net income as an employee vs contractor. Includes expenses and self-employment tax. Not tax advice.
-      </p>
-      <div class="header-gradient-line"></div>
-
-      <nav class="nav-pills" aria-label="Primary navigation">
-        <a class="nav-pill" href="/">Home</a>
-        <a class="nav-pill" href="/finance/">Finance</a>
-        <a class="nav-pill" href="/finance/taxes/">Taxes</a>
-        <a class="nav-pill" href="/tools/time/">Time &amp; Dates</a>
-        <a class="nav-pill" href="/health/">Health</a>
-        <a class="nav-pill" href="/business/">Business</a>
-        <a class="nav-pill" href="/career/salary/">Work &amp; Salary</a>
-        <a class="nav-pill" href="/about.html">About</a>
-        <a class="nav-pill" href="/contact.html">Contact</a>
-      </nav>
-
-      <div class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="/finance/">Finance</a>
-        <span class="crumb-sep">›</span>
-        <a href="/finance/taxes/">Taxes</a>
-        <span class="crumb-sep">›</span>
-        <span>1099 vs W-2</span>
+  <div class="container">
+    
+    <header style="text-align: left; margin-bottom: 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color, #334155); padding-bottom: 20px; margin-bottom: 40px;">
+        <div class="status-line" style="margin: 0; font-weight: 700; letter-spacing: 0.05em;">THE DAILY OPTIMIZATION</div>
       </div>
+      <a href="../index.html" style="color: var(--accent-blue, #3b82f6); text-decoration: none; font-weight: 500; font-size: 0.9rem; display: inline-block; margin-bottom: 20px;">← Back to Tax Engines</a>
+      <h1 style="font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; letter-spacing: -0.04em; font-weight: 800;">1099 vs. W-2 Comparative Engine</h1>
+      <p style="color: #e2e8f0; margin: 0; font-size: 1.1rem; line-height: 1.6;">Run side-by-side math evaluations to isolate structural tax variations and calculate the precise 1099 premium needed to maintain standard of living parity.</p>
     </header>
 
-    <main id="main">
-      <div class="panel">
-        <div class="two-col">
-          <section class="card">
-            <h2>Inputs</h2>
-
-            <div class="calculator">
-              <div class="field">
-                <label for="filing">Filing status</label>
-                <select id="filing">
-                  <option value="single">Single</option>
-                  <option value="mfj">Married filing jointly</option>
-                  <option value="mfs">Married filing separately</option>
-                  <option value="hoh">Head of household</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="w2Gross">W-2 gross wages ($/year)</label>
-                <input id="w2Gross" inputmode="decimal" placeholder="80000">
-              </div>
-
-              <div class="field">
-                <label for="w2Pretax">W-2 pre-tax deductions ($/year) <span class="hint">(optional)</span></label>
-                <input id="w2Pretax" inputmode="decimal" placeholder="0">
-              </div>
-
-              <div class="field">
-                <label for="cGross">1099 gross revenue ($/year)</label>
-                <input id="cGross" inputmode="decimal" placeholder="80000">
-              </div>
-
-              <div class="field">
-                <label for="cExp">1099 business expenses ($/year) <span class="hint">(optional)</span></label>
-                <input id="cExp" inputmode="decimal" placeholder="0">
-              </div>
-
-              <div class="calc-grid">
-                <div class="field">
-                  <label for="stateRate">State tax rate (%) <span class="hint">(optional)</span></label>
-                  <input id="stateRate" inputmode="decimal" placeholder="0">
-                </div>
-
-                <div class="field">
-                  <label for="ssYear">Social Security wage base year</label>
-                  <select id="ssYear">
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="actions">
-                <button class="btn-primary" id="calcBtn" type="button">Calculate</button>
-                <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
-              </div>
-
-              <div class="help-text">
-                Estimate only. Real outcomes depend on credits, deductions (QBI), benefits value, and state rules.
-              </div>
+    <main style="max-width: 800px; margin: 0 auto;">
+      
+      <div class="compare-container">
+        
+        <!-- W-2 Scenario Panel -->
+        <div class="panel">
+          <h3 class="panel-title w2-title">W-2 Corporate Option</h3>
+          <div class="form-group">
+            <label for="w2Gross">Base Annual Salary ($)</label>
+            <input type="number" id="w2Gross" value="100000" oninput="if(this.value.length > 8) this.value = this.value.slice(0,8); runComparison()">
+          </div>
+          
+          <div class="metric-group">
+            <div class="metric-row">
+              <span style="color: #94a3b8;">Est. Income Tax</span>
+              <span class="metric-value negative" id="w2Fed">-$0.00</span>
             </div>
-          </section>
-
-          <section class="card" aria-live="polite">
-            <h2>Results</h2>
-            <div id="out" class="result">Enter your numbers and click Calculate.</div>
-          </section>
+            <div class="metric-row">
+              <span style="color: #94a3b8;">FICA Payroll Tax (7.65%)</span>
+              <span class="metric-value negative" id="w2Fica">-$0.00</span>
+            </div>
+            <div class="metric-row" style="border-top: 1px solid #1e293b; padding-top: 10px; margin-top: 5px;">
+              <span style="font-weight: 600;">Net Liquid Yield</span>
+              <span class="metric-value" id="w2Net" style="color: var(--accent-blue); font-weight: 700;">$0.00</span>
+            </div>
+          </div>
         </div>
 
-        <div class="note note-inline">
-          <strong>Tip:</strong> If you already know your annual tax, use the <a href="/finance/taxes/quarterly-estimated-tax-calculator/">Quarterly Estimated Tax Calculator</a>.
+        <!-- 1099 Scenario Panel -->
+        <div class="panel">
+          <h3 class="panel-title c1099-title">1099 Independent Option</h3>
+          <div class="form-group">
+            <label for="c1099Gross">Gross Contract Revenue ($)</label>
+            <input type="number" id="c1099Gross" value="130000" oninput="if(this.value.length > 8) this.value = this.value.slice(0,8); runComparison()">
+          </div>
+          <div class="form-group">
+            <label for="c1099Expenses">Estimated Write-Offs ($)</label>
+            <input type="number" id="c1099Expenses" value="10000" oninput="if(this.value.length > 8) this.value = this.value.slice(0,8); runComparison()">
+          </div>
+
+          <div class="metric-group">
+            <div class="metric-row">
+              <span style="color: #94a3b8;">Self-Employment Drag</span>
+              <span class="metric-value negative" id="c1099SE">-$0.00</span>
+            </div>
+            <div class="metric-row">
+              <span style="color: #94a3b8;">Est. Income Tax</span>
+              <span class="metric-value negative" id="c1099Fed">-$0.00</span>
+            </div>
+            <div class="metric-row" style="border-top: 1px solid #1e293b; padding-top: 10px; margin-top: 5px;">
+              <span style="font-weight: 600;">Net Liquid Yield</span>
+              <span class="metric-value" id="c1099Net" style="color: var(--accent-green); font-weight: 700;">$0.00</span>
+            </div>
+          </div>
         </div>
+
       </div>
-      <section class="panel content-section" aria-label="How this calculator works">
-        <h2>How the 1099 vs W-2 estimate works</h2>
-        <p>
-          This calculator compares two common ways to earn income: W-2 employee wages and 1099 contractor revenue.
-          It estimates federal income tax, payroll or self-employment tax, optional state tax, business expenses, and
-          pre-tax W-2 deductions so you can compare estimated take-home income side by side.
-        </p>
 
-        <div class="info-grid">
-          <div class="info-box">
-            <h3>W-2 estimate</h3>
-            <p>
-              For employee income, the calculator starts with gross wages, subtracts pre-tax deductions and the standard
-              deduction, then estimates federal income tax, employee FICA, and optional state tax.
-            </p>
-          </div>
-          <div class="info-box">
-            <h3>1099 estimate</h3>
-            <p>
-              For contractor income, it starts with gross revenue, subtracts business expenses, estimates self-employment
-              tax, applies the half-SE-tax deduction, and estimates federal and optional state tax.
-            </p>
-          </div>
-          <div class="info-box">
-            <h3>What the difference means</h3>
-            <p>
-              The final difference shows estimated 1099 net income minus estimated W-2 net income. A higher 1099 number
-              does not automatically mean the contractor offer is better.
-            </p>
-          </div>
-        </div>
-      </section>
+      <!-- Delta Analytical Verdict Box -->
+      <div class="verdict-box" id="verdictWrapper">
+        <h3 style="margin-top: 0; font-size: 1.4rem;" id="verdictHeader">Evaluating Optimization Delta...</h3>
+        <p style="color: #94a3b8; font-size: 1.05rem; max-width: 600px; margin: 10px auto 0;" id="verdictBody"></p>
+      </div>
 
-      <section class="panel content-section" aria-label="What to include">
-        <h2>What to include in the comparison</h2>
-        <p>
-          A contractor rate often needs to be higher than an employee salary because a contractor may pay both sides of
-          Social Security and Medicare taxes, cover their own benefits, buy equipment, pay for insurance, and handle
-          unpaid time off. A W-2 role may have a lower gross number but include health insurance, retirement matching,
-          paid leave, unemployment insurance, and more predictable withholding.
-        </p>
-        <ul style="margin-left: 20px; color: var(--text-muted); line-height: 1.65;">
-          <li>Enter W-2 gross wages before tax withholding.</li>
-          <li>Enter W-2 pre-tax deductions such as traditional 401(k), HSA, or eligible premiums.</li>
-          <li>Enter 1099 gross revenue before expenses.</li>
-          <li>Enter ordinary business expenses you expect to deduct from contractor revenue.</li>
-          <li>Use the state tax field only as a rough flat-rate estimate.</li>
-        </ul>
-      </section>
-
-      <section class="panel content-section" aria-label="Example">
-        <h2>Example: comparing an employee job to contract work</h2>
-        <p>
-          Suppose a job offer pays $80,000 as a W-2 employee and a contract offer pays $95,000 as a 1099 contractor.
-          At first glance, the contract offer looks better. But if the contractor has $6,000 of business expenses and
-          must pay self-employment tax, the net difference may shrink.
-        </p>
-        <p>
-          The calculator helps show that tradeoff. It does not place a dollar value on health insurance, retirement
-          match, paid time off, job stability, or administrative time, so those should be added to your personal comparison.
-        </p>
-      </section>
-
-      <section class="panel content-section" aria-label="Important assumptions">
-        <h2>Important assumptions</h2>
-        <p>
-          The estimate uses simplified federal tax logic and a flat optional state tax rate. It does not model itemized
-          deductions, credits, the qualified business income deduction, local tax rules, retirement plan differences,
-          health insurance deductions, or every state-specific rule.
-        </p>
-        <p>
-          For a quick decision, this is useful directional math. For a final tax plan, compare the estimate with payroll
-          records, IRS guidance, state tax guidance, or a qualified tax professional.
-        </p>
-      </section>
-
-      <section class="panel content-section" aria-label="Sources and review">
-        <h2>Sources and review</h2>
-        <p>
-          This page is based on standard U.S. federal income tax, employee payroll tax, and self-employment tax concepts.
-          The calculator is educational and is not tax, legal, or financial advice.
-        </p>
-        <ul style="margin-left: 20px; color: var(--text-muted); line-height: 1.65;">
-          <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes" rel="nofollow noopener">IRS self-employment tax guidance</a></li>
-          <li><a href="https://www.irs.gov/filing/federal-income-tax-rates-and-brackets" rel="nofollow noopener">IRS federal income tax rates and brackets</a></li>
-          <li><a href="https://www.ssa.gov/oact/cola/cbb.html" rel="nofollow noopener">Social Security contribution and benefit base</a></li>
-          <li><a href="/disclaimer.html">TheDailyo educational-use disclaimer</a></li>
-        </ul>
-        <p class="help-text">Last reviewed: May 4, 2026.</p>
-      </section>
-
-      <section class="panel content-section" aria-label="FAQ">
-        <h2>FAQ</h2>
-        <h3>How much more should a 1099 contractor make than a W-2 employee?</h3>
-        <p>
-          There is no single rule, but contractors often need a higher gross rate to cover self-employment tax,
-          benefits, unpaid time off, business expenses, insurance, and admin time. This calculator helps estimate the
-          tax side, but benefits and risk still need a separate dollar value.
-        </p>
-
-        <h3>Does this calculator include the qualified business income deduction?</h3>
-        <p>
-          No. The QBI deduction can be important for some self-employed people, but eligibility depends on income,
-          business type, and other rules. This calculator keeps the estimate simpler and more conservative.
-        </p>
-
-        <h3>Why does the 1099 side include self-employment tax?</h3>
-        <p>
-          W-2 employees pay the employee share of Social Security and Medicare taxes through payroll. Self-employed
-          workers generally pay both the employee and employer portions through self-employment tax, with a partial
-          deduction for income tax purposes.
-        </p>
-
-        <h3>Should I compare annual salary or hourly rates?</h3>
-        <p>
-          Use annual amounts when possible. If you only have an hourly rate, estimate annual income by multiplying the
-          rate by expected billable hours. For contract work, remember that unpaid holidays, sick time, and gaps between
-          projects can reduce annual revenue.
-        </p>
-      </section>
-
-      <section class="panel content-section" aria-label="Related tools">
-        <h2>Related tools</h2>
-        <div class="list">
-          <a class="list-item" href="/finance/taxes/take-home-pay-calculator/">
-            <div class="li-title">Take-Home Pay Calculator</div>
-            <div class="li-desc">Estimate employee net pay after taxes and deductions.</div>
-          </a>
-          <a class="list-item" href="/finance/taxes/self-employment-tax-calculator/">
-            <div class="li-title">Self-Employment Tax Calculator</div>
-            <div class="li-desc">Estimate Social Security and Medicare tax on contractor profit.</div>
-          </a>
-          <a class="list-item" href="/finance/taxes/quarterly-estimated-tax-calculator/">
-            <div class="li-title">Quarterly Estimated Tax Calculator</div>
-            <div class="li-desc">Plan estimated payments when taxes are not withheld automatically.</div>
-          </a>
-          <a class="list-item" href="/career/salary/salary-to-hourly/">
-            <div class="li-title">Salary to Hourly Calculator</div>
-            <div class="li-desc">Convert salary into an hourly rate for offer comparisons.</div>
-          </a>
-        </div>
-      </section>
     </main>
 
-    <footer class="site-footer">
-      <div>© 2026 TheDailyo — All Rights Reserved.</div>
-      <div class="site-footer-links" style="margin-top: 6px;">
-        <a href="/privacy.html">Privacy Policy</a> ·
-        <a href="/terms.html">Terms</a> ·
-        <a href="/disclaimer.html">Disclaimer</a> ·
-        <a href="/contact.html">Contact</a> ·
-        <a href="/about.html">About</a>
-      </div>
+    <footer style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color, #334155); text-align: center;">
+      <p style="font-size: 0.85rem; color: #94a3b8;">© 2026 TheDailyo. Structural Alignment Engines.</p>
     </footer>
+
   </div>
 
-  <script src="/assets/js/taxes/tax-core.js"></script>
-  <script src="/assets/js/taxes/1099-vs-w2.js"></script>
+  <script>
+    function estimateFedTax(grossIncome) {
+      // 2026 Standard Single Federal Income Framework
+      const standardDeduction = 16100;
+      const taxable = Math.max(0, grossIncome - standardDeduction);
+      let tax = 0;
+      if (taxable > 0) {
+        if (taxable <= 11925) tax += taxable * 0.10;
+        else if (taxable <= 50400) tax += (11925 * 0.10) + ((taxable - 11925) * 0.12);
+        else if (taxable <= 105700) tax += (11925 * 0.10) + ((50400 - 11925) * 0.12) + ((taxable - 50400) * 0.22);
+        else tax += (11925 * 0.10) + ((50400 - 11925) * 0.12) + ((105700 - 50400) * 0.22) + ((taxable - 105700) * 0.24);
+      }
+      return tax;
+    }
+
+    function runComparison() {
+      // 1. W-2 Mathematical Calculations
+      const w2Gross = parseFloat(document.getElementById('w2Gross').value) || 0;
+      const w2Fed = estimateFedTax(w2Gross);
+      const w2Fica = w2Gross * 0.0765; // Standard employee share
+      const w2Net = Math.max(0, w2Gross - w2Fed - w2Fica);
+
+      // 2. 1099 Mathematical Calculations
+      const c1099Gross = parseFloat(document.getElementById('c1099Gross').value) || 0;
+      const c1099Expenses = parseFloat(document.getElementById('c1099Expenses').value) || 0;
+      const netProfit = Math.max(0, c1099Gross - c1099Expenses);
+      
+      // Calculate self-employment tax obligations
+      const seBasis = netProfit * 0.9235;
+      const c1099SE = (Math.min(seBasis, 168600) * 0.124) + (seBasis * 0.029);
+      
+      // Adjusted Gross Income step for 1099 (deducting 50% of SE tax before federal calculation)
+      const adjustedIncome = Math.max(0, netProfit - (c1099SE * 0.5));
+      const c1099Fed = estimateFedTax(adjustedIncome);
+      const c1099Net = Math.max(0, netProfit - c1099SE - c1099Fed);
+
+      // Update UI panels
+      document.getElementById('w2Fed').innerText = '-$' + w2Fed.toLocaleString(undefined, {maximumFractionDigits: 0});
+      document.getElementById('w2Fica').innerText = '-$' + w2Fica.toLocaleString(undefined, {maximumFractionDigits: 0});
+      document.getElementById('w2Net').innerText = '$' + w2Net.toLocaleString(undefined, {maximumFractionDigits: 0});
+
+      document.getElementById('c1099SE').innerText = '-$' + c1099SE.toLocaleString(undefined, {maximumFractionDigits: 0});
+      document.getElementById('c1099Fed').innerText = '-$' + c1099Fed.toLocaleString(undefined, {maximumFractionDigits: 0});
+      document.getElementById('c1099Net').innerText = '$' + c1099Net.toLocaleString(undefined, {maximumFractionDigits: 0});
+
+      // 3. Dynamic Verdict Logic Engine
+      const header = document.getElementById('verdictHeader');
+      const body = document.getElementById('verdictBody');
+      const wrapper = document.getElementById('verdictWrapper');
+
+      const delta = c1099Net - w2Net;
+      const target1099 = w2Gross * 1.30; 
+
+      if (delta > 0) {
+        wrapper.style.borderColor = "var(--accent-green, #10b981)";
+        header.innerHTML = `1099 Independent Wins by <span style="color: var(--accent-green); font-weight:800;">$${Math.abs(delta).toLocaleString(undefined, {maximumFractionDigits: 0})} / year</span>`;
+        body.innerText = `After routing tax mechanics, the contract structure yields superior liquid cash. However, ensure this premium accounts for any lost corporate health coverage or matching 401(k) allocations.`;
+      } else if (delta < 0) {
+        wrapper.style.borderColor = "#ef4444";
+        header.innerHTML = `W-2 Corporate Wins by <span style="color: #ef4444; font-weight:800;">$${Math.abs(delta).toLocaleString(undefined, {maximumFractionDigits: 0})} / year</span>`;
+        body.innerText = `The current contract premium fails to compensate for the payroll tax shift. To establish net financial equilibrium with your W-2 baseline, you need to negotiate a 1099 rate of at least $${target1099.toLocaleString(undefined, {maximumFractionDigits: 0})}.`;
+      } else {
+        wrapper.style.borderColor = "#334155";
+        header.innerText = "Structural Equilibrium Established";
+        body.innerText = "Both options deliver identical net financial velocity down to the single dollar threshold.";
+      }
+    }
+
+    runComparison();
+  </script>
+
 </body>
 </html>

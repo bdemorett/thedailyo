@@ -1,920 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Self-Employment Tax Calculator — TheDailyo</title>
-    <meta
-      name="description"
-      content="Estimate self-employment tax from Schedule C net profit using the 92.35% net earnings adjustment, Social Security wage base cap, Medicare tax, and half-SE-tax deduction."
-    />
-    <link
-      rel="canonical"
-      href="https://thedailyo.com/finance/taxes/self-employment-tax-calculator/"
-    />
-    <meta name="robots" content="index,follow" />
-    <!-- GA4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-LW4W6PG84Q");
-    </script>
-    <!-- AdSense -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
-      crossorigin="anonymous"
-    ></script>
-    <style>
-      .two-col {
-        margin-top: 18px;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-        align-items: start;
-      }
-      .panel {
-        background: var(--bg-card);
-        border-radius: var(--radius-lg);
-        border: 1px solid var(--border-subtle);
-        padding: 18px;
-        box-shadow: var(--shadow-soft);
-      }
-      .panel h2 {
-        font-size: 1.1rem;
-        font-weight: 900;
-        margin-bottom: 8px;
-        color: var(--text-main);
-      }
-      .form-grid {
-        margin-top: 12px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      @media (max-width: 760px) {
-        .form-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      label {
-        display: block;
-        font-size: 0.9rem;
-        font-weight: 900;
-        color: var(--text-main);
-        margin-bottom: 6px;
-      }
-      input,
-      select {
-        width: 100%;
-        padding: 10px 12px;
-        border-radius: 14px;
-        border: 1px solid rgba(15, 23, 42, 0.18);
-        background: #ffffff;
-        color: var(--text-main);
-        font-size: 0.95rem;
-        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
-      }
-      .actions {
-        margin-top: 14px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-      .btn-primary {
-        padding: 10px 18px;
-        border-radius: 999px;
-        border: none;
-        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-        color: #fff;
-        font-weight: 900;
-        cursor: pointer;
-        box-shadow: 0 14px 28px rgba(79, 124, 255, 0.25);
-        transition:
-          transform 0.12s ease,
-          filter 0.12s ease;
-      }
-      .btn-primary:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.03);
-      }
-      .btn-ghost {
-        padding: 10px 18px;
-        border-radius: 999px;
-        border: 1px solid var(--border-subtle);
-        background: #ffffff;
-        color: var(--text-main);
-        font-weight: 900;
-        cursor: pointer;
-        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
-        transition:
-          transform 0.12s ease,
-          border-color 0.12s ease,
-          box-shadow 0.12s ease;
-      }
-      .btn-ghost:hover {
-        transform: translateY(-1px);
-        border-color: rgba(79, 124, 255, 0.35);
-        box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
-      }
-      .warn {
-        margin-top: 12px;
-        padding: 12px 14px;
-        border-radius: 14px;
-        background: rgba(255, 82, 82, 0.1);
-        border: 1px solid rgba(255, 82, 82, 0.25);
-        color: var(--text-main);
-        font-weight: 850;
-        display: none;
-        line-height: 1.55;
-      }
-      .result {
-        margin-top: 14px;
-        display: none;
-      }
-      .result h3 {
-        font-size: 1.02rem;
-        font-weight: 950;
-        color: var(--text-main);
-        margin-bottom: 10px;
-      }
-      .kpi-grid {
-        margin-top: 10px;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-      @media (max-width: 760px) {
-        .kpi-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      .kpi {
-        background: #ffffff;
-        border-radius: 16px;
-        border: 1px solid var(--border-subtle);
-        padding: 14px;
-        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.08);
-      }
-      .kpi-label {
-        font-size: 0.88rem;
-        color: var(--text-muted);
-        font-weight: 850;
-      }
-      .kpi-value {
-        margin-top: 6px;
-        font-size: 1.1rem;
-        font-weight: 950;
-        color: var(--text-main);
-      }
-      .table-wrap {
-        margin-top: 12px;
-        overflow: auto;
-        border-radius: 16px;
-        border: 1px solid var(--border-subtle);
-        background: #ffffff;
-        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.06);
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 760px;
-        background: #ffffff;
-      }
-      th,
-      td {
-        padding: 10px 12px;
-        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
-        font-size: 0.9rem;
-        text-align: right;
-        white-space: nowrap;
-      }
-      th {
-        position: sticky;
-        top: 0;
-        background: #ffffff;
-        color: var(--text-main);
-        font-weight: 950;
-        z-index: 1;
-      }
-      td:first-child,
-      th:first-child {
-        text-align: left;
-      }
-      tbody tr:hover td {
-        background: rgba(79, 124, 255, 0.06);
-      }
-      .small-note {
-        margin-top: 10px;
-        color: var(--text-muted);
-        font-weight: 800;
-        font-size: 0.9rem;
-        line-height: 1.55;
-      }
-      .subtle {
-        font-weight: 850;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-      }
-      details.faq {
-        margin-top: 10px;
-        border: 1px solid var(--border-subtle);
-        border-radius: 14px;
-        padding: 10px 12px;
-        background: #ffffff;
-        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
-      }
-      details.faq summary {
-        cursor: pointer;
-        font-weight: 950;
-        color: var(--text-main);
-      }
-      details.faq p {
-        margin-top: 8px;
-        color: var(--text-muted);
-        line-height: 1.6;
-        font-weight: 800;
-      }
-      .formula-box {
-        margin-top: 12px;
-        padding: 14px;
-        border-radius: 14px;
-        border: 1px solid var(--border-subtle);
-        background: #ffffff;
-        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
-        color: var(--text-main);
-        line-height: 1.65;
-      }
-      .mono {
-        font-family:
-          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", "Courier New", monospace;
-      }
-    </style>
-  
-  <script type="application/ld+json">
-{
-    "@context":  "https://schema.org",
-    "@graph":  [
-                   {
-                       "@type":  "WebPage",
-                       "@id":  "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/#webpage",
-                       "url":  "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/",
-                       "name":  "Self-Employment Tax Calculator — TheDailyo",
-                       "description":  "Estimate self-employment tax from Schedule C net profit using the 92.35% net earnings adjustment, Social Security wage base cap, Medicare tax, and half-SE-tax deduction.",
-                       "isPartOf":  {
-                                        "@id":  "https://thedailyo.com/#website"
-                                    },
-                       "publisher":  {
-                                         "@id":  "https://thedailyo.com/#organization"
-                                     }
-                   },
-                   {
-                       "@type":  "BreadcrumbList",
-                       "@id":  "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/#breadcrumb",
-                       "itemListElement":  [
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  1,
-                                                   "name":  "Home",
-                                                   "item":  "https://thedailyo.com/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  2,
-                                                   "name":  "Finance",
-                                                   "item":  "https://thedailyo.com/finance/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  3,
-                                                   "name":  "Taxes",
-                                                   "item":  "https://thedailyo.com/finance/taxes/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  4,
-                                                   "name":  "Self Employment Tax Calculator",
-                                                   "item":  "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/"
-                                               }
-                                           ]
-                   },
-                   {
-                       "@type":  "SoftwareApplication",
-                       "@id":  "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/#calculator",
-                       "name":  "Self-Employment Tax Calculator — TheDailyo",
-                       "applicationCategory":  "FinanceApplication",
-                       "operatingSystem":  "Web",
-                       "url":  "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/",
-                       "description":  "Estimate self-employment tax from Schedule C net profit using the 92.35% net earnings adjustment, Social Security wage base cap, Medicare tax, and half-SE-tax deduction.",
-                       "offers":  {
-                                      "@type":  "Offer",
-                                      "price":  "0",
-                                      "priceCurrency":  "USD"
-                                  },
-                       "publisher":  {
-                                         "@id":  "https://thedailyo.com/#organization"
-                                     }
-                   },
-                   {
-                       "@type": "FAQPage",
-                       "@id": "https://thedailyo.com/finance/taxes/self-employment-tax-calculator/#faq",
-                       "mainEntity": [
-                         {
-                           "@type": "Question",
-                           "name": "Is self-employment tax the same as income tax?",
-                           "acceptedAnswer": {
-                             "@type": "Answer",
-                             "text": "No. Self-employment tax covers Social Security and Medicare taxes for self-employed income. Regular federal income tax is separate."
-                           }
-                         },
-                         {
-                           "@type": "Question",
-                           "name": "Do business expenses reduce self-employment tax?",
-                           "acceptedAnswer": {
-                             "@type": "Answer",
-                             "text": "Yes. Ordinary business expenses can reduce net profit, and net profit is the starting point for this estimate."
-                           }
-                         },
-                         {
-                           "@type": "Question",
-                           "name": "Why enter W-2 wages?",
-                           "acceptedAnswer": {
-                             "@type": "Answer",
-                             "text": "W-2 wages can use up part or all of the Social Security wage base, which can change the Social Security portion of self-employment tax."
-                           }
-                         }
-                       ]
-                   }
-               ]
-}
-  </script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Employment Tax Auditor | TheDailyo</title>
+  <link rel="stylesheet" href="../../../../style.css">
+  <style>
+    .calc-box {
+      background: var(--card-bg, #1e293b);
+      border: 1px solid var(--border-color, #334155);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+    .form-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+    .form-group {
+      flex: 1;
+      min-width: 250px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      box-sizing: border-box;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent-blue, #3b82f6);
+    }
+    .results-display {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 25px;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #1e293b;
+    }
+    .result-row:last-child {
+      border-bottom: none;
+      padding-top: 15px;
+      margin-top: 5px;
+    }
+    .result-label {
+      color: #94a3b8;
+    }
+    .result-value {
+      font-weight: 700;
+      color: #fff;
+    }
+    .result-value.drag {
+      color: #ef4444;
+    }
+    .result-value.net {
+      color: var(--accent-green, #10b981);
+      font-size: 1.3rem;
+    }
+  </style>
 </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to calculator</a>
-    <div class="page">
-      <header class="site-header">
-        <div class="brand-kicker">TheDailyo.com</div>
-        <h1 class="site-title">Self-Employment Tax Calculator</h1>
-        <p class="site-subtitle">
-          Estimate self-employment tax from net profit and see the half-SE-tax
-          deduction estimate.
-        </p>
-        <div class="header-gradient-line"></div>
-        <nav class="nav-pills" aria-label="Primary navigation">
-          <a class="nav-pill" href="/">Home</a>
-          <a class="nav-pill" href="/finance/">Finance</a>
-          <a class="nav-pill" href="/career/">Career &amp; Income</a>
-          <a class="nav-pill" href="/tools/">Tools</a>
-          <a class="nav-pill" href="/health/">Health</a>
-          <a class="nav-pill" href="/business/">Business</a>
-          <a class="nav-pill" href="/about.html">About</a>
-          <a class="nav-pill" href="/contact.html">Contact</a>
-        </nav>
-        <div class="breadcrumbs" aria-label="Breadcrumb">
-          <a href="/">Home</a> <span class="crumb-sep">›</span>
-          <a href="/finance/">Finance</a> <span class="crumb-sep">›</span>
-          <a href="/finance/taxes/">Taxes</a>
-          <span class="crumb-sep">›</span> Self-Employment Tax Calculator
-        </div>
-      </header>
-      <main id="main">
-        <h2 class="section-title">Calculator</h2>
-        <p class="section-subtitle">
-          Estimate Social Security and Medicare taxes on self-employment income
-          using the usual 92.35% net earnings adjustment and the Social Security
-          wage base cap.
-        </p>
-        <div class="two-col">
-          <section class="panel" aria-label="Calculator">
-            <h2>Inputs</h2>
-            <div class="form-grid">
-              <div>
-                <label for="profit">Net profit (Schedule C) ($)</label>
-                <input
-                  id="profit"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  value="50000"
-                  inputmode="decimal"
-                />
-                <div class="small-note">
-                  Use estimated annual net profit after business expenses.
-                </div>
-              </div>
-              <div>
-                <label for="ssYear">Social Security wage base year</label>
-                <select id="ssYear">
-                  <option value="2025" selected>2025</option>
-                  <option value="2026">2026</option>
-                </select>
-                <div class="small-note">
-                  Used for the Social Security portion cap.
-                </div>
-              </div>
-              <div>
-                <label for="otherWages"
-                  >Optional W-2 wages already subject to Social Security
-                  ($)</label
-                >
-                <input
-                  id="otherWages"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  value="0"
-                  inputmode="decimal"
-                />
-                <div class="small-note">
-                  Optional — helps if you also had employee wages during the
-                  year.
-                </div>
-              </div>
-              <div>
-                <label for="decimals">Decimals</label>
-                <select id="decimals">
-                  <option value="0">0</option>
-                  <option value="1" selected>1</option>
-                  <option value="2">2</option>
-                </select>
-                <div class="small-note">Controls display rounding only.</div>
-              </div>
-            </div>
-            <div class="actions">
-              <button class="btn-primary" id="calcBtn" type="button">
-                Calculate
-              </button>
-              <button class="btn-ghost" id="copyBtn" type="button">
-                Copy results
-              </button>
-              <button class="btn-ghost" id="shareBtn" type="button">
-                Copy share link
-              </button>
-              <button class="btn-ghost" id="resetBtn" type="button">
-                Reset
-              </button>
-            </div>
-            <div class="warn" id="warn" aria-live="polite"></div>
-            <div class="result" id="result">
-              <h3>Results</h3>
-              <div class="kpi-grid">
-                <div class="kpi">
-                  <div class="kpi-label">Estimated SE tax</div>
-                  <div class="kpi-value" id="kSeTax">—</div>
-                </div>
-                <div class="kpi">
-                  <div class="kpi-label">Half-SE-tax deduction</div>
-                  <div class="kpi-value" id="kDeduction">—</div>
-                </div>
-                <div class="kpi">
-                  <div class="kpi-label">Social Security portion</div>
-                  <div class="kpi-value" id="kSsTax">—</div>
-                </div>
-                <div class="kpi">
-                  <div class="kpi-label">Medicare portion</div>
-                  <div class="kpi-value" id="kMedTax">—</div>
-                </div>
-              </div>
-              <div class="formula-box" id="summaryBox">—</div>
-              <div
-                class="table-wrap"
-                aria-label="Self-employment tax breakdown table"
-              >
-                <table id="resultsTable">
-                  <thead>
-                    <tr>
-                      <th>Metric</th>
-                      <th>Value</th>
-                      <th>Notes</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tbody"></tbody>
-                </table>
-              </div>
-              <div class="small-note subtle" id="noteLine">
-                Estimate only. Does not include federal income tax, QBI
-                deduction, credits, Additional Medicare Tax, or state tax.
-              </div>
-              <details class="faq">
-                <summary>How is self-employment tax calculated?</summary>
-                <p>
-                  First, net profit is multiplied by
-                  <span class="mono">92.35%</span> to estimate net earnings
-                  subject to SE tax. Then the Social Security part is taxed at
-                  <span class="mono">12.4%</span> up to the wage base, and
-                  Medicare is taxed at <span class="mono">2.9%</span>.
-                </p>
-              </details>
-              <details class="faq">
-                <summary>What is the half-SE-tax deduction?</summary>
-                <p>
-                  You can usually deduct half of your self-employment tax as an
-                  adjustment to income. This does not reduce SE tax itself, but
-                  it may reduce income tax.
-                </p>
-              </details>
-              <details class="faq">
-                <summary>Does this include Additional Medicare Tax?</summary>
-                <p>
-                  No. This calculator keeps the estimate simple and does not add
-                  the high-income Additional Medicare Tax.
-                </p>
-              </details>
-            </div>
-          </section>
-        </div>
-        <section class="panel content-section" aria-label="How this calculator works">
-          <h2>How this self-employment tax calculator works</h2>
-          <p>
-            This calculator estimates self-employment tax from annual net profit. It multiplies net profit by 92.35%
-            to estimate net earnings subject to self-employment tax, applies the Social Security portion up to the wage
-            base, applies Medicare tax to net earnings, and shows the estimated half-SE-tax deduction.
-          </p>
+<body>
 
-          <div class="info-grid">
-            <div class="info-box">
-              <h3>Net profit</h3>
-              <p>
-                Use estimated Schedule C net profit after ordinary business expenses. This is different from gross
-                revenue because expenses reduce the profit used for the estimate.
-              </p>
-            </div>
-            <div class="info-box">
-              <h3>Social Security portion</h3>
-              <p>
-                The Social Security part is estimated at 12.4% of net earnings, limited by the Social Security wage
-                base after any W-2 wages already counted.
-              </p>
-            </div>
-            <div class="info-box">
-              <h3>Medicare portion</h3>
-              <p>
-                The Medicare part is estimated at 2.9% of net earnings in this simplified calculator. Additional
-                Medicare Tax is not included.
-              </p>
-            </div>
+  <div class="container">
+    
+    <header style="text-align: left; margin-bottom: 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color, #334155); padding-bottom: 20px; margin-bottom: 40px;">
+        <div class="status-line" style="margin: 0; font-weight: 700; letter-spacing: 0.05em;">THE DAILY OPTIMIZATION</div>
+      </div>
+      <a href="../index.html" style="color: var(--accent-blue, #3b82f6); text-decoration: none; font-weight: 500; font-size: 0.9rem; display: inline-block; margin-bottom: 20px;">← Back to Tax Engines</a>
+      <h1 style="font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; letter-spacing: -0.04em; font-weight: 800;">Advanced SE Drag Auditor</h1>
+      <p style="color: #e2e8f0; margin: 0; font-size: 1.1rem; line-height: 1.6;">Factor write-offs against gross independent revenue to isolate your true net business profit and self-employment payroll tax metrics.</p>
+    </header>
+
+    <main style="max-width: 740px; margin: 0 auto;">
+      
+      <div class="calc-box">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rawRevenue">Gross 1099 Income ($)</label>
+            <input type="number" id="rawRevenue" value="100000" placeholder="e.g. 100000" oninput="auditSEDrag()">
           </div>
-        </section>
-
-        <section class="panel content-section" aria-label="Net profit explanation">
-          <h2>What net profit means</h2>
-          <p>
-            Net profit is business income after business expenses. For many sole proprietors and freelancers, this is
-            the profit number that flows from Schedule C. If you earned $60,000 from clients and had $10,000 of ordinary
-            business expenses, your estimated net profit would be $50,000.
-          </p>
-          <p>
-            Do not enter gross revenue unless you have no business expenses. If you enter revenue instead of profit, the
-            calculator may overstate self-employment tax.
-          </p>
-        </section>
-
-        <section class="panel content-section" aria-label="92.35 percent adjustment">
-          <h2>Why 92.35% of net profit is used</h2>
-          <p>
-            Self-employment tax is generally calculated on net earnings from self-employment, not directly on 100% of
-            net profit. A common simplified way to estimate net earnings is to multiply net profit by 92.35%.
-          </p>
-          <p>
-            The calculator uses that 92.35% adjustment before applying the Social Security and Medicare portions. This
-            mirrors the usual self-employment tax worksheet structure, while keeping the page simple enough for quick
-            planning.
-          </p>
-        </section>
-
-        <section class="panel content-section" aria-label="Half SE deduction">
-          <h2>What the half-SE-tax deduction means</h2>
-          <p>
-            The half-SE-tax deduction is an income-tax deduction equal to half of estimated self-employment tax. It does
-            not reduce self-employment tax itself. Instead, it may reduce income subject to regular federal income tax.
-          </p>
-          <p>
-            This calculator shows the deduction estimate separately because it is useful when comparing 1099 income,
-            estimating federal income tax, or planning quarterly payments.
-          </p>
-        </section>
-
-        <section class="panel content-section" aria-label="Example">
-          <h2>Example: estimating self-employment tax</h2>
-          <p>
-            If a freelancer has $50,000 of net profit, the calculator first estimates net earnings by multiplying by
-            92.35%. It then applies the 12.4% Social Security portion up to the wage base and the 2.9% Medicare portion
-            to net earnings. The result is the estimated self-employment tax.
-          </p>
-          <p>
-            If that freelancer also had W-2 wages during the year, those wages can reduce the remaining Social Security
-            wage base available for self-employment income. That is why the calculator includes an optional W-2 wages
-            field.
-          </p>
-        </section>
-
-        <section class="panel content-section" aria-label="What this excludes">
-          <h2>What this estimate does not include</h2>
-          <p>
-            This calculator estimates Social Security and Medicare self-employment tax. It does not include regular
-            federal income tax, state income tax, local tax, the qualified business income deduction, tax credits,
-            retirement contributions, health insurance deductions, Additional Medicare Tax, or entity-specific tax rules.
-          </p>
-          <p>
-            For a fuller contractor estimate, pair this page with the 1099 vs W-2 calculator, federal income tax
-            calculator, and quarterly estimated tax calculator.
-          </p>
-        </section>
-
-        <section class="panel content-section" aria-label="Sources and review">
-          <h2>Sources and review</h2>
-          <p>
-            This page is based on general U.S. self-employment tax concepts for educational planning. Always confirm
-            important tax decisions with official IRS guidance or a qualified tax professional.
-          </p>
-          <ul style="margin-left: 20px; color: var(--text-muted); line-height: 1.65;">
-            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes" rel="nofollow noopener">IRS self-employment tax guidance</a></li>
-            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-se-form-1040" rel="nofollow noopener">IRS Schedule SE information</a></li>
-            <li><a href="https://www.ssa.gov/oact/cola/cbb.html" rel="nofollow noopener">Social Security contribution and benefit base</a></li>
-            <li><a href="/disclaimer.html">TheDailyo educational-use disclaimer</a></li>
-          </ul>
-          <p class="help-text">Last reviewed: May 4, 2026.</p>
-        </section>
-
-        <section class="panel content-section" aria-label="Additional FAQ">
-          <h2>FAQ</h2>
-          <h3>Is self-employment tax the same as income tax?</h3>
-          <p>
-            No. Self-employment tax covers Social Security and Medicare taxes for self-employed income. Regular federal
-            income tax is separate and may also apply to the same business profit.
-          </p>
-
-          <h3>Do business expenses reduce self-employment tax?</h3>
-          <p>
-            Yes, ordinary business expenses can reduce net profit, and net profit is the starting point for this
-            estimate. That is why the calculator asks for net profit rather than gross revenue.
-          </p>
-
-          <h3>Why enter W-2 wages?</h3>
-          <p>
-            W-2 wages can use up part or all of the Social Security wage base. If you had employee wages and
-            self-employed income in the same year, entering W-2 wages can make the Social Security portion estimate
-            more realistic.
-          </p>
-
-          <h3>Does this calculate quarterly payments?</h3>
-          <p>
-            No. This page estimates self-employment tax only. Use the quarterly estimated tax calculator to split an
-            annual tax estimate into simple quarterly payments.
-          </p>
-        </section>
-
-        <section class="panel content-section" aria-label="Related tools">
-          <h2>Related tools</h2>
-          <div class="list">
-            <a class="list-item" href="/finance/taxes/1099-vs-w2-tax-calculator/">
-              <div class="li-title">1099 vs W-2 Tax Calculator</div>
-              <div class="li-desc">Compare employee and contractor take-home estimates.</div>
-            </a>
-            <a class="list-item" href="/finance/taxes/quarterly-estimated-tax-calculator/">
-              <div class="li-title">Quarterly Estimated Tax Calculator</div>
-              <div class="li-desc">Plan simple federal estimated tax payments.</div>
-            </a>
-            <a class="list-item" href="/finance/taxes/federal-income-tax-calculator/">
-              <div class="li-title">Federal Income Tax Calculator</div>
-              <div class="li-desc">Estimate regular federal income tax from taxable income.</div>
-            </a>
-            <a class="list-item" href="/finance/taxes/guides/what-is-self-employment-tax/">
-              <div class="li-title">What Is Self-Employment Tax?</div>
-              <div class="li-desc">Learn the basics behind the calculator.</div>
-            </a>
+          <div class="form-group">
+            <label for="writeOffs">Annual Business Expenses ($)</label>
+            <input type="number" id="writeOffs" value="15000" placeholder="e.g. 15000" oninput="auditSEDrag()">
           </div>
-        </section>
-      </main>
-      <footer class="site-footer">
-        <div>© 2026 TheDailyo — All Rights Reserved.</div>
-        <div class="site-footer-links" style="margin-top: 6px">
-          <a href="/privacy.html">Privacy Policy</a> ·
-          <a href="/terms.html">Terms</a> ·
-          <a href="/disclaimer.html">Disclaimer</a> ·
-          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
         </div>
-      </footer>
-    </div>
-    <script>
-      const el = (id) => document.getElementById(id);
-      const wageBases = { 2025: 176100, 2026: 181800 };
-      function num(id) {
-        const v = Number(el(id).value);
-        return Number.isFinite(v) ? v : NaN;
-      }
-      function setWarn(msg) {
-        const w = el("warn");
-        if (!msg) {
-          w.style.display = "none";
-          w.textContent = "";
-          return;
-        }
-        w.style.display = "block";
-        w.textContent = msg;
-      }
-      function money(n, decimals = 2) {
-        if (!Number.isFinite(n)) return "—";
-        return n.toLocaleString(undefined, {
-          style: "currency",
-          currency: "USD",
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals,
-        });
-      }
-      function fmtNum(n, decimals = 2) {
-        if (!Number.isFinite(n)) return "—";
-        return n.toLocaleString(undefined, {
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals,
-        });
-      }
-      function buildShareURL(state) {
-        const sp = new URLSearchParams();
-        Object.entries(state).forEach(([k, v]) => {
-          if (v === null || typeof v === "undefined" || v === "") return;
-          sp.set(k, String(v));
-        });
-        return `${location.origin}${location.pathname}?${sp.toString()}`;
-      }
-      function applyParams() {
-        const sp = new URLSearchParams(location.search);
-        if (sp.has("p")) el("profit").value = sp.get("p");
-        if (sp.has("y")) el("ssYear").value = sp.get("y");
-        if (sp.has("w")) el("otherWages").value = sp.get("w");
-        if (sp.has("d")) el("decimals").value = sp.get("d");
-      }
-      function compute() {
-        const profit = num("profit");
-        const year = el("ssYear").value;
-        const otherWages = Math.max(0, num("otherWages") || 0);
-        const decimals = Number(el("decimals").value);
-        const wageBase = wageBases[year];
-        if (!(profit >= 0)) {
-          el("result").style.display = "none";
-          setWarn("Enter a valid net profit of $0 or more.");
-          return null;
-        }
-        if (!Number.isFinite(wageBase)) {
-          el("result").style.display = "none";
-          setWarn("Choose a valid wage base year.");
-          return null;
-        }
-        const netEarnings = profit * 0.9235;
-        const remainingSsBase = Math.max(0, wageBase - otherWages);
-        const ssTaxable = Math.min(netEarnings, remainingSsBase);
-        const ssTax = ssTaxable * 0.124;
-        const medTax = netEarnings * 0.029;
-        const seTax = ssTax + medTax;
-        const halfDeduction = seTax / 2;
-        setWarn("");
-        el("result").style.display = "block";
-        el("kSeTax").textContent = money(seTax, decimals);
-        el("kDeduction").textContent = money(halfDeduction, decimals);
-        el("kSsTax").textContent = money(ssTax, decimals);
-        el("kMedTax").textContent = money(medTax, decimals);
-        el("summaryBox").innerHTML =
-          `<strong>Summary:</strong> With <strong>${money(profit, 0)}</strong> of net profit, estimated net earnings subject to SE tax are <strong>${money(netEarnings, 0)}</strong>. ` +
-          `That produces about <strong>${money(seTax, decimals)}</strong> of self-employment tax and an estimated <strong>${money(halfDeduction, decimals)}</strong> above-the-line deduction.`;
-        const rows = [
-          [
-            "Net profit",
-            money(profit, decimals),
-            "Annual Schedule C profit after expenses.",
-          ],
-          [
-            "Net earnings subject to SE tax",
-            money(netEarnings, decimals),
-            "Calculated as net profit × 92.35%.",
-          ],
-          [
-            "Social Security wage base",
-            money(wageBase, 0),
-            `Using ${year} wage base.`,
-          ],
-          [
-            "Other wages already counted",
-            money(otherWages, decimals),
-            "Optional W-2 wages already subject to Social Security tax.",
-          ],
-          [
-            "Remaining Social Security wage base",
-            money(remainingSsBase, decimals),
-            "Wage base left for self-employment income.",
-          ],
-          [
-            "Social Security-taxable earnings",
-            money(ssTaxable, decimals),
-            "Lesser of net earnings and remaining wage base.",
-          ],
-          [
-            "Social Security tax (12.4%)",
-            money(ssTax, decimals),
-            "Applied only up to the cap.",
-          ],
-          [
-            "Medicare tax (2.9%)",
-            money(medTax, decimals),
-            "Applied to all net earnings in this simplified estimate.",
-          ],
-          [
-            "Estimated self-employment tax",
-            money(seTax, decimals),
-            "Social Security + Medicare.",
-          ],
-          [
-            "Half-SE-tax deduction",
-            money(halfDeduction, decimals),
-            "Possible income-tax deduction estimate.",
-          ],
-        ];
-        const tbody = el("tbody");
-        tbody.innerHTML = "";
-        rows.forEach((row) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = ` <td>${row[0]}</td> <td><strong>${row[1]}</strong></td> <td style="text-align:left;">${row[2]}</td> `;
-          tbody.appendChild(tr);
-        });
-        return {
-          share: buildShareURL({
-            p: profit,
-            y: year,
-            w: otherWages,
-            d: decimals,
-          }),
-        };
-      }
-      function tableToTSV(table) {
-        const rows = Array.from(table.querySelectorAll("tr"));
-        return rows
-          .map((tr) => {
-            const cells = Array.from(tr.querySelectorAll("th,td"));
-            return cells
-              .map((td) => td.textContent.replace(/\s+/g, " ").trim())
-              .join("\t");
-          })
-          .join("\n");
-      }
-      async function copyTable() {
-        const out = compute();
-        if (!out) return;
-        try {
-          await navigator.clipboard.writeText(tableToTSV(el("resultsTable")));
-          setWarn("Copied results table to clipboard.");
-          setTimeout(() => setWarn(""), 1600);
-        } catch {
-          setWarn("Copy failed (browser permission).");
-        }
-      }
-      async function copyShare() {
-        const out = compute();
-        if (!out) return;
-        try {
-          await navigator.clipboard.writeText(out.share);
-          setWarn("Copied share link to clipboard.");
-          setTimeout(() => setWarn(""), 1600);
-        } catch {
-          setWarn("Copy failed. You can copy the URL from the address bar.");
-        }
-      }
-      function resetAll() {
-        el("profit").value = "50000";
-        el("ssYear").value = "2025";
-        el("otherWages").value = "0";
-        el("decimals").value = "1";
-        el("result").style.display = "none";
-        el("tbody").innerHTML = "";
-        el("summaryBox").innerHTML = "—";
-        el("kSeTax").textContent = "—";
-        el("kDeduction").textContent = "—";
-        el("kSsTax").textContent = "—";
-        el("kMedTax").textContent = "—";
-        setWarn("");
-        history.replaceState({}, "", location.pathname);
-      }
-      el("calcBtn").addEventListener("click", compute);
-      el("copyBtn").addEventListener("click", copyTable);
-      el("shareBtn").addEventListener("click", copyShare);
-      el("resetBtn").addEventListener("click", resetAll);
-      ["profit", "ssYear", "otherWages", "decimals"].forEach((id) => {
-        const node = el(id);
-        const evt = node.tagName === "SELECT" ? "change" : "input";
-        node.addEventListener(evt, () => {
-          compute();
-        });
-      });
-      applyParams();
-      compute();
-    </script>
-  </body>
+
+        <div class="results-display">
+          <div class="result-row">
+            <span class="result-label">Net Business Profit (Schedule C Baseline)</span>
+            <span class="result-value" id="netProfit">$0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Taxable SE Net Basis (92.35% of Profit)</span>
+            <span class="result-value" id="seBasis">$0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Social Security Obligation (12.4% Capped)</span>
+            <span class="result-value drag" id="ssTax">-$0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Medicare Obligation (2.9%)</span>
+            <span class="result-value drag" id="medTax">-$0.00</span>
+          </div>
+          <div class="result-row" style="border-top: 2px solid #334155;">
+            <span class="result-label" style="font-weight: 700; color: #fff;">Total Self-Employment Tax Drag</span>
+            <span class="result-value drag" id="totalSEDrag" style="font-size: 1.1rem; font-weight: 800;">-$0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label" style="font-weight: 700; color: #fff;">Net Take-Home (Pre-Income Tax)</span>
+            <span class="result-value net" id="netPostSE">$0.00</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color, #334155); text-align: center;">
+      <p style="font-size: 0.85rem; color: #94a3b8;">© 2026 TheDailyo. Advanced Business Engineering Suite.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function auditSEDrag() {
+      const gross = parseFloat(document.getElementById('rawRevenue').value) || 0;
+      const expenses = parseFloat(document.getElementById('writeOffs').value) || 0;
+      
+      // Isolate net profit first
+      const netProfit = Math.max(0, gross - expenses);
+      
+      // SE tax applies to 92.35% of net profit
+      const seBasis = netProfit * 0.9235;
+      
+      // Social Security cap parameter
+      const ssTax = Math.min(seBasis, 168600) * 0.124;
+      const medTax = seBasis * 0.029;
+      
+      const totalDrag = ssTax + medTax;
+      const netYield = netProfit - totalDrag;
+
+      // Map to UI
+      document.getElementById('netProfit').innerText = '$' + netProfit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('seBasis').innerText = '$' + seBasis.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('ssTax').innerText = '-$' + ssTax.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('medTax').innerText = '-$' + medTax.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('totalSEDrag').innerText = '-$' + totalDrag.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('netPostSE').innerText = '$' + netYield.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    auditSEDrag();
+  </script>
+
+</body>
 </html>
