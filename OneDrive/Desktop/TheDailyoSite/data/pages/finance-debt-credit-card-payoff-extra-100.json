@@ -1,0 +1,87 @@
+{
+  "title": "Credit Card Payoff With $100 Extra Payment — TheDailyo",
+  "h1": "Credit Card Payoff With $100 Extra Payment",
+  "subtitle": "See how paying an extra $100 per month changes payoff time and total interest.",
+  "description": "Calculate how an extra $100 monthly payment affects your credit card payoff timeline, interest paid, and total cost.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-extra-100/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff +$100", "href": "/finance/debt/credit-card-payoff-extra-100/" }
+  ],
+
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": {
+      "balance": 5000,
+      "apr": 24.99,
+      "payment": 200,
+      "extra": 100
+    },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>This calculator adds monthly interest (APR ÷ 12) to your current balance, then subtracts your payment. Adding an extra <strong>$100 per month</strong> reduces principal faster, which can dramatically shorten payoff time and lower total interest.</p>",
+
+  "faq": [
+    {
+      "q": "Does the extra $100 go toward principal?",
+      "a": "Yes. In this model, interest is applied first each month, and the remaining portion of your payment (including the extra $100) reduces principal."
+    },
+    {
+      "q": "Why can the interest on my statement be different?",
+      "a": "Many credit cards use daily compounding, and fees or promotional rates can change your real payoff results. Use this as a clean estimate and compare it to your statement."
+    },
+    {
+      "q": "What if my payment is too low?",
+      "a": "If your monthly payment doesn’t cover the monthly interest, the balance won’t decrease much (or can grow). Increase your payment or lower the APR to model a payoff plan."
+    }
+  ],
+
+  "related": [
+    {
+      "title": "Credit Card Payoff Calculator",
+      "desc": "Baseline payoff estimate with no extra payment.",
+      "meta": "Payoff →",
+      "href": "/finance/debt/credit-card-payoff/"
+    },
+    {
+      "title": "Credit Card Payoff With $200 Extra",
+      "desc": "Compare results if you can pay an extra $200 per month.",
+      "meta": "Compare →",
+      "href": "/finance/debt/credit-card-payoff-extra-200/"
+    },
+    {
+      "title": "Debt Avalanche Calculator",
+      "desc": "Pay off highest-interest debt first to save the most.",
+      "meta": "Strategy →",
+      "href": "/finance/debt/avalanche/"
+    },
+    {
+      "title": "Debt Snowball Calculator",
+      "desc": "Pay off smallest balances first for motivation.",
+      "meta": "Strategy →",
+      "href": "/finance/debt/snowball/"
+    }
+  ],
+
+  "affiliate": {
+    "enabled": false,
+    "headline": "Lower your APR and pay off faster",
+    "offers": []
+  }
+}

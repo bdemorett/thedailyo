@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Conversions Explained — TheDailyo</title>
+    <meta
+      name="description"
+      content="Learn how Fahrenheit, Celsius, and Kelvin conversions work, when to use each scale, and the formulas for converting temperatures."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Temperature Conversions Explained — TheDailyo"
+    />
+    <meta
+      property="og:description"
+      content="A simple guide to Fahrenheit, Celsius, and Kelvin conversions."
+    />
+    <meta
+      property="og:url"
+      content="https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .article-wrap {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.15rem;
+        font-weight: 900;
+        margin: 0 0 10px;
+        color: var(--text-main);
+      }
+      .panel h3 {
+        font-size: 1rem;
+        font-weight: 900;
+        margin: 18px 0 8px;
+        color: var(--text-main);
+      }
+      .panel p,
+      .panel li {
+        color: var(--text-main);
+        line-height: 1.72;
+        font-size: 0.98rem;
+      }
+      .panel ul,
+      .panel ol {
+        margin: 8px 0 0 20px;
+        padding: 0;
+      }
+      .formula-box,
+      .example-box,
+      .note-box {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .formula-box strong,
+      .example-box strong,
+      .note-box strong {
+        color: var(--text-main);
+      }
+      .toc {
+        display: grid;
+        gap: 10px;
+      }
+      .toc a {
+        text-decoration: none;
+      }
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+      @media (max-width: 760px) {
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .mini-card {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .mini-card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 0.98rem;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/#webpage",
+                       "url":  "https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/",
+                       "name":  "Temperature Conversions Explained — TheDailyo",
+                       "description":  "Learn how Fahrenheit, Celsius, and Kelvin conversions work, when to use each scale, and the formulas for converting temperatures.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Conversions",
+                                                   "item":  "https://thedailyo.com/tools/conversions/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Guides",
+                                                   "item":  "https://thedailyo.com/tools/conversions/guides/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Temperature Conversions Explained",
+                                                   "item":  "https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "Article",
+                       "@id":  "https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/#article",
+                       "headline":  "Temperature Conversions Explained — TheDailyo",
+                       "description":  "Learn how Fahrenheit, Celsius, and Kelvin conversions work, when to use each scale, and the formulas for converting temperatures.",
+                       "author":  {
+                                      "@id":  "https://thedailyo.com/about.html#organization"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     },
+                       "mainEntityOfPage":  {
+                                                "@id":  "https://thedailyo.com/tools/conversions/guides/temperature-conversions-explained/#webpage"
+                                            }
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">Temperature Conversions Explained</h1>
+        <p class="site-subtitle">
+          A simple guide to Fahrenheit, Celsius, and Kelvin conversions, plus
+          when each scale is used.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/tools/">Tools</a> <span class="crumb-sep">›</span>
+          <a href="/tools/conversions/">Conversions</a>
+          <span class="crumb-sep">›</span>
+          <a href="/tools/conversions/guides/">Guides</a>
+          <span class="crumb-sep">›</span>
+          <span aria-current="page">Temperature Conversions Explained</span>
+        </div>
+      </header>
+      <main id="main">
+        <div class="article-wrap">
+          <article class="panel">
+            <h2>Quick answer</h2>
+            <p>
+              Temperature conversions are about moving between different
+              temperature scales, most commonly
+              <strong>Fahrenheit (°F)</strong>, <strong>Celsius (°C)</strong>,
+              and <strong>Kelvin (K)</strong>. Each scale measures temperature,
+              but they use different reference points and intervals.
+            </p>
+            <div class="formula-box">
+              <strong>Most common conversions:</strong><br />
+              <code>°C = (°F − 32) × 5 ÷ 9</code><br />
+              <code>°F = (°C × 9 ÷ 5) + 32</code><br />
+              <code>K = °C + 273.15</code>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Fahrenheit</h3>
+                <p>
+                  Used mainly in the United States for weather, ovens, and
+                  everyday temperature readings.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Celsius</h3>
+                <p>
+                  Used in most countries and in science for everyday temperature
+                  reporting.
+                </p>
+              </div>
+            </div>
+          </article>
+          <section class="panel">
+            <h2>In this guide</h2>
+            <div class="toc">
+              <a href="#why-different-scales"
+                >Why there are different temperature scales</a
+              >
+              <a href="#fahrenheit">How Fahrenheit works</a>
+              <a href="#celsius">How Celsius works</a>
+              <a href="#kelvin">How Kelvin works</a>
+              <a href="#formulas">Temperature conversion formulas</a>
+              <a href="#examples">Worked examples</a>
+              <a href="#quick-reference">Common reference temperatures</a>
+              <a href="#mistakes">Common conversion mistakes</a>
+            </div>
+          </section>
+          <section class="panel" id="why-different-scales">
+            <h2>Why there are different temperature scales</h2>
+            <p>
+              Different temperature scales were developed for different purposes
+              and in different places. Over time, some became standard for daily
+              life, while others became standard for science.
+            </p>
+            <ul>
+              <li><strong>Fahrenheit</strong> is common in U.S. daily life.</li>
+              <li>
+                <strong>Celsius</strong> is common in international weather and
+                general measurements.
+              </li>
+              <li>
+                <strong>Kelvin</strong> is used in science because it starts at
+                absolute zero.
+              </li>
+            </ul>
+            <p>
+              All three scales measure temperature, but they do not use the same
+              zero point or the same spacing between degrees.
+            </p>
+          </section>
+          <section class="panel" id="fahrenheit">
+            <h2>How Fahrenheit works</h2>
+            <p>
+              Fahrenheit is often used in the United States for weather
+              forecasts, thermostat settings, and cooking. In this scale:
+            </p>
+            <ul>
+              <li>Water freezes at <strong>32°F</strong></li>
+              <li>Water boils at <strong>212°F</strong></li>
+            </ul>
+            <p>
+              That means there are 180 Fahrenheit degrees between freezing and
+              boiling.
+            </p>
+            <div class="example-box">
+              <strong>Quick feel for Fahrenheit:</strong><br />
+              Around <strong>68°F</strong> feels like room temperature, and
+              around <strong>98.6°F</strong> is normal body temperature.
+            </div>
+          </section>
+          <section class="panel" id="celsius">
+            <h2>How Celsius works</h2>
+            <p>
+              Celsius is simpler for many everyday and scientific uses because
+              it lines up neatly with water’s phase changes:
+            </p>
+            <ul>
+              <li>Water freezes at <strong>0°C</strong></li>
+              <li>Water boils at <strong>100°C</strong></li>
+            </ul>
+            <p>
+              That gives 100 Celsius degrees between freezing and boiling.
+              Because the number system is clean and easy to remember, Celsius
+              is the most common everyday temperature scale around the world.
+            </p>
+          </section>
+          <section class="panel" id="kelvin">
+            <h2>How Kelvin works</h2>
+            <p>
+              Kelvin is mainly used in science. It uses the same size interval
+              as Celsius, but the starting point is different.
+            </p>
+            <ul>
+              <li><strong>0 K</strong> is absolute zero</li>
+              <li><strong>273.15 K</strong> equals <strong>0°C</strong></li>
+            </ul>
+            <p>
+              Because Kelvin starts at absolute zero, it avoids negative values
+              for many scientific temperature calculations.
+            </p>
+            <div class="note-box">
+              <strong>Important:</strong><br />
+              Kelvin is written as <strong>K</strong>, not <strong>°K</strong>.
+            </div>
+          </section>
+          <section class="panel" id="formulas">
+            <h2>Temperature conversion formulas</h2>
+            <h3>Fahrenheit to Celsius</h3>
+            <div class="formula-box"><code>°C = (°F − 32) × 5 ÷ 9</code></div>
+            <h3>Celsius to Fahrenheit</h3>
+            <div class="formula-box"><code>°F = (°C × 9 ÷ 5) + 32</code></div>
+            <h3>Celsius to Kelvin</h3>
+            <div class="formula-box"><code>K = °C + 273.15</code></div>
+            <h3>Kelvin to Celsius</h3>
+            <div class="formula-box"><code>°C = K − 273.15</code></div>
+            <h3>Fahrenheit to Kelvin</h3>
+            <div class="formula-box">
+              <code>K = (°F − 32) × 5 ÷ 9 + 273.15</code>
+            </div>
+          </section>
+          <section class="panel" id="examples">
+            <h2>Worked examples</h2>
+            <h3>Example 1: 68°F to Celsius</h3>
+            <p>Start with the Fahrenheit-to-Celsius formula:</p>
+            <div class="formula-box"><code>°C = (68 − 32) × 5 ÷ 9</code></div>
+            <p>First subtract 32:</p>
+            <div class="formula-box"><code>68 − 32 = 36</code></div>
+            <p>Then multiply by 5 and divide by 9:</p>
+            <div class="formula-box"><code>36 × 5 ÷ 9 = 20</code></div>
+            <p>Result: <strong>68°F = 20°C</strong></p>
+            <h3>Example 2: 100°C to Fahrenheit</h3>
+            <div class="formula-box"><code>°F = (100 × 9 ÷ 5) + 32</code></div>
+            <p>Multiply first:</p>
+            <div class="formula-box"><code>100 × 9 ÷ 5 = 180</code></div>
+            <p>Then add 32:</p>
+            <div class="formula-box"><code>180 + 32 = 212</code></div>
+            <p>Result: <strong>100°C = 212°F</strong></p>
+            <h3>Example 3: 25°C to Kelvin</h3>
+            <div class="formula-box">
+              <code>K = 25 + 273.15 = 298.15 K</code>
+            </div>
+          </section>
+          <section class="panel" id="quick-reference">
+            <h2>Common reference temperatures</h2>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Freezing point of water</h3>
+                <p><strong>32°F = 0°C = 273.15 K</strong></p>
+              </div>
+              <div class="mini-card">
+                <h3>Boiling point of water</h3>
+                <p><strong>212°F = 100°C = 373.15 K</strong></p>
+              </div>
+              <div class="mini-card">
+                <h3>Room temperature</h3>
+                <p><strong>68°F = 20°C = 293.15 K</strong></p>
+              </div>
+              <div class="mini-card">
+                <h3>Body temperature</h3>
+                <p><strong>98.6°F = 37°C = 310.15 K</strong></p>
+              </div>
+            </div>
+          </section>
+          <section class="panel" id="mistakes">
+            <h2>Common conversion mistakes</h2>
+            <ul>
+              <li>
+                Forgetting to subtract 32 when converting Fahrenheit to Celsius
+              </li>
+              <li>
+                Adding 273.15 to Fahrenheit directly instead of converting to
+                Celsius first
+              </li>
+              <li>Mixing up whether to multiply by 5/9 or 9/5</li>
+              <li>Writing Kelvin with a degree symbol</li>
+              <li>Rounding too early in a multi-step calculation</li>
+            </ul>
+            <div class="note-box">
+              <strong>Good habit:</strong><br />
+              Do the full formula first, then round the final result.
+            </div>
+          </section>
+          <section class="panel">
+            <h2>Bottom line</h2>
+            <p>
+              Temperature conversions are easy once you know which scale you are
+              starting with and which scale you want to reach. Fahrenheit is
+              common in U.S. daily life, Celsius is common worldwide, and Kelvin
+              is the scientific temperature scale.
+            </p>
+            <div class="formula-box">
+              <strong>Most important formula to remember:</strong><br />
+              <code>°C = (°F − 32) × 5 ÷ 9</code>
+            </div>
+            <p>
+              Related tools:
+              <a href="/tools/conversions/fahrenheit-to-celsius/"
+                >Fahrenheit to Celsius Converter</a
+              >
+              · <a href="/tools/conversions/">Conversion Tools</a>
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

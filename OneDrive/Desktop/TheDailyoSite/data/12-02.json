@@ -1,0 +1,150 @@
+{
+  "tech": [
+    {
+      "year": 1942,
+      "title": "First controlled nuclear chain reaction",
+      "description": "Enrico Fermi and his team achieve the first self-sustaining nuclear chain reaction at Chicago Pile-1, proving that controlled nuclear fission is possible.",
+      "link": "https://en.wikipedia.org/wiki/Chicago_Pile-1",
+      "category": "science"
+    },
+    {
+      "year": 1970,
+      "title": "U.S. Environmental Protection Agency begins operations",
+      "description": "The new Environmental Protection Agency opens its doors, centralizing many federal environmental programs under one agency.",
+      "link": "https://en.wikipedia.org/wiki/United_States_Environmental_Protection_Agency",
+      "category": "science"
+    },
+    {
+      "year": 1995,
+      "title": "SOHO solar observatory launched",
+      "description": "NASA and ESA launch the Solar and Heliospheric Observatory (SOHO) to continuously monitor the Sun and improve understanding of space weather.",
+      "link": "https://en.wikipedia.org/wiki/Solar_and_Heliospheric_Observatory",
+      "category": "space"
+    }
+  ],
+
+  "history": [
+    {
+      "year": 1804,
+      "title": "Napoleon crowned Emperor of the French",
+      "description": "Napoleon Bonaparte crowns himself Emperor of the French at Notre-Dame Cathedral in Paris, ending the First Republic and beginning the First French Empire.",
+      "link": "https://en.wikipedia.org/wiki/Coronation_of_Napoleon",
+      "category": "politics"
+    },
+    {
+      "year": 1805,
+      "title": "Battle of Austerlitz",
+      "description": "Napoleon’s army decisively defeats Russian and Austrian forces at Austerlitz, one of his most famous military victories.",
+      "link": "https://en.wikipedia.org/wiki/Battle_of_Austerlitz",
+      "category": "war"
+    },
+    {
+      "year": 1823,
+      "title": "Monroe Doctrine announced",
+      "description": "U.S. President James Monroe sets out the Monroe Doctrine, warning European powers not to interfere in the Western Hemisphere.",
+      "link": "https://en.wikipedia.org/wiki/Monroe_Doctrine",
+      "category": "politics"
+    },
+    {
+      "year": 1971,
+      "title": "United Arab Emirates is formed",
+      "description": "Six emirates on the Persian Gulf formally unite to create the United Arab Emirates; Ras Al Khaimah joins the federation later.",
+      "link": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+      "category": "politics"
+    }
+  ],
+
+  "world_events": [
+    {
+      "year": 1984,
+      "title": "Bhopal gas disaster",
+      "description": "A toxic gas leak from a Union Carbide pesticide plant in Bhopal, India, kills thousands of people and becomes one of the world’s deadliest industrial disasters.",
+      "link": "https://en.wikipedia.org/wiki/Bhopal_disaster",
+      "category": "disaster"
+    },
+    {
+      "year": 1988,
+      "title": "Benazir Bhutto becomes Pakistan’s prime minister",
+      "description": "Benazir Bhutto is sworn in as Prime Minister of Pakistan, becoming the first woman to lead the government of a Muslim-majority country.",
+      "link": "https://en.wikipedia.org/wiki/Benazir_Bhutto",
+      "category": "politics"
+    },
+    {
+      "year": 1993,
+      "title": "Pablo Escobar killed in Medellín",
+      "description": "Colombian drug lord Pablo Escobar is tracked down and killed by police in Medellín, marking a major blow to the Medellín Cartel.",
+      "link": "https://en.wikipedia.org/wiki/Pablo_Escobar",
+      "category": "crime"
+    },
+    {
+      "year": 2001,
+      "title": "Enron files for bankruptcy",
+      "description": "Energy giant Enron files for Chapter 11 bankruptcy after an accounting fraud scandal, becoming one of the largest corporate collapses in U.S. history at the time.",
+      "link": "https://en.wikipedia.org/wiki/Enron",
+      "category": "economics"
+    },
+    {
+      "year": 2015,
+      "title": "San Bernardino mass shooting",
+      "description": "A married couple opens fire at a holiday gathering in San Bernardino, California, killing 14 people and wounding many others before dying in a shootout with police.",
+      "link": "https://en.wikipedia.org/wiki/2015_San_Bernardino_attack",
+      "category": "crime",
+      "youtubeId": "dFDET8tVFUk"
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1859,
+      "title": "Birth of Georges Seurat",
+      "description": "French painter known for pioneering pointillism, whose works include \"A Sunday Afternoon on the Island of La Grande Jatte.\"",
+      "link": "https://en.wikipedia.org/wiki/Georges_Seurat",
+      "category": "art"
+    },
+    {
+      "year": 1946,
+      "title": "Birth of Gianni Versace",
+      "description": "Italian fashion designer who founded the Versace brand and became one of the most influential designers of the late 20th century.",
+      "link": "https://en.wikipedia.org/wiki/Gianni_Versace",
+      "category": "fashion"
+    },
+    {
+      "year": 1981,
+      "title": "Birth of Britney Spears",
+      "description": "American pop singer and entertainer who becomes one of the best-selling music artists of the late 1990s and 2000s.",
+      "link": "https://en.wikipedia.org/wiki/Britney_Spears",
+      "category": "entertainment"
+    },
+    {
+      "year": 1983,
+      "title": "Birth of Aaron Rodgers",
+      "description": "American football quarterback who wins multiple NFL MVP awards and a Super Bowl with the Green Bay Packers.",
+      "link": "https://en.wikipedia.org/wiki/Aaron_Rodgers",
+      "category": "sports"
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 1547,
+      "title": "Death of Hernán Cortés",
+      "description": "Spanish conquistador who led the expedition that overthrew the Aztec Empire and brought large parts of Mexico under Spanish rule.",
+      "link": "https://en.wikipedia.org/wiki/Hern%C3%A1n_Cort%C3%A9s",
+      "category": "history"
+    },
+    {
+      "year": 1859,
+      "title": "Execution of John Brown",
+      "description": "American abolitionist John Brown is hanged for leading the raid on Harpers Ferry in an attempt to spark a slave uprising.",
+      "link": "https://en.wikipedia.org/wiki/John_Brown_(abolitionist)",
+      "category": "history"
+    },
+    {
+      "year": 1986,
+      "title": "Death of Desi Arnaz",
+      "description": "Cuban-American actor, musician, and producer best known for co-starring in and producing the TV series \"I Love Lucy.\"",
+      "link": "https://en.wikipedia.org/wiki/Desi_Arnaz",
+      "category": "entertainment"
+    }
+  ]
+}

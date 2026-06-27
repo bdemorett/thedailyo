@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <meta charset="UTF-8" />
+  <title>Quarterly Estimated Tax Calculator — TheDailyo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Estimate quarterly federal tax payments from an annual tax estimate and expected withholding. Shows a simple 4-payment schedule." />
+  <link rel="canonical" href="https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- AdSense (Auto Ads) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/#webpage",
+                       "url":  "https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/",
+                       "name":  "Quarterly Estimated Tax Calculator — TheDailyo",
+                       "description":  "Estimate quarterly federal tax payments from an annual tax estimate and expected withholding. Shows a simple 4-payment schedule.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Taxes",
+                                                   "item":  "https://thedailyo.com/finance/taxes/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Quarterly Estimated Tax Calculator",
+                                                   "item":  "https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/#calculator",
+                       "name":  "Quarterly Estimated Tax Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/",
+                       "description":  "Estimate quarterly federal tax payments from an annual tax estimate and expected withholding. Shows a simple 4-payment schedule.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type": "FAQPage",
+                       "@id": "https://thedailyo.com/finance/taxes/quarterly-estimated-tax-calculator/#faq",
+                       "mainEntity": [
+                         {
+                           "@type": "Question",
+                           "name": "Do I have to pay quarterly taxes if I have a W-2 job?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "Maybe. If W-2 withholding covers your total tax for the year, you may not need separate estimated payments. If you also have 1099 income, investment income, or business profit, you may need to increase withholding or make estimated payments."
+                           }
+                         },
+                         {
+                           "@type": "Question",
+                           "name": "Does this calculator include state estimated taxes?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "No. This page estimates federal payments only. Many states have their own estimated-tax rules, forms, and due dates."
+                           }
+                         },
+                         {
+                           "@type": "Question",
+                           "name": "Why are the payments split evenly?",
+                           "acceptedAnswer": {
+                             "@type": "Answer",
+                             "text": "Equal quarterly payments are a simple planning method. If income is uneven during the year, the IRS annualized income method may be more accurate."
+                           }
+                         }
+                       ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to calculator</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Quarterly Estimated Tax Calculator</h1>
+      <p class="site-subtitle">
+        Simple quarterly payment estimate based on your annual tax and withholding. Not tax advice.
+      </p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/finance/taxes/">Taxes</a>
+        <a class="nav-pill" href="/tools/time/">Time &amp; Dates</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/career/salary/">Work &amp; Salary</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/finance/">Finance</a>
+        <span class="crumb-sep">›</span>
+        <a href="/finance/taxes/">Taxes</a>
+        <span class="crumb-sep">›</span>
+        <span>Quarterly Estimated Tax</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="panel">
+        <div class="two-col">
+          <section class="card">
+            <h2>Inputs</h2>
+
+            <div class="calculator">
+              <div class="field">
+                <label for="annualTax">Expected total federal tax for the year ($)</label>
+                <input id="annualTax" inputmode="decimal" placeholder="9000">
+              </div>
+
+              <div class="field">
+                <label for="withholding">Expected federal withholding for the year ($)</label>
+                <input id="withholding" inputmode="decimal" placeholder="2000">
+              </div>
+
+              <div class="field">
+                <label for="taxYear">Tax year (for labels)</label>
+                <input id="taxYear" inputmode="numeric" placeholder="2025">
+              </div>
+
+              <div class="actions">
+                <button class="btn-primary" id="calcBtn" type="button">Calculate</button>
+                <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+              </div>
+
+              <div class="help-text">
+                This uses a simple 25% per quarter split. IRS due dates can shift for weekends/holidays.
+              </div>
+            </div>
+          </section>
+
+          <section class="card" aria-live="polite">
+            <h2>Results</h2>
+            <div id="out" class="result">Enter your estimates and click Calculate.</div>
+          </section>
+        </div>
+
+        <div class="note note-inline">
+          <strong>Tip:</strong> If you’re self-employed, pair this with the <a href="/finance/taxes/self-employment-tax-calculator/">Self-Employment Tax Calculator</a>.
+        </div>
+      </div>
+      <section class="panel content-section" aria-label="How this calculator works">
+        <h2>How this quarterly estimated tax calculator works</h2>
+        <p>
+          This calculator starts with your expected total federal tax for the year, subtracts federal tax you expect to
+          have withheld, and splits the remaining amount into four equal estimated payments. It is a simple planning
+          tool for people who may owe tax outside regular paycheck withholding.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <h3>Annual tax estimate</h3>
+            <p>
+              Enter the total federal tax you expect for the full year. You can estimate this with a tax calculator,
+              prior-year return, bookkeeping report, or professional tax projection.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>Expected withholding</h3>
+            <p>
+              Enter federal income tax you expect to be withheld from W-2 jobs, pensions, or other pay sources during
+              the year. The calculator subtracts this from the annual estimate.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>Four-payment split</h3>
+            <p>
+              The remaining estimated tax is divided by four. This gives a simple equal-payment schedule, not a full
+              IRS penalty or safe-harbor calculation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel content-section" aria-label="Who may need estimated taxes">
+        <h2>Who may need quarterly estimated tax payments?</h2>
+        <p>
+          Quarterly estimated payments are commonly used when taxes are not being withheld automatically, or when
+          withholding is not enough to cover the year. This can happen with freelancing, 1099 contract work, side
+          businesses, investment income, rental income, or a mix of W-2 and self-employed income.
+        </p>
+        <p>
+          If you have a regular paycheck and a side business, you may be able to increase W-2 withholding instead of
+          making separate quarterly payments. The better option depends on your cash flow, income timing, and tax situation.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Example">
+        <h2>Example: side income with some withholding</h2>
+        <p>
+          Suppose you expect your total federal tax for the year to be $9,000 and you expect $2,000 of federal withholding
+          from a W-2 job. The calculator subtracts $2,000 from $9,000, leaving $7,000 to cover with estimated payments.
+          Split evenly, that is $1,750 per quarter.
+        </p>
+        <p>
+          This does not guarantee you will avoid every penalty, because real estimated tax rules can depend on income
+          timing, prior-year tax, safe-harbor rules, and other details. It does give you a useful starting number for
+          planning cash flow.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Due dates">
+        <h2>Quarterly tax due dates</h2>
+        <p>
+          Estimated tax payments are commonly associated with four due dates: April 15, June 15, September 15, and
+          January 15 of the following year. If a due date falls on a weekend or legal holiday, the IRS may move the
+          deadline to the next business day.
+        </p>
+        <p>
+          The calculator labels the four payments using those standard dates. Always confirm the exact due date for
+          your tax year before sending a payment.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Safe harbor note">
+        <h2>What about safe harbor rules?</h2>
+        <p>
+          The IRS has estimated-tax rules designed to reduce underpayment penalties when enough tax is paid during the
+          year. Many taxpayers think about safe harbor using current-year tax, prior-year tax, withholding, and estimated
+          payments. This calculator does not decide whether you meet a safe harbor.
+        </p>
+        <p>
+          Use this page for a quick equal-payment estimate. For penalty planning, uneven income, high income, or a big
+          life change, check IRS Form 1040-ES instructions or work with a qualified tax professional.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Sources and review">
+        <h2>Sources and review</h2>
+        <p>
+          This page is based on general U.S. federal estimated-tax concepts. It is educational and is not tax, legal, or
+          financial advice.
+        </p>
+        <ul style="margin-left: 20px; color: var(--text-muted); line-height: 1.65;">
+          <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes" rel="nofollow noopener">IRS estimated taxes overview</a></li>
+          <li><a href="https://www.irs.gov/forms-pubs/about-form-1040-es" rel="nofollow noopener">IRS Form 1040-ES</a></li>
+          <li><a href="/disclaimer.html">TheDailyo educational-use disclaimer</a></li>
+        </ul>
+        <p class="help-text">Last reviewed: May 4, 2026.</p>
+      </section>
+
+      <section class="panel content-section" aria-label="FAQ">
+        <h2>FAQ</h2>
+        <h3>Do I have to pay quarterly taxes if I have a W-2 job?</h3>
+        <p>
+          Maybe. If your W-2 withholding covers your total tax for the year, you may not need separate estimated
+          payments. If you also have 1099 income, investment income, or business profit, you may need to either increase
+          withholding or make estimated payments.
+        </p>
+
+        <h3>Does this calculator include state estimated taxes?</h3>
+        <p>
+          No. This page estimates federal payments only. Many states have their own estimated-tax rules, forms, and due
+          dates, so check your state tax agency separately.
+        </p>
+
+        <h3>Why are the payments split evenly?</h3>
+        <p>
+          Equal quarterly payments are a simple planning method. If your income is uneven during the year, the IRS
+          annualized income method may be more accurate, but this calculator does not model that.
+        </p>
+
+        <h3>What if my income changes during the year?</h3>
+        <p>
+          Recalculate when your income or withholding changes. Estimated tax planning works best when you update the
+          numbers after major changes instead of relying on one estimate from early in the year.
+        </p>
+      </section>
+
+      <section class="panel content-section" aria-label="Related tools">
+        <h2>Related tools</h2>
+        <div class="list">
+          <a class="list-item" href="/finance/taxes/self-employment-tax-calculator/">
+            <div class="li-title">Self-Employment Tax Calculator</div>
+            <div class="li-desc">Estimate Social Security and Medicare tax on self-employed profit.</div>
+          </a>
+          <a class="list-item" href="/finance/taxes/1099-vs-w2-tax-calculator/">
+            <div class="li-title">1099 vs W-2 Tax Calculator</div>
+            <div class="li-desc">Compare estimated employee and contractor take-home income.</div>
+          </a>
+          <a class="list-item" href="/finance/taxes/federal-income-tax-calculator/">
+            <div class="li-title">Federal Income Tax Calculator</div>
+            <div class="li-desc">Estimate federal income tax before planning quarterly payments.</div>
+          </a>
+          <a class="list-item" href="/finance/taxes/take-home-pay-calculator/">
+            <div class="li-title">Take-Home Pay Calculator</div>
+            <div class="li-desc">Estimate W-2 net pay and withholding context.</div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top: 6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/assets/js/taxes/tax-core.js"></script>
+  <script src="/assets/js/taxes/quarterly-estimated-tax.js"></script>
+</body>
+</html>

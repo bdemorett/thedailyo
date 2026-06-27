@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL Query Examples — Beginner-Friendly Real Queries | TheDailyo</title>
+  <meta name="description" content="Learn SQL with practical query examples. See beginner-friendly SELECT, WHERE, ORDER BY, GROUP BY, JOIN, INSERT, UPDATE, and DELETE queries with explanations." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/sql-query-examples/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL Query Examples — Beginner-Friendly Real Queries | TheDailyo" />
+  <meta property="og:description" content="A long beginner-friendly SQL guide with practical query examples and explanations." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/sql-query-examples/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/sql-query-examples/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/sql-query-examples/",
+                       "name":  "SQL Query Examples — Beginner-Friendly Real Queries | TheDailyo",
+                       "description":  "Learn SQL with practical query examples. See beginner-friendly SELECT, WHERE, ORDER BY, GROUP BY, JOIN, INSERT, UPDATE, and DELETE queries with explanations.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/sql-query-examples/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Sql Query Examples",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/sql-query-examples/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL Query Examples</h1>
+      <p class="site-subtitle">Beginner-friendly SQL examples for real queries, including SELECT, WHERE, ORDER BY, GROUP BY, JOIN, and data changes.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">SQL Query Examples</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          SQL query examples are one of the fastest ways to learn SQL because they show what a real query looks like, what it does, and what result it returns.
+        </p>
+        <p>
+          Instead of memorizing definitions only, you can learn SQL by seeing patterns like:
+        </p>
+        <ul>
+          <li><code class="k">SELECT</code> to retrieve data</li>
+          <li><code class="k">WHERE</code> to filter data</li>
+          <li><code class="k">ORDER BY</code> to sort results</li>
+          <li><code class="k">GROUP BY</code> to summarize rows</li>
+          <li><code class="k">JOIN</code> to connect tables</li>
+          <li><code class="k">INSERT</code>, <code class="k">UPDATE</code>, and <code class="k">DELETE</code> to change data</li>
+        </ul>
+
+        <div class="note">
+          <strong>Tip:</strong> Do not try to memorize every query word-for-word. Focus on understanding the pattern behind each example.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#sample-tables">Sample tables</a>
+          <a href="#select-example">SELECT example</a>
+          <a href="#where-example">WHERE example</a>
+          <a href="#order-by-example">ORDER BY example</a>
+          <a href="#group-by-example">GROUP BY example</a>
+          <a href="#join-example">JOIN example</a>
+          <a href="#insert-example">INSERT example</a>
+          <a href="#update-example">UPDATE example</a>
+          <a href="#delete-example">DELETE example</a>
+          <a href="#how-to-study">How to study examples</a>
+          <a href="#common-mistakes">Common mistakes</a>
+          <a href="#practice-questions">Practice questions</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-tables">
+        <h2>Sample tables</h2>
+        <p>
+          To keep the examples consistent, imagine you have these two tables.
+        </p>
+
+        <h3>employees</h3>
+        <div class="table-wrap prose-table" aria-label="Employees table">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+                <td>Denver</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Evan</td>
+                <td>Sales</td>
+                <td>59000</td>
+                <td>Austin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>departments</h3>
+        <div class="table-wrap prose-table" aria-label="Departments table">
+          <table>
+            <thead>
+              <tr>
+                <th>department</th>
+                <th>manager</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sales</td>
+                <td>Lori</td>
+              </tr>
+              <tr>
+                <td>IT</td>
+                <td>Marcus</td>
+              </tr>
+              <tr>
+                <td>HR</td>
+                <td>Kim</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Many SQL examples make more sense when you keep a single sample table in mind instead of jumping between unrelated examples.
+        </div>
+      </section>
+
+      <section class="panel prose" id="select-example">
+        <h2>SELECT example</h2>
+        <p>
+          The simplest SQL query retrieves columns from a table.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This returns the <code class="k">name</code> and <code class="k">salary</code> columns for every row in the table.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Select example result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Chris</td>
+                <td>56000</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+              <tr>
+                <td>Evan</td>
+                <td>59000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          This is the core pattern of SQL: choose columns with <code class="k">SELECT</code> and choose the table with <code class="k">FROM</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="where-example">
+        <h2>WHERE example</h2>
+        <p>
+          A <code class="k">WHERE</code> clause filters the rows before they are returned.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+WHERE salary &gt; 60000;</pre>
+        </div>
+
+        <p>
+          This returns only employees whose salary is greater than 60000.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Where example result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          SELECT answers “what columns?” and WHERE answers “which rows?”
+        </div>
+      </section>
+
+      <section class="panel prose" id="order-by-example">
+        <h2>ORDER BY example</h2>
+        <p>
+          <code class="k">ORDER BY</code> controls the sort order of the results.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+ORDER BY salary DESC;</pre>
+        </div>
+
+        <p>
+          This sorts the highest salary first.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Order by example result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Evan</td>
+                <td>59000</td>
+              </tr>
+              <tr>
+                <td>Chris</td>
+                <td>56000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <code class="k">DESC</code> is common when you want rankings, top values, or newest items first.
+        </div>
+      </section>
+
+      <section class="panel prose" id="group-by-example">
+        <h2>GROUP BY example</h2>
+        <p>
+          <code class="k">GROUP BY</code> is used when you want one summary row for each category.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;</pre>
+        </div>
+
+        <p>
+          This returns one row per department, along with the number of employees in each department.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Group by example result">
+          <table>
+            <thead>
+              <tr>
+                <th>department</th>
+                <th>employee_count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sales</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>IT</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>HR</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          GROUP BY is often paired with aggregate functions like <code class="k">COUNT()</code>, <code class="k">SUM()</code>, and <code class="k">AVG()</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="join-example">
+        <h2>JOIN example</h2>
+        <p>
+          A join connects rows from two tables using a related column.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT e.name, e.department, d.manager
+FROM employees e
+INNER JOIN departments d
+  ON e.department = d.department;</pre>
+        </div>
+
+        <p>
+          This returns each employee alongside the manager for that employee’s department.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Join example result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>department</th>
+                <th>manager</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>Lori</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>Marcus</td>
+              </tr>
+              <tr>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>Kim</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>Marcus</td>
+              </tr>
+              <tr>
+                <td>Evan</td>
+                <td>Sales</td>
+                <td>Lori</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Joins matter because real databases usually split related data across multiple tables.
+        </div>
+      </section>
+
+      <section class="panel prose" id="insert-example">
+        <h2>INSERT example</h2>
+        <p>
+          <code class="k">INSERT</code> adds a new row to a table.
+        </p>
+
+        <div class="code-block">
+<pre>INSERT INTO employees (employee_id, name, department, salary, city)
+VALUES (6, 'Felix', 'Sales', 61000, 'Phoenix');</pre>
+        </div>
+
+        <p>
+          This creates a brand-new row for Felix.
+        </p>
+
+        <div class="callout">
+          Beginners should usually list the column names explicitly in INSERT statements. That makes the query safer and easier to read.
+        </div>
+      </section>
+
+      <section class="panel prose" id="update-example">
+        <h2>UPDATE example</h2>
+        <p>
+          <code class="k">UPDATE</code> changes existing rows.
+        </p>
+
+        <div class="code-block">
+<pre>UPDATE employees
+SET city = 'Boston'
+WHERE employee_id = 2;</pre>
+        </div>
+
+        <p>
+          This changes Ben’s city to Boston.
+        </p>
+
+        <div class="callout">
+          Always be careful with UPDATE. Without a <code class="k">WHERE</code> clause, you may update every row in the table.
+        </div>
+      </section>
+
+      <section class="panel prose" id="delete-example">
+        <h2>DELETE example</h2>
+        <p>
+          <code class="k">DELETE</code> removes rows from a table.
+        </p>
+
+        <div class="code-block">
+<pre>DELETE FROM employees
+WHERE employee_id = 3;</pre>
+        </div>
+
+        <p>
+          This removes Chris from the table.
+        </p>
+
+        <div class="callout">
+          DELETE is powerful but risky. A missing <code class="k">WHERE</code> clause can delete every row in the table.
+        </div>
+      </section>
+
+      <section class="panel prose" id="how-to-study">
+        <h2>How to study SQL query examples</h2>
+        <p>
+          Many beginners look at a query example and try to memorize the exact wording. That is usually the wrong approach.
+        </p>
+        <p>
+          A better way is to break each query into parts:
+        </p>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>What data is being returned?</strong><br>
+            Look at the column list after <code class="k">SELECT</code>.
+          </div>
+          <div class="lesson-item">
+            <strong>Which table is being used?</strong><br>
+            Look at the table name after <code class="k">FROM</code>.
+          </div>
+          <div class="lesson-item">
+            <strong>Is there filtering?</strong><br>
+            Look for a <code class="k">WHERE</code> clause.
+          </div>
+          <div class="lesson-item">
+            <strong>Is there sorting or grouping?</strong><br>
+            Look for <code class="k">ORDER BY</code> or <code class="k">GROUP BY</code>.
+          </div>
+          <div class="lesson-item">
+            <strong>Is data being changed?</strong><br>
+            Look for <code class="k">INSERT</code>, <code class="k">UPDATE</code>, or <code class="k">DELETE</code>.
+          </div>
+        </div>
+
+        <div class="callout">
+          Instead of memorizing complete queries, memorize query patterns. That is what makes you flexible in real work.
+        </div>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>copying a query example without understanding what each line does</li>
+          <li>using <code class="k">SELECT *</code> in every situation</li>
+          <li>forgetting that WHERE filters rows before results are returned</li>
+          <li>using ORDER BY when GROUP BY was really needed, or vice versa</li>
+          <li>running UPDATE or DELETE examples without understanding the risk of missing WHERE clauses</li>
+        </ul>
+
+        <div class="warn">
+          The most dangerous beginner mistake is treating SQL examples like magic spells. Always understand the table, the columns, and the filter before running a query.
+        </div>
+      </section>
+
+      <section class="panel prose" id="practice-questions">
+        <h2>Practice questions</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Write a query that returns employee names and cities.
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Write a query that returns employees with salary above 70000.
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Write a query that counts employees by department.
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Write a query that sorts salaries from highest to lowest.
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Write a join that returns employee names with department managers.
+          </div>
+          <div class="lesson-item">
+            <strong>6.</strong> Write an INSERT statement for a new employee.
+          </div>
+          <div class="lesson-item">
+            <strong>7.</strong> Write an UPDATE statement that changes one employee’s city.
+          </div>
+          <div class="lesson-item">
+            <strong>8.</strong> Write a DELETE statement that removes one employee by ID.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          SQL query examples are useful because they show both the structure and the purpose of real queries.
+        </p>
+        <p>
+          Once you can read example queries and understand why each clause is there, SQL gets much easier.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>SELECT = read data</strong>, <strong>WHERE = filter data</strong>, <strong>ORDER BY = sort data</strong>, <strong>GROUP BY = summarize data</strong>, <strong>JOIN = connect tables</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL topics and tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/select-statement/">SELECT Statement</a></strong><br>
+            Learn the most important SQL command in more detail.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/where-clause/">WHERE Clause</a></strong><br>
+            Learn how to filter rows before they are returned.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/order-by/">ORDER BY</a></strong><br>
+            Learn how to sort results in ascending or descending order.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/group-by/">GROUP BY</a></strong><br>
+            Learn how to summarize rows by category.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/joins-explained/">SQL Joins Explained</a></strong><br>
+            Learn how to connect related tables in real queries.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

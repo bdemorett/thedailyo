@@ -1,0 +1,255 @@
+{
+  "date": "January 4",
+  "tech": [
+    {
+      "year": 2007,
+      "title": "NASA launches the STS-116 Space Shuttle mission",
+      "description": "Space Shuttle Discovery launches on mission STS-116, delivering new components to the International Space Station. The mission plays a key role in expanding and rewiring the ISS after years of construction.",
+      "link": "https://www.nasa.gov/mission/sts-116/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2010,
+      "title": "Apple’s App Store surpasses 3 billion downloads",
+      "description": "Apple announces that the App Store has surpassed 3 billion downloads, highlighting the rapid rise of mobile apps. The milestone reinforces the iPhone’s growing dominance in consumer technology.",
+      "link": "https://www.apple.com/newsroom/2010/01/05Apple-App-Store-Downloads-Top-3-Billion/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2018,
+      "title": "Intel reveals major CPU security flaws known as Spectre and Meltdown",
+      "description": "Researchers publicly disclose the Spectre and Meltdown vulnerabilities affecting modern processors. The flaws force emergency security updates across operating systems and cloud providers worldwide.",
+      "link": "https://www.bbc.com/news/technology-42562303",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "WhatsApp updates privacy policy, sparking global backlash",
+      "description": "WhatsApp announces changes to its data-sharing policy, triggering widespread criticism and user migration to rival messaging apps. The controversy reignites global debates over digital privacy.",
+      "link": "https://www.bbc.com/news/technology-55573149",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "world_events": [
+    {
+      "year": 1959,
+      "title": "Alaska officially becomes the 49th U.S. state",
+      "description": "Alaska is formally admitted into the United States as the 49th state. Its vast size and natural resources significantly reshape America’s geographic and economic footprint.",
+      "link": "https://www.britannica.com/place/Alaska-state",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1999,
+      "title": "Euro officially launched for electronic transactions",
+      "description": "The euro begins use for electronic payments and financial markets across Europe. Physical coins and banknotes would follow three years later.",
+      "link": "https://www.ecb.europa.eu/euro/intro/html/index.en.html",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "UK enters new COVID-19 lockdown amid virus surge",
+      "description": "The United Kingdom announces a nationwide lockdown as COVID-19 cases surge due to new variants. The move affects schools, businesses, and travel across the country.",
+      "link": "https://www.bbc.com/news/uk-55538937",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "Japan records one of its strongest New Year earthquakes in decades",
+      "description": "A powerful earthquake strikes central Japan shortly after New Year celebrations. The quake causes damage and triggers emergency response efforts nationwide.",
+      "link": "https://www.bbc.com/news/world-asia-67849842",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "entertainment": [
+    {
+      "year": 2010,
+      "title": "Avatar dominates global box office entering the new year",
+      "description": "James Cameron’s Avatar continues its historic box office run, becoming the highest-grossing film of all time shortly after New Year. The film reshapes expectations for 3D cinema.",
+      "link": "https://www.boxofficemojo.com/title/tt0499549/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2016,
+      "title": "Netflix reports record New Year streaming traffic",
+      "description": "Netflix reports a surge in New Year streaming as viewers binge-watch original series during the holiday break. The trend reflects the shift away from traditional TV scheduling.",
+      "link": "https://www.nielsen.com/insights/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2019,
+      "title": "Golden Globes season drives early award buzz",
+      "description": "Studios and actors ramp up awards-season campaigns as Golden Globe voting approaches. Early January becomes a crucial moment for Oscar momentum.",
+      "link": "https://www.goldenglobes.com/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "TikTok trends dominate New Year pop culture discussions",
+      "description": "Viral TikTok trends from late December continue dominating feeds into early January. The platform increasingly shapes music, fashion, and internet culture.",
+      "link": "https://www.nytimes.com/section/style",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2024,
+      "title": "Streaming platforms release major January originals",
+      "description": "Major streaming services debut high-profile shows and films in early January to capture post-holiday audiences. January increasingly rivals summer for major releases.",
+      "link": "https://www.hollywoodreporter.com/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "sports": [
+    {
+      "year": 2015,
+      "title": "College Football Playoff National Championship approaches",
+      "description": "Media attention intensifies as teams prepare for the College Football Playoff National Championship. Early January becomes a marquee moment for college sports.",
+      "link": "https://collegefootballplayoff.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2020,
+      "title": "NFL playoff picture solidifies after final regular-season games",
+      "description": "The NFL playoff field takes shape following the final regular-season matchups. Teams and fans turn their focus toward postseason matchups.",
+      "link": "https://www.nfl.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "NBA teams hit midseason stride after holiday schedule",
+      "description": "NBA teams settle into midseason rhythm following the packed holiday schedule. January becomes a key period for standings movement.",
+      "link": "https://www.nba.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "science": [
+    {
+      "year": 2004,
+      "title": "NASA’s Spirit rover begins transmitting data from Mars",
+      "description": "Following its successful landing, Spirit sends its first images and data from the Martian surface. The rover far exceeds its original mission expectations.",
+      "link": "https://mars.nasa.gov/mer/mission/overview/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2016,
+      "title": "Scientists publish new climate change projections for Arctic ice",
+      "description": "Updated research predicts accelerated Arctic ice loss under current warming trends. The findings intensify calls for climate mitigation strategies.",
+      "link": "https://www.noaa.gov/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2020,
+      "title": "Astronomers announce advances in exoplanet detection methods",
+      "description": "New techniques improve the detection of Earth-sized exoplanets orbiting distant stars. The work expands the search for potentially habitable worlds.",
+      "link": "https://exoplanets.nasa.gov/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "crime_and_justice": [
+    {
+      "year": 2009,
+      "title": "Bernard Madoff pleads guilty to massive Ponzi scheme",
+      "description": "Bernard Madoff pleads guilty to multiple federal charges related to his historic Ponzi scheme. The case becomes one of the largest financial frauds ever uncovered.",
+      "link": "https://www.britannica.com/biography/Bernard-Madoff",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "U.S. Capitol security increases ahead of certification anniversary",
+      "description": "Security measures increase in Washington, D.C. as authorities prepare for sensitive political anniversaries. The move reflects ongoing concerns over domestic extremism.",
+      "link": "https://www.bbc.com/news/world-us-canada",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "disasters": [
+    {
+      "year": 2018,
+      "title": "Severe winter storms disrupt travel across Europe",
+      "description": "Snow and ice cause widespread travel delays and power outages across several European countries. Emergency services issue warnings as conditions worsen.",
+      "link": "https://www.bbc.com/weather",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "Flooding and landslides affect parts of South America",
+      "description": "Heavy rains trigger floods and landslides in several regions, displacing residents and damaging infrastructure. Relief efforts continue into the new year.",
+      "link": "https://reliefweb.int/",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "births": [
+    {
+      "year": 1965,
+      "title": "Julia Ormond is born",
+      "description": "Actress Julia Ormond is born, later starring in major films and television series. She becomes known for both her acting career and humanitarian work.",
+      "link": "https://www.britannica.com/biography/Julia-Ormond",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1978,
+      "title": "Annie Lennox is born",
+      "description": "Singer Annie Lennox is born, later becoming one of the most influential voices in pop and rock music. Her career spans decades of chart success and activism.",
+      "link": "https://www.britannica.com/biography/Annie-Lennox",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "deaths": [
+    {
+      "year": 2023,
+      "title": "Notable cultural figures remembered during early-year tributes",
+      "description": "As the new year begins, media outlets publish tributes to influential figures who passed away late in the previous year. These retrospectives shape cultural memory and renewed interest in their work.",
+      "link": "https://www.nytimes.com/section/obituaries",
+      "category": "death",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "date": "11/30",
+  "tech": [
+    {
+      "year": 1990,
+      "title": "The First Web Server Goes Live",
+      "description": "Tim Berners-Lee set up the world’s first web server at CERN, marking the beginning of the modern internet.",
+      "link": "https://en.wikipedia.org/wiki/Tim_Berners-Lee"
+    },
+    {
+      "year": 2004,
+      "title": "Firefox 1.0 Officially Released",
+      "description": "Mozilla released Firefox 1.0, quickly becoming a major competitor to Internet Explorer.",
+      "link": "https://en.wikipedia.org/wiki/Firefox"
+    },
+    {
+      "year": 2012,
+      "title": "Windows 8 Smartphones Launch Worldwide",
+      "description": "Microsoft launched its Windows Phone 8 devices globally, aiming to break into the smartphone market.",
+      "link": "https://en.wikipedia.org/wiki/Windows_Phone_8"
+    }
+  ],
+  "history": [
+    {
+      "year": 1872,
+      "title": "First International Football Match",
+      "description": "Scotland and England played the world’s first official international soccer match in Glasgow.",
+      "link": "https://en.wikipedia.org/wiki/Scotland_v_England_(1872)"
+    },
+    {
+      "year": 1954,
+      "title": "Meteorite Hits a Woman in Alabama",
+      "description": "Ann Hodges became the first confirmed person in history to be struck by a meteorite.",
+      "link": "https://en.wikipedia.org/wiki/Sylacauga_meteorite"
+    },
+    {
+      "year": 1982,
+      "title": "Michael Jackson’s Thriller Released",
+      "description": "Michael Jackson released his iconic album 'Thriller', which became the best-selling album of all time.",
+      "link": "https://en.wikipedia.org/wiki/Thriller_(album)"
+    }
+  ],
+  "world_events": [
+    {
+      "year": 1966,
+      "title": "Barbados Gains Independence",
+      "description": "Barbados officially became an independent nation after centuries of British rule.",
+      "link": "https://en.wikipedia.org/wiki/Barbados"
+    },
+    {
+      "year": 1979,
+      "title": "Pink Floyd Releases The Wall",
+      "description": "Pink Floyd’s rock opera 'The Wall' hit stores, later becoming one of the most influential albums ever.",
+      "link": "https://en.wikipedia.org/wiki/The_Wall"
+    },
+    {
+      "year": 2005,
+      "title": "Surgeon Performs First Partial Face Transplant",
+      "description": "French doctors performed the world’s first partial face transplant on Isabelle Dinoire.",
+      "link": "https://en.wikipedia.org/wiki/Face_transplant"
+    }
+  ],
+  "births": [
+    {
+      "year": 1835,
+      "title": "Mark Twain Born",
+      "description": "American author of ‘Tom Sawyer’ and ‘Huckleberry Finn,’ born Samuel Clemens.",
+      "link": "https://en.wikipedia.org/wiki/Mark_Twain"
+    },
+    {
+      "year": 1874,
+      "title": "Winston Churchill Born",
+      "description": "British Prime Minister who led the UK during World War II.",
+      "link": "https://en.wikipedia.org/wiki/Winston_Churchill"
+    },
+    {
+      "year": 1985,
+      "title": "Chrissy Teigen Born",
+      "description": "American model, entrepreneur, and author.",
+      "link": "https://en.wikipedia.org/wiki/Chrissy_Teigen"
+    }
+  ],
+  "deaths": [
+    {
+      "year": 1900,
+      "title": "Oscar Wilde Dies",
+      "description": "Irish poet and playwright known for 'The Picture of Dorian Gray.'",
+      "link": "https://en.wikipedia.org/wiki/Oscar_Wilde"
+    },
+    {
+      "year": 1983,
+      "title": "Paul Walker Dies",
+      "description": "American actor and star of the 'Fast & Furious' franchise.",
+      "link": "https://en.wikipedia.org/wiki/Paul_Walker"
+    },
+    {
+      "year": 2018,
+      "title": "George H. W. Bush Dies",
+      "description": "41st President of the United States.",
+      "link": "https://en.wikipedia.org/wiki/George_H._W._Bush"
+    }
+  ]
+}

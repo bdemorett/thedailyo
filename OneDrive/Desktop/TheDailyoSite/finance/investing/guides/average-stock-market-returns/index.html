@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- GA4 (sitewide) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <title>Average Stock Market Returns — TheDailyo</title>
+  <meta name="description" content="A practical guide to average stock market returns: what “average” really means, nominal vs real returns, how much returns vary, and how to model outcomes with realistic ranges." />
+  <link rel="canonical" href="https://thedailyo.com/finance/investing/guides/average-stock-market-returns/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145" crossorigin="anonymous"></script>
+
+  <style>
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .lead{
+      color: var(--text-muted);
+      line-height:1.7;
+      margin-top:8px;
+    }
+    .quick{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    @media(max-width:900px){ .quick{ grid-template-columns:1fr; } }
+
+    .quick .box{
+      background:#fff;
+      border:1px solid var(--border-subtle);
+      border-radius:16px;
+      padding:14px;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+    .quick .k{
+      font-size:.82rem;
+      font-weight:900;
+      color: var(--text-muted);
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+    .quick .v{
+      margin-top:6px;
+      font-size:1.05rem;
+      font-weight:950;
+      color: var(--text-main);
+    }
+    .quick .s{
+      margin-top:6px;
+      color: var(--text-muted);
+      line-height:1.55;
+      font-size:.92rem;
+    }
+
+    .split{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media(max-width:900px){ .split{ grid-template-columns:1fr; } }
+
+    .mini-list{
+      margin-top:10px;
+      padding-left:18px;
+      color: var(--text-muted);
+      line-height:1.7;
+    }
+
+    .table-wrap{
+      margin-top:12px;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background:#fff;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:820px;
+      background:#fff;
+    }
+    th, td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(15,23,42,0.10);
+      font-size:.92rem;
+      text-align:left;
+      white-space:nowrap;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#fff;
+      color: var(--text-main);
+      font-weight:950;
+      z-index:1;
+    }
+    td.right, th.right{ text-align:right; }
+    tbody tr:hover td{ background: rgba(79,124,255,0.06); }
+
+    .callout{
+      margin-top:14px;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background: rgba(79,124,255,0.06);
+      padding:14px;
+      color: var(--text-main);
+      line-height:1.65;
+    }
+    .muted{ color: var(--text-muted); }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/investing/guides/average-stock-market-returns/#webpage",
+                       "url":  "https://thedailyo.com/finance/investing/guides/average-stock-market-returns/",
+                       "name":  "Average Stock Market Returns — TheDailyo",
+                       "description":  "A practical guide to average stock market returns: what “average” really means, nominal vs real returns, how much returns vary, and how to model outcomes with realistic ranges.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/investing/guides/average-stock-market-returns/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Investing",
+                                                   "item":  "https://thedailyo.com/finance/investing/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Guides",
+                                                   "item":  "https://thedailyo.com/finance/investing/guides/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Average Stock Market Returns",
+                                                   "item":  "https://thedailyo.com/finance/investing/guides/average-stock-market-returns/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "Article",
+                       "@id":  "https://thedailyo.com/finance/investing/guides/average-stock-market-returns/#article",
+                       "headline":  "Average Stock Market Returns — TheDailyo",
+                       "description":  "A practical guide to average stock market returns: what “average” really means, nominal vs real returns, how much returns vary, and how to model outcomes with realistic ranges.",
+                       "author":  {
+                                      "@id":  "https://thedailyo.com/about.html#organization"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     },
+                       "mainEntityOfPage":  {
+                                                "@id":  "https://thedailyo.com/finance/investing/guides/average-stock-market-returns/#webpage"
+                                            }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Average Stock Market Returns</h1>
+      <p class="site-subtitle">
+        What “average” really means, what’s realistic to assume, and how to model outcomes without fooling yourself.
+      </p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/finance/">Finance</a> <span class="crumb-sep">›</span>
+        <a href="/finance/investing/">Investing</a> <span class="crumb-sep">›</span>
+        <span>Guides</span> <span class="crumb-sep">›</span>
+        Average Stock Market Returns
+      </div>
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">The short answer</h2>
+      <div class="panel">
+        <p class="lead">
+          Over long periods, broad U.S. stock indexes have historically produced returns that many people summarize as
+          “around 10% per year” (nominal, before inflation). But that number is an average — and real life rarely matches
+          the average in any single decade.
+        </p>
+
+        <div class="quick" aria-label="Quick reference">
+          <div class="box">
+            <div class="k">Nominal vs real</div>
+            <div class="v">Nominal is not your buying power</div>
+            <div class="s">“Real” return = after inflation. That’s what matters for your future lifestyle.</div>
+          </div>
+          <div class="box">
+            <div class="k">Volatility</div>
+            <div class="v">Returns swing a lot</div>
+            <div class="s">Some years are +20%+ and others are -20%+. Averages hide the roller coaster.</div>
+          </div>
+          <div class="box">
+            <div class="k">Modeling</div>
+            <div class="v">Use ranges, not one number</div>
+            <div class="s">Try “conservative / base / aggressive” assumptions instead of one fixed rate.</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Practical rule:</strong> If you’re planning, use a range of assumptions (example: conservative, base, aggressive),
+          and stress-test your plan with at least one “bad decade” scenario.
+        </div>
+      </div>
+
+      <h2 class="section-title">What does “average return” mean?</h2>
+      <p class="section-subtitle">
+        There are multiple “averages.” If you don’t know which one someone is quoting, the number can mislead you.
+      </p>
+
+      <div class="split">
+        <section class="panel">
+          <h3>Arithmetic average</h3>
+          <p class="lead">
+            This is the simple average of yearly returns. It often looks higher, but it’s not the same as the return you
+            actually compound at over time.
+          </p>
+          <ul class="mini-list">
+            <li>Good for: describing a typical single-year return.</li>
+            <li>Not great for: “What will my money become after 20 years?”</li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <h3>Geometric average (CAGR)</h3>
+          <p class="lead">
+            This is the “compounded” average — the constant rate that would produce the same ending value over a period.
+            It’s typically lower than the arithmetic average when returns are volatile.
+          </p>
+          <ul class="mini-list">
+            <li>Good for: long-term growth modeling.</li>
+            <li>Matches: how compounding actually behaves.</li>
+          </ul>
+        </section>
+      </div>
+
+      <h2 class="section-title">Nominal vs real returns</h2>
+      <p class="section-subtitle">
+        Inflation is the difference between “my account balance grew” and “my lifestyle improved.”
+      </p>
+
+      <div class="panel">
+        <ul class="mini-list">
+          <li><strong>Nominal return</strong> = what your investment statement shows.</li>
+          <li><strong>Real return</strong> = nominal return minus inflation (roughly). This is your buying-power growth.</li>
+          <li><strong>After-tax return</strong> = what you keep after taxes (varies a lot by account type).</li>
+        </ul>
+
+        <div class="note" style="margin-top:12px;">
+          <strong>Tip:</strong> For planning, real returns are usually more useful than nominal returns.
+          Then add taxes if you want a “net” projection.
+        </div>
+      </div>
+
+      <h2 class="section-title">A simple planning table (example assumptions)</h2>
+      <p class="section-subtitle">
+        These are not promises — just a clean way to plan without pretending you know the future.
+      </p>
+
+      <div class="panel">
+        <div class="table-wrap" aria-label="Planning assumptions table">
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th class="right">Nominal return</th>
+                <th class="right">Inflation</th>
+                <th class="right">Real return (rough)</th>
+                <th>Use case</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Conservative</strong></td>
+                <td class="right">6–7%</td>
+                <td class="right">2–3%</td>
+                <td class="right">3–5%</td>
+                <td class="muted">Early retirement math, safety-first planning</td>
+              </tr>
+              <tr>
+                <td><strong>Base</strong></td>
+                <td class="right">8–10%</td>
+                <td class="right">2–3%</td>
+                <td class="right">5–8%</td>
+                <td class="muted">Long-run “normal” expectations (still uncertain)</td>
+              </tr>
+              <tr>
+                <td><strong>Aggressive</strong></td>
+                <td class="right">10–12%</td>
+                <td class="right">2–3%</td>
+                <td class="right">7–10%</td>
+                <td class="muted">Stretch goal scenarios (don’t rely on it)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <strong>Reality check:</strong> Even if the long-run average is ~10% nominal, your actual experience depends heavily on
+          <em>when</em> you invest (sequence of returns) and whether you keep contributing during downturns.
+        </div>
+      </div>
+
+      <h2 class="section-title">Why averages can be misleading</h2>
+      <p class="section-subtitle">These are the traps that make people overconfident.</p>
+
+      <div class="panel">
+        <ul class="mini-list">
+          <li><strong>Sequence of returns risk:</strong> The order of returns matters a lot, especially when you start withdrawing.</li>
+          <li><strong>Valuation starting point matters:</strong> Expensive markets can have lower future returns (and vice versa).</li>
+          <li><strong>Dividends and fees:</strong> Total return includes dividends; fees reduce what you keep.</li>
+          <li><strong>Taxes:</strong> Taxable accounts can drag returns versus retirement accounts.</li>
+          <li><strong>Time horizon:</strong> 5-year “average” can look nothing like 30-year “average.”</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title">Use a calculator (with realistic assumptions)</h2>
+      <p class="section-subtitle">
+        Modeling your own numbers is better than memorizing one “average return” quote.
+      </p>
+
+      <div class="columns" aria-label="Related tools">
+        <a class="card" href="/finance/investing/compound-interest-calculator/">
+          <div class="card-title">Compound Interest Calculator</div>
+          <div class="card-desc">Model growth with contributions and try conservative/base/aggressive return assumptions.</div>
+          <div class="card-meta">Run scenarios →</div>
+        </a>
+
+        <a class="card" href="/finance/investing/">
+          <div class="card-title">Investing Hub</div>
+          <div class="card-desc">All investing calculators and guides in one place.</div>
+          <div class="card-meta">Explore →</div>
+        </a>
+
+        <a class="card" href="/finance/investing/guides/how-compound-interest-works/">
+          <div class="card-title">How Compound Interest Works</div>
+          <div class="card-desc">A simple explanation of compounding, time, and contributions.</div>
+          <div class="card-meta">Read →</div>
+        </a>
+      </div>
+
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-subtitle">Common questions people have when they hear “average return.”</p>
+
+      <details class="faq">
+        <summary>What’s the average return of the S&amp;P 500?</summary>
+        <p>
+          People often cite “around 10% per year” as a long-run nominal average for broad U.S. stocks, but the exact figure
+          depends on the time period and whether you use arithmetic vs geometric averages. Use it as a rough reference, not a guarantee.
+        </p>
+      </details>
+
+      <details class="faq">
+        <summary>Should I use nominal or real return in planning?</summary>
+        <p>
+          Real return (after inflation) is usually better for planning your future lifestyle.
+          If you’re using nominal returns, remember that inflation reduces buying power over time.
+        </p>
+      </details>
+
+      <details class="faq">
+        <summary>Why does my return not match the “average”?</summary>
+        <p>
+          Because you don’t invest in “average years.” Markets are volatile and the order of returns matters.
+          Your personal return depends on contribution timing, withdrawals, fees, and taxes.
+        </p>
+      </details>
+
+      <details class="faq">
+        <summary>What about global stocks?</summary>
+        <p>
+          Global markets can behave differently from U.S. stocks over long periods. Diversification can reduce risk,
+          but it doesn’t eliminate volatility or guarantee returns.
+        </p>
+      </details>
+
+      <div class="note" style="margin-top:14px;">
+        <strong>Disclaimer:</strong> Educational only — not financial advice. Markets carry risk, including loss of principal.
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

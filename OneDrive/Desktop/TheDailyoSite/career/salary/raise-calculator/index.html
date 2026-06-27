@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Raise Calculator — TheDailyo</title>
+  <meta name="description" content="Calculate a raise the smart way: salary or hourly, percent or fixed raises, bonuses, schedule/PTO assumptions, and before vs after breakdowns. Includes effective hourly rate, scenario compare, and shareable results." />
+  <link rel="canonical" href="https://thedailyo.com/career/salary/raise-calculator/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/salary/raise-calculator/#webpage",
+                       "url":  "https://thedailyo.com/career/salary/raise-calculator/",
+                       "name":  "Raise Calculator — TheDailyo",
+                       "description":  "Calculate a raise the smart way: salary or hourly, percent or fixed raises, bonuses, schedule/PTO assumptions, and before vs after breakdowns. Includes effective hourly rate, scenario compare, and shareable results.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/salary/raise-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Salary",
+                                                   "item":  "https://thedailyo.com/career/salary/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Raise Calculator",
+                                                   "item":  "https://thedailyo.com/career/salary/raise-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/career/salary/raise-calculator/#calculator",
+                       "name":  "Raise Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/career/salary/raise-calculator/",
+                       "description":  "Calculate a raise the smart way: salary or hourly, percent or fixed raises, bonuses, schedule/PTO assumptions, and before vs after breakdowns. Includes effective hourly rate, scenario compare, and shareable results.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Raise Calculator</h1>
+      <p class="site-subtitle">
+        Compare before vs after pay with schedule assumptions, PTO/holidays, bonuses, and effective hourly rate.
+      </p>
+      <div class="header-gradient-line"></div>
+
+      <!-- KEEP NAV SAME ACROSS PAGES -->
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/salary/">Salary</a> <span class="crumb-sep">›</span>
+        Raise Calculator
+      </div>
+    </header>
+
+    <main id="main" class="two-col">
+      <!-- LEFT: INPUTS -->
+      <section class="panel" aria-label="Raise calculator inputs">
+        <h2>Inputs</h2>
+        <p class="section-subtitle" style="margin-top:6px;">
+          Enter your current pay, raise details, and schedule. We’ll calculate your new pay and show the difference across common pay periods.
+        </p>
+
+        <div class="info-grid" style="margin-top:14px;">
+          <div class="info-box">
+            <h3>Current pay type</h3>
+            <select id="payType">
+              <option value="salary" selected>Salary (annual)</option>
+              <option value="hourly">Hourly</option>
+            </select>
+            <p class="tiny" id="currentPayHint" style="margin-top:8px;">USD / year</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Current pay</h3>
+            <input id="currentPay" type="number" inputmode="decimal" min="0" step="100" value="60000" />
+            <p class="tiny" style="margin-top:8px;">Your current base pay.</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Raise type</h3>
+            <select id="raiseType">
+              <option value="percent" selected>Percent raise</option>
+              <option value="fixedAnnual">Fixed annual increase</option>
+              <option value="fixedHourly">Fixed hourly increase</option>
+            </select>
+            <p class="tiny" id="raiseValueHint" style="margin-top:8px;">%</p>
+          </div>
+        </div>
+
+        <div class="info-grid" style="margin-top:12px;">
+          <div class="info-box">
+            <h3>Raise amount</h3>
+            <input id="raiseValue" type="number" inputmode="decimal" min="0" step="0.01" value="5" />
+            <p class="tiny" style="margin-top:8px;">Percent or fixed value.</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Bonus (optional)</h3>
+            <select id="bonusType">
+              <option value="none" selected>None</option>
+              <option value="percent">Percent of annual pay</option>
+              <option value="fixed">Fixed amount</option>
+            </select>
+            <p class="tiny" id="bonusValueHint" style="margin-top:8px;">%</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Bonus value</h3>
+            <input id="bonusValue" type="number" inputmode="decimal" min="0" step="0.01" value="10" />
+            <p class="tiny" id="bonusHint" style="margin-top:8px;">No bonus included.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:18px;">Schedule assumptions</h3>
+        <p class="section-subtitle" style="margin-top:6px;">
+          Used for hourly conversions and “effective hourly.”
+        </p>
+
+        <div class="info-grid" style="margin-top:12px;">
+          <div class="info-box">
+            <h3>Hours per week</h3>
+            <input id="hoursPerWeek" type="number" inputmode="decimal" min="0" step="0.1" value="40" />
+            <p class="tiny" style="margin-top:8px;">e.g., 40</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Weeks per year</h3>
+            <input id="weeksPerYear" type="number" inputmode="decimal" min="0" step="0.1" value="52" />
+            <p class="tiny" style="margin-top:8px;">Usually 52</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Unpaid weeks off</h3>
+            <input id="unpaidWeeksOff" type="number" inputmode="decimal" min="0" step="0.1" value="0" />
+            <p class="tiny" style="margin-top:8px;">Optional</p>
+          </div>
+        </div>
+
+        <div class="info-grid" style="margin-top:12px;">
+          <div class="info-box">
+            <h3>Work days per week</h3>
+            <input id="workDaysPerWeek" type="number" inputmode="numeric" min="1" max="7" step="1" value="5" />
+            <p class="tiny" style="margin-top:8px;">Used to estimate PTO hours.</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Paid days off</h3>
+            <input id="paidDaysOff" type="number" inputmode="decimal" min="0" step="0.5" value="15" />
+            <p class="tiny" style="margin-top:8px;">PTO + holidays</p>
+          </div>
+
+          <div class="info-box">
+            <h3>Shift diff (optional)</h3>
+            <input id="shiftDiff" type="number" inputmode="decimal" min="0" step="0.01" value="0" />
+            <p class="tiny" style="margin-top:8px;">$/hour estimate.</p>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:12px;">
+          <label style="display:flex; gap:10px; align-items:center;">
+            <input id="countPtoAsNotWorked" type="checkbox" checked />
+            <span style="font-weight:800;">Count paid days off as <strong>not worked</strong> (for effective hourly)</span>
+          </label>
+          <div class="help-text">This helps compare offers fairly.</div>
+        </div>
+
+        <div class="search-wrap" style="margin-top:16px;">
+          <button class="search-button" id="copyLinkBtn" type="button">Copy share link</button>
+          <button class="search-button" id="saveScenarioBtn" type="button">Save scenario</button>
+          <button class="search-button" id="resetBtn" type="button">Reset</button>
+        </div>
+
+        <div class="note" style="margin-top:12px;">
+          <strong>Heads up:</strong> This is gross pay planning. Taxes, retirement, benefits, and employer rules can change take-home pay.
+        </div>
+      </section>
+
+      <!-- RIGHT: RESULTS -->
+      <aside class="panel" aria-label="Results">
+        <h2>Before vs After</h2>
+        <p class="section-subtitle" style="margin-top:6px;">
+          See exactly how your raise changes annual pay and what that means per month, biweekly, and per hour.
+        </p>
+
+        <div class="kpi-grid" style="margin-top:14px;">
+          <div class="kpi">
+            <div class="kpi-label">Raise amount</div>
+            <div class="kpi-value" id="kpiRaiseAmt">$0</div>
+            <div class="help-text" id="kpiRaisePct">—</div>
+          </div>
+
+          <div class="kpi">
+            <div class="kpi-label">New annual (estimated)</div>
+            <div class="kpi-value" id="kpiNewAnnual">$0</div>
+            <div class="help-text" id="kpiNewAnnualSub">—</div>
+          </div>
+
+          <div class="kpi">
+            <div class="kpi-label">Hourly (paid hours)</div>
+            <div class="kpi-value" id="kpiHourlyPaid">$0.00</div>
+            <div class="help-text" id="kpiPaidHoursSub">—</div>
+          </div>
+
+          <div class="kpi">
+            <div class="kpi-label">Effective hourly (worked)</div>
+            <div class="kpi-value" id="kpiHourlyWorked">$0.00</div>
+            <div class="help-text" id="kpiWorkedHoursSub">—</div>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:12px;">
+          <strong id="pillPaid">Paid hours: —</strong><br />
+          <strong id="pillWorked">Worked hours: —</strong>
+        </div>
+
+        <div class="table-wrap" style="margin-top:12px;" aria-label="Before vs after table">
+          <table>
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th style="text-align:right;">Before</th>
+                <th style="text-align:right;">After</th>
+                <th style="text-align:right;">Change</th>
+              </tr>
+            </thead>
+            <tbody id="diffBody"></tbody>
+          </table>
+        </div>
+
+        <div class="note" style="margin-top:12px;">
+          <strong>Scenario compare</strong> (saved locally)
+          <button class="search-button" id="clearScenariosBtn" type="button" style="margin-top:10px;">Clear saved scenarios</button>
+        </div>
+
+        <div class="table-wrap" style="margin-top:12px;" aria-label="Scenario comparison table">
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th style="text-align:right;">New annual</th>
+                <th style="text-align:right;">Raise</th>
+                <th style="text-align:right;">Eff. hourly</th>
+              </tr>
+            </thead>
+            <tbody id="scenarioTbody">
+              <tr><td colspan="4">No saved scenarios yet. Click “Save scenario” to compare raise offers.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note" id="smartTip" style="margin-top:12px;">
+          <strong>Tip:</strong> A “small” raise can look bigger when you break it down per paycheck.
+        </div>
+      </aside>
+    </main>
+
+    <section class="panel" style="margin-top:18px;">
+      <h2>Related salary tools</h2>
+      <div class="columns" style="margin-top:14px;">
+        <a class="card" href="/career/salary/salary-to-hourly/">
+          <div class="card-title">Salary to Hourly</div>
+          <div class="card-desc">Convert annual salary into hourly pay with PTO options.</div>
+          <div class="card-meta">Compare offers →</div>
+        </a>
+        <a class="card" href="/career/salary/hourly-to-salary/">
+          <div class="card-title">Hourly to Salary</div>
+          <div class="card-desc">Convert hourly pay into annual salary with schedule options.</div>
+          <div class="card-meta">Convert →</div>
+        </a>
+        <a class="card" href="/career/salary/">
+          <div class="card-title">Salary Hub</div>
+          <div class="card-desc">Browse salary calculators and planning pages.</div>
+          <div class="card-meta">Explore →</div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function clamp(n, min, max){ if(!Number.isFinite(n)) return min; return Math.max(min, Math.min(max, n)); }
+    function num(id){ const v = Number($(id).value); return Number.isFinite(v) ? v : 0; }
+    function money(n, d=2){
+      const x = Number(n); if(!Number.isFinite(x)) return "$0.00";
+      return x.toLocaleString("en-US",{style:"currency",currency:"USD",minimumFractionDigits:d,maximumFractionDigits:d});
+    }
+    function intMoney(n){
+      const x = Number(n); if(!Number.isFinite(x)) return "$0";
+      return x.toLocaleString("en-US",{style:"currency",currency:"USD",minimumFractionDigits:0,maximumFractionDigits:0});
+    }
+    function pct(n, d=2){
+      const x = Number(n); if(!Number.isFinite(x)) return "0%";
+      return (x*100).toFixed(d).replace(/\.00$/,"") + "%";
+    }
+    function fmtHours(n){
+      const x = Number(n); if(!Number.isFinite(x)) return "0";
+      return x.toLocaleString("en-US",{maximumFractionDigits:1});
+    }
+    function escapeHtml(str){
+      return String(str||"").replace(/[&<>"']/g,(m)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+    }
+
+    // scenarios
+    const SCEN_KEY = "thedailyo_raise_calc_scenarios_v1";
+    function loadScenarios(){
+      try{
+        const raw = localStorage.getItem(SCEN_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      }catch{ return []; }
+    }
+    function saveScenarios(list){
+      localStorage.setItem(SCEN_KEY, JSON.stringify(list.slice(0,6)));
+    }
+    function renderScenarioTable(list){
+      const tbody = $("scenarioTbody");
+      tbody.innerHTML = "";
+      if(!list.length){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td colspan="4">No saved scenarios yet. Click “Save scenario” to compare raise offers.</td>`;
+        tbody.appendChild(tr);
+        return;
+      }
+      list.forEach((s, i)=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><strong>${escapeHtml(s.name || ("Scenario "+(i+1)))}</strong><div class="help-text">${escapeHtml(s.note||"")}</div></td>
+          <td style="text-align:right;"><strong>${intMoney(s.newAnnual)}</strong></td>
+          <td style="text-align:right;">${intMoney(s.raiseAmt)} <span class="subtle">(${escapeHtml(s.raisePctText)})</span></td>
+          <td style="text-align:right;">${money(s.effHourly)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // share link
+    function buildShareLink(state){
+      const params = new URLSearchParams();
+      Object.entries(state).forEach(([k,v])=>{
+        if(v===null || typeof v==="undefined") return;
+        params.set(k, String(v));
+      });
+      return `${location.origin}${location.pathname}?${params.toString()}`;
+    }
+    function applyQuery(){
+      const p = new URLSearchParams(location.search);
+      const map = [
+        ["pt","payType"],
+        ["cp","currentPay"],
+        ["rt","raiseType"],
+        ["rv","raiseValue"],
+        ["bt","bonusType"],
+        ["bv","bonusValue"],
+        ["hpw","hoursPerWeek"],
+        ["wpy","weeksPerYear"],
+        ["uwo","unpaidWeeksOff"],
+        ["dpw","workDaysPerWeek"],
+        ["pdo","paidDaysOff"],
+        ["sd","shiftDiff"],
+        ["pto","countPtoAsNotWorked"]
+      ];
+      for(const [param,id] of map){
+        if(!p.has(param)) continue;
+        const v = p.get(param);
+        if(id==="countPtoAsNotWorked"){
+          $(id).checked = (v==="1" || v==="true");
+        }else{
+          $(id).value = v;
+        }
+      }
+    }
+
+    function updateHints(){
+      const payType = $("payType").value;
+      $("currentPayHint").textContent = payType==="salary" ? "USD / year" : "USD / hour";
+
+      const raiseType = $("raiseType").value;
+      $("raiseValueHint").textContent =
+        raiseType==="percent" ? "%" :
+        (raiseType==="fixedAnnual" ? "USD / year" : "USD / hour");
+
+      const bonusType = $("bonusType").value;
+      $("bonusValueHint").textContent = bonusType==="percent" ? "%" : "USD";
+      $("bonusValue").disabled = (bonusType==="none");
+
+      if(bonusType==="none"){
+        $("bonusHint").textContent = "No bonus included.";
+      }else if(bonusType==="percent"){
+        $("bonusHint").textContent = "Percent bonus is applied to annual pay (before and after raise).";
+      }else{
+        $("bonusHint").textContent = "Fixed bonus is added to annual pay (before and after raise).";
+      }
+    }
+
+    function computeSchedule(){
+      const hoursPerWeek = Math.max(0, num("hoursPerWeek"));
+      const weeksPerYear = Math.max(0, num("weeksPerYear"));
+      const unpaidWeeksOff = clamp(num("unpaidWeeksOff"), 0, weeksPerYear);
+      const workDaysPerWeek = clamp(num("workDaysPerWeek"), 1, 7);
+      const paidDaysOff = clamp(num("paidDaysOff"), 0, 365);
+      const countPtoAsNotWorked = $("countPtoAsNotWorked").checked;
+
+      const paidWeeks = Math.max(0, weeksPerYear - unpaidWeeksOff);
+      const paidHours = paidWeeks * hoursPerWeek;
+
+      const hoursPerDay = workDaysPerWeek > 0 ? (hoursPerWeek / workDaysPerWeek) : 0;
+      const ptoHours = paidDaysOff * hoursPerDay;
+
+      const workedHours = countPtoAsNotWorked ? Math.max(0, paidHours - ptoHours) : paidHours;
+
+      return { hoursPerWeek, weeksPerYear, unpaidWeeksOff, workDaysPerWeek, paidDaysOff, paidWeeks, paidHours, workedHours, ptoHours, countPtoAsNotWorked };
+    }
+
+    function annualFromPay(payType, currentPay, paidHours){
+      if(payType==="salary") return currentPay;
+      return currentPay * paidHours; // hourly × paid hours
+    }
+
+    function compute(){
+      updateHints();
+
+      const payType = $("payType").value;
+      const currentPay = Math.max(0, num("currentPay"));
+
+      const raiseType = $("raiseType").value;
+      const raiseValue = Math.max(0, num("raiseValue"));
+
+      const bonusType = $("bonusType").value;
+      const bonusValue = Math.max(0, num("bonusValue"));
+
+      const shiftDiff = Math.max(0, num("shiftDiff"));
+
+      const sched = computeSchedule();
+      const paidHours = sched.paidHours;
+      const workedHours = sched.workedHours;
+
+      // BEFORE
+      let beforeAnnual = annualFromPay(payType, currentPay, paidHours);
+
+      // shift diff estimate:
+      // hourly -> adds to hourly wage
+      // salary -> estimate as $/hr × paid hours (best-effort)
+      if(payType==="hourly"){
+        beforeAnnual = (currentPay + shiftDiff) * paidHours;
+      }
+
+      let beforeBonus = 0;
+      if(bonusType==="percent") beforeBonus = beforeAnnual * (bonusValue/100);
+      else if(bonusType==="fixed") beforeBonus = bonusValue;
+
+      const beforeTotalAnnual = beforeAnnual + beforeBonus;
+
+      // APPLY RAISE -> new base pay (salary or hourly)
+      let newBasePay = currentPay;
+
+      if(raiseType==="percent"){
+        newBasePay = currentPay * (1 + raiseValue/100);
+      }else if(raiseType==="fixedAnnual"){
+        if(payType==="salary") newBasePay = currentPay + raiseValue;
+        else newBasePay = currentPay + (paidHours>0 ? (raiseValue/paidHours) : 0);
+      }else if(raiseType==="fixedHourly"){
+        if(payType==="hourly") newBasePay = currentPay + raiseValue;
+        else newBasePay = currentPay + (raiseValue * paidHours);
+      }
+
+      // AFTER annual
+      let afterAnnual = annualFromPay(payType, newBasePay, paidHours);
+      if(payType==="hourly"){
+        afterAnnual = (newBasePay + shiftDiff) * paidHours;
+      }
+
+      let afterBonus = 0;
+      if(bonusType==="percent") afterBonus = afterAnnual * (bonusValue/100);
+      else if(bonusType==="fixed") afterBonus = bonusValue;
+
+      const afterTotalAnnual = afterAnnual + afterBonus;
+
+      // Differences
+      const raiseAmt = afterTotalAnnual - beforeTotalAnnual;
+      const raisePct = (beforeTotalAnnual>0) ? (raiseAmt / beforeTotalAnnual) : 0;
+
+      // Hourly equivalents
+      const afterHourlyPaid = paidHours>0 ? (afterTotalAnnual / paidHours) : 0;
+      const afterHourlyWorked = workedHours>0 ? (afterTotalAnnual / workedHours) : 0;
+
+      // Render KPIs
+      $("kpiRaiseAmt").textContent = intMoney(raiseAmt);
+      $("kpiRaisePct").textContent = beforeTotalAnnual>0 ? `That’s ${pct(raisePct,2)} more than before.` : "Set a current pay to compute % change.";
+      $("kpiNewAnnual").textContent = intMoney(afterTotalAnnual);
+      $("kpiNewAnnualSub").textContent = `${payType==="hourly" ? "Hourly × schedule" : "Salary"} + bonus (+ shift diff estimate).`;
+      $("kpiHourlyPaid").textContent = money(afterHourlyPaid);
+      $("kpiHourlyWorked").textContent = money(afterHourlyWorked);
+      $("kpiPaidHoursSub").textContent = `Paid hours/year: ${fmtHours(paidHours)} (paid weeks: ${fmtHours(sched.paidWeeks)}).`;
+      $("kpiWorkedHoursSub").textContent = `Worked hours/year: ${fmtHours(workedHours)} ${sched.countPtoAsNotWorked ? `(subtracting ${fmtHours(sched.ptoHours)} PTO hrs)` : "(PTO not subtracted)"}.`;
+      $("pillPaid").textContent = `Paid hours: ${fmtHours(paidHours)}`;
+      $("pillWorked").textContent = `Worked hours: ${fmtHours(workedHours)}`;
+
+      // Table rows
+      const beforeMonthly = beforeTotalAnnual/12;
+      const afterMonthly  = afterTotalAnnual/12;
+
+      const beforeBiweekly = beforeTotalAnnual/26;
+      const afterBiweekly  = afterTotalAnnual/26;
+
+      const beforeSemiMonthly = beforeTotalAnnual/24;
+      const afterSemiMonthly  = afterTotalAnnual/24;
+
+      const beforeWeekly = (sched.paidWeeks>0) ? beforeTotalAnnual/sched.paidWeeks : 0;
+      const afterWeekly  = (sched.paidWeeks>0) ? afterTotalAnnual/sched.paidWeeks : 0;
+
+      const beforeHourlyPaid = paidHours>0 ? (beforeTotalAnnual/paidHours) : 0;
+      const beforeHourlyWorked = workedHours>0 ? (beforeTotalAnnual/workedHours) : 0;
+
+      const rows = [
+        ["Annual", beforeTotalAnnual, afterTotalAnnual, 0],
+        ["Monthly", beforeMonthly, afterMonthly, 2],
+        ["Semi-monthly (24/yr)", beforeSemiMonthly, afterSemiMonthly, 2],
+        ["Biweekly (26/yr)", beforeBiweekly, afterBiweekly, 2],
+        ["Weekly (paid weeks)", beforeWeekly, afterWeekly, 2],
+        ["Hourly (paid hours)", beforeHourlyPaid, afterHourlyPaid, 2],
+        ["Effective hourly (worked)", beforeHourlyWorked, afterHourlyWorked, 2],
+      ];
+
+      const tbody = $("diffBody");
+      tbody.innerHTML = "";
+      rows.forEach(([label, b, a, dec])=>{
+        const diff = a - b;
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${label}</td>
+          <td style="text-align:right;"><strong>${money(b, dec)}</strong></td>
+          <td style="text-align:right;"><strong>${money(a, dec)}</strong></td>
+          <td style="text-align:right;">${money(diff, dec)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Smart tip
+      const tip = $("smartTip");
+      if(paidHours<=0 || sched.weeksPerYear<=0 || sched.hoursPerWeek<=0){
+        tip.innerHTML = "<strong>Check:</strong> Set hours/week and weeks/year so paid hours aren’t 0.";
+      }else if(raiseAmt <= 0){
+        tip.innerHTML = "<strong>Note:</strong> Your “after” total isn’t higher than “before”. Double-check raise type/value and current pay.";
+      }else{
+        tip.innerHTML = `<strong>Nice:</strong> That raise is about <strong>${money(raiseAmt/26,2)}</strong> more per biweekly paycheck (rough estimate).`;
+      }
+
+      // bonus hint
+      if(bonusType==="none"){
+        $("bonusHint").textContent = "No bonus included.";
+      }else if(bonusType==="percent"){
+        $("bonusHint").textContent = `Bonus before: ${intMoney(beforeBonus)} · after: ${intMoney(afterBonus)} (percent of annual pay).`;
+      }else{
+        $("bonusHint").textContent = `Fixed bonus: ${intMoney(bonusValue)} (applied before and after).`;
+      }
+
+      return {
+        payType, currentPay, raiseType, raiseValue, bonusType, bonusValue,
+        hoursPerWeek: sched.hoursPerWeek, weeksPerYear: sched.weeksPerYear, unpaidWeeksOff: sched.unpaidWeeksOff,
+        workDaysPerWeek: sched.workDaysPerWeek, paidDaysOff: sched.paidDaysOff, shiftDiff,
+        countPtoAsNotWorked: sched.countPtoAsNotWorked ? 1 : 0,
+        _computed: { beforeTotalAnnual, afterTotalAnnual, raiseAmt, raisePctText: pct(raisePct,2), effHourly: afterHourlyWorked }
+      };
+    }
+
+    let currentState = null;
+
+    function bind(){
+      const ids = [
+        "payType","currentPay","raiseType","raiseValue",
+        "bonusType","bonusValue",
+        "hoursPerWeek","weeksPerYear","unpaidWeeksOff",
+        "workDaysPerWeek","paidDaysOff","shiftDiff",
+        "countPtoAsNotWorked"
+      ];
+      ids.forEach((id)=>{
+        const el = $(id);
+        const evt = (el.tagName==="SELECT" || el.type==="checkbox") ? "change" : "input";
+        el.addEventListener(evt, ()=>{ currentState = compute(); });
+      });
+
+      $("resetBtn").addEventListener("click", ()=>{
+        $("payType").value = "salary";
+        $("currentPay").value = 60000;
+        $("raiseType").value = "percent";
+        $("raiseValue").value = 5;
+        $("bonusType").value = "none";
+        $("bonusValue").value = 10;
+        $("hoursPerWeek").value = 40;
+        $("weeksPerYear").value = 52;
+        $("unpaidWeeksOff").value = 0;
+        $("workDaysPerWeek").value = 5;
+        $("paidDaysOff").value = 15;
+        $("shiftDiff").value = 0;
+        $("countPtoAsNotWorked").checked = true;
+
+        currentState = compute();
+      });
+
+      $("copyLinkBtn").addEventListener("click", async ()=>{
+        const s = currentState || compute();
+        const link = buildShareLink({
+          pt: s.payType, cp: s.currentPay, rt: s.raiseType, rv: s.raiseValue,
+          bt: s.bonusType, bv: s.bonusValue,
+          hpw: s.hoursPerWeek, wpy: s.weeksPerYear, uwo: s.unpaidWeeksOff,
+          dpw: s.workDaysPerWeek, pdo: s.paidDaysOff, sd: s.shiftDiff,
+          pto: s.countPtoAsNotWorked
+        });
+
+        try{
+          await navigator.clipboard.writeText(link);
+          $("smartTip").innerHTML = "<strong>Copied!</strong> Share link copied to clipboard.";
+          setTimeout(()=>{ currentState = compute(); }, 900);
+        }catch{
+          $("smartTip").innerHTML = "<strong>Copy failed.</strong> You can manually copy the URL from the address bar.";
+        }
+      });
+
+      $("saveScenarioBtn").addEventListener("click", ()=>{
+        const s = currentState || compute();
+        const name = prompt("Name this scenario (e.g., “Offer A – 7% + 5k bonus”)");
+        if(name === null) return;
+
+        const note = `${s.payType==="salary" ? "Salary" : "Hourly"} · ${s.raiseType} · PTO ${s.paidDaysOff}d · ${s.hoursPerWeek} hrs/wk`;
+
+        const list = loadScenarios();
+        list.unshift({
+          name: String(name || "Scenario").slice(0,50),
+          note,
+          newAnnual: s._computed.afterTotalAnnual,
+          raiseAmt: s._computed.raiseAmt,
+          raisePctText: s._computed.raisePctText,
+          effHourly: s._computed.effHourly,
+          createdAt: Date.now()
+        });
+        saveScenarios(list);
+        renderScenarioTable(loadScenarios());
+
+        $("smartTip").innerHTML = "<strong>Saved.</strong> Scenario stored on this device.";
+        setTimeout(()=>{ currentState = compute(); }, 900);
+      });
+
+      $("clearScenariosBtn").addEventListener("click", ()=>{
+        localStorage.removeItem(SCEN_KEY);
+        renderScenarioTable([]);
+        $("smartTip").innerHTML = "<strong>Cleared.</strong> Saved scenarios removed.";
+        setTimeout(()=>{ currentState = compute(); }, 700);
+      });
+    }
+
+    (function init(){
+      applyQuery();
+      bind();
+      currentState = compute();
+      renderScenarioTable(loadScenarios());
+    })();
+  </script>
+</body>
+</html>

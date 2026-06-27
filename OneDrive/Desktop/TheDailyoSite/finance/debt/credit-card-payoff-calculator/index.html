@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Credit Card Payoff Calculator — TheDailyo</title>
+    <meta
+      name="description"
+      content="Calculate how long it will take to pay off a credit card balance. See payoff date, total interest, and how extra monthly payments change the timeline."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/finance/debt/credit-card-payoff-calculator/"
+    />
+    <meta name="robots" content="index,follow" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+      .form-grid {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.18);
+        background: #ffffff;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .inline {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 850;
+        color: var(--text-main);
+        user-select: none;
+      }
+      .check input {
+        width: auto;
+        box-shadow: none;
+      }
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 14px 28px rgba(79, 124, 255, 0.25);
+        transition:
+          transform 0.12s ease,
+          filter 0.12s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+      .btn-ghost {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+      .btn-ghost:hover {
+        transform: translateY(-1px);
+        border-color: rgba(79, 124, 255, 0.35);
+        box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+      }
+      .warn {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 82, 82, 0.1);
+        border: 1px solid rgba(255, 82, 82, 0.25);
+        color: var(--text-main);
+        font-weight: 850;
+        display: none;
+      }
+      .result {
+        margin-top: 14px;
+      }
+      .result h3 {
+        font-size: 1.02rem;
+        font-weight: 950;
+        color: var(--text-main);
+        margin-bottom: 10px;
+      }
+      .kpi-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kpi {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.08);
+      }
+      .kpi-label {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        font-weight: 850;
+      }
+      .kpi-value {
+        margin-top: 6px;
+        font-size: 1.1rem;
+        font-weight: 950;
+        color: var(--text-main);
+      }
+      .table-wrap {
+        margin-top: 12px;
+        overflow: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.06);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 900px;
+        background: #ffffff;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        font-size: 0.9rem;
+        text-align: right;
+        white-space: nowrap;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 950;
+        z-index: 1;
+      }
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+      tbody tr:hover td {
+        background: rgba(79, 124, 255, 0.06);
+      }
+      .small-note {
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .subtle {
+        font-weight: 850;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/debt/credit-card-payoff-calculator/#webpage",
+                       "url":  "https://thedailyo.com/finance/debt/credit-card-payoff-calculator/",
+                       "name":  "Credit Card Payoff Calculator — TheDailyo",
+                       "description":  "Calculate how long it will take to pay off a credit card balance. See payoff date, total interest, and how extra monthly payments change the timeline.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/debt/credit-card-payoff-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Debt",
+                                                   "item":  "https://thedailyo.com/finance/debt/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Credit Card Payoff Calculator",
+                                                   "item":  "https://thedailyo.com/finance/debt/credit-card-payoff-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/finance/debt/credit-card-payoff-calculator/#calculator",
+                       "name":  "Credit Card Payoff Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/finance/debt/credit-card-payoff-calculator/",
+                       "description":  "Calculate how long it will take to pay off a credit card balance. See payoff date, total interest, and how extra monthly payments change the timeline.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">Credit Card Payoff Calculator</h1>
+        <p class="site-subtitle">
+          Payoff timeline, total interest, and the impact of extra monthly
+          payments.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs">
+          <a href="/">Home</a> › <a href="/finance/">Finance</a> ›
+          <a href="/finance/debt/">Debt</a> ›
+          <a href="/finance/debt/credit-card-payoff/">Credit Card Payoff</a> ›
+          Calculator
+        </div>
+      </header>
+      <main id="main">
+        <h2 class="section-title">Calculator</h2>
+        <p class="section-subtitle">
+          Enter your balance, APR, and monthly payment. Add an extra amount to
+          see how quickly it speeds things up.
+        </p>
+        <section class="panel" aria-label="Calculator">
+          <h2>Inputs</h2>
+          <div class="form-grid">
+            <div>
+              <label for="balance">Current balance ($)</label>
+              <input
+                id="balance"
+                type="number"
+                min="0"
+                step="0.01"
+                value="5000"
+                inputmode="decimal"
+              />
+            </div>
+            <div>
+              <label for="apr">APR (%)</label>
+              <input
+                id="apr"
+                type="number"
+                min="0"
+                step="0.01"
+                value="24.99"
+                inputmode="decimal"
+              />
+            </div>
+            <div>
+              <label for="payment">Monthly payment ($)</label>
+              <input
+                id="payment"
+                type="number"
+                min="0"
+                step="0.01"
+                value="200"
+                inputmode="decimal"
+              />
+            </div>
+            <div>
+              <label for="extra">Extra monthly payment ($)</label>
+              <input
+                id="extra"
+                type="number"
+                min="0"
+                step="0.01"
+                value="0"
+                inputmode="decimal"
+              />
+              <div class="small-note">
+                This is added on top of your monthly payment.
+              </div>
+            </div>
+            <div>
+              <label for="startMonth">Start month (optional)</label>
+              <input id="startMonth" type="month" value="" />
+              <div class="small-note">
+                Used to show payment dates and payoff month.
+              </div>
+            </div>
+            <div>
+              <label for="view">Table view</label>
+              <select id="view">
+                <option value="monthly" selected>Monthly schedule</option>
+                <option value="yearly">Yearly summary</option>
+              </select>
+              <div class="inline">
+                <label class="check" for="showDates">
+                  <input id="showDates" type="checkbox" /> Show payment dates
+                </label>
+              </div>
+              <div class="small-note">Dates require a start month.</div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn-primary" id="calcBtn" type="button">
+              Calculate
+            </button>
+            <button class="btn-ghost" id="copyBtn" type="button">
+              Copy table
+            </button>
+            <button class="btn-ghost" id="copyLinkBtn" type="button">
+              Copy share link
+            </button>
+            <button class="btn-ghost" id="csvBtn" type="button">
+              Download CSV
+            </button>
+            <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+          </div>
+          <div class="warn" id="warn" aria-live="polite"></div>
+          <div class="result" id="result" style="display: none">
+            <h3>Summary</h3>
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Monthly payment</div>
+                <div class="kpi-value" id="pmtKpi">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Extra payment</div>
+                <div class="kpi-value" id="extraKpi">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Total interest</div>
+                <div class="kpi-value" id="interestKpi">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Total paid</div>
+                <div class="kpi-value" id="totalPaidKpi">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Paid off in</div>
+                <div class="kpi-value" id="monthsKpi">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Payoff month</div>
+                <div class="kpi-value" id="payoffKpi">—</div>
+              </div>
+            </div>
+            <div class="table-wrap" aria-label="Payoff schedule table">
+              <table id="scheduleTable">
+                <thead id="thead"></thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section
+          class="panel"
+          aria-label="How it works"
+          style="margin-top: 18px"
+        >
+          <h2>How it works</h2>
+          <p>
+            This calculator estimates interest monthly using a monthly rate (APR
+            ÷ 12). Each month, interest is added to the balance, then your
+            payment reduces the balance. Your payment covers interest first; the
+            rest goes toward the balance.
+          </p>
+          <details class="faq">
+            <summary>Why does payoff feel slow at first?</summary>
+            <p>
+              Early on, the balance is highest, so interest is higher. As the
+              balance drops, the interest portion shrinks and payoff speeds up.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>What does extra monthly payment change?</summary>
+            <p>
+              Extra payments reduce the balance sooner, which reduces future
+              interest and can shorten payoff time a lot.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Is this exact?</summary>
+            <p>
+              This is a close estimate. Some cards use daily interest and
+              statement timing, which can cause small differences.
+            </p>
+          </details>
+          <p style="margin-top: 10px">
+            Related:
+            <a href="/finance/debt/credit-card-payoff/">All payoff tools</a> ·
+            <a href="/finance/debt/debt-avalanche-calculator/"
+              >Avalanche method</a
+            >
+            ·
+            <a href="/finance/debt/debt-snowball-calculator/"
+              >Snowball method</a
+            >
+          </p>
+        </section>
+        <section
+          class="panel"
+          aria-label="Related decisions"
+          style="margin-top: 18px"
+        >
+          <h2>Related decisions</h2>
+          <p class="subtle">
+            If you’re paying interest each month, small changes can have a big
+            impact. Try these next.
+          </p>
+          <ul style="margin-left: 18px; margin-top: 10px; line-height: 1.65">
+            <li>
+              <a href="/finance/debt/credit-card-payoff/"
+                >Extra payment scenarios</a
+              >
+              (extra $25 / $50 / $100 and more)
+            </li>
+            <li>
+              <a href="/finance/debt/credit-card-payoff/minimum-only/"
+                >What if I only pay the minimum?</a
+              >
+            </li>
+            <li>
+              <a href="/finance/debt/debt-avalanche-calculator/"
+                >Debt avalanche calculator</a
+              >
+              (highest APR first)
+            </li>
+            <li>
+              <a href="/finance/debt/debt-snowball-calculator/"
+                >Debt snowball calculator</a
+              >
+              (smallest balance first)
+            </li>
+            <li>
+              <a href="/finance/debt/guides/how-credit-card-interest-works/"
+                >How credit card interest works</a
+              >
+            </li>
+          </ul>
+          <p style="margin-top: 10px">
+            Back to the hub: <a href="/finance/debt/">Debt payoff tools</a>
+          </p>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const el = (id) => document.getElementById(id);
+      function money(n) {
+        if (!isFinite(n)) return "—";
+        return n.toLocaleString(undefined, {
+          style: "currency",
+          currency: "USD",
+        });
+      }
+      function ymLabel(d) {
+        const mo = d.toLocaleString(undefined, { month: "short" });
+        return `${mo} ${d.getFullYear()}`;
+      }
+      function setWarn(msg) {
+        const w = el("warn");
+        if (!msg) {
+          w.style.display = "none";
+          w.textContent = "";
+          return;
+        }
+        w.textContent = msg;
+        w.style.display = "block";
+      }
+      function parseStartMonth(value) {
+        if (!value) return null;
+        const parts = value.split("-");
+        if (parts.length !== 2) return null;
+        const y = Number(parts[0]);
+        const m = Number(parts[1]);
+        if (!isFinite(y) || !isFinite(m) || m < 1 || m > 12) return null;
+        return new Date(y, m - 1, 1);
+      }
+      function addMonths(date, months) {
+        return new Date(date.getFullYear(), date.getMonth() + months, 1);
+      }
+      function payoffSchedule(
+        balance,
+        aprPct,
+        monthlyPayment,
+        maxMonths = 1200,
+      ) {
+        const r = aprPct / 100 / 12;
+        let bal = balance;
+        let totalInterest = 0;
+        const rows = [];
+        for (let month = 1; month <= maxMonths; month++) {
+          const interest = bal * r;
+          let payment = monthlyPayment;
+          if (payment > bal + interest) payment = bal + interest;
+          const principal = Math.max(0, payment - interest);
+          const newBal = Math.max(0, bal + interest - payment);
+          totalInterest += interest;
+          rows.push({ month, payment, interest, principal, balance: newBal });
+          bal = newBal;
+          if (bal <= 0.000001) {
+            return {
+              rows,
+              totalInterest,
+              months: month,
+              paidOff: true,
+              capped: false,
+            };
+          }
+        }
+        return {
+          rows,
+          totalInterest,
+          months: maxMonths,
+          paidOff: false,
+          capped: true,
+        };
+      }
+      function buildYearly(rows) {
+        const years = [];
+        let yearIndex = 1;
+        let paySum = 0,
+          intSum = 0,
+          prinSum = 0;
+        let startMonth = 1;
+        for (let i = 0; i < rows.length; i++) {
+          const r = rows[i];
+          paySum += r.payment;
+          intSum += r.interest;
+          prinSum += r.principal;
+          const isEnd = (i + 1) % 12 === 0 || i === rows.length - 1;
+          if (isEnd) {
+            years.push({
+              year: yearIndex,
+              months: `${startMonth}-${i + 1}`,
+              paymentTotal: paySum,
+              interestTotal: intSum,
+              principalTotal: prinSum,
+              endingBalance: r.balance,
+            });
+            yearIndex++;
+            startMonth = i + 2;
+            paySum = 0;
+            intSum = 0;
+            prinSum = 0;
+          }
+        }
+        return years;
+      }
+      function renderMonthly(rows, opts) {
+        const { showDates, startDate } = opts;
+        const thead = el("thead");
+        const tbody = el("tbody");
+        const cols =
+          showDates && startDate
+            ? ["Date", "Month", "Payment", "Interest", "Principal", "Balance"]
+            : ["Month", "Payment", "Interest", "Principal", "Balance"];
+        thead.innerHTML = `<tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr>`;
+        tbody.innerHTML = "";
+        for (const r of rows) {
+          const tr = document.createElement("tr");
+          if (showDates && startDate) {
+            const d = addMonths(startDate, r.month - 1);
+            tr.innerHTML = ` <td style="text-align:left;">${ymLabel(d)}</td> <td>${r.month}</td> <td>${money(r.payment)}</td> <td>${money(r.interest)}</td> <td>${money(r.principal)}</td> <td>${money(r.balance)}</td> `;
+          } else {
+            tr.innerHTML = ` <td>${r.month}</td> <td>${money(r.payment)}</td> <td>${money(r.interest)}</td> <td>${money(r.principal)}</td> <td>${money(r.balance)}</td> `;
+          }
+          tbody.appendChild(tr);
+        }
+      }
+      function renderYearly(yearRows, opts) {
+        const { showDates, startDate } = opts;
+        const thead = el("thead");
+        const tbody = el("tbody");
+        let cols = [
+          "Year",
+          "Months",
+          "Total paid",
+          "Total interest",
+          "Total principal",
+          "Ending balance",
+        ];
+        if (showDates && startDate)
+          cols = [
+            "Year label",
+            "Months",
+            "Total paid",
+            "Total interest",
+            "Total principal",
+            "Ending balance",
+          ];
+        thead.innerHTML = `<tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr>`;
+        tbody.innerHTML = "";
+        for (const y of yearRows) {
+          const tr = document.createElement("tr");
+          let yearLabel = `Year ${y.year}`;
+          if (showDates && startDate) {
+            const start = addMonths(
+              startDate,
+              Number(y.months.split("-")[0]) - 1,
+            );
+            const end = addMonths(
+              startDate,
+              Number(y.months.split("-")[1]) - 1,
+            );
+            yearLabel = `${ymLabel(start)} → ${ymLabel(end)}`;
+          }
+          tr.innerHTML = ` <td style="text-align:left;">${yearLabel}</td> <td style="text-align:left;">${y.months}</td> <td>${money(y.paymentTotal)}</td> <td>${money(y.interestTotal)}</td> <td>${money(y.principalTotal)}</td> <td>${money(y.endingBalance)}</td> `;
+          tbody.appendChild(tr);
+        }
+      }
+      function tableToTSV(table) {
+        const rows = Array.from(table.querySelectorAll("tr"));
+        return rows
+          .map((tr) => {
+            const cells = Array.from(tr.querySelectorAll("th,td"));
+            return cells
+              .map((td) => td.textContent.replace(/\s+/g, " ").trim())
+              .join("\t");
+          })
+          .join("\n");
+      }
+      function tableToCSV(table) {
+        const rows = Array.from(table.querySelectorAll("tr"));
+        return rows
+          .map((tr) => {
+            const cells = Array.from(tr.querySelectorAll("th,td"));
+            return cells
+              .map((td) => {
+                const raw = td.textContent.replace(/\s+/g, " ").trim();
+                const escaped = raw.replace(/"/g, '""');
+                return `"${escaped}"`;
+              })
+              .join(",");
+          })
+          .join("\n");
+      }
+      async function copyTable() {
+        const t = el("scheduleTable");
+        const text = tableToTSV(t);
+        try {
+          await navigator.clipboard.writeText(text);
+          setWarn("Copied table to clipboard.");
+          setTimeout(() => setWarn(""), 1400);
+        } catch (e) {
+          setWarn(
+            "Copy failed (browser permission). You can still download CSV.",
+          );
+        }
+      }
+      async function copyShareLink() {
+        const state = {
+          balance: el("balance").value,
+          apr: el("apr").value,
+          payment: el("payment").value,
+          extra: el("extra").value,
+          start: el("startMonth").value,
+          showDates: el("showDates").checked ? 1 : 0,
+          view: el("view").value,
+        };
+        const sp = new URLSearchParams();
+        Object.entries(state).forEach(([k, v]) => {
+          if (v === "" || v === null || typeof v === "undefined") return;
+          if (k === "showDates" && !v) return;
+          sp.set(k, String(v));
+        });
+        const shareURL = `${window.location.origin}${window.location.pathname}?${sp.toString()}`;
+        try {
+          await navigator.clipboard.writeText(shareURL);
+          setWarn("Copied share link to clipboard.");
+          setTimeout(() => setWarn(""), 1400);
+        } catch (e) {
+          setWarn(
+            "Copy failed (browser permission). You can copy the URL from the address bar.",
+          );
+        }
+      }
+      function downloadCSV(filename) {
+        const t = el("scheduleTable");
+        const csv = tableToCSV(t);
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+      function getParams() {
+        const sp = new URLSearchParams(window.location.search);
+        const g = (k) => sp.get(k);
+        return {
+          balance: g("balance"),
+          apr: g("apr"),
+          payment: g("payment"),
+          extra: g("extra"),
+          start: g("start"),
+          showDates: g("showDates"),
+          view: g("view"),
+        };
+      }
+      function applyParams() {
+        const p = getParams();
+        if (p.balance !== null) el("balance").value = String(p.balance);
+        if (p.apr !== null) el("apr").value = String(p.apr);
+        if (p.payment !== null) el("payment").value = String(p.payment);
+        if (p.extra !== null) el("extra").value = String(p.extra);
+        if (p.start !== null) el("startMonth").value = String(p.start);
+        if (p.showDates !== null)
+          el("showDates").checked =
+            p.showDates === "1" || p.showDates === "true";
+        if (p.view === "monthly" || p.view === "yearly")
+          el("view").value = p.view;
+      }
+      function cleanURL() {
+        if (window.location.search) {
+          window.history.replaceState({}, "", window.location.pathname);
+        }
+      }
+      function calculate() {
+        setWarn("");
+        const bal = Number(el("balance").value);
+        const apr = Number(el("apr").value);
+        const pay = Number(el("payment").value);
+        const extra = Math.max(0, Number(el("extra").value || 0));
+        const view = el("view").value;
+        const startVal = el("startMonth").value;
+        const startDate = parseStartMonth(startVal);
+        const showDates = el("showDates").checked && !!startDate;
+        if (!(bal > 0)) return setWarn("Enter a balance greater than 0.");
+        if (!(apr >= 0)) return setWarn("APR must be 0 or higher.");
+        if (!(pay > 0))
+          return setWarn("Enter a monthly payment greater than 0.");
+        const actualPayment = pay + extra;
+        if (apr > 0) {
+          const firstInterest = (apr / 100 / 12) * bal;
+          if (actualPayment <= firstInterest) {
+            setWarn(
+              "Your payment is too low — it may not reduce the balance (interest-only). Increase payment or add extra.",
+            );
+          }
+        }
+        const sched = payoffSchedule(bal, apr, actualPayment, 1200);
+        const totalPaid = sched.rows.reduce((s, r) => s + r.payment, 0);
+        el("result").style.display = "block";
+        el("pmtKpi").textContent = money(pay);
+        el("extraKpi").textContent = money(extra);
+        el("interestKpi").textContent = money(sched.totalInterest);
+        el("totalPaidKpi").textContent = money(totalPaid);
+        el("monthsKpi").textContent = sched.paidOff
+          ? `${sched.months.toLocaleString()} months`
+          : `${sched.months.toLocaleString()} shown`;
+        let payoffMonth = "—";
+        if (startDate && sched.paidOff) {
+          payoffMonth = ymLabel(addMonths(startDate, sched.months - 1));
+        } else if (el("showDates").checked && !startDate) {
+          payoffMonth = "Add a start month";
+        }
+        el("payoffKpi").textContent = payoffMonth;
+        const opts = { showDates, startDate };
+        if (view === "yearly") {
+          renderYearly(buildYearly(sched.rows), opts);
+        } else {
+          renderMonthly(sched.rows, opts);
+        }
+        if (!sched.paidOff && !el("warn").textContent) {
+          setWarn(
+            "Note: schedule is capped at 1200 months for safety. Increase payment/extra to reach payoff sooner.",
+          );
+        }
+      }
+      el("calcBtn").addEventListener("click", calculate);
+      el("copyBtn").addEventListener("click", copyTable);
+      el("copyLinkBtn").addEventListener("click", copyShareLink);
+      el("csvBtn").addEventListener("click", () => {
+        const name =
+          el("view").value === "yearly"
+            ? "credit-card-payoff-yearly.csv"
+            : "credit-card-payoff-monthly.csv";
+        downloadCSV(name);
+      });
+      el("resetBtn").addEventListener("click", () => {
+        el("balance").value = 5000;
+        el("apr").value = 24.99;
+        el("payment").value = 200;
+        el("extra").value = 0;
+        el("startMonth").value = "";
+        el("showDates").checked = false;
+        el("view").value = "monthly";
+        el("result").style.display = "none";
+        setWarn("");
+        history.replaceState({}, "", location.pathname);
+        calculate();
+      });
+      [
+        "balance",
+        "apr",
+        "payment",
+        "extra",
+        "startMonth",
+        "showDates",
+        "view",
+      ].forEach((id) => {
+        const node = el(id);
+        const evt =
+          node.tagName === "SELECT" || node.type === "checkbox"
+            ? "change"
+            : "input";
+        node.addEventListener(evt, calculate);
+      });
+      applyParams();
+      cleanURL();
+      calculate();
+    </script>
+  </body>
+</html>

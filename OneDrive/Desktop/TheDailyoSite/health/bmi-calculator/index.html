@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>BMI Calculator — TheDailyo</title>
+<meta name="description" content="BMI Calculator (US or metric). Calculate Body Mass Index, see BMI category, and view a healthy weight range estimate (educational, non-medical)." />
+<link rel="canonical" href="https://thedailyo.com/health/bmi-calculator/" />
+<meta name="robots" content="index,follow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="BMI Calculator — TheDailyo" />
+<meta property="og:description" content="Calculate BMI using US or metric units. Includes BMI category and a healthy weight range estimate." />
+<meta property="og:url" content="https://thedailyo.com/health/bmi-calculator/" />
+<meta name="twitter:card" content="summary" />
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LW4W6PG84Q');
+</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+crossorigin="anonymous"></script>
+
+<style>
+.two-col{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr;
+gap:14px;
+align-items:start;
+}
+
+.panel{
+background: var(--bg-card);
+border-radius: var(--radius-lg);
+border:1px solid var(--border-subtle);
+padding:18px;
+box-shadow: var(--shadow-soft);
+}
+.panel h2{
+font-size:1.1rem;
+font-weight:900;
+margin-bottom:8px;
+color: var(--text-main);
+}
+
+.form-grid{
+margin-top:12px;
+display:grid;
+grid-template-columns: 1fr 1fr;
+gap:12px;
+}
+@media(max-width:760px){
+.form-grid{ grid-template-columns:1fr; }
+}
+
+label{
+display:block;
+font-size:.9rem;
+font-weight:900;
+color: var(--text-main);
+margin-bottom:6px;
+}
+
+input, select{
+width:100%;
+padding:10px 12px;
+border-radius:14px;
+border:1px solid rgba(15,23,42,0.18);
+background:#ffffff;
+color: var(--text-main);
+font-size:.95rem;
+box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+}
+
+.actions{
+margin-top:14px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.btn-primary{
+padding:10px 18px;
+border-radius:999px;
+border:none;
+background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+color:#fff;
+font-weight:900;
+cursor:pointer;
+box-shadow: 0 14px 28px rgba(79,124,255,0.25);
+transition: transform .12s ease, filter .12s ease;
+}
+.btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.03); }
+
+.btn-ghost{
+padding:10px 18px;
+border-radius:999px;
+border:1px solid var(--border-subtle);
+background:#ffffff;
+color: var(--text-main);
+font-weight:900;
+cursor:pointer;
+box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+.btn-ghost:hover{
+transform:translateY(-1px);
+border-color: rgba(79,124,255,0.35);
+box-shadow: 0 16px 30px rgba(2,6,23,0.12);
+}
+
+.warn{
+margin-top:12px;
+padding:12px 14px;
+border-radius:14px;
+background: rgba(255, 82, 82, 0.10);
+border: 1px solid rgba(255, 82, 82, 0.25);
+color: var(--text-main);
+font-weight:850;
+display:none;
+line-height:1.5;
+}
+
+.result{
+margin-top:14px;
+display:none;
+}
+.result h3{
+font-size:1.02rem;
+font-weight:950;
+color: var(--text-main);
+margin-bottom:10px;
+}
+
+.kpi-grid{
+margin-top:10px;
+display:grid;
+grid-template-columns: repeat(2, minmax(0,1fr));
+gap:12px;
+}
+@media(max-width:760px){
+.kpi-grid{ grid-template-columns:1fr; }
+}
+
+.kpi{
+background:#ffffff;
+border-radius:16px;
+border:1px solid var(--border-subtle);
+padding:14px;
+box-shadow: 0 12px 26px rgba(2,6,23,0.08);
+}
+.kpi-label{
+font-size:.88rem;
+color: var(--text-muted);
+font-weight:850;
+}
+.kpi-value{
+margin-top:6px;
+font-size:1.1rem;
+font-weight:950;
+color: var(--text-main);
+}
+
+.table-wrap{
+margin-top:12px;
+overflow:auto;
+border-radius:16px;
+border:1px solid var(--border-subtle);
+background:#ffffff;
+box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+}
+table{
+width:100%;
+border-collapse:collapse;
+min-width:760px;
+background:#ffffff;
+}
+th, td{
+padding:10px 12px;
+border-bottom:1px solid rgba(15,23,42,0.10);
+font-size:.9rem;
+text-align:right;
+white-space:nowrap;
+}
+th{
+position:sticky;
+top:0;
+background:#ffffff;
+color: var(--text-main);
+font-weight:950;
+z-index:1;
+}
+td:first-child, th:first-child{
+text-align:left;
+}
+tbody tr:hover td{
+background: rgba(79,124,255,0.06);
+}
+
+.small-note{
+margin-top:10px;
+color: var(--text-muted);
+font-weight:800;
+font-size:.9rem;
+line-height:1.55;
+}
+
+.subtle{
+font-weight:850;
+color: var(--text-muted);
+font-size:.9rem;
+}
+
+details.faq{
+margin-top:10px;
+border:1px solid var(--border-subtle);
+border-radius:14px;
+padding:10px 12px;
+background:#ffffff;
+box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+}
+details.faq summary{
+cursor:pointer;
+font-weight:950;
+color: var(--text-main);
+}
+details.faq p{
+margin-top:8px;
+color: var(--text-muted);
+line-height:1.6;
+font-weight:800;
+}
+
+.hint{
+color: var(--text-muted);
+font-weight:850;
+font-size:.85rem;
+margin-left:6px;
+}
+
+.mono{
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+</style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/health/bmi-calculator/#webpage",
+                       "url":  "https://thedailyo.com/health/bmi-calculator/",
+                       "name":  "BMI Calculator — TheDailyo",
+                       "description":  "BMI Calculator (US or metric). Calculate Body Mass Index, see BMI category, and view a healthy weight range estimate (educational, non-medical).",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/health/bmi-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Health",
+                                                   "item":  "https://thedailyo.com/health/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Bmi Calculator",
+                                                   "item":  "https://thedailyo.com/health/bmi-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/health/bmi-calculator/#calculator",
+                       "name":  "BMI Calculator — TheDailyo",
+                       "applicationCategory":  "HealthApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/health/bmi-calculator/",
+                       "description":  "BMI Calculator (US or metric). Calculate Body Mass Index, see BMI category, and view a healthy weight range estimate (educational, non-medical).",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="page">
+<header class="site-header">
+<div class="brand-kicker">TheDailyo.com</div>
+<h1 class="site-title">BMI Calculator</h1>
+<p class="site-subtitle">Body Mass Index based on height and weight (educational, non-medical).</p>
+<div class="header-gradient-line"></div>
+
+<nav class="nav-pills" aria-label="Primary navigation">
+<a class="nav-pill" href="/">Home</a>
+<a class="nav-pill" href="/finance/">Finance</a>
+<a class="nav-pill" href="/career/">Career &amp; Income</a>
+<a class="nav-pill" href="/tools/">Tools</a>
+<a class="nav-pill" href="/health/">Health</a>
+<a class="nav-pill" href="/business/">Business</a>
+<a class="nav-pill" href="/about.html">About</a>
+<a class="nav-pill" href="/contact.html">Contact</a>
+</nav>
+
+<div class="breadcrumbs" aria-label="Breadcrumb">
+<a href="/">Home</a> <span class="crumb-sep">›</span>
+<a href="/health/">Health</a> <span class="crumb-sep">›</span>
+<span aria-current="page">BMI Calculator</span>
+</div>
+</header>
+
+<main id="main">
+<h2 class="section-title">Calculator</h2>
+<p class="section-subtitle">
+BMI is a quick screening metric based on height and weight. It doesn’t measure body fat directly and can be less accurate for very muscular people or certain body types.
+</p>
+
+<div class="two-col">
+<section class="panel" aria-label="Calculator">
+<h2>Inputs</h2>
+
+<div class="form-grid">
+<div>
+<label for="unit">Units</label>
+<select id="unit">
+<option value="us" selected>US (feet/inches + pounds)</option>
+<option value="metric">Metric (cm + kg)</option>
+</select>
+</div>
+
+<div>
+<label for="sex">Sex (optional)</label>
+<select id="sex">
+<option value="" selected>Prefer not to say</option>
+<option value="female">Female</option>
+<option value="male">Male</option>
+</select>
+</div>
+
+<div id="usHeightWrap">
+<label>Height (US)</label>
+<div class="form-grid" style="margin-top:0; grid-template-columns:1fr 1fr;">
+<div>
+<label for="feet" style="margin-bottom:6px; font-weight:850; color:var(--text-muted);">Feet</label>
+<input id="feet" type="number" inputmode="numeric" min="0" step="1" placeholder="e.g., 5" />
+</div>
+<div>
+<label for="inches" style="margin-bottom:6px; font-weight:850; color:var(--text-muted);">Inches</label>
+<input id="inches" type="number" inputmode="numeric" min="0" max="11" step="1" placeholder="e.g., 10" />
+</div>
+</div>
+</div>
+
+<div id="metricHeightWrap" style="display:none;">
+<label for="cm">Height (cm)</label>
+<input id="cm" type="number" inputmode="decimal" min="0" step="0.1" placeholder="e.g., 178" />
+</div>
+
+<div id="usWeightWrap">
+<label for="lbs">Weight (lbs)</label>
+<input id="lbs" type="number" inputmode="decimal" min="0" step="0.1" placeholder="e.g., 185" />
+</div>
+
+<div id="metricWeightWrap" style="display:none;">
+<label for="kg">Weight (kg)</label>
+<input id="kg" type="number" inputmode="decimal" min="0" step="0.1" placeholder="e.g., 84" />
+</div>
+
+<div>
+<label for="decimals">Decimals</label>
+<select id="decimals">
+<option value="0">0</option>
+<option value="1" selected>1</option>
+<option value="2">2</option>
+</select>
+</div>
+
+<div>
+<label for="autoCalc">Calculation mode</label>
+<select id="autoCalc">
+<option value="1" selected>Auto-calculate</option>
+<option value="0">Manual calculate</option>
+</select>
+</div>
+</div>
+
+<div class="actions">
+<button class="btn-primary" id="calcBtn" type="button">Calculate BMI</button>
+<button class="btn-ghost" id="copyLinkBtn" type="button">Copy share link</button>
+<button class="btn-ghost" id="copyBtn" type="button">Copy results table</button>
+<button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+</div>
+
+<div class="warn" id="warn" aria-live="polite"></div>
+
+<div class="result" id="result">
+<h3>Results</h3>
+
+<div class="kpi-grid">
+<div class="kpi">
+<div class="kpi-label">BMI</div>
+<div class="kpi-value" id="kBmi">—</div>
+</div>
+<div class="kpi">
+<div class="kpi-label">Category</div>
+<div class="kpi-value" id="kCat">—</div>
+</div>
+<div class="kpi">
+<div class="kpi-label">Healthy weight range (estimate)</div>
+<div class="kpi-value" id="kRange">—</div>
+</div>
+<div class="kpi">
+<div class="kpi-label">Unit mode</div>
+<div class="kpi-value" id="kMode">—</div>
+</div>
+</div>
+
+<div class="table-wrap" aria-label="BMI results table">
+<table id="resultsTable">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Formula / Notes</th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+
+<div class="small-note" id="noteLine"></div>
+
+<details class="faq">
+<summary>What’s the BMI formula?</summary>
+<p>
+US: <span class="mono">BMI = (lbs ÷ inches²) × 703</span><br>
+Metric: <span class="mono">BMI = kg ÷ meters²</span>
+</p>
+</details>
+
+<details class="faq">
+<summary>Why can BMI be misleading?</summary>
+<p>
+BMI doesn’t measure body fat directly. Some people with high muscle mass may have a higher BMI without high body fat.
+</p>
+</details>
+
+<details class="faq">
+<summary>What is a “healthy weight range” here?</summary>
+<p>
+This is an estimate based on BMI 18.5–24.9 at your height. It’s a common reference range, not a medical target.
+</p>
+</details>
+
+<div class="small-note subtle">
+Educational only — not medical advice. If you have concerns, consider talking with a qualified clinician.
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<footer class="site-footer">
+<div>© 2026 TheDailyo — All Rights Reserved.</div>
+<div class="site-footer-links" style="margin-top:6px;">
+<a href="/privacy.html">Privacy Policy</a> ·
+<a href="/terms.html">Terms</a> ·
+<a href="/disclaimer.html">Disclaimer</a> ·
+<a href="/contact.html">Contact</a> ·
+<a href="/about.html">About</a>
+</div>
+</footer>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+
+function isNum(x){
+return Number.isFinite(x);
+}
+
+function num(id){
+const v = Number($(id).value);
+return Number.isFinite(v) ? v : NaN;
+}
+
+function setWarn(msg){
+const w = $("warn");
+if(!msg){
+w.style.display = "none";
+w.textContent = "";
+return;
+}
+w.style.display = "block";
+w.textContent = msg;
+}
+
+function roundTo(x, d){
+if(!Number.isFinite(x)) return NaN;
+const p = Math.pow(10, d);
+return Math.round(x * p) / p;
+}
+
+function bmiCategory(bmi){
+if(!Number.isFinite(bmi)) return "—";
+if(bmi < 18.5) return "Underweight";
+if(bmi < 25) return "Normal";
+if(bmi < 30) return "Overweight";
+return "Obesity";
+}
+
+function healthyRangeUS(totalIn){
+const min = 18.5 * (totalIn * totalIn) / 703;
+const max = 24.9 * (totalIn * totalIn) / 703;
+return { min, max };
+}
+
+function healthyRangeMetric(meters){
+const min = 18.5 * (meters * meters);
+const max = 24.9 * (meters * meters);
+return { min, max };
+}
+
+function fmtNum(x, d){
+if(!Number.isFinite(x)) return "—";
+return x.toLocaleString(undefined, {
+minimumFractionDigits:d,
+maximumFractionDigits:d
+});
+}
+
+function buildShareURL(state){
+const sp = new URLSearchParams();
+Object.entries(state).forEach(([k,v])=>{
+if(v === null || typeof v === "undefined" || v === "") return;
+sp.set(k, String(v));
+});
+return `${location.origin}${location.pathname}?${sp.toString()}`;
+}
+
+function applyParams(){
+const sp = new URLSearchParams(location.search);
+
+if(sp.has("unit")) $("unit").value = sp.get("unit");
+if(sp.has("sex")) $("sex").value = sp.get("sex");
+if(sp.has("d")) $("decimals").value = sp.get("d");
+if(sp.has("ac")) $("autoCalc").value = sp.get("ac");
+
+if(sp.has("ft")) $("feet").value = sp.get("ft");
+if(sp.has("in")) $("inches").value = sp.get("in");
+if(sp.has("lb")) $("lbs").value = sp.get("lb");
+
+if(sp.has("cm")) $("cm").value = sp.get("cm");
+if(sp.has("kg")) $("kg").value = sp.get("kg");
+}
+
+function toggleUnits(){
+const isUS = $("unit").value === "us";
+$("usHeightWrap").style.display = isUS ? "" : "none";
+$("usWeightWrap").style.display = isUS ? "" : "none";
+$("metricHeightWrap").style.display = isUS ? "none" : "";
+$("metricWeightWrap").style.display = isUS ? "none" : "";
+}
+
+function clearOutputs(){
+$("result").style.display = "none";
+$("kBmi").textContent = "—";
+$("kCat").textContent = "—";
+$("kRange").textContent = "—";
+$("kMode").textContent = "—";
+$("tbody").innerHTML = "";
+$("noteLine").textContent = "";
+}
+
+function compute(){
+const isUS = $("unit").value === "us";
+const d = Number($("decimals").value);
+
+let bmi = NaN;
+let rangeText = "—";
+const modeLabel = isUS ? "US (ft/in, lbs)" : "Metric (cm, kg)";
+
+if(isUS){
+const ft = num("feet");
+const inch = num("inches");
+const lb = num("lbs");
+
+const totalIn = (isNum(ft) ? ft : NaN) * 12 + (isNum(inch) ? inch : NaN);
+
+if(!(lb > 0) || !(totalIn > 0)){
+clearOutputs();
+setWarn("Enter a valid height and weight.");
+return null;
+}
+
+if(inch >= 12){
+clearOutputs();
+setWarn("Inches should be 0–11. Example: 5 ft 10 in.");
+return null;
+}
+
+bmi = (lb / (totalIn * totalIn)) * 703;
+const r = healthyRangeUS(totalIn);
+rangeText = `${Math.round(r.min)}–${Math.round(r.max)} lbs`;
+
+} else {
+const hcm = num("cm");
+const wkg = num("kg");
+
+if(!(hcm > 0) || !(wkg > 0)){
+clearOutputs();
+setWarn("Enter a valid height and weight.");
+return null;
+}
+
+const m = hcm / 100;
+bmi = wkg / (m * m);
+const r = healthyRangeMetric(m);
+rangeText = `${Math.round(r.min)}–${Math.round(r.max)} kg`;
+}
+
+const bmiRounded = roundTo(bmi, d);
+const cat = bmiCategory(bmiRounded);
+
+setWarn("");
+$("result").style.display = "block";
+
+$("kBmi").textContent = fmtNum(bmiRounded, d);
+$("kCat").textContent = cat;
+$("kRange").textContent = rangeText;
+$("kMode").textContent = modeLabel;
+
+const tbody = $("tbody");
+tbody.innerHTML = "";
+
+const sexVal = $("sex").value || "Prefer not to say";
+
+const rows = [
+["BMI", fmtNum(bmiRounded, d), "BMI is a screening metric (not body fat)."],
+["Category", cat, "Adult categories: <18.5 underweight, 18.5–24.9 normal, 25–29.9 overweight, 30+ obesity."],
+["Healthy range (estimate)", rangeText, "Based on BMI 18.5–24.9 for your height."],
+["Sex (optional)", sexVal, "Categories are the same, but interpretation can vary person-to-person."]
+];
+
+rows.forEach((r)=>{
+const tr = document.createElement("tr");
+tr.innerHTML = `
+<td>${r[0]}</td>
+<td><strong>${r[1]}</strong></td>
+<td style="text-align:left;">${r[2]}</td>
+`;
+tbody.appendChild(tr);
+});
+
+$("noteLine").textContent =
+"Educational only — BMI can be less accurate for very muscular people or certain body types. If you have health concerns, talk to a qualified professional.";
+
+const state = {
+unit: $("unit").value,
+sex: $("sex").value,
+d: $("decimals").value,
+ac: $("autoCalc").value
+};
+
+if(isUS){
+state.ft = $("feet").value;
+state.in = $("inches").value;
+state.lb = $("lbs").value;
+} else {
+state.cm = $("cm").value;
+state.kg = $("kg").value;
+}
+
+return { share: buildShareURL(state) };
+}
+
+async function copyShare(){
+const out = compute();
+if(!out) return;
+
+try{
+await navigator.clipboard.writeText(out.share);
+setWarn("Copied share link to clipboard.");
+setTimeout(()=>setWarn(""), 1600);
+} catch {
+setWarn("Copy failed. You can copy the URL from the address bar.");
+}
+}
+
+function tableToTSV(table){
+const rows = Array.from(table.querySelectorAll("tr"));
+return rows.map(tr => {
+const cells = Array.from(tr.querySelectorAll("th,td"));
+return cells.map(td => td.textContent.replace(/\s+/g, " ").trim()).join("\t");
+}).join("\n");
+}
+
+async function copyTable(){
+if($("result").style.display === "none"){
+const out = compute();
+if(!out) return;
+}
+
+try{
+const tsv = tableToTSV($("resultsTable"));
+await navigator.clipboard.writeText(tsv);
+setWarn("Copied results table to clipboard.");
+setTimeout(()=>setWarn(""), 1600);
+} catch {
+setWarn("Copy failed (browser permission).");
+}
+}
+
+function resetAll(){
+$("unit").value = "us";
+$("sex").value = "";
+$("feet").value = "";
+$("inches").value = "";
+$("lbs").value = "";
+$("cm").value = "";
+$("kg").value = "";
+$("decimals").value = "1";
+$("autoCalc").value = "1";
+toggleUnits();
+clearOutputs();
+setWarn("");
+history.replaceState({}, "", location.pathname);
+}
+
+function shouldAuto(){
+return $("autoCalc").value === "1";
+}
+
+function runIfAuto(){
+toggleUnits();
+if(shouldAuto()) compute();
+}
+
+$("calcBtn").addEventListener("click", compute);
+$("copyLinkBtn").addEventListener("click", copyShare);
+$("copyBtn").addEventListener("click", copyTable);
+$("resetBtn").addEventListener("click", resetAll);
+
+$("unit").addEventListener("change", runIfAuto);
+$("sex").addEventListener("change", ()=>{ if(shouldAuto()) compute(); });
+$("decimals").addEventListener("change", ()=>{ if(shouldAuto()) compute(); });
+$("autoCalc").addEventListener("change", ()=>{ if(shouldAuto()) compute(); });
+
+["feet","inches","lbs","cm","kg"].forEach((id)=>{
+$(id).addEventListener("input", ()=>{ if(shouldAuto()) compute(); });
+});
+
+applyParams();
+toggleUnits();
+if(
+$("feet").value || $("inches").value || $("lbs").value ||
+$("cm").value || $("kg").value
+){
+compute();
+}
+</script>
+</body>
+</html>

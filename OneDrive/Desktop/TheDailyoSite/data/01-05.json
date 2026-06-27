@@ -1,0 +1,246 @@
+{
+  "date": "January 5",
+  "tech": [
+    {
+      "year": 2009,
+      "title": "Apple announces record App Store growth entering the new year",
+      "description": "Apple reports rapid App Store growth as smartphones become mainstream consumer devices. The platform’s success accelerates the mobile app economy and reshapes software distribution.",
+      "link": "https://www.apple.com/newsroom/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2015,
+      "title": "Microsoft announces major Windows 10 preview updates",
+      "description": "Microsoft reveals new features planned for Windows 10 as part of its public preview program. The strategy marks a shift toward continuous updates rather than major version jumps.",
+      "link": "https://blogs.microsoft.com/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2018,
+      "title": "CES 2018 previews showcase smart home and AI devices",
+      "description": "Early CES previews highlight smart speakers, connected appliances, and AI-driven gadgets. The show reinforces the growing role of voice assistants and automation in daily life.",
+      "link": "https://www.ces.tech/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Meta outlines new metaverse development plans",
+      "description": "Meta executives share updated plans for virtual reality and metaverse development at the start of the year. The announcement fuels debate over the future of immersive digital spaces.",
+      "link": "https://about.meta.com/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "world_events": [
+    {
+      "year": 1933,
+      "title": "Construction of the Golden Gate Bridge begins",
+      "description": "Work officially begins on the Golden Gate Bridge in San Francisco. The structure later becomes one of the most recognizable landmarks in the world.",
+      "link": "https://www.history.com/this-day-in-history/construction-begins-on-the-golden-gate-bridge",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1957,
+      "title": "Eisenhower Doctrine announced to Congress",
+      "description": "President Dwight D. Eisenhower outlines the Eisenhower Doctrine, pledging U.S. support to Middle Eastern nations resisting communism. The policy shapes Cold War-era foreign relations.",
+      "link": "https://www.britannica.com/event/Eisenhower-Doctrine",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "Georgia Senate runoff elections capture global attention",
+      "description": "Georgia holds pivotal Senate runoff elections that determine control of the U.S. Senate. The results have major implications for domestic and foreign policy.",
+      "link": "https://www.bbc.com/news/world-us-canada-55561812",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2024,
+      "title": "Global markets react to early-year inflation data",
+      "description": "Stock markets worldwide respond to newly released inflation and interest rate data. The reactions highlight ongoing concerns about economic stability and growth.",
+      "link": "https://www.reuters.com/",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "entertainment": [
+    {
+      "year": 2016,
+      "title": "David Bowie releases his final studio album, Blackstar",
+      "description": "David Bowie releases Blackstar just days before his death, making the album a powerful artistic farewell. It is later praised as one of the most meaningful works of his career.",
+      "link": "https://www.bbc.com/news/entertainment-arts-35247296",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2019,
+      "title": "Netflix debuts major January originals to strong viewership",
+      "description": "Netflix releases new original content timed for post-holiday audiences. Early January becomes an increasingly strategic window for streaming premieres.",
+      "link": "https://www.hollywoodreporter.com/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Celebrity New Year posts dominate social media trends",
+      "description": "Celebrity New Year posts generate millions of engagements across Instagram and TikTok. Social media continues to shape pop culture narratives entering the new year.",
+      "link": "https://www.nytimes.com/section/style",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2024,
+      "title": "Awards-season campaigns ramp up after holiday break",
+      "description": "Studios and publicists intensify awards campaigns as voters refocus after the holidays. Early January often determines Oscar momentum.",
+      "link": "https://www.variety.com/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "sports": [
+    {
+      "year": 2014,
+      "title": "College football bowl games dominate New Year week",
+      "description": "Major bowl games continue during the first week of January, drawing massive television audiences. The games help define college football’s postseason identity.",
+      "link": "https://www.ncaa.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2020,
+      "title": "NFL Wild Card weekend preparations begin",
+      "description": "NFL teams prepare for Wild Card weekend as playoff matchups are finalized. Early January marks one of the league’s most watched periods.",
+      "link": "https://www.nfl.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "NBA teams evaluate midseason trade possibilities",
+      "description": "NBA franchises begin assessing rosters ahead of the trade deadline. January often sets the tone for second-half playoff pushes.",
+      "link": "https://www.nba.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "science": [
+    {
+      "year": 2005,
+      "title": "NASA releases new Mars rover findings",
+      "description": "NASA scientists publish updated findings from Mars rover missions, revealing evidence of ancient water activity. The discoveries reshape understanding of Mars’ past climate.",
+      "link": "https://mars.nasa.gov/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2017,
+      "title": "Astronomers publish updated star catalog data",
+      "description": "New astronomical data improves precision in mapping stars across the Milky Way. The research supports navigation, astrophysics, and cosmology studies.",
+      "link": "https://www.esa.int/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "Scientists warn of accelerating Arctic ice loss",
+      "description": "New studies indicate Arctic ice loss is accelerating faster than previously projected. The findings raise urgency around climate mitigation efforts.",
+      "link": "https://www.noaa.gov/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "crime_and_justice": [
+    {
+      "year": 2017,
+      "title": "Former Volkswagen executive pleads guilty in emissions scandal",
+      "description": "A former Volkswagen executive pleads guilty in the U.S. to charges related to the company’s emissions-cheating scheme. The case becomes a landmark in corporate accountability.",
+      "link": "https://www.justice.gov/opa/pr",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Courts resume high-profile trials after holiday recess",
+      "description": "Several high-profile legal cases resume as courts return from holiday breaks. January often marks a reset point in major judicial proceedings.",
+      "link": "https://www.reuters.com/world/us/",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "disasters": [
+    {
+      "year": 2018,
+      "title": "Winter storms disrupt air travel across the United States",
+      "description": "Snow and ice force widespread flight cancellations and delays at major airports. The disruptions highlight vulnerabilities in winter travel infrastructure.",
+      "link": "https://www.faa.gov/newsroom",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2023,
+      "title": "Flooding impacts communities in Southeast Asia",
+      "description": "Heavy rains cause flooding in several Southeast Asian regions, displacing residents. Emergency responders continue rescue and recovery operations.",
+      "link": "https://reliefweb.int/",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "births": [
+    {
+      "year": 1931,
+      "title": "Robert Duvall is born",
+      "description": "Actor Robert Duvall is born and later becomes one of the most respected performers in film history. His career spans decades of acclaimed roles and awards.",
+      "link": "https://www.britannica.com/biography/Robert-Duvall",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1974,
+      "title": "Bradley Cooper is born",
+      "description": "Actor Bradley Cooper is born, later starring in major films across multiple genres. He becomes known for both blockbuster roles and dramatic performances.",
+      "link": "https://www.britannica.com/biography/Bradley-Cooper",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "deaths": [
+    {
+      "year": 2016,
+      "title": "Pierre Boulez is remembered for his influence on modern music",
+      "description": "Composer and conductor Pierre Boulez dies, leaving behind a major legacy in contemporary classical music. His work shaped modern composition and performance worldwide.",
+      "link": "https://www.britannica.com/biography/Pierre-Boulez",
+      "category": "death",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

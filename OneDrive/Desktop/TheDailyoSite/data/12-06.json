@@ -1,0 +1,258 @@
+{
+  "tech": [
+    {
+      "year": 1957,
+      "title": "First U.S. satellite launch attempt fails",
+      "description": "At Cape Canaveral, the Vanguard TV3 rocket rises only a few feet before exploding, marking a highly publicized setback in the early American space program.",
+      "link": "https://www.history.navy.mil/content/history/nhhc/research/histories/vanguard-tv3.html",
+      "category": "space",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1999,
+      "title": "Napster hit with landmark music-industry lawsuit",
+      "description": "Recording companies, led by the Recording Industry Association of America, file the A&M Records, Inc. v. Napster, Inc. lawsuit, accusing the file-sharing service of enabling massive copyright infringement and reshaping the future of digital music.",
+      "link": "https://en.wikipedia.org/wiki/A%26M_Records,_Inc._v._Napster,_Inc.",
+      "category": "technology",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2006,
+      "title": "Mars images hint at recent liquid water",
+      "description": "NASA releases Mars Global Surveyor photos that show changes in gullies, suggesting that liquid water may have flowed on the Martian surface in recent years.",
+      "link": "https://www.nasa.gov/mission_pages/mgs/multimedia/mgs-20061206.html",
+      "category": "space",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "history": [
+    {
+      "year": 1865,
+      "title": "13th Amendment ratified, abolishing slavery in the U.S.",
+      "description": "Georgia becomes the 27th state to approve the 13th Amendment, officially banning slavery and involuntary servitude throughout the United States.",
+      "link": "https://apnews.com/article/570363a63f7dc624192bb052cd90fb4e",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1884,
+      "title": "Washington Monument construction completed",
+      "description": "Engineers place a 3,300-pound capstone and an aluminum pyramidion atop the Washington Monument in Washington, D.C., finishing a 36-year building project and creating what was then the world’s tallest structure.",
+      "link": "https://www.nps.gov/wamo/learn/historyculture/monumentconstruction.htm",
+      "category": "landmark",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1907,
+      "title": "Monongah mine disaster kills hundreds in West Virginia",
+      "description": "Explosions rip through coal mines in Monongah, West Virginia, killing hundreds of miners in what remains the deadliest mining disaster in U.S. history.",
+      "link": "https://en.wikipedia.org/wiki/Monongah_mine_disaster",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1917,
+      "title": "Halifax Explosion devastates Canadian port city",
+      "description": "An ammunition-laden French ship collides with another vessel in Halifax Harbour and explodes, killing nearly 2,000 people and leveling much of the surrounding area.",
+      "link": "https://en.wikipedia.org/wiki/Halifax_Explosion",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1917,
+      "title": "Finland declares independence from Russia",
+      "description": "Following the turmoil of the Russian Revolution, Finland’s parliament formally proclaims the country’s independence from the Russian Empire.",
+      "link": "https://en.wikipedia.org/wiki/Independence_Day_(Finland)",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1922,
+      "title": "Irish Free State officially established",
+      "description": "The Irish Free State comes into being as a self-governing dominion within the British Empire, implementing the terms of the Anglo-Irish Treaty and partitioning the island.",
+      "link": "https://en.wikipedia.org/wiki/Irish_Free_State",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1933,
+      "title": "James Joyce’s novel Ulysses ruled not obscene",
+      "description": "A U.S. federal judge in New York lifts the long-standing ban on James Joyce’s modernist novel Ulysses, clearing the way for its legal publication in the United States and expanding protections for literary expression.",
+      "link": "https://www.history.com/this-day-in-history/ulysses-is-ruled-not-obscene",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1956,
+      "title": "‘Blood in the Water’ Olympic water polo match",
+      "description": "At the Melbourne Olympics, Hungary’s water polo team defeats the Soviet Union in a brutal, politically charged match that becomes a symbol of resistance after the crushed Hungarian Revolution.",
+      "link": "https://en.wikipedia.org/wiki/Blood_in_the_Water_match",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1973,
+      "title": "Gerald Ford sworn in as U.S. Vice President",
+      "description": "After the House and Senate approve his nomination under the Twenty-fifth Amendment, Gerald R. Ford takes the oath of office as vice president, replacing Spiro Agnew amid the unfolding Watergate scandal.",
+      "link": "https://en.wikipedia.org/wiki/1973_United_States_vice_presidential_confirmation",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1995,
+      "title": "Saquinavir, first HIV protease inhibitor, approved",
+      "description": "The U.S. Food and Drug Administration approves Saquinavir, the first HIV protease inhibitor, helping usher in combination antiretroviral therapy that quickly drives down AIDS-related deaths.",
+      "link": "https://en.wikipedia.org/wiki/Saquinavir",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2017,
+      "title": "U.S. recognizes Jerusalem as capital of Israel",
+      "description": "The Trump administration formally announces that the United States recognizes Jerusalem as the capital of Israel, breaking with decades of U.S. policy and drawing strong international reaction.",
+      "link": "https://en.wikipedia.org/wiki/United_States_recognition_of_Jerusalem_as_capital_of_Israel",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "crime_and_justice": [
+    {
+      "year": 1969,
+      "title": "Altamont Free Concert turns deadly",
+      "description": "During a free Rolling Stones concert at Altamont Speedway in California, a young fan, Meredith Hunter, is stabbed to death by Hells Angels security, shocking the music world and symbolizing the dark turn of the 1960s.",
+      "link": "https://en.wikipedia.org/wiki/Altamont_Free_Concert",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1989,
+      "title": "École Polytechnique massacre in Montreal",
+      "description": "An anti-feminist gunman opens fire at École Polytechnique in Montreal, murdering 14 women and wounding many others in one of Canada’s deadliest mass shootings.",
+      "link": "https://en.wikipedia.org/wiki/%C3%89cole_Polytechnique_massacre",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1989,
+      "title": "Bombing of Colombia’s DAS building in Bogotá",
+      "description": "A powerful car bomb detonates outside the Administrative Department of Security (DAS) headquarters in Bogotá, Colombia, killing dozens and injuring many more in an attack widely attributed to the Medellín cartel.",
+      "link": "https://en.wikipedia.org/wiki/DAS_building_bombing",
+      "category": "terrorism",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "war_and_conflict": [
+    {
+      "year": 1916,
+      "title": "Central Powers capture Bucharest in World War I",
+      "description": "During World War I, forces of the Central Powers capture Bucharest, the capital of Romania, dealing a major blow to the Allied position in Eastern Europe.",
+      "link": "https://en.wikipedia.org/wiki/Romanian_Campaign",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1939,
+      "title": "Battle of Taipale in the Winter War",
+      "description": "On the Karelian Isthmus, Finnish defenders halt a Red Army advance at the Mannerheim Line during the Battle of Taipale, an early and symbolic engagement of the Winter War.",
+      "link": "https://en.wikipedia.org/wiki/Battle_of_Taipale",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1991,
+      "title": "Heavy bombardment of Dubrovnik in the Yugoslav Wars",
+      "description": "During the siege of Dubrovnik, Yugoslav People’s Army forces subject the historic Croatian city to one of the heaviest bombardments of the conflict, drawing international condemnation.",
+      "link": "https://en.wikipedia.org/wiki/Siege_of_Dubrovnik",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1992,
+      "title": "Babri Masjid demolished in Ayodhya",
+      "description": "A large mob in Ayodhya, India, demolishes the 16th-century Babri Masjid mosque, sparking riots and communal violence across the country that leave more than a thousand people dead.",
+      "link": "https://en.wikipedia.org/wiki/Babri_Masjid_demolition",
+      "category": "civil_unrest",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "births": [
+    {
+      "year": 1952,
+      "title": "Craig Newmark born",
+      "description": "American web entrepreneur Craig Newmark, founder of the online classifieds site Craigslist, is born in Morristown, New Jersey.",
+      "link": "https://en.wikipedia.org/wiki/Craig_Newmark",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1957,
+      "title": "Andrew Cuomo born",
+      "description": "Andrew Cuomo, future governor of New York and former U.S. secretary of Housing and Urban Development, is born in Queens, New York City.",
+      "link": "https://en.wikipedia.org/wiki/Andrew_Cuomo",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1967,
+      "title": "Judd Apatow born",
+      "description": "Future writer, director, and producer Judd Apatow, known for comedies like The 40-Year-Old Virgin and Knocked Up, is born in Syosset, New York.",
+      "link": "https://www.britannica.com/biography/Judd-Apatow",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1994,
+      "title": "Giannis Antetokounmpo born",
+      "description": "Giannis Antetokounmpo, the Greek-Nigerian basketball star nicknamed the \"Greek Freak\" and future NBA champion and MVP, is born in Athens, Greece.",
+      "link": "https://www.nba.com/player/203507/giannis-antetokounmpo",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "deaths": [
+    {
+      "year": 1889,
+      "title": "Jefferson Davis dies in New Orleans",
+      "description": "Jefferson Davis, former U.S. senator and president of the Confederate States during the American Civil War, dies at age 81 in New Orleans, Louisiana.",
+      "link": "https://en.wikipedia.org/wiki/Jefferson_Davis",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1988,
+      "title": "Rock singer Roy Orbison dies",
+      "description": "American singer-songwriter Roy Orbison, known for hits such as \"Only the Lonely\" and \"Oh, Pretty Woman,\" dies of a heart attack at age 52.",
+      "link": "https://www.legacy.com/news/culture-and-history/died-december-6/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}
+

@@ -1,0 +1,330 @@
+{
+  "date": "January 1",
+
+  "tech": [
+    {
+      "year": 2010,
+      "title": "Sony ends production of the cassette Walkman",
+      "description": "Sony officially ends production of its cassette-based Walkman in most markets, closing the chapter on one of the most iconic consumer electronics products ever made.",
+      "link": "https://www.bbc.com/news/technology-10779407",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2005,
+      "title": "Wikipedia’s English edition surpasses 500,000 articles",
+      "description": "Wikipedia’s English-language edition passes half a million articles, demonstrating the rapid growth of user-generated online knowledge.",
+      "link": "https://www.britannica.com/topic/Wikipedia",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1984,
+      "title": "AT&T breakup officially takes effect",
+      "description": "The U.S. government-mandated breakup of AT&T takes effect, ending decades of monopoly control over American telecommunications.",
+      "link": "https://www.history.com/topics/1980s/att-breakup",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1983,
+      "title": "ARPANET switches to TCP/IP",
+      "description": "ARPANET adopts the TCP/IP protocol suite, allowing networks to communicate through a shared standard and laying the foundation for the modern internet.",
+      "link": "https://www.internetsociety.org/blog/2016/09/final-report-on-tcpip-migration-in-1983/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "history": [
+    {
+      "year": 1995,
+      "title": "World Trade Organization comes into existence",
+      "description": "The World Trade Organization officially begins operations, establishing a global framework for regulating international trade.",
+      "link": "https://www.wto.org/english/thewto_e/whatis_e/wto_dg_stat_e.htm",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1990,
+      "title": "David Dinkins sworn in as New York City’s first Black mayor",
+      "description": "David Dinkins is inaugurated as mayor of New York City, becoming the first African American to hold the office.",
+      "link": "https://www.britannica.com/biography/David-Dinkins",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1912,
+      "title": "Republic of China is established",
+      "description": "The Republic of China is proclaimed following the collapse of the Qing dynasty, ending over two thousand years of imperial rule.",
+      "link": "https://www.britannica.com/place/China/The-Republic-of-China",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1898,
+      "title": "City of Greater New York is created",
+      "description": "New York City consolidates surrounding municipalities to form the modern five-borough structure still used today.",
+      "link": "https://www.britannica.com/place/New-York-City/The-consolidation-of-1898",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1863,
+      "title": "Emancipation Proclamation takes effect",
+      "description": "President Abraham Lincoln’s Emancipation Proclamation goes into effect, declaring freedom for enslaved people in Confederate-held territory.",
+      "link": "https://www.archives.gov/exhibits/featured-documents/emancipation-proclamation",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "world_events": [
+    {
+      "year": 2026,
+      "title": "Deadly New Year’s Eve bar fire in Crans-Montana, Switzerland",
+      "description": "A fire during New Year’s Eve celebrations in Crans-Montana kills at least 40 people and injures more than 100 others.",
+      "link": "",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2025,
+      "title": "Vehicle-ramming and shooting attack in New Orleans",
+      "description": "A vehicle-ramming and shooting attack during New Year celebrations in New Orleans kills 14 people and injures dozens more.",
+      "link": "",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2024,
+      "title": "Major earthquake strikes western Japan",
+      "description": "A powerful earthquake strikes western Japan, killing hundreds and injuring over a thousand people.",
+      "link": "",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2024,
+      "title": "Steamboat Willie and original Mickey Mouse enter the public domain",
+      "description": "Disney’s copyright on Steamboat Willie expires, allowing the earliest depiction of Mickey Mouse to enter the public domain.",
+      "link": "",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2013,
+      "title": "Deadly stadium stampede in Abidjan, Ivory Coast",
+      "description": "At least 60 people are killed and more than 200 injured in a stampede following New Year celebrations at a stadium in Abidjan.",
+      "link": "https://en.wikipedia.org/wiki/2013_Abidjan_stampede",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "crime_and_justice": [
+    {
+      "year": 2017,
+      "title": "Nightclub attack in Istanbul kills dozens",
+      "description": "An attacker opens fire at a nightclub in Istanbul during New Year celebrations, killing dozens and injuring many others.",
+      "link": "https://www.bbc.com/news/world-europe-38513670",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2009,
+      "title": "Bangkok nightclub fire kills 66 people",
+      "description": "A fire at a Bangkok nightclub during New Year celebrations kills 66 people, becoming one of Thailand’s deadliest nightclub disasters.",
+      "link": "https://en.wikipedia.org/wiki/Santika_Club_fire",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1934,
+      "title": "Alcatraz becomes a federal prison",
+      "description": "Alcatraz Island officially begins operating as a United States federal prison in San Francisco Bay.",
+      "link": "https://www.onthisday.com/events/1934-january-1",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "war_and_conflict": [
+    {
+      "year": 1994,
+      "title": "NAFTA takes effect",
+      "description": "The North American Free Trade Agreement enters into force between the United States, Canada, and Mexico.",
+      "link": "https://www.britannica.com/event/North-American-Free-Trade-Agreement",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1959,
+      "title": "Cuban Revolution succeeds",
+      "description": "Fulgencio Batista flees Cuba as Fidel Castro’s revolutionary forces take power, reshaping Cold War geopolitics.",
+      "link": "https://www.history.com/this-day-in-history/fidel-castro-takes-power",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "sports": [
+    {
+      "year": 2014,
+      "title": "NHL Winter Classic continues New Year’s Day tradition",
+      "description": "The NHL Winter Classic remains a marquee New Year’s Day sporting event, drawing large crowds and national television audiences.",
+      "link": "https://www.nhl.com/fans/winter-classic",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1902,
+      "title": "First Rose Bowl game is played",
+      "description": "The first Rose Bowl game is held in Pasadena, launching one of college football’s most famous traditions.",
+      "link": "https://rosebowlgame.com/sports/2018/6/7/history.aspx",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "science": [
+    {
+      "year": 2015,
+      "title": "NASA’s New Horizons nears Pluto ahead of historic flyby",
+      "description": "NASA’s New Horizons spacecraft enters its final approach phase toward Pluto, preparing for its first-ever close encounter later in the year.",
+      "link": "https://solarsystem.nasa.gov/missions/new-horizons/overview/",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "disasters": [
+    {
+      "year": 1985,
+      "title": "Eastern Air Lines Flight 980 crashes in Bolivia",
+      "description": "Eastern Air Lines Flight 980 crashes into Mount Illimani in Bolivia, killing all 29 people aboard.",
+      "link": "https://en.wikipedia.org/wiki/Eastern_Air_Lines_Flight_980",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1978,
+      "title": "Air India Flight 855 crashes into the Arabian Sea",
+      "description": "Air India Flight 855 crashes shortly after takeoff from Bombay due to instrument failure, killing all 213 people on board.",
+      "link": "https://en.wikipedia.org/wiki/Air_India_Flight_855",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1969,
+      "title": "Verne Troyer is born",
+      "description": "Actor Verne Troyer is born, later becoming widely known for his role as Mini-Me in the Austin Powers film series.",
+      "link": "",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1954,
+      "title": "Bob Menendez is born",
+      "description": "Bob Menendez is born, later becoming a U.S. Senator representing New Jersey and a prominent figure in American politics.",
+      "link": "",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1953,
+      "title": "Gary Johnson is born",
+      "description": "Gary Johnson is born, later serving as the 29th Governor of New Mexico and running for president as a Libertarian candidate.",
+      "link": "",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1956,
+      "title": "Christine Lagarde is born",
+      "description": "Christine Lagarde is born, later becoming a leading global economic figure and head of major international financial institutions.",
+      "link": "https://www.britannica.com/biography/Christine-Lagarde",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1879,
+      "title": "E. M. Forster is born",
+      "description": "English novelist E. M. Forster is born, later writing influential works exploring class, empire, and social change.",
+      "link": "https://www.britannica.com/biography/E-M-Forster",
+      "category": "birth",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 2015,
+      "title": "Mario Cuomo dies",
+      "description": "Mario Cuomo, former Governor of New York and a major figure in American liberal politics, dies at age 82.",
+      "link": "",
+      "category": "death",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2013,
+      "title": "Patti Page dies",
+      "description": "Singer and actress Patti Page, one of the best-selling female vocalists of the 1950s, dies at age 85.",
+      "link": "",
+      "category": "death",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1992,
+      "title": "Grace Hopper dies",
+      "description": "Computer scientist and U.S. Navy rear admiral Grace Hopper dies, leaving behind a legacy that includes co-developing the COBOL programming language.",
+      "link": "",
+      "category": "death",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1953,
+      "title": "Hank Williams dies",
+      "description": "Country music legend Hank Williams dies at age 29, leaving a lasting impact on American music and songwriting.",
+      "link": "https://www.britannica.com/biography/Hank-Williams",
+      "category": "death",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

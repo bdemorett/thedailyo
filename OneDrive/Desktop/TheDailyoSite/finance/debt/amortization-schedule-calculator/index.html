@@ -1,0 +1,1001 @@
+<!-- ==============================================
+FILE: /finance/debt/amortization-schedule-calculator/index.html
+Upgraded: start date + date column, extra payment, yearly view, CSV/copy, query params, better KPIs
+=============================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amortization Schedule Calculator — TheDailyo</title>
+  <meta name="description" content="Generate an amortization schedule showing each payment split into principal and interest, remaining balance over time, and yearly totals. Includes extra payment scenarios." />
+  <link rel="canonical" href="https://thedailyo.com/finance/debt/amortization-schedule-calculator/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- GA4 (match site) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense (keep) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <!-- Page-specific only (keep small) -->
+  <style>
+.two-col{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:14px;
+  align-items:start;
+}
+
+    @media(max-width:900px){ .two-col{ grid-template-columns:1fr; } }
+
+    .panel{
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border:1px solid var(--border-subtle);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel h2{
+      font-size:1.1rem;
+      font-weight:900;
+      margin-bottom:8px;
+      color: var(--text-main);
+    }
+
+    .form-grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media(max-width:760px){ .form-grid{ grid-template-columns:1fr; } }
+
+    label{
+      display:block;
+      font-size:.9rem;
+      font-weight:900;
+      color: var(--text-main);
+      margin-bottom:6px;
+    }
+
+    input, select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,0.18);
+      background:#ffffff;
+      color: var(--text-main);
+      font-size:.95rem;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .inline{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .check{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:850;
+      color: var(--text-main);
+      user-select:none;
+    }
+    .check input{
+      width:auto;
+      box-shadow:none;
+    }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      padding:10px 18px;
+      border-radius:999px;
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 14px 28px rgba(79,124,255,0.25);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-1px); filter:brightness(1.03); }
+
+    .btn-ghost{
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .btn-ghost:hover{
+      transform:translateY(-1px);
+      border-color: rgba(79,124,255,0.35);
+      box-shadow: 0 16px 30px rgba(2,6,23,0.12);
+    }
+
+    .warn{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      background: rgba(255, 82, 82, 0.10);
+      border: 1px solid rgba(255, 82, 82, 0.25);
+      color: var(--text-main);
+      font-weight:850;
+      display:none;
+    }
+
+    .result{
+      margin-top:14px;
+    }
+    .result h3{
+      font-size:1.02rem;
+      font-weight:950;
+      color: var(--text-main);
+      margin-bottom:10px;
+    }
+
+    .kpi-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+    @media(max-width:760px){ .kpi-grid{ grid-template-columns:1fr; } }
+
+    .kpi{
+      background:#ffffff;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      padding:14px;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.08);
+    }
+    .kpi-label{ font-size:.88rem; color: var(--text-muted); font-weight:850; }
+    .kpi-value{ margin-top:6px; font-size:1.1rem; font-weight:950; color: var(--text-main); }
+
+    .table-wrap{
+      margin-top:12px;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--border-subtle);
+      background:#ffffff;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.06);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:860px;
+      background:#ffffff;
+    }
+    th, td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(15,23,42,0.10);
+      font-size:.9rem;
+      text-align:right;
+      white-space:nowrap;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#ffffff;
+      color: var(--text-main);
+      font-weight:950;
+      z-index:1;
+    }
+    td:first-child, th:first-child{ text-align:left; }
+    tbody tr:hover td{ background: rgba(79,124,255,0.06); }
+
+    .hint{
+      color: var(--text-muted);
+      font-weight:850;
+      font-size:.85rem;
+      margin-left:6px;
+    }
+
+    .small-note{
+      margin-top:10px;
+      color: var(--text-muted);
+      font-weight:800;
+      font-size:.9rem;
+      line-height:1.55;
+    }
+
+    .subtle{
+      font-weight:850;
+      color: var(--text-muted);
+      font-size:.9rem;
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/debt/amortization-schedule-calculator/#webpage",
+                       "url":  "https://thedailyo.com/finance/debt/amortization-schedule-calculator/",
+                       "name":  "Amortization Schedule Calculator — TheDailyo",
+                       "description":  "Generate an amortization schedule showing each payment split into principal and interest, remaining balance over time, and yearly totals. Includes extra payment scenarios.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/debt/amortization-schedule-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Debt",
+                                                   "item":  "https://thedailyo.com/finance/debt/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Amortization Schedule Calculator",
+                                                   "item":  "https://thedailyo.com/finance/debt/amortization-schedule-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/finance/debt/amortization-schedule-calculator/#calculator",
+                       "name":  "Amortization Schedule Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/finance/debt/amortization-schedule-calculator/",
+                       "description":  "Generate an amortization schedule showing each payment split into principal and interest, remaining balance over time, and yearly totals. Includes extra payment scenarios.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">Amortization Schedule Calculator</h1>
+      <p class="site-subtitle">See each payment split into interest vs principal, plus remaining balance over time.</p>
+      <div class="header-gradient-line"></div>
+
+   <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/finance/">Finance</a> <span class="crumb-sep">›</span>
+        <a href="/finance/debt/">Debt</a> <span class="crumb-sep">›</span>
+        Amortization Schedule
+      </div>
+    </header>
+
+    <main id="main">
+      <h2 class="section-title">Calculator</h2>
+      <p class="section-subtitle">
+        Auto calculates the standard payment. Add an extra monthly payment to see payoff faster and interest drop.
+        Switch to Manual if you want to enter a specific payment.
+      </p>
+
+      <div class="two-col">
+        <section class="panel" aria-label="Calculator">
+          <h2>Inputs</h2>
+
+          <div class="form-grid">
+            <div>
+              <label for="principal">Loan amount ($)</label>
+              <input id="principal" type="number" min="0" step="0.01" value="25000" inputmode="decimal" />
+            </div>
+
+            <div>
+              <label for="apr">APR (%)</label>
+              <input id="apr" type="number" min="0" step="0.01" value="6.5" inputmode="decimal" />
+            </div>
+
+            <div>
+              <label for="term">Term</label>
+              <input id="term" type="number" min="1" step="1" value="60" inputmode="numeric" />
+            </div>
+
+            <div>
+              <label for="termType">Term type</label>
+              <select id="termType">
+                <option value="months" selected>Months</option>
+                <option value="years">Years</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="startMonth">Start month</label>
+              <input id="startMonth" type="month" value="" />
+              <div class="small-note">Optional — used to show real payment dates and payoff month.</div>
+            </div>
+
+            <div>
+              <label for="view">Table view</label>
+              <select id="view">
+                <option value="monthly" selected>Monthly schedule</option>
+                <option value="yearly">Yearly summary</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mode">Payment mode</label>
+              <select id="mode">
+                <option value="auto" selected>Auto payment (recommended)</option>
+                <option value="manual">Manual (enter payment)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="payment">Monthly payment ($) <span class="hint" id="payHint">(auto fills)</span></label>
+              <input id="payment" type="number" min="0" step="0.01" value="" placeholder="Auto mode fills this in" inputmode="decimal" />
+            </div>
+
+            <div>
+              <label for="extra">Extra monthly payment ($)</label>
+              <input id="extra" type="number" min="0" step="0.01" value="0" inputmode="decimal" />
+              <div class="small-note">Applied on top of the auto payment (ignored in Manual mode).</div>
+            </div>
+
+            <div>
+              <label>&nbsp;</label>
+              <div class="inline">
+                <label class="check" for="showDates">
+                  <input id="showDates" type="checkbox" />
+                  Show payment dates
+                </label>
+              </div>
+              <div class="small-note">If enabled, the table shows month-by-month dates (requires start month).</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="calcBtn" type="button">Generate schedule</button>
+            <button class="btn-ghost" id="copyBtn" type="button">Copy table</button>
+            <button class="btn-ghost" id="csvBtn" type="button">Download CSV</button>
+            <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+          </div>
+
+          <div class="warn" id="warn" aria-live="polite"></div>
+
+          <div class="result" id="result" style="display:none;">
+            <h3>Summary</h3>
+
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kpi-label">Base payment (auto)</div>
+                <div class="kpi-value" id="basePmt">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Actual monthly payment</div>
+                <div class="kpi-value" id="pmt">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Total interest</div>
+                <div class="kpi-value" id="interest">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Interest saved (vs standard)</div>
+                <div class="kpi-value" id="saved">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Paid off in</div>
+                <div class="kpi-value" id="monthsToPayoff">—</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-label">Payoff month</div>
+                <div class="kpi-value" id="payoffDate">—</div>
+              </div>
+            </div>
+
+            <div class="small-note" id="capNote" style="display:none;"></div>
+
+            <div class="table-wrap" aria-label="Amortization schedule table">
+              <table id="scheduleTable">
+                <thead id="thead"></thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="small-note subtle" style="margin-top:10px;">
+              Tip: Try extra payments like $25, $50, or $100/month — even small amounts usually save real interest.
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel" aria-label="Explanation">
+          <h2>How it works</h2>
+          <p>
+            Each month, interest is calculated on the remaining balance using a monthly rate (APR ÷ 12).
+            Your payment covers interest first; the rest reduces principal. Over time, interest goes down and principal goes up.
+          </p>
+
+          <details class="faq">
+            <summary>Why is the interest so high at the start?</summary>
+            <p>The balance is largest at the beginning. As you pay down principal, the interest portion shrinks.</p>
+          </details>
+
+          <details class="faq">
+            <summary>What if I pay extra each month?</summary>
+            <p>Add an extra monthly payment to see payoff faster and total interest drop.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Is this financial advice?</summary>
+            <p>No — this is educational. Verify loan terms, fees, and rounding rules with your lender.</p>
+          </details>
+
+          <p style="margin-top:10px;">
+            Related: <a href="/finance/debt/loan-payment-calculator/">Loan Payment Calculator</a>
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+
+    // ---------- Formatting ----------
+    function money(n){
+      if(!isFinite(n)) return "—";
+      return n.toLocaleString(undefined,{style:"currency",currency:"USD"});
+    }
+    function num(n){
+      if(!isFinite(n)) return "—";
+      return n.toLocaleString(undefined,{maximumFractionDigits: 2});
+    }
+    function ymLabel(d){
+      // d is a Date at first of month
+      const mo = d.toLocaleString(undefined, { month: "short" });
+      return `${mo} ${d.getFullYear()}`;
+    }
+
+    function setWarn(msg){
+      const w = el("warn");
+      if(!msg){
+        w.style.display="none";
+        w.textContent="";
+        return;
+      }
+      w.textContent = msg;
+      w.style.display="block";
+    }
+
+    // ---------- Core math ----------
+    function monthsFromTerm(term, termType){
+      const t = Number(term);
+      if(!isFinite(t) || t <= 0) return 0;
+      if(termType === "years") return Math.round(t * 12);
+      return Math.round(t);
+    }
+
+    function calcPayment(P, aprPct, n){
+      const r = (aprPct/100)/12;
+      if(n<=0) return NaN;
+      if(r===0) return P/n;
+      return P*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+    }
+
+    function generateSchedule(P, aprPct, n, payment){
+      const r = (aprPct/100)/12;
+      let bal = P;
+      let totalInterest = 0;
+      const rows = [];
+
+      // Safety cap for absurd terms / low payments
+      const hardCap = 1200;
+      const maxMonths = Math.min(n, hardCap);
+      let capped = false;
+
+      for(let month=1; month<=maxMonths; month++){
+        const interest = bal * r;
+
+        let pay = payment;
+
+        // cap final payment to exact payoff
+        if(pay > bal + interest) pay = bal + interest;
+
+        const principal = Math.max(0, pay - interest);
+        const newBal = Math.max(0, bal + interest - pay);
+
+        totalInterest += interest;
+        rows.push({month, payment:pay, interest, principal, balance:newBal});
+
+        // detect "balance growing" situation
+        if(aprPct > 0 && month >= 3){
+          const b0 = rows[month-3].balance;
+          const b1 = rows[month-2].balance;
+          const b2 = rows[month-1].balance;
+          if(b2 > b1 && b1 > b0){
+            return {rows, totalInterest, months:month, paidOff:false, growing:true, capped:false};
+          }
+        }
+
+        bal = newBal;
+        if(bal <= 0.000001){
+          return {rows, totalInterest, months:month, paidOff:true, growing:false, capped:false};
+        }
+      }
+
+      if(n > hardCap) capped = true;
+      return {rows, totalInterest, months:maxMonths, paidOff:false, growing:false, capped};
+    }
+
+    function buildYearly(rows){
+      // Groups each 12 months into a year bucket
+      const years = [];
+      let yearIndex = 1;
+      let paySum = 0, intSum = 0, prinSum = 0;
+      let startMonth = 1;
+
+      for(let i=0;i<rows.length;i++){
+        const r = rows[i];
+        paySum += r.payment;
+        intSum += r.interest;
+        prinSum += r.principal;
+
+        const isEndOfYear = ((i+1) % 12 === 0) || (i === rows.length-1);
+        if(isEndOfYear){
+          years.push({
+            year: yearIndex,
+            months: `${startMonth}-${i+1}`,
+            paymentTotal: paySum,
+            interestTotal: intSum,
+            principalTotal: prinSum,
+            endingBalance: r.balance
+          });
+          yearIndex++;
+          startMonth = i+2;
+          paySum = 0; intSum = 0; prinSum = 0;
+        }
+      }
+      return years;
+    }
+
+    // ---------- Dates ----------
+    function parseStartMonth(value){
+      // value like "2026-02"
+      if(!value) return null;
+      const parts = value.split("-");
+      if(parts.length !== 2) return null;
+      const y = Number(parts[0]);
+      const m = Number(parts[1]);
+      if(!isFinite(y) || !isFinite(m) || m < 1 || m > 12) return null;
+      return new Date(y, m-1, 1);
+    }
+
+    function addMonths(date, months){
+      return new Date(date.getFullYear(), date.getMonth() + months, 1);
+    }
+
+    // ---------- Table rendering ----------
+    function renderTableMonthly(rows, opts){
+      const { showDates, startDate } = opts;
+      const thead = el("thead");
+      const tbody = el("tbody");
+
+      const cols = showDates ? ["Date","Month","Payment","Interest","Principal","Balance"]
+                             : ["Month","Payment","Interest","Principal","Balance"];
+
+      thead.innerHTML = `<tr>${cols.map(c => `<th>${c}</th>`).join("")}</tr>`;
+      tbody.innerHTML = "";
+
+      for(const r of rows){
+        const tr = document.createElement("tr");
+        if(showDates && startDate){
+          const d = addMonths(startDate, r.month - 1);
+          tr.innerHTML = `
+            <td style="text-align:left;">${ymLabel(d)}</td>
+            <td>${r.month}</td>
+            <td>${money(r.payment)}</td>
+            <td>${money(r.interest)}</td>
+            <td>${money(r.principal)}</td>
+            <td>${money(r.balance)}</td>
+          `;
+        } else {
+          tr.innerHTML = `
+            <td>${r.month}</td>
+            <td>${money(r.payment)}</td>
+            <td>${money(r.interest)}</td>
+            <td>${money(r.principal)}</td>
+            <td>${money(r.balance)}</td>
+          `;
+        }
+        tbody.appendChild(tr);
+      }
+    }
+
+    function renderTableYearly(yearRows, opts){
+      const { showDates, startDate } = opts; // showDates impacts labeling only
+      const thead = el("thead");
+      const tbody = el("tbody");
+
+      // If dates enabled + start month provided, label years by calendar year spans
+      let cols = ["Year","Months","Total paid","Total interest","Total principal","Ending balance"];
+      if(showDates && startDate) cols = ["Year label","Months","Total paid","Total interest","Total principal","Ending balance"];
+
+      thead.innerHTML = `<tr>${cols.map(c => `<th>${c}</th>`).join("")}</tr>`;
+      tbody.innerHTML = "";
+
+      for(const y of yearRows){
+        const tr = document.createElement("tr");
+        let yearLabel = `Year ${y.year}`;
+        if(showDates && startDate){
+          const start = addMonths(startDate, Number(y.months.split("-")[0]) - 1);
+          const end = addMonths(startDate, Number(y.months.split("-")[1]) - 1);
+          yearLabel = `${ymLabel(start)} → ${ymLabel(end)}`;
+        }
+
+        tr.innerHTML = `
+          <td style="text-align:left;">${yearLabel}</td>
+          <td style="text-align:left;">${y.months}</td>
+          <td>${money(y.paymentTotal)}</td>
+          <td>${money(y.interestTotal)}</td>
+          <td>${money(y.principalTotal)}</td>
+          <td>${money(y.endingBalance)}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    // ---------- Copy/CSV ----------
+    function tableToTSV(table){
+      const rows = Array.from(table.querySelectorAll("tr"));
+      return rows.map(tr => {
+        const cells = Array.from(tr.querySelectorAll("th,td"));
+        return cells.map(td => td.textContent.replace(/\s+/g, " ").trim()).join("\t");
+      }).join("\n");
+    }
+
+    function tableToCSV(table){
+      const rows = Array.from(table.querySelectorAll("tr"));
+      return rows.map(tr => {
+        const cells = Array.from(tr.querySelectorAll("th,td"));
+        return cells.map(td => {
+          const raw = td.textContent.replace(/\s+/g," ").trim();
+          const escaped = raw.replace(/"/g,'""');
+          return `"${escaped}"`;
+        }).join(",");
+      }).join("\n");
+    }
+
+    async function copyTable(){
+      const t = el("scheduleTable");
+      const text = tableToTSV(t);
+      try{
+        await navigator.clipboard.writeText(text);
+        setWarn("Copied table to clipboard.");
+        setTimeout(()=>setWarn(""), 1800);
+      } catch(e){
+        setWarn("Copy failed (browser permission). You can still download CSV.");
+      }
+    }
+
+    function downloadCSV(filename){
+      const t = el("scheduleTable");
+      const csv = tableToCSV(t);
+      const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // ---------- URL params ----------
+    function getParams(){
+      const sp = new URLSearchParams(window.location.search);
+      const g = (k) => sp.get(k);
+
+      return {
+        amount: g("amount"),
+        apr: g("apr"),
+        term: g("term"),
+        termType: g("termType"),
+        mode: g("mode"),
+        payment: g("payment"),
+        extra: g("extra"),
+        start: g("start"),
+        showDates: g("showDates"),
+        view: g("view")
+      };
+    }
+
+    function applyParams(){
+      const p = getParams();
+
+      if(p.amount !== null) el("principal").value = String(p.amount);
+      if(p.apr !== null) el("apr").value = String(p.apr);
+      if(p.term !== null) el("term").value = String(p.term);
+      if(p.termType === "months" || p.termType === "years") el("termType").value = p.termType;
+
+      if(p.mode === "auto" || p.mode === "manual") el("mode").value = p.mode;
+
+      if(p.payment !== null) el("payment").value = String(p.payment);
+      if(p.extra !== null) el("extra").value = String(p.extra);
+
+      if(p.start !== null) el("startMonth").value = String(p.start);
+      if(p.showDates !== null) el("showDates").checked = (p.showDates === "1" || p.showDates === "true");
+      if(p.view === "monthly" || p.view === "yearly") el("view").value = p.view;
+    }
+
+    function updateURL(state){
+      const sp = new URLSearchParams();
+      sp.set("amount", state.amount);
+      sp.set("apr", state.apr);
+      sp.set("term", state.term);
+      sp.set("termType", state.termType);
+      sp.set("mode", state.mode);
+      if(state.mode === "manual") sp.set("payment", state.payment);
+      if(state.mode === "auto") sp.set("extra", state.extra);
+      if(state.start) sp.set("start", state.start);
+      if(state.showDates) sp.set("showDates", "1");
+      sp.set("view", state.view);
+
+      const newUrl = `${window.location.pathname}?${sp.toString()}`;
+      window.history.replaceState({}, "", newUrl);
+    }
+
+    // ---------- Mode sync ----------
+    function syncMode(){
+      const mode = el("mode").value;
+      const payment = el("payment");
+      const hint = el("payHint");
+      const extra = el("extra");
+
+      if(mode === "auto"){
+        payment.disabled = true;
+        payment.placeholder = "Auto mode fills this in";
+        hint.textContent = "(auto fills)";
+        extra.disabled = false;
+      } else {
+        payment.disabled = false;
+        payment.placeholder = "Enter your monthly payment";
+        hint.textContent = "(you enter)";
+        // extra doesn't apply in manual mode; keep it visible but disabled to avoid confusion
+        extra.disabled = true;
+      }
+    }
+
+    // ---------- Main calculate ----------
+    function calculate(){
+      setWarn("");
+
+      const P = Number(el("principal").value);
+      const apr = Number(el("apr").value);
+      const term = Number(el("term").value);
+      const termType = el("termType").value;
+      const mode = el("mode").value;
+
+      const extra = Math.max(0, Number(el("extra").value || 0));
+      const view = el("view").value;
+
+      const startVal = el("startMonth").value;
+      const startDate = parseStartMonth(startVal);
+      const showDates = el("showDates").checked && !!startDate;
+
+      if(!(P>0)) return setWarn("Enter a loan amount greater than 0.");
+      if(!(apr>=0)) return setWarn("APR must be 0 or higher.");
+      if(!(term>0)) return setWarn("Enter a term greater than 0.");
+
+      const n = monthsFromTerm(term, termType);
+      if(n<=0) return setWarn("Term is too small after converting to months.");
+
+      const basePmt = calcPayment(P, apr, n);
+      if(!isFinite(basePmt)) return setWarn("Could not calculate payment. Check inputs.");
+
+      let actualPmt = basePmt;
+      let manualPayment = Number(el("payment").value);
+
+      if(mode === "auto"){
+        actualPmt = basePmt + extra;
+        el("payment").value = basePmt.toFixed(2);
+      } else {
+        if(!(manualPayment>0) || !isFinite(manualPayment)) return setWarn("Enter a valid monthly payment.");
+        actualPmt = manualPayment;
+      }
+
+      // warning if payment doesn't reduce balance
+      if(apr > 0){
+        const firstMonthInterest = (apr/100/12) * P;
+        if(actualPmt <= firstMonthInterest){
+          setWarn("This payment is too low to reduce the balance (it mostly covers interest). Increase payment to see payoff.");
+        }
+      }
+
+      // schedule with actual payment
+      const sched = generateSchedule(P, apr, n, actualPmt);
+
+      // baseline schedule for comparison (only if using auto + extra > 0)
+      let savedInterest = "—";
+      if(mode === "auto" && extra > 0){
+        const baseSched = generateSchedule(P, apr, n, basePmt);
+        if(isFinite(baseSched.totalInterest) && isFinite(sched.totalInterest)){
+          const saved = baseSched.totalInterest - sched.totalInterest;
+          savedInterest = money(Math.max(0, saved));
+        }
+      } else {
+        savedInterest = "—";
+      }
+
+      // payoff month label
+      let payoffLabel = "—";
+      if(sched.paidOff){
+        payoffLabel = `${sched.months.toLocaleString()} months`;
+      } else {
+        payoffLabel = `${sched.months.toLocaleString()} shown`;
+      }
+
+      let payoffMonth = "—";
+      if(startDate && sched.paidOff){
+        const payoffDate = addMonths(startDate, sched.months - 1);
+        payoffMonth = ymLabel(payoffDate);
+      } else if(!startDate && el("showDates").checked){
+        payoffMonth = "Add a start month";
+      }
+
+      // cap note
+      const capNote = el("capNote");
+      if(sched.capped){
+        capNote.style.display = "block";
+        capNote.textContent = "Note: schedule is capped at 1200 months for safety. If you need longer, increase payment or shorten term.";
+      } else {
+        capNote.style.display = "none";
+        capNote.textContent = "";
+      }
+
+      // if balance is growing, show strong warning
+      if(sched.growing){
+        setWarn("Your payment is too low — the balance is growing. Increase the payment to see a real payoff schedule.");
+      } else if(!sched.paidOff && mode === "manual"){
+        setWarn("Note: the schedule ended without reaching $0. Try a higher payment or a longer term.");
+      }
+
+      // KPIs
+      el("result").style.display = "block";
+      el("basePmt").textContent = money(basePmt);
+      el("pmt").textContent = money(actualPmt);
+      el("interest").textContent = money(sched.totalInterest);
+      el("saved").textContent = savedInterest;
+      el("monthsToPayoff").textContent = payoffLabel;
+      el("payoffDate").textContent = payoffMonth;
+
+      // Table render
+      const opts = { showDates, startDate };
+      if(view === "yearly"){
+        const y = buildYearly(sched.rows);
+        renderTableYearly(y, opts);
+      } else {
+        renderTableMonthly(sched.rows, opts);
+      }
+
+      // update URL params for sharing
+      updateURL({
+        amount: String(P),
+        apr: String(apr),
+        term: String(term),
+        termType,
+        mode,
+        payment: String(mode === "manual" ? actualPmt : basePmt.toFixed(2)),
+        extra: String(extra),
+        start: startVal ? startVal : "",
+        showDates: el("showDates").checked,
+        view
+      });
+    }
+
+    // ---------- Events ----------
+    el("calcBtn").addEventListener("click", calculate);
+    el("copyBtn").addEventListener("click", copyTable);
+    el("csvBtn").addEventListener("click", ()=>{
+      const view = el("view").value;
+      const name = view === "yearly" ? "amortization-yearly.csv" : "amortization-monthly.csv";
+      downloadCSV(name);
+    });
+
+    el("resetBtn").addEventListener("click", ()=>{
+      el("principal").value = 25000;
+      el("apr").value = 6.5;
+      el("term").value = 60;
+      el("termType").value = "months";
+      el("mode").value = "auto";
+      el("payment").value = "";
+      el("extra").value = 0;
+      el("startMonth").value = "";
+      el("showDates").checked = false;
+      el("view").value = "monthly";
+      el("result").style.display = "none";
+      setWarn("");
+      syncMode();
+      calculate();
+    });
+
+    // Auto-calc on changes (nice UX)
+    ["principal","apr","term","termType","mode","payment","extra","startMonth","showDates","view"].forEach(id=>{
+      el(id).addEventListener("change", ()=>{
+        syncMode();
+        calculate();
+      });
+    });
+
+    // ---------- Init ----------
+    applyParams();
+    syncMode();
+    calculate();
+  </script>
+</body>
+</html>

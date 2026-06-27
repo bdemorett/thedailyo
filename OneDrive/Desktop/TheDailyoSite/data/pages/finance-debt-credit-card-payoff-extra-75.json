@@ -1,0 +1,50 @@
+{
+  "key": "finance-debt-credit-card-payoff-extra-75",
+  "title": "Credit Card Payoff With $75 Extra Payment — TheDailyo",
+  "h1": "Credit Card Payoff With $75 Extra Payment",
+  "subtitle": "See how adding $75/month changes payoff time and interest.",
+  "description": "Calculate how an extra $75 monthly payment affects your credit card payoff timeline, interest paid, and total cost.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-extra-75/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "+$75 Extra", "href": "/finance/debt/credit-card-payoff-extra-75/" }
+  ],
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 200, "extra": 75 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>This page pre-fills an extra <strong>$75/month</strong>. Increasing payment amount reduces principal faster and can meaningfully reduce interest costs.</p>",
+
+  "faq": [
+    { "q": "What’s the benefit of $75/month extra?", "a": "It’s a moderate extra payment that often cuts months off the payoff timeline and lowers total interest paid." },
+    { "q": "Does payment timing matter?", "a": "This model uses monthly compounding. Paying earlier can sometimes reduce interest on real cards that compound daily." },
+    { "q": "What if my payment is too low?", "a": "If your payment barely covers interest, payoff can take extremely long. Increase payment or reduce APR to see meaningful progress." }
+  ],
+
+  "related": [
+    { "title": "Extra $50 Payment", "desc": "Compare payoff speed with $50 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-50/" },
+    { "title": "Extra $100 Payment", "desc": "Compare payoff speed with $100 extra.", "meta": "Compare →", "href": "/finance/debt/credit-card-payoff-extra-100/" },
+    { "title": "Payoff With Extra Payments", "desc": "Customize any extra amount.", "meta": "Payoff →", "href": "/finance/debt/credit-card-payoff-with-extra-payments/" },
+    { "title": "Debt Avalanche Calculator", "desc": "Save the most interest overall.", "meta": "Strategy →", "href": "/finance/debt/avalanche/" }
+  ],
+
+  "affiliate": { "enabled": false, "headline": "Lower your APR and pay off faster", "offers": [] }
+}

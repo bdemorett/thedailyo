@@ -1,0 +1,85 @@
+{
+  "key": "finance-debt-credit-card-payoff-fastest-way",
+
+  "title": "Fastest Way to Pay Off Credit Cards — TheDailyo",
+  "h1": "Fastest Way to Pay Off Credit Cards",
+  "subtitle": "Model aggressive payoff scenarios and compare strategy options.",
+  "description": "Calculate payoff time and interest with larger payments, extra payments, and lower APR scenarios to find the fastest way to pay off credit cards.",
+  "canonical": "https://thedailyo.com/finance/debt/credit-card-payoff-fastest-way/",
+  "robots": "index,follow",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Credit Card Payoff", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "Fastest Way", "href": "/finance/debt/credit-card-payoff-fastest-way/" }
+  ],
+
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Work & Salary", "href": "/work/salary/" },
+    { "label": "Time & Dates", "href": "/time/" },
+    { "label": "Health", "href": "/health/" },
+    { "label": "Business", "href": "/business/" },
+    { "label": "About", "href": "/about.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+
+  "calculatorType": "credit_card_payoff_v1",
+  "calculatorConfig": {
+    "defaults": { "balance": 5000, "apr": 24.99, "payment": 300, "extra": 200 },
+    "maxMonths": 600
+  },
+
+  "howItWorksHtml": "<p>The fastest payoff is usually a combination of <strong>higher payments</strong> and <strong>lower interest</strong>. This page lets you model an aggressive payment plan (including extra payments) so you can see how payoff time and interest change.</p><p>Tip: Try increasing your monthly payment first, then experiment with an extra amount to see what moves the timeline the most.</p>",
+
+  "faq": [
+    {
+      "q": "What usually makes the biggest difference: extra payments or a lower APR?",
+      "a": "Both help, but lowering APR can reduce interest every month, while higher payments reduce principal faster. For many people, a combination works best—pay more while also trying to reduce the rate."
+    },
+    {
+      "q": "Is it better to pay extra monthly or make a one-time lump sum?",
+      "a": "A lump sum reduces principal immediately, which can reduce interest right away. Extra monthly payments add consistency. You can approximate a lump sum by temporarily increasing the payment and comparing outcomes."
+    },
+    {
+      "q": "What if I keep using the card while paying it off?",
+      "a": "This model assumes no new charges. If you keep adding charges, payoff time can increase significantly. For a clean plan, stop new spending on the card while you pay it down."
+    }
+  ],
+
+  "related": [
+    {
+      "title": "Credit Card Payoff Calculator",
+      "desc": "Standard payoff estimate with a fixed monthly payment.",
+      "meta": "Payoff →",
+      "href": "/finance/debt/credit-card-payoff/"
+    },
+    {
+      "title": "Payoff With Extra Payments",
+      "desc": "See how adding extra money reduces payoff time and interest.",
+      "meta": "Payoff →",
+      "href": "/finance/debt/credit-card-payoff-with-extra-payments/"
+    },
+    {
+      "title": "Credit Card Payoff With Minimum Payment Only",
+      "desc": "See why minimum payments can take so long.",
+      "meta": "Compare →",
+      "href": "/finance/debt/credit-card-payoff-minimum-only/"
+    },
+    {
+      "title": "Debt Avalanche Calculator",
+      "desc": "Pay off highest-interest debt first to save the most.",
+      "meta": "Strategy →",
+      "href": "/finance/debt/avalanche/"
+    }
+  ],
+
+  "affiliate": {
+    "enabled": false,
+    "headline": "Lower your APR and pay off faster",
+    "offers": []
+  }
+}

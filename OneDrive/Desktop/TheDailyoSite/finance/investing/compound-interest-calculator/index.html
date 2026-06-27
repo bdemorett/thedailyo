@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compound Interest Calculator — TheDailyo</title>
+    <meta
+      name="description"
+      content="Compound interest calculator with contributions, contribution timing, compounding frequency, optional inflation adjustment, optional tax drag, shareable links, and a growth table."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/finance/investing/compound-interest-calculator/"
+    />
+    <meta name="robots" content="index,follow" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .two-col {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+      .form-grid {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.18);
+        background: #ffffff;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 14px 28px rgba(79, 124, 255, 0.25);
+        transition:
+          transform 0.12s ease,
+          filter 0.12s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+      .btn-ghost {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+      .btn-ghost:hover {
+        transform: translateY(-1px);
+        border-color: rgba(79, 124, 255, 0.35);
+        box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+      }
+      .warn {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 82, 82, 0.1);
+        border: 1px solid rgba(255, 82, 82, 0.25);
+        color: var(--text-main);
+        font-weight: 850;
+        display: none;
+        line-height: 1.55;
+      }
+      .warn.good {
+        background: rgba(79, 124, 255, 0.1);
+        border-color: rgba(79, 124, 255, 0.22);
+      }
+      .result {
+        margin-top: 14px;
+      }
+      .result h3 {
+        font-size: 1.02rem;
+        font-weight: 950;
+        color: var(--text-main);
+        margin-bottom: 10px;
+      }
+      .kpi-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kpi {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.08);
+      }
+      .kpi-label {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        font-weight: 850;
+      }
+      .kpi-value {
+        margin-top: 6px;
+        font-size: 1.1rem;
+        font-weight: 950;
+        color: var(--text-main);
+      }
+      .kpi-sub {
+        margin-top: 6px;
+        font-size: 0.88rem;
+        font-weight: 850;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+      .table-wrap {
+        margin-top: 12px;
+        overflow: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.06);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 860px;
+        background: #ffffff;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        font-size: 0.9rem;
+        text-align: right;
+        white-space: nowrap;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 950;
+        z-index: 1;
+      }
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+      tbody tr:hover td {
+        background: rgba(79, 124, 255, 0.06);
+      }
+      .small-note {
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .section-split {
+        margin-top: 18px;
+        padding-top: 12px;
+        border-top: 1px dashed rgba(15, 23, 42, 0.14);
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/investing/compound-interest-calculator/#webpage",
+                       "url":  "https://thedailyo.com/finance/investing/compound-interest-calculator/",
+                       "name":  "Compound Interest Calculator — TheDailyo",
+                       "description":  "Compound interest calculator with contributions, contribution timing, compounding frequency, optional inflation adjustment, optional tax drag, shareable links, and a growth table.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/investing/compound-interest-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Investing",
+                                                   "item":  "https://thedailyo.com/finance/investing/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Compound Interest Calculator",
+                                                   "item":  "https://thedailyo.com/finance/investing/compound-interest-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/finance/investing/compound-interest-calculator/#calculator",
+                       "name":  "Compound Interest Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/finance/investing/compound-interest-calculator/",
+                       "description":  "Compound interest calculator with contributions, contribution timing, compounding frequency, optional inflation adjustment, optional tax drag, shareable links, and a growth table.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">Compound Interest Calculator</h1>
+        <p class="site-subtitle">
+          Estimate investment growth with contributions, compounding, optional
+          inflation adjustment, and optional tax drag.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/finance/">Finance</a> <span class="crumb-sep">›</span>
+          <a href="/finance/investing/">Investing</a>
+          <span class="crumb-sep">›</span> Compound Interest Calculator
+        </div>
+      </header>
+      <main id="main">
+        <h2 class="section-title">Calculator</h2>
+        <p class="section-subtitle">
+          Enter your starting balance, rate, years, and contribution settings.
+          Use the table to see growth over time.
+        </p>
+        <div class="two-col">
+          <section class="panel" aria-label="Calculator">
+            <h2>Inputs</h2>
+            <div class="form-grid">
+              <div>
+                <label for="principal">Starting balance ($)</label>
+                <input
+                  id="principal"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="10000"
+                  inputmode="decimal"
+                />
+              </div>
+              <div>
+                <label for="rate">Annual interest rate (%)</label>
+                <input
+                  id="rate"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="7"
+                  inputmode="decimal"
+                />
+              </div>
+              <div>
+                <label for="years">Years</label>
+                <input
+                  id="years"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value="20"
+                  inputmode="numeric"
+                />
+              </div>
+              <div>
+                <label for="compoundFreq">Compounding frequency</label>
+                <select id="compoundFreq">
+                  <option value="1">Annually</option>
+                  <option value="4">Quarterly</option>
+                  <option value="12" selected>Monthly</option>
+                  <option value="365">Daily</option>
+                </select>
+              </div>
+              <div class="section-split" style="grid-column: 1/-1">
+                <label style="margin-bottom: 0">Contributions</label>
+                <div class="small-note" style="margin-top: 6px">
+                  Contribution timing affects results: beginning-of-period
+                  contributions grow longer.
+                </div>
+              </div>
+              <div>
+                <label for="contrib">Contribution amount ($)</label>
+                <input
+                  id="contrib"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="200"
+                  inputmode="decimal"
+                />
+              </div>
+              <div>
+                <label for="contribFreq">Contribution frequency</label>
+                <select id="contribFreq">
+                  <option value="0">None</option>
+                  <option value="12" selected>Monthly</option>
+                  <option value="26">Biweekly (26/yr)</option>
+                  <option value="52">Weekly (52/yr)</option>
+                  <option value="1">Yearly</option>
+                </select>
+              </div>
+              <div>
+                <label for="contribTiming">Contribution timing</label>
+                <select id="contribTiming">
+                  <option value="end" selected>End of period</option>
+                  <option value="begin">Beginning of period</option>
+                </select>
+              </div>
+              <div>
+                <label for="tableMode">Table view</label>
+                <select id="tableMode">
+                  <option value="yearly" selected>Yearly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+              <div class="section-split" style="grid-column: 1/-1">
+                <label style="margin-bottom: 0">Optional adjustments</label>
+                <div class="small-note" style="margin-top: 6px">
+                  Inflation shows today’s-dollar values. Tax drag is a
+                  simplified once-per-year estimate.
+                </div>
+              </div>
+              <div>
+                <label for="inflationOn">Inflation adjustment</label>
+                <select id="inflationOn">
+                  <option value="0" selected>Off</option>
+                  <option value="1">On</option>
+                </select>
+              </div>
+              <div>
+                <label for="inflationRate">Inflation rate (%)</label>
+                <input
+                  id="inflationRate"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="3"
+                  inputmode="decimal"
+                />
+              </div>
+              <div>
+                <label for="taxOn">Apply tax drag?</label>
+                <select id="taxOn">
+                  <option value="0" selected>No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div>
+                <label for="taxRate">Tax rate on gains (%)</label>
+                <input
+                  id="taxRate"
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                  value="15"
+                  inputmode="decimal"
+                />
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn-primary" id="calcBtn" type="button">
+                Calculate
+              </button>
+              <button class="btn-ghost" id="copyLinkBtn" type="button">
+                Copy share link
+              </button>
+              <button class="btn-ghost" id="copyBtn" type="button">
+                Copy table
+              </button>
+              <button class="btn-ghost" id="csvBtn" type="button">
+                Download CSV
+              </button>
+              <button class="btn-ghost" id="resetBtn" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="warn" id="warn" aria-live="polite"></div>
+            <div class="result" id="result" style="display: none">
+              <h3>Summary</h3>
+              <div class="kpi-grid">
+                <div class="kpi">
+                  <div class="kpi-label">Ending balance</div>
+                  <div class="kpi-value" id="kpiEnding">—</div>
+                  <div class="kpi-sub" id="kpiEndingSub">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Total contributions</div>
+                  <div class="kpi-value" id="kpiContrib">—</div>
+                  <div class="kpi-sub" id="kpiContribSub">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Total interest gained</div>
+                  <div class="kpi-value" id="kpiInterest">—</div>
+                  <div class="kpi-sub" id="kpiInterestSub">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">APY (effective)</div>
+                  <div class="kpi-value" id="kpiApy">—</div>
+                  <div class="kpi-sub" id="kpiApySub">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Total taxes paid (est.)</div>
+                  <div class="kpi-value" id="kpiTax">—</div>
+                  <div class="kpi-sub">Only shown if tax drag is on.</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Net growth</div>
+                  <div class="kpi-value" id="kpiNet">—</div>
+                  <div class="kpi-sub" id="kpiNetSub">—</div>
+                </div>
+              </div>
+              <div class="table-wrap" aria-label="Growth table">
+                <table id="growthTable">
+                  <thead id="thead"></thead>
+                  <tbody id="tbody"></tbody>
+                </table>
+              </div>
+              <div class="small-note" id="tableNote"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const el = (id) => document.getElementById(id);
+      function money(n, d = 2) {
+        if (!isFinite(n)) return "—";
+        return Number(n).toLocaleString(undefined, {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: d,
+          maximumFractionDigits: d,
+        });
+      }
+      function intMoney(n) {
+        if (!isFinite(n)) return "—";
+        return Number(n).toLocaleString(undefined, {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        });
+      }
+      function pct(n, d = 2) {
+        if (!isFinite(n)) return "—";
+        return `${Number(n).toFixed(d)}%`;
+      }
+      function setWarn(msg, good = false) {
+        const w = el("warn");
+        if (!msg) {
+          w.style.display = "none";
+          w.classList.remove("good");
+          w.textContent = "";
+          return;
+        }
+        w.textContent = msg;
+        w.style.display = "block";
+        w.classList.toggle("good", !!good);
+      }
+      function clamp(n, min, max) {
+        n = Number(n);
+        if (!isFinite(n)) return min;
+        return Math.max(min, Math.min(max, n));
+      }
+      function gcd(a, b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        while (b) {
+          const t = b;
+          b = a % b;
+          a = t;
+        }
+        return a || 1;
+      }
+      function lcm(a, b) {
+        a = Math.max(1, Math.round(a));
+        b = Math.max(1, Math.round(b));
+        return (a / gcd(a, b)) * b;
+      }
+      function freqLabel(v) {
+        const n = Number(v);
+        if (n === 0) return "None";
+        if (n === 1) return "Yearly";
+        if (n === 4) return "Quarterly";
+        if (n === 12) return "Monthly";
+        if (n === 26) return "Biweekly";
+        if (n === 52) return "Weekly";
+        if (n === 365) return "Daily";
+        return `${n}/yr`;
+      }
+      function simulate(opts) {
+        const P0 = Math.max(0, Number(opts.principal));
+        const annualRate = Math.max(0, Number(opts.rate)) / 100;
+        const years = Math.max(0, Math.round(Number(opts.years)));
+        const contrib = Math.max(0, Number(opts.contrib));
+        const contribPerYear = Math.max(0, Number(opts.contribPerYear));
+        const contribTiming = opts.contribTiming === "begin" ? "begin" : "end";
+        const compoundPerYear = Math.max(1, Number(opts.compoundPerYear));
+        const inflationOn = !!opts.inflationOn;
+        const inflationRate = Math.max(0, Number(opts.inflationRate)) / 100;
+        const taxOn = !!opts.taxOn;
+        const taxRate = clamp(Number(opts.taxRate), 0, 100) / 100;
+        const tableMode = opts.tableMode === "monthly" ? "monthly" : "yearly";
+        let step = lcm(compoundPerYear, contribPerYear || 1);
+        if (compoundPerYear === 365 || contribPerYear === 365) step = 365;
+        step = clamp(step, 1, 365);
+        const stepsTotal = years * step;
+        const rStep = annualRate / step;
+        const contribEvery = contribPerYear > 0 ? step / contribPerYear : 0;
+        const contribHit = (s) =>
+          contribPerYear > 0 &&
+          contribEvery >= 1 &&
+          isFinite(contribEvery) &&
+          s % Math.round(contribEvery) === 0;
+        let bal = P0;
+        let totalContrib = 0;
+        let totalInterest = 0;
+        let taxPaid = 0;
+        let interestThisYear = 0;
+        const rows = [];
+        const pushRow = (
+          label,
+          endBal,
+          contribToDate,
+          interestToDate,
+          yearIndexFloat,
+        ) => {
+          const inflFactor = inflationOn
+            ? Math.pow(1 + inflationRate, yearIndexFloat)
+            : 1;
+          rows.push({
+            label,
+            endBal,
+            endBalReal: inflationOn ? endBal / inflFactor : null,
+            contribToDate,
+            interestToDate,
+          });
+        };
+        const stepsPerYear = step;
+        const isYearBoundary = (s) => s > 0 && s % stepsPerYear === 0;
+        const stepsPerMonth = Math.max(1, Math.round(step / 12));
+        const isMonthBoundary = (s) => s > 0 && s % stepsPerMonth === 0;
+        pushRow("Start", bal, totalContrib, totalInterest, 0);
+        for (let s = 1; s <= stepsTotal; s++) {
+          if (contribTiming === "begin" && contribHit(s)) {
+            bal += contrib;
+            totalContrib += contrib;
+          }
+          const before = bal;
+          bal *= 1 + rStep;
+          const gained = bal - before;
+          totalInterest += gained;
+          interestThisYear += gained;
+          if (contribTiming === "end" && contribHit(s)) {
+            bal += contrib;
+            totalContrib += contrib;
+          }
+          if (taxOn && isYearBoundary(s)) {
+            const tax = Math.max(0, interestThisYear) * taxRate;
+            bal -= tax;
+            taxPaid += tax;
+            totalInterest -= tax;
+            interestThisYear = 0;
+          }
+          if (tableMode === "monthly") {
+            if (isMonthBoundary(s) || s === stepsTotal) {
+              const monthIndex = Math.round(s / stepsPerMonth);
+              const yearIndexFloat = monthIndex / 12;
+              pushRow(
+                `Month ${monthIndex}`,
+                bal,
+                totalContrib,
+                totalInterest,
+                yearIndexFloat,
+              );
+            }
+          } else {
+            if (isYearBoundary(s) || s === stepsTotal) {
+              const yearIndex = Math.round(s / stepsPerYear);
+              pushRow(
+                `Year ${yearIndex}`,
+                bal,
+                totalContrib,
+                totalInterest,
+                yearIndex,
+              );
+            }
+          }
+        }
+        const apy =
+          Math.pow(1 + annualRate / compoundPerYear, compoundPerYear) - 1;
+        const ending = bal;
+        const endingReal = inflationOn
+          ? ending / Math.pow(1 + inflationRate, years)
+          : null;
+        return {
+          years,
+          step,
+          apy,
+          ending,
+          endingReal,
+          totalContrib,
+          totalInterest,
+          taxPaid,
+          rows,
+        };
+      }
+      function renderTable(rows, inflationOn) {
+        const thead = el("thead");
+        const tbody = el("tbody");
+        tbody.innerHTML = "";
+        if (inflationOn) {
+          thead.innerHTML = ` <tr> <th>Period</th> <th>End balance</th> <th>End balance (today $)</th> <th>Contrib to date</th> <th>Interest to date</th> </tr> `;
+        } else {
+          thead.innerHTML = ` <tr> <th>Period</th> <th>End balance</th> <th>Contrib to date</th> <th>Interest to date</th> </tr> `;
+        }
+        for (const r of rows) {
+          const tr = document.createElement("tr");
+          if (inflationOn) {
+            tr.innerHTML = ` <td style="text-align:left;">${r.label}</td> <td>${money(r.endBal, 2)}</td> <td>${money(r.endBalReal, 2)}</td> <td>${money(r.contribToDate, 2)}</td> <td>${money(r.interestToDate, 2)}</td> `;
+          } else {
+            tr.innerHTML = ` <td style="text-align:left;">${r.label}</td> <td>${money(r.endBal, 2)}</td> <td>${money(r.contribToDate, 2)}</td> <td>${money(r.interestToDate, 2)}</td> `;
+          }
+          tbody.appendChild(tr);
+        }
+      }
+      function tableToTSV(table) {
+        const rows = Array.from(table.querySelectorAll("tr"));
+        return rows
+          .map((tr) => {
+            const cells = Array.from(tr.querySelectorAll("th,td"));
+            return cells
+              .map((td) => td.textContent.replace(/\s+/g, " ").trim())
+              .join("\t");
+          })
+          .join("\n");
+      }
+      function tableToCSV(table) {
+        const rows = Array.from(table.querySelectorAll("tr"));
+        return rows
+          .map((tr) => {
+            const cells = Array.from(tr.querySelectorAll("th,td"));
+            return cells
+              .map((td) => {
+                const raw = td.textContent.replace(/\s+/g, " ").trim();
+                const escaped = raw.replace(/"/g, '""');
+                return `"${escaped}"`;
+              })
+              .join(",");
+          })
+          .join("\n");
+      }
+      async function copyTable() {
+        const t = el("growthTable");
+        const text = tableToTSV(t);
+        try {
+          await navigator.clipboard.writeText(text);
+          setWarn("Copied table to clipboard.", true);
+          setTimeout(() => setWarn(""), 1600);
+        } catch (e) {
+          setWarn(
+            "Copy failed (browser permission). You can still download CSV.",
+          );
+        }
+      }
+      function downloadCSV(filename) {
+        const t = el("growthTable");
+        const csv = tableToCSV(t);
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+      function getParams() {
+        const sp = new URLSearchParams(window.location.search);
+        const g = (k) => sp.get(k);
+        return {
+          p: g("p"),
+          r: g("r"),
+          y: g("y"),
+          c: g("c"),
+          cf: g("cf"),
+          ct: g("ct"),
+          cmp: g("cmp"),
+          io: g("io"),
+          ir: g("ir"),
+          to: g("to"),
+          tr: g("tr"),
+          tm: g("tm"),
+        };
+      }
+      function applyParams() {
+        const p = getParams();
+        if (p.p !== null) el("principal").value = String(p.p);
+        if (p.r !== null) el("rate").value = String(p.r);
+        if (p.y !== null) el("years").value = String(p.y);
+        if (p.c !== null) el("contrib").value = String(p.c);
+        if (p.cf !== null) el("contribFreq").value = String(p.cf);
+        if (p.ct === "begin" || p.ct === "end")
+          el("contribTiming").value = p.ct;
+        if (p.cmp !== null) el("compoundFreq").value = String(p.cmp);
+        if (p.io !== null) el("inflationOn").value = String(p.io);
+        if (p.ir !== null) el("inflationRate").value = String(p.ir);
+        if (p.to !== null) el("taxOn").value = String(p.to);
+        if (p.tr !== null) el("taxRate").value = String(p.tr);
+        if (p.tm === "monthly" || p.tm === "yearly")
+          el("tableMode").value = p.tm;
+      }
+      function buildShareLink(state) {
+        const sp = new URLSearchParams();
+        sp.set("p", state.p);
+        sp.set("r", state.r);
+        sp.set("y", state.y);
+        sp.set("c", state.c);
+        sp.set("cf", state.cf);
+        sp.set("ct", state.ct);
+        sp.set("cmp", state.cmp);
+        sp.set("io", state.io);
+        sp.set("ir", state.ir);
+        sp.set("to", state.to);
+        sp.set("tr", state.tr);
+        sp.set("tm", state.tm);
+        return `${window.location.origin}${window.location.pathname}?${sp.toString()}`;
+      }
+      async function copyShareLink() {
+        const s = readState();
+        const url = buildShareLink(s);
+        try {
+          await navigator.clipboard.writeText(url);
+          setWarn("Copied share link.", true);
+          setTimeout(() => setWarn(""), 1600);
+        } catch (e) {
+          setWarn("Copy failed. You can copy the URL from the address bar.");
+        }
+      }
+      function readState() {
+        const principal = Number(el("principal").value);
+        const rate = Number(el("rate").value);
+        const years = Number(el("years").value);
+        const contrib = Number(el("contrib").value);
+        const contribPerYear = Number(el("contribFreq").value);
+        const contribTiming = el("contribTiming").value;
+        const compoundPerYear = Number(el("compoundFreq").value);
+        const inflationOn = el("inflationOn").value === "1";
+        const inflationRate = Number(el("inflationRate").value);
+        const taxOn = el("taxOn").value === "1";
+        const taxRate = Number(el("taxRate").value);
+        const tableMode = el("tableMode").value;
+        return {
+          principal,
+          rate,
+          years,
+          contrib,
+          contribPerYear,
+          contribTiming,
+          compoundPerYear,
+          inflationOn,
+          inflationRate,
+          taxOn,
+          taxRate,
+          tableMode,
+          p: String(isFinite(principal) ? principal : 0),
+          r: String(isFinite(rate) ? rate : 0),
+          y: String(isFinite(years) ? years : 0),
+          c: String(isFinite(contrib) ? contrib : 0),
+          cf: String(isFinite(contribPerYear) ? contribPerYear : 0),
+          ct: String(contribTiming || "end"),
+          cmp: String(isFinite(compoundPerYear) ? compoundPerYear : 12),
+          io: inflationOn ? "1" : "0",
+          ir: String(isFinite(inflationRate) ? inflationRate : 0),
+          to: taxOn ? "1" : "0",
+          tr: String(isFinite(taxRate) ? taxRate : 0),
+          tm: String(tableMode || "yearly"),
+        };
+      }
+      function validateState(s) {
+        if (!(s.principal >= 0) || !isFinite(s.principal))
+          return "Starting balance must be 0 or higher.";
+        if (!(s.rate >= 0) || !isFinite(s.rate))
+          return "Annual interest rate must be 0 or higher.";
+        if (!(s.years >= 1) || !isFinite(s.years))
+          return "Years must be at least 1.";
+        if (!(s.compoundPerYear >= 1) || !isFinite(s.compoundPerYear))
+          return "Pick a compounding frequency.";
+        if (!(s.contrib >= 0) || !isFinite(s.contrib))
+          return "Contribution amount must be 0 or higher.";
+        if (!(s.contribPerYear >= 0) || !isFinite(s.contribPerYear))
+          return "Pick a contribution frequency.";
+        if (
+          s.inflationOn &&
+          (!(s.inflationRate >= 0) || !isFinite(s.inflationRate))
+        )
+          return "Inflation rate must be 0 or higher.";
+        if (s.taxOn) {
+          if (!(s.taxRate >= 0) || !isFinite(s.taxRate))
+            return "Tax rate must be 0 or higher.";
+          if (s.taxRate > 100) return "Tax rate must be 100% or less.";
+        }
+        return "";
+      }
+      function calculate() {
+        const s = readState();
+        const err = validateState(s);
+        if (err) {
+          el("result").style.display = "none";
+          setWarn(err);
+          return;
+        }
+        setWarn("");
+        const sim = simulate({
+          principal: s.principal,
+          rate: s.rate,
+          years: s.years,
+          contrib: s.contrib,
+          contribPerYear: s.contribPerYear,
+          contribTiming: s.contribTiming,
+          compoundPerYear: s.compoundPerYear,
+          inflationOn: s.inflationOn,
+          inflationRate: s.inflationRate,
+          taxOn: s.taxOn,
+          taxRate: s.taxRate,
+          tableMode: s.tableMode,
+        });
+        el("result").style.display = "block";
+        el("kpiEnding").textContent = intMoney(sim.ending);
+        if (s.inflationOn) {
+          el("kpiEndingSub").textContent =
+            `Inflation-adjusted ending: ${intMoney(sim.endingReal)} (today’s dollars).`;
+        } else {
+          el("kpiEndingSub").textContent =
+            `Ending after ${sim.years} year${sim.years === 1 ? "" : "s"}.`;
+        }
+        el("kpiContrib").textContent = intMoney(sim.totalContrib);
+        const contribSub =
+          s.contribPerYear === 0 || s.contrib === 0
+            ? "No contributions."
+            : `${money(s.contrib, 2)} ${freqLabel(s.contribPerYear).toLowerCase()} (${s.contribTiming === "begin" ? "beginning" : "end"}).`;
+        el("kpiContribSub").textContent = contribSub;
+        el("kpiInterest").textContent = intMoney(sim.totalInterest);
+        el("kpiInterestSub").textContent = s.taxOn
+          ? "Tax drag on (est.). Interest shown is net of tax."
+          : "Tax drag off.";
+        el("kpiApy").textContent = pct(sim.apy * 100, 2);
+        el("kpiApySub").textContent =
+          `Compounding: ${freqLabel(s.compoundPerYear)}.`;
+        el("kpiTax").textContent = s.taxOn ? intMoney(sim.taxPaid) : "—";
+        const netGrowth = sim.ending - s.principal - sim.totalContrib;
+        el("kpiNet").textContent = intMoney(netGrowth);
+        el("kpiNetSub").textContent =
+          "Net growth = ending − starting − contributions.";
+        renderTable(sim.rows, s.inflationOn);
+        const note = [];
+        note.push(`View: ${s.tableMode === "monthly" ? "Monthly" : "Yearly"}.`);
+        note.push(`Compounding: ${freqLabel(s.compoundPerYear)}.`);
+        note.push(
+          `Contributions: ${freqLabel(s.contribPerYear)} (${s.contribTiming}).`,
+        );
+        if (s.inflationOn)
+          note.push(`Inflation: ${Number(s.inflationRate).toFixed(2)}%.`);
+        if (s.taxOn)
+          note.push(
+            `Tax drag: ${Number(s.taxRate).toFixed(1)}% on yearly gains (simplified).`,
+          );
+        el("tableNote").textContent = note.join(" ");
+      }
+      el("calcBtn").addEventListener("click", calculate);
+      el("copyBtn").addEventListener("click", copyTable);
+      el("csvBtn").addEventListener("click", () => {
+        const mode = el("tableMode").value;
+        const name =
+          mode === "monthly"
+            ? "compound-interest-monthly.csv"
+            : "compound-interest-yearly.csv";
+        downloadCSV(name);
+      });
+      el("copyLinkBtn").addEventListener("click", copyShareLink);
+      el("resetBtn").addEventListener("click", () => {
+        el("principal").value = 10000;
+        el("rate").value = 7;
+        el("years").value = 20;
+        el("compoundFreq").value = "12";
+        el("contrib").value = 200;
+        el("contribFreq").value = "12";
+        el("contribTiming").value = "end";
+        el("tableMode").value = "yearly";
+        el("inflationOn").value = "0";
+        el("inflationRate").value = 3;
+        el("taxOn").value = "0";
+        el("taxRate").value = 15;
+        el("result").style.display = "none";
+        setWarn("");
+        history.replaceState({}, "", location.pathname);
+        calculate();
+      });
+      [
+        "principal",
+        "rate",
+        "years",
+        "compoundFreq",
+        "contrib",
+        "contribFreq",
+        "contribTiming",
+        "tableMode",
+        "inflationOn",
+        "inflationRate",
+        "taxOn",
+        "taxRate",
+      ].forEach((id) => {
+        el(id).addEventListener("change", calculate);
+      });
+      [
+        "principal",
+        "rate",
+        "years",
+        "contrib",
+        "inflationRate",
+        "taxRate",
+      ].forEach((id) => {
+        el(id).addEventListener("input", calculate);
+      });
+      (function init() {
+        applyParams();
+        calculate();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miles to Kilometers Converter — TheDailyo</title>
+    <meta
+      name="description"
+      content="Convert miles to kilometers instantly. Includes reverse conversion to miles, a formula reference, shareable links, and a quick conversion table."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/tools/conversions/miles-to-km/"
+    />
+    <meta name="robots" content="index,follow" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .two-col {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+      .form-grid {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.18);
+        background: #ffffff;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 14px 28px rgba(79, 124, 255, 0.25);
+        transition:
+          transform 0.12s ease,
+          filter 0.12s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+      .btn-ghost {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+      .btn-ghost:hover {
+        transform: translateY(-1px);
+        border-color: rgba(79, 124, 255, 0.35);
+        box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+      }
+      .warn {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 82, 82, 0.1);
+        border: 1px solid rgba(255, 82, 82, 0.25);
+        color: var(--text-main);
+        font-weight: 850;
+        display: none;
+        line-height: 1.55;
+      }
+      .result {
+        margin-top: 14px;
+        display: none;
+      }
+      .result h3 {
+        font-size: 1.02rem;
+        font-weight: 950;
+        color: var(--text-main);
+        margin-bottom: 10px;
+      }
+      .kpi-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kpi {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.08);
+      }
+      .kpi-label {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        font-weight: 850;
+      }
+      .kpi-value {
+        margin-top: 6px;
+        font-size: 1.1rem;
+        font-weight: 950;
+        color: var(--text-main);
+      }
+      .table-wrap {
+        margin-top: 12px;
+        overflow: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.06);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 760px;
+        background: #ffffff;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        font-size: 0.9rem;
+        text-align: right;
+        white-space: nowrap;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 950;
+        z-index: 1;
+      }
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+      tbody tr:hover td {
+        background: rgba(79, 124, 255, 0.06);
+      }
+      .small-note {
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .formula {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        color: var(--text-main);
+        line-height: 1.65;
+        overflow: auto;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/conversions/miles-to-km/#webpage",
+                       "url":  "https://thedailyo.com/tools/conversions/miles-to-km/",
+                       "name":  "Miles to Kilometers Converter — TheDailyo",
+                       "description":  "Convert miles to kilometers instantly. Includes reverse conversion to miles, a formula reference, shareable links, and a quick conversion table.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/conversions/miles-to-km/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Conversions",
+                                                   "item":  "https://thedailyo.com/tools/conversions/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Miles To Km",
+                                                   "item":  "https://thedailyo.com/tools/conversions/miles-to-km/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">Miles to Kilometers Converter</h1>
+        <p class="site-subtitle">
+          Convert miles to kilometers instantly, with reverse conversion and a
+          quick reference table.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/tools/">Tools</a> <span class="crumb-sep">›</span>
+          <a href="/tools/conversions/">Conversions</a>
+          <span class="crumb-sep">›</span> Miles to Kilometers
+        </div>
+      </header>
+      <main id="main">
+        <h2 class="section-title">Converter</h2>
+        <p class="section-subtitle">
+          Enter a distance in miles to convert it to kilometers. This page also
+          shows the reverse conversion, so you can quickly compare both units.
+        </p>
+        <div class="two-col">
+          <section class="panel" aria-label="Converter">
+            <h2>Inputs</h2>
+            <div class="form-grid">
+              <div>
+                <label for="miles">Miles</label>
+                <input
+                  id="miles"
+                  type="number"
+                  step="any"
+                  value="1"
+                  inputmode="decimal"
+                />
+                <div class="small-note">Enter the distance in miles.</div>
+              </div>
+              <div>
+                <label for="decimals">Decimal places</label>
+                <select id="decimals">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <div class="small-note">
+                  Controls how the converted result is rounded.
+                </div>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn-primary" id="calcBtn" type="button">
+                Convert
+              </button>
+              <button class="btn-ghost" id="copyBtn" type="button">
+                Copy results
+              </button>
+              <button class="btn-ghost" id="shareBtn" type="button">
+                Copy share link
+              </button>
+              <button class="btn-ghost" id="resetBtn" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="warn" id="warn" aria-live="polite"></div>
+            <div class="result" id="result">
+              <h3>Results</h3>
+              <div class="kpi-grid">
+                <div class="kpi">
+                  <div class="kpi-label">Kilometers</div>
+                  <div class="kpi-value" id="kpiKm">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Miles</div>
+                  <div class="kpi-value" id="kpiMiles">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Meters</div>
+                  <div class="kpi-value" id="kpiMeters">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Feet</div>
+                  <div class="kpi-value" id="kpiFeet">—</div>
+                </div>
+              </div>
+              <div class="formula" id="summaryBox">—</div>
+              <div class="table-wrap" aria-label="Conversion breakdown table">
+                <table id="resultsTable">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Formula</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody"></tbody>
+                </table>
+              </div>
+              <div class="small-note" id="tipBox">
+                Tip: 1 mile is exactly 1.609344 kilometers.
+              </div>
+            </div>
+          </section>
+          <aside class="panel" aria-label="Explanation">
+            <h2>How it works</h2>
+            <p>
+              This converter uses the exact international conversion factor
+              between miles and kilometers. It is useful for travel, running,
+              driving distances, maps, and international unit conversion.
+            </p>
+            <div class="formula">
+              <strong>Miles to kilometers formula</strong><br />
+              <code>kilometers = miles × 1.609344</code>
+            </div>
+            <div class="formula">
+              <strong>Kilometers to miles formula</strong><br />
+              <code>miles = kilometers ÷ 1.609344</code>
+            </div>
+            <details class="faq" style="margin-top: 12px">
+              <summary>How many kilometers are in 1 mile?</summary>
+              <p>Exactly 1.609344 kilometers.</p>
+            </details>
+            <details class="faq">
+              <summary>Why do some results look rounded?</summary>
+              <p>
+                The converter uses the exact factor, but the displayed result is
+                rounded to the number of decimal places you choose.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>Can I use this for race distances?</summary>
+              <p>
+                Yes. It works well for 5K, 10K, half marathon, marathon, and
+                other training or event conversions.
+              </p>
+            </details>
+            <p style="margin-top: 10px">
+              Related: <a href="/tools/conversions/">Conversion Tools</a>
+            </p>
+          </aside>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const el = (id) => document.getElementById(id);
+      const MILES_TO_KM = 1.609344;
+      const MILES_TO_METERS = 1609.344;
+      const MILES_TO_FEET = 5280;
+      function setWarn(msg) {
+        const w = el("warn");
+        if (!msg) {
+          w.style.display = "none";
+          w.textContent = "";
+          return;
+        }
+        w.textContent = msg;
+        w.style.display = "block";
+      }
+      function fmtNum(n, d) {
+        if (!isFinite(n)) return "—";
+        return Number(n).toLocaleString(undefined, {
+          minimumFractionDigits: d,
+          maximumFractionDigits: d,
+        });
+      }
+      function getParams() {
+        const sp = new URLSearchParams(window.location.search);
+        return { m: sp.get("m"), d: sp.get("d") };
+      }
+      function applyParams() {
+        const p = getParams();
+        if (p.m !== null) el("miles").value = String(p.m);
+        if (p.d !== null) el("decimals").value = String(p.d);
+      }
+      function cleanURL() {
+        if (window.location.search) {
+          window.history.replaceState({}, "", window.location.pathname);
+        }
+      }
+      function buildShareURL(miles, decimals) {
+        const sp = new URLSearchParams();
+        sp.set("m", miles);
+        sp.set("d", decimals);
+        return `${window.location.origin}${window.location.pathname}?${sp.toString()}`;
+      }
+      function buildRows(miles, km, meters, feet, decimals) {
+        const tbody = el("tbody");
+        tbody.innerHTML = "";
+        const rows = [
+          ["Miles", "Input", fmtNum(miles, decimals)],
+          ["Kilometers", "Miles × 1.609344", fmtNum(km, decimals)],
+          ["Meters", "Miles × 1609.344", fmtNum(meters, decimals)],
+          ["Feet", "Miles × 5280", fmtNum(feet, decimals)],
+          [
+            "Reverse check (miles)",
+            "Kilometers ÷ 1.609344",
+            fmtNum(km / MILES_TO_KM, decimals),
+          ],
+        ];
+        rows.forEach(([metric, formula, result]) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = ` <td>${metric}</td> <td>${formula}</td> <td><strong>${result}</strong></td> `;
+          tbody.appendChild(tr);
+        });
+      }
+      function calculate() {
+        setWarn("");
+        const miles = Number(el("miles").value);
+        const decimals = Number(el("decimals").value);
+        if (!isFinite(miles)) {
+          el("result").style.display = "none";
+          return setWarn("Enter a valid distance in miles.");
+        }
+        const km = miles * MILES_TO_KM;
+        const meters = miles * MILES_TO_METERS;
+        const feet = miles * MILES_TO_FEET;
+        el("kpiKm").textContent = `${fmtNum(km, decimals)} km`;
+        el("kpiMiles").textContent = `${fmtNum(miles, decimals)} mi`;
+        el("kpiMeters").textContent = `${fmtNum(meters, decimals)} m`;
+        el("kpiFeet").textContent = `${fmtNum(feet, decimals)} ft`;
+        el("summaryBox").innerHTML =
+          `<strong>Summary:</strong> <strong>${fmtNum(miles, decimals)}</strong> mile${Math.abs(miles) === 1 ? "" : "s"} equals <strong>${fmtNum(km, decimals)}</strong> kilometer${Math.abs(km) === 1 ? "" : "s"}.`;
+        buildRows(miles, km, meters, feet, decimals);
+        const tipBox = el("tipBox");
+        if (miles === 0) {
+          tipBox.textContent = "Tip: Zero miles equals zero kilometers.";
+        } else if (Math.abs(miles) === 1) {
+          tipBox.textContent = "Tip: 1 mile is exactly 1.609344 kilometers.";
+        } else {
+          tipBox.textContent =
+            "Tip: Multiply miles by 1.609344 to get kilometers.";
+        }
+        el("result").style.display = "block";
+      }
+      async function copyResults() {
+        const result = el("result");
+        if (result.style.display === "none") {
+          calculate();
+        }
+        if (result.style.display === "none") return;
+        const text = [
+          `Miles: ${el("kpiMiles").textContent}`,
+          `Kilometers: ${el("kpiKm").textContent}`,
+          `Meters: ${el("kpiMeters").textContent}`,
+          `Feet: ${el("kpiFeet").textContent}`,
+        ].join("\n");
+        try {
+          await navigator.clipboard.writeText(text);
+          setWarn("Copied results to clipboard.");
+          setTimeout(() => setWarn(""), 1800);
+        } catch {
+          setWarn("Copy failed. Try again or copy manually.");
+        }
+      }
+      async function copyShareLink() {
+        const miles = Number(el("miles").value);
+        const decimals = Number(el("decimals").value);
+        const shareURL = buildShareURL(miles, decimals);
+        try {
+          await navigator.clipboard.writeText(shareURL);
+          setWarn("Copied share link to clipboard.");
+          setTimeout(() => setWarn(""), 1800);
+        } catch {
+          setWarn("Copy failed. You can copy the URL from the address bar.");
+        }
+      }
+      function reset() {
+        el("miles").value = 1;
+        el("decimals").value = "2";
+        setWarn("");
+        history.replaceState({}, "", location.pathname);
+        calculate();
+      }
+      el("calcBtn").addEventListener("click", calculate);
+      el("copyBtn").addEventListener("click", copyResults);
+      el("shareBtn").addEventListener("click", copyShareLink);
+      el("resetBtn").addEventListener("click", reset);
+      ["miles", "decimals"].forEach((id) => {
+        const node = el(id);
+        const evt = node.tagName === "SELECT" ? "change" : "input";
+        node.addEventListener(evt, calculate);
+      });
+      applyParams();
+      cleanURL();
+      calculate();
+    </script>
+  </body>
+</html>

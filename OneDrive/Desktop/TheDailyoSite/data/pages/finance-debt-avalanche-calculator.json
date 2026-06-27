@@ -1,0 +1,91 @@
+{
+  "id": "debt-avalanche-calculator",
+  "category": "finance",
+  "subcategory": "debt",
+  "title": "Debt Avalanche Calculator",
+  "shortTitle": "Debt Avalanche",
+  "description": "Prioritize the highest APR debt first to minimize total interest. Enter multiple balances, rates, and minimums to build your payoff plan.",
+  "canonicalPath": "/finance/debt/debt-avalanche-calculator/",
+  "dataSource": "/data/pages/finance-debt-avalanche-calculator.json",
+
+  "breadcrumbs": [
+    { "label": "Home", "href": "/" },
+    { "label": "Finance", "href": "/finance/" },
+    { "label": "Debt", "href": "/finance/debt/" },
+    { "label": "Debt Avalanche Calculator", "href": "/finance/debt/debt-avalanche-calculator/" }
+  ],
+
+  "inputs": [
+    {
+      "key": "monthlyBudget",
+      "label": "Total Monthly Payment Budget",
+      "type": "currency",
+      "default": 500,
+      "help": "The total amount you can pay each month across all debts."
+    },
+    {
+      "key": "debts",
+      "label": "Debts",
+      "type": "debtList",
+      "minItems": 1,
+      "defaultItems": [
+        { "name": "Card A", "balance": 3200, "apr": 24.99, "minPayment": 85 },
+        { "name": "Card B", "balance": 1800, "apr": 18.99, "minPayment": 55 }
+      ],
+      "columns": [
+        { "key": "name", "label": "Name", "type": "text" },
+        { "key": "balance", "label": "Balance", "type": "currency" },
+        { "key": "apr", "label": "APR %", "type": "percent" },
+        { "key": "minPayment", "label": "Min Payment", "type": "currency" }
+      ]
+    }
+  ],
+
+  "logic": {
+    "engine": "debtPayoff",
+    "method": "avalanche",
+    "assumptions": {
+      "interestCompounding": "monthly",
+      "newChargesIncluded": false,
+      "feesIncluded": false,
+      "rounding": "cents"
+    }
+  },
+
+  "outputs": [
+    { "key": "monthsToDebtFree", "label": "Months to Debt-Free", "format": "integer" },
+    { "key": "debtFreeDate", "label": "Debt-Free Date", "format": "monthYear" },
+    { "key": "totalInterestPaid", "label": "Total Interest Paid", "format": "currency" },
+    { "key": "totalPaid", "label": "Total Paid", "format": "currency" }
+  ],
+
+  "table": {
+    "key": "payoffSchedule",
+    "title": "Payoff Schedule",
+    "columns": [
+      { "key": "month", "label": "Month", "format": "monthYear" },
+      { "key": "payment", "label": "Payment", "format": "currency" },
+      { "key": "interest", "label": "Interest", "format": "currency" },
+      { "key": "principal", "label": "Principal", "format": "currency" },
+      { "key": "remainingBalance", "label": "Remaining Balance", "format": "currency" }
+    ]
+  },
+
+  "contentBlocks": [
+    {
+      "type": "note",
+      "text": "The avalanche method applies extra money to the highest interest rate first. This usually minimizes total interest paid."
+    },
+    {
+      "type": "note",
+      "text": "This tool assumes you stop adding new charges. Results are estimates and can differ from lender statements due to fees, timing, or rounding."
+    }
+  ],
+
+  "relatedLinks": [
+    { "label": "Debt Snowball Calculator", "href": "/finance/debt/debt-snowball-calculator/" },
+    { "label": "Credit Card Payoff Calculator", "href": "/finance/debt/credit-card-payoff-calculator/" },
+    { "label": "Extra Payment Scenarios", "href": "/finance/debt/credit-card-payoff/" },
+    { "label": "Debt Hub", "href": "/finance/debt/" }
+  ]
+}

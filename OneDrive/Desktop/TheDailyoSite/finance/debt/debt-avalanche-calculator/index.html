@@ -1,0 +1,233 @@
+<!-- =========================
+FILE: /finance/debt/debt-avalanche-calculator/index.html
+- Matches site styling (main.css?v=4)
+- Keeps AdSense
+- Uses -calculator URL convention
+- Loads JSON from /data/pages/finance-debt-avalanche-calculator.json
+- Includes graceful fallback until shared renderer is added
+========================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=4">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debt Avalanche Calculator — TheDailyo</title>
+  <meta name="description" content="Debt Avalanche calculator: prioritize the highest APR first to minimize total interest. Enter multiple debts, payments, and rates to estimate payoff time." />
+  <link rel="canonical" href="https://thedailyo.com/finance/debt/debt-avalanche-calculator/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/finance/debt/debt-avalanche-calculator/#webpage",
+                       "url":  "https://thedailyo.com/finance/debt/debt-avalanche-calculator/",
+                       "name":  "Debt Avalanche Calculator — TheDailyo",
+                       "description":  "Debt Avalanche calculator: prioritize the highest APR first to minimize total interest. Enter multiple debts, payments, and rates to estimate payoff time.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/finance/debt/debt-avalanche-calculator/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Finance",
+                                                   "item":  "https://thedailyo.com/finance/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Debt",
+                                                   "item":  "https://thedailyo.com/finance/debt/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Debt Avalanche Calculator",
+                                                   "item":  "https://thedailyo.com/finance/debt/debt-avalanche-calculator/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/finance/debt/debt-avalanche-calculator/#calculator",
+                       "name":  "Debt Avalanche Calculator — TheDailyo",
+                       "applicationCategory":  "FinanceApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/finance/debt/debt-avalanche-calculator/",
+                       "description":  "Debt Avalanche calculator: prioritize the highest APR first to minimize total interest. Enter multiple debts, payments, and rates to estimate payoff time.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <div id="site-header-slot"></div>
+
+<script>
+window.PAGE_META = {
+  title: "Debt Avalanche Calculator",
+  subtitle: "Pay the highest interest rate first to minimize total interest.",
+  breadcrumbs: [
+    { label: "Home", href: "/" },
+    { label: "Finance", href: "/finance/" },
+    { label: "Debt", href: "/finance/debt/" },
+    { label: "Debt Avalanche Calculator" }
+  ]
+};
+</script>
+
+<script src="/assets/js/layout.js"></script>
+
+    <main id="main">
+      <h2 class="section-title">How it works</h2>
+      <p class="section-subtitle">
+        The avalanche method applies extra payments to the debt with the highest APR first. This usually reduces total interest paid.
+        Want the “motivation-first” approach instead? Try <a href="/finance/debt/debt-snowball-calculator/">Debt Snowball</a>.
+      </p>
+
+      <!-- JSON-render target -->
+      <section id="app" class="panel" style="margin-top:18px;" aria-label="Debt Avalanche calculator">
+        <h2 style="font-size:1.15rem; font-weight:900; margin-bottom:8px;">Calculator</h2>
+        <p class="section-subtitle" style="margin-top:0;">
+          Add your debts (balance, APR, minimum payment) and your total monthly payment budget to estimate payoff time and interest.
+          If the calculator doesn’t load, refresh the page or enable JavaScript.
+        </p>
+
+        <noscript>
+          <div class="note" style="margin-top:12px;">
+            This calculator needs JavaScript enabled to run.
+          </div>
+        </noscript>
+      </section>
+
+      <!-- RELATED DECISIONS (NEW) -->
+      <section class="panel" style="margin-top:18px;" aria-label="Related debt tools">
+        <h2 style="font-size:1.15rem; font-weight:900; margin-bottom:8px;">Related decisions</h2>
+        <p class="section-subtitle" style="margin-top:0;">
+          Compare payoff methods and scenarios. Small changes in strategy or monthly budget can change the timeline a lot.
+        </p>
+
+        <div class="list" aria-label="Related links" style="margin-top:12px;">
+          <a class="list-item" href="/finance/debt/debt-snowball-calculator/">
+            <div class="li-title">Debt Snowball Calculator</div>
+            <div class="li-desc">Smallest balance first — best for momentum and quick wins.</div>
+          </a>
+
+          <a class="list-item" href="/finance/debt/credit-card-payoff-calculator/">
+            <div class="li-title">Credit Card Payoff Calculator</div>
+            <div class="li-desc">Single-card payoff date + total interest. Test extra payments.</div>
+          </a>
+
+          <a class="list-item" href="/finance/debt/credit-card-payoff/">
+            <div class="li-title">Extra payment scenarios</div>
+            <div class="li-desc">See how +$25 / +$50 / +$100 changes payoff time.</div>
+          </a>
+
+          <a class="list-item" href="/finance/debt/">
+            <div class="li-title">Debt Payoff Hub</div>
+            <div class="li-desc">All debt tools and quick guides in one place.</div>
+          </a>
+        </div>
+
+        <div class="note" style="margin-top:12px;">
+          Reminder: Educational only — not financial advice. Lenders may differ due to fees, timing, or rounding rules.
+        </div>
+      </section>
+
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-subtitle">Quick answers about avalanche payoff plans.</p>
+
+      <details class="faq">
+        <summary>Is avalanche always the cheapest option?</summary>
+        <p>
+          Usually, yes — avalanche typically minimizes interest paid. The best method is the one you’ll actually follow consistently.
+        </p>
+      </details>
+
+      <details class="faq">
+        <summary>Does this include new purchases or fees?</summary>
+        <p>No. It assumes you stop adding new charges and doesn’t include fees unless your lender adds them.</p>
+      </details>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Minimal loader (safe even before you build full renderer) -->
+  <script>
+    (function () {
+      const jsonUrl = "/data/pages/finance-debt-avalanche-calculator.json";
+      const app = document.getElementById("app");
+
+      // If you later add a real renderer, it can hook in here.
+      // For now we just confirm the JSON exists and display a friendly placeholder.
+      fetch(jsonUrl, { cache: "no-store" })
+        .then(r => r.ok ? r.json() : Promise.reject(new Error("Missing JSON")))
+        .then(data => {
+          // Show that config loaded without looking "unfinished"
+          const p = app.querySelector("p");
+          if (p) {
+            const title = (data && data.title) ? data.title : "Debt Avalanche Calculator";
+            p.textContent = `${title} is ready. If the interactive calculator is still loading, your shared renderer hasn’t been attached yet.`;
+          }
+        })
+        .catch(() => {
+          const p = app.querySelector("p");
+          if (p) {
+            p.textContent = "Calculator config not found yet. Make sure the JSON file exists at /data/pages/finance-debt-avalanche-calculator.json.";
+          }
+        });
+    })();
+  </script>
+  <script>
+  window.CALCULATOR_CONFIG = {
+    json: "/data/pages/finance-debt-avalanche-calculator.json",
+    mount: "#app"
+  };
+</script>
+<script src="/assets/js/calculator-engine.js" defer></script>
+</body>
+</html>

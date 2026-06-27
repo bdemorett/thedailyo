@@ -1,0 +1,293 @@
+{
+  "date": "January 9",
+  "tech": [
+    {
+      "year": 2007,
+      "title": "Apple unveils the first iPhone at Macworld",
+      "description": "Steve Jobs introduces the iPhone, combining an iPod, a phone, and an internet communicator into one device. The announcement becomes one of the defining tech moments of the 2000s and helps reshape the smartphone era.",
+      "link": "https://www.history.com/this-day-in-history/apple-introduces-the-iphone",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2001,
+      "title": "Apple introduces iTunes",
+      "description": "Apple announces iTunes, a new digital music software aimed at organizing and playing music on Macs. It becomes a major building block for Apple’s later music ecosystem and consumer media strategy.",
+      "link": "https://www.apple.com/newsroom/2001/01/09Apple-Introduces-iTunes/",
+      "category": "software",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1992,
+      "title": "Space Shuttle Discovery launches STS-42",
+      "description": "NASA launches Space Shuttle Discovery on STS-42, a Spacelab mission focused on microgravity science. The flight conducts experiments designed to better understand how physical and biological systems behave in space.",
+      "link": "https://en.wikipedia.org/wiki/STS-42",
+      "category": "space",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1941,
+      "title": "Avro Lancaster makes its first flight",
+      "description": "The Avro Lancaster bomber takes its maiden flight, later becoming one of the most iconic aircraft of World War II. Its range and payload made it a central platform for RAF night bombing operations.",
+      "link": "https://en.wikipedia.org/wiki/Avro_Lancaster",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "history": [
+    {
+      "year": 2005,
+      "title": "Mahmoud Abbas is elected President of the Palestinian Authority",
+      "description": "Mahmoud Abbas wins the Palestinian presidential election following Yasser Arafat’s death. The vote is widely seen as a pivotal political transition in Palestinian leadership and governance.",
+      "link": "https://en.wikipedia.org/wiki/2005_Palestinian_presidential_election",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2005,
+      "title": "Sudan signs the Comprehensive Peace Agreement",
+      "description": "Sudan’s government and the SPLM/A sign a peace agreement intended to end decades of civil war between North and South. The deal lays groundwork for a political transition that ultimately leads to South Sudan’s independence years later.",
+      "link": "https://en.wikipedia.org/wiki/Comprehensive_Peace_Agreement",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1951,
+      "title": "United Nations headquarters opens in New York City",
+      "description": "The UN begins operations at its new headquarters site in Manhattan, becoming a lasting symbol of post–World War II diplomacy. The complex later hosts thousands of international meetings and major global negotiations.",
+      "link": "https://www.history.com/this-day-in-history/united-nations-headquarters-in-new-york-city-is-dedicated",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1957,
+      "title": "UK Prime Minister Anthony Eden resigns",
+      "description": "Anthony Eden steps down following political turmoil and health issues after the Suez Crisis. His resignation marks a major turning point in British postwar leadership and foreign policy direction.",
+      "link": "https://www.britannica.com/biography/Anthony-Eden",
+      "category": "politics",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1861,
+      "title": "Mississippi votes to secede from the United States",
+      "description": "Mississippi becomes one of the first Southern states to vote for secession in the lead-up to the American Civil War. The decision accelerates the national crisis that soon turns into full-scale conflict.",
+      "link": "https://en.wikipedia.org/wiki/Mississippi_in_the_American_Civil_War",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "crime_and_justice": [
+    {
+      "year": 2015,
+      "title": "Charlie Hebdo attack suspects are killed after a standoff",
+      "description": "Two suspects in the Charlie Hebdo attack die after a standoff with French police near Paris. The events unfold amid a fast-moving manhunt and a tense national security response.",
+      "link": "https://en.wikipedia.org/wiki/Charlie_Hebdo_shooting",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1984,
+      "title": "Angelo Buono Jr. is sentenced in the Hillside Strangler case",
+      "description": "Angelo Buono Jr. receives a life sentence for his role in the Hillside Strangler murders in California. The case becomes one of the most notorious criminal investigations of the era.",
+      "link": "https://www.history.com/this-day-in-history/hillside-strangler-gets-life-in-prison",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1992,
+      "title": "Republika Srpska is proclaimed amid the breakup of Yugoslavia",
+      "description": "Bosnian Serb leaders proclaim Republika Srpska during escalating political and ethnic tensions. The move becomes a major milestone on the path toward the Bosnian War.",
+      "link": "https://en.wikipedia.org/wiki/Republika_Srpska",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "war_and_conflict": [
+    {
+      "year": 1945,
+      "title": "U.S. forces land at Lingayen Gulf in the Philippines",
+      "description": "American troops land at Lingayen Gulf as part of the campaign to retake Luzon during World War II. The operation is a key step in restoring Allied control of the Philippines.",
+      "link": "https://en.wikipedia.org/wiki/Lingayen_Gulf_landings",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1916,
+      "title": "Final evacuation from Gallipoli is completed",
+      "description": "Allied forces complete the evacuation from the Gallipoli Peninsula during World War I. The campaign’s outcome influences strategy, leadership, and public opinion across several countries.",
+      "link": "https://www.britannica.com/event/Dardanelles-Campaign",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1964,
+      "title": "Panama Canal Zone clashes lead to major diplomatic crisis",
+      "description": "Deadly clashes erupt over sovereignty and flags in the Panama Canal Zone, escalating into a major diplomatic confrontation. The unrest becomes part of the long arc leading to new canal treaties years later.",
+      "link": "https://en.wikipedia.org/wiki/Martyrs%27_Day_(Panama)",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1991,
+      "title": "U.S. and Iraq hold last-ditch talks in Geneva",
+      "description": "U.S. Secretary of State James Baker and Iraqi Foreign Minister Tariq Aziz meet in Geneva as the Gulf War crisis intensifies. The talks fail to avert the coming conflict, underscoring how far positions had hardened.",
+      "link": "https://en.wikipedia.org/wiki/Geneva_Peace_Conference_(1991)",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "disasters": [
+    {
+      "year": 2022,
+      "title": "Deadly Bronx apartment fire in New York City",
+      "description": "A major apartment fire in the Bronx becomes one of New York City’s deadliest in decades. Investigators later focus on how heat and smoke spread through the building and the human toll of the emergency.",
+      "link": "https://en.wikipedia.org/wiki/2022_Bronx_apartment_fire",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2018,
+      "title": "Montecito mudslides devastate coastal California",
+      "description": "Powerful debris flows hit Montecito after heavy rain on burn-scarred hillsides, damaging homes and infrastructure. The disaster highlights how wildfire seasons can amplify later flood and landslide risks.",
+      "link": "https://en.wikipedia.org/wiki/2018_Southern_California_mudflows",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "Sriwijaya Air Flight 182 crashes after takeoff",
+      "description": "Sriwijaya Air Flight 182 crashes into the Java Sea shortly after departing Jakarta, killing everyone aboard. Recovery efforts and investigation draw attention to aviation safety challenges and fleet oversight.",
+      "link": "https://en.wikipedia.org/wiki/Sriwijaya_Air_Flight_182",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "science": [
+    {
+      "year": 2014,
+      "title": "West Virginia chemical spill contaminates the Elk River",
+      "description": "A chemical spill affects water supplies in parts of West Virginia, prompting emergency advisories and public health concerns. The incident fuels debates about chemical storage, oversight, and infrastructure risk.",
+      "link": "https://en.wikipedia.org/wiki/2014_Elk_River_chemical_spill",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2011,
+      "title": "Iran Air Flight 277 crashes near Urmia",
+      "description": "Iran Air Flight 277 crashes during an attempted landing near Urmia, resulting in many fatalities. The tragedy becomes a major national news event and leads to investigation of conditions and procedures around the flight.",
+      "link": "https://en.wikipedia.org/wiki/Iran_Air_Flight_277",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1992,
+      "title": "Astronomers announce the first confirmed exoplanets",
+      "description": "Scientists report evidence for planets orbiting a pulsar, marking a breakthrough for astronomy beyond our Solar System. The discovery helps launch a new era of planet-hunting that later explodes with dedicated surveys and space telescopes.",
+      "link": "https://en.wikipedia.org/wiki/PSR_B1257%2B12",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "entertainment": [
+    {
+      "year": 2006,
+      "title": "Howard Stern begins broadcasting on Sirius Satellite Radio",
+      "description": "Howard Stern moves to Sirius, becoming one of the highest-profile shifts in modern radio and media business history. The transition draws huge attention to subscription audio and competition in broadcast formats.",
+      "link": "https://en.wikipedia.org/wiki/Howard_Stern",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1996,
+      "title": "“3rd Rock from the Sun” premieres on TV",
+      "description": "The sitcom debuts and quickly becomes known for its offbeat humor and ensemble cast. It grows into a major 1990s comedy hit and earns multiple awards during its run.",
+      "link": "https://en.wikipedia.org/wiki/3rd_Rock_from_the_Sun",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "sports": [
+    {
+      "year": 2012,
+      "title": "Alabama wins the BCS National Championship",
+      "description": "Alabama defeats LSU 21–0 in the BCS National Championship Game, delivering a rare shutout on the biggest stage. The win reinforces Alabama’s dominance in the modern college football era.",
+      "link": "https://en.wikipedia.org/wiki/2012_BCS_National_Championship_Game",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1977,
+      "title": "The Raiders win Super Bowl XI",
+      "description": "The Oakland Raiders defeat the Minnesota Vikings in Super Bowl XI, capturing the franchise’s first Super Bowl title. The victory cements a powerhouse era built around physical defense and a strong running game.",
+      "link": "https://en.wikipedia.org/wiki/Super_Bowl_XI",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "births": [
+    {
+      "year": 2001,
+      "title": "Rodrygo is born",
+      "description": "Rodrygo becomes a top-level Brazilian winger known for speed, finishing, and big-game moments. His rise at club level makes him one of the most closely watched players of his generation.",
+      "link": "https://en.wikipedia.org/wiki/Rodrygo",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1941,
+      "title": "Joan Baez is born",
+      "description": "Joan Baez becomes one of the defining voices of the 1960s folk revival. Her music and activism help shape how popular culture intersects with civil rights and anti-war movements.",
+      "link": "https://www.britannica.com/biography/Joan-Baez",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+  "deaths": [
+    {
+      "year": 2022,
+      "title": "Bob Saget dies",
+      "description": "Bob Saget, known widely for television and stand-up comedy, dies at age 65. Tributes highlight his long career and the impact he had on generations of viewers.",
+      "link": "https://en.wikipedia.org/wiki/Bob_Saget",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1878,
+      "title": "Victor Emmanuel II dies",
+      "description": "Victor Emmanuel II, the first king of a unified Italy, dies after a reign closely tied to the Risorgimento. His era helps define modern Italy’s early national identity and political structure.",
+      "link": "https://www.britannica.com/biography/Victor-Emmanuel-II",
+      "category": "history",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

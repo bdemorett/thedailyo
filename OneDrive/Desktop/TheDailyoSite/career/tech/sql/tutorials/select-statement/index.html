@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL SELECT Statement Explained — Beginner Guide | TheDailyo</title>
+  <meta name="description" content="Learn how the SQL SELECT statement works with simple examples. Understand selecting columns, filtering rows, aliases, ordering, and limiting results." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/select-statement/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL SELECT Statement Explained — Beginner Guide | TheDailyo" />
+  <meta property="og:description" content="A beginner-friendly SQL SELECT tutorial with examples, result tables, and practical tips." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/select-statement/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/select-statement/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/select-statement/",
+                       "name":  "SQL SELECT Statement Explained — Beginner Guide | TheDailyo",
+                       "description":  "Learn how the SQL SELECT statement works with simple examples. Understand selecting columns, filtering rows, aliases, ordering, and limiting results.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/select-statement/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Select Statement",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/select-statement/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL SELECT Statement Explained</h1>
+      <p class="site-subtitle">Learn how to retrieve data from a database using SELECT, the most important SQL command.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">SELECT Statement</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          The <code class="k">SELECT</code> statement is used to retrieve data from a database table.
+          It is the most important SQL command because nearly every query starts with it.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT column_name
+FROM table_name;</pre>
+        </div>
+
+        <p>
+          In simple terms:
+        </p>
+        <ul>
+          <li><code class="k">SELECT</code> tells SQL what data you want</li>
+          <li><code class="k">FROM</code> tells SQL where to get it</li>
+        </ul>
+
+        <div class="note">
+          <strong>Tip:</strong> If you are reading data and not changing anything, you are almost always using <code class="k">SELECT</code>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#sample-table">Sample table</a>
+          <a href="#why-select-matters">Why SELECT matters</a>
+          <a href="#select-all-columns">Select all columns</a>
+          <a href="#select-specific-columns">Select specific columns</a>
+          <a href="#where-filtering">Use WHERE to filter rows</a>
+          <a href="#column-aliases">Use aliases</a>
+          <a href="#order-by">Use ORDER BY</a>
+          <a href="#limit-results">Use LIMIT</a>
+          <a href="#common-mistakes">Common mistakes</a>
+          <a href="#practice-questions">Practice questions</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-table">
+        <h2>Sample table</h2>
+        <p>
+          Imagine you have this table called <code class="k">employees</code>:
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Employees table">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+                <td>Denver</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          We’ll use this table in the examples below so you can see exactly what each SELECT query returns.
+        </div>
+      </section>
+
+      <section class="panel prose" id="why-select-matters">
+        <h2>Why SELECT matters</h2>
+        <p>
+          The SELECT statement is the foundation of SQL. Before you learn joins, grouping, ordering, or updates, you need to understand how to retrieve data correctly.
+        </p>
+        <p>
+          In real work, SELECT is used for things like:
+        </p>
+        <ul>
+          <li>showing a list of customers</li>
+          <li>finding employees in a certain department</li>
+          <li>viewing salaries, dates, names, or totals</li>
+          <li>checking records before making changes with UPDATE or DELETE</li>
+        </ul>
+
+        <div class="callout">
+          Beginner rule: learn SELECT well first. Almost every other SQL skill builds on top of it.
+        </div>
+      </section>
+
+      <section class="panel prose" id="select-all-columns">
+        <h2>Select all columns</h2>
+        <p>
+          You can retrieve every column in a table with an asterisk.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT *
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This returns all columns and all rows from the <code class="k">employees</code> table.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Select all columns result">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+                <td>Denver</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <code class="k">SELECT *</code> is useful for quick exploration, but in real projects it is usually better to select only the columns you actually need.
+        </div>
+      </section>
+
+      <section class="panel prose" id="select-specific-columns">
+        <h2>Select specific columns</h2>
+        <p>
+          Most of the time, you do not need every column. You can request only the ones you want.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This returns just the employee name and salary.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Select specific columns result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Chris</td>
+                <td>56000</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          Best practice: only select the columns you actually need. This keeps queries cleaner and often performs better.
+        </div>
+      </section>
+
+      <section class="panel prose" id="where-filtering">
+        <h2>Use WHERE to filter rows</h2>
+        <p>
+          A basic SELECT query returns all rows unless you filter them.
+          The <code class="k">WHERE</code> clause lets you choose only rows that match a condition.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+WHERE salary &gt; 60000;</pre>
+        </div>
+
+        <p>
+          This returns only employees with a salary above 60000.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Where clause result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          If SELECT answers “what columns do I want?”, WHERE answers “which rows do I want?”
+        </div>
+      </section>
+
+      <section class="panel prose" id="column-aliases">
+        <h2>Use aliases</h2>
+        <p>
+          Aliases let you rename columns in your result.
+          This is helpful when the original column name is too technical or when you want a cleaner output label.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name AS employee_name, salary AS annual_salary
+FROM employees;</pre>
+        </div>
+
+        <p>
+          This changes the labels shown in the result to <code class="k">employee_name</code> and <code class="k">annual_salary</code>.
+        </p>
+
+        <div class="callout">
+          Aliases do not change the real table structure. They only change how the result is displayed.
+        </div>
+      </section>
+
+      <section class="panel prose" id="order-by">
+        <h2>Use ORDER BY</h2>
+        <p>
+          Results are not guaranteed to come back in a meaningful order unless you sort them.
+          That is what <code class="k">ORDER BY</code> is for.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+ORDER BY salary DESC;</pre>
+        </div>
+
+        <p>
+          This sorts employees from highest salary to lowest salary.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Order by result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+              <tr>
+                <td>Ana</td>
+                <td>62000</td>
+              </tr>
+              <tr>
+                <td>Chris</td>
+                <td>56000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <code class="k">DESC</code> means descending. Use it when you want the biggest values first.
+        </div>
+      </section>
+
+      <section class="panel prose" id="limit-results">
+        <h2>Use LIMIT</h2>
+        <p>
+          Sometimes you only want the first few results instead of everything.
+          The <code class="k">LIMIT</code> clause helps with that.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT name, salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 2;</pre>
+        </div>
+
+        <p>
+          This returns only the top 2 highest salaries.
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Limit result">
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dana</td>
+                <td>85000</td>
+              </tr>
+              <tr>
+                <td>Ben</td>
+                <td>78000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          ORDER BY and LIMIT are often used together for “top results” queries.
+        </div>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>using <code class="k">SELECT *</code> everywhere, even when only a few columns are needed</li>
+          <li>forgetting <code class="k">WHERE</code> when filtering is required</li>
+          <li>assuming results come back in a stable order without <code class="k">ORDER BY</code></li>
+          <li>selecting too many columns and making the result harder to read</li>
+          <li>confusing aliases with real column names</li>
+        </ul>
+
+        <div class="warn">
+          SQL does not guarantee row order unless you explicitly use <code class="k">ORDER BY</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="practice-questions">
+        <h2>Practice questions</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Select all columns from the employees table.
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Select only employee names and salaries.
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Select employees with salary above 70000.
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Sort employees by salary highest to lowest.
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Return only the top 2 salaries.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          The <code class="k">SELECT</code> statement is the core of SQL.
+          Once you understand how to select columns, filter rows, sort results, and limit output, you are ready to build much more advanced queries.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>SELECT = what columns</strong>, <strong>FROM = what table</strong>, <strong>WHERE = what rows</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL topics and tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/where-clause/">WHERE Clause</a></strong><br>
+            Learn how to filter rows after selecting data.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/order-by/">ORDER BY</a></strong><br>
+            Learn how to sort query results correctly.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/group-by/">GROUP BY</a></strong><br>
+            Learn how to group selected data into summaries.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

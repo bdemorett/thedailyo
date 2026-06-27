@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLC vs. S-Corp Strategy Guide | TheDailyo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <header style="text-align: left; margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 20px;">
+        <div class="status-line" style="margin: 0; font-weight: 700; letter-spacing: 0.05em;">THE DAILY OPTIMIZATION</div>
+        <nav style="display: flex; gap: 20px;">
+          <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;">Home</a>
+          <a href="w2-1099-guide.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;">Tax Shield</a>
+          <a href="data-skills-guide.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;">Data Leverage</a>
+          <a href="llc-scorp-guide.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;">Corporate Entity</a>
+        </nav>
+      </div>
+      
+      <a href="index.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 500; font-size: 0.9rem; display: inline-block; margin-bottom: 20px;">← Back to TheDailyo Home</a>
+    </header>
+
+    <main style="max-width: 740px; margin: 0 auto;">
+      
+      <header style="margin-bottom: 40px;">
+        <span style="font-size: 0.85rem; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; display: block; margin-bottom: 10px;">Corporate Entity Architecture</span>
+        <h1 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 15px; letter-spacing: -0.03em;">LLC vs. S-Corp: Hacking the Self-Employment Tax Loophole</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.5; margin: 0;">An operational breakdown of the net income thresholds required to legally bypass heavy FICA taxation using corporate salary-dividend splits.</p>
+      </header>
+
+      <article style="line-height: 1.7; font-size: 1.05rem;">
+        
+        <p>When you transition to independent 1099 consulting, your default corporate entity status is a Single-Member LLC. While an LLC provides necessary legal liability separation between your business and personal assets, it defaults to a "pass-through" tax structure. This means the IRS views 100% of your business net profits as self-employment income, hitting you with a heavy 15.3% FICA payroll tax on every dollar.</p>
+        
+        <p>To break out of this tax drag, mature solo operators utilize an **S-Corporation tax election**. By filing IRS Form 2553, your business structure splits your revenue into two distinct categories: a W-2 salary paid to yourself, and corporate shareholder distribution dividends. You only pay payroll taxes on the salary portion—effectively shielding your dividends from the 15.3% tax hit entirely.</p>
+
+        <h2 style="font-size: 1.6rem; color: #fff; margin-top: 40px; margin-bottom: 15px; letter-spacing: -0.02em;">1. The Optimization Tipping Point</h2>
+        <p>You shouldn't rush into an S-Corp election on day one. Maintaining an S-Corp requires setting up a structured payroll processing framework, filing a separate corporate tax return (Form 1120-S), and paying ongoing state compliance fees. If your net consulting income is low, these administrative operational expenses will wipe out your tax savings.</p>
+        
+        <p>The mathematical tipping point generally sits right around $80,000 in net profit. Once your revenue bypasses this milestone, the savings unlocked by splitting your income vastly outweigh the overhead costs of maintaining the corporate machinery.</p>
+
+        <div class="engine-card" style="margin: 40px 0;">
+          <h3 style="color: var(--accent-green);">Live Blueprint: S-Corp Dividend Shield Auditor</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">Input your projected net annual business profit below to see the precise FICA tax savings unlocked by making a strategic S-Corporation corporate election.</p>
+          
+          <div class="input-group">
+            <label class="input-label" style="color: var(--accent-green);">PROJECTED NET ANNUAL PROFIT ($)</label>
+            <input type="number" id="corpProfit" value="130000" class="system-input" style="border-color: rgba(74, 222, 128, 0.2);">
+          </div>
+
+          <button onclick="runCorpCalculation()" class="system-btn" style="background: var(--accent-green);">Audit Corporate Dividend Shield</button>
+
+          <div id="corpResultBox" class="output-panel">
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Estimated Annual Self-Employment Tax Savings:</p>
+            <div id="corpSavingsDisplay" class="output-value"></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0; line-height: 1.5;">*Calculated assuming an allocation of a 60% reasonable salary milestone, passing the remaining 40% of corporate net profits through as distribution dividends completely shielded from the standard 15.3% self-employment FICA payroll tax drag.</p>
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.6rem; color: #fff; margin-top: 40px; margin-bottom: 15px; letter-spacing: -0.02em;">2. Executing a IRS-Compliant Strategy</h2>
+        <p>The golden rule of running an S-Corp is paying yourself what the IRS calls a "Reasonable Salary." You cannot pay yourself a salary of $0 and take $150,000 in untaxed dividends—doing so immediately flags your company for an audit. By utilizing standard benchmarking rules, such as a defensible 60/40 profit allocation split, you lock in substantial tax relief while keeping your corporate entity thoroughly protected and baseline-compliant.</p>
+
+      </article>
+
+    </main>
+
+    <footer style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color); text-align: center;">
+      <p style="font-size: 0.85rem; color: var(--text-muted);">© 2026 TheDailyo. Engineering Non-Traditional Career Velocity.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function runCorpCalculation() {
+      const inputVal = document.getElementById('corpProfit').value;
+      const netProfit = parseFloat(inputVal);
+
+      if (isNaN(netProfit) || netProfit <= 0) {
+        alert("Please enter a valid profit figure.");
+        return;
+      }
+
+      // If profit is under $80k, overhead wipes out practical FICA optimization advantages
+      if (netProfit < 80000) {
+        document.getElementById('corpSavingsDisplay').innerText = '$0 (Profit below optimization milestone)';
+        document.getElementById('corpResultBox').style.display = 'block';
+        return;
+      }
+
+      // 40% distribution dividend split shielded from 15.3% FICA
+      const shieldedDividends = netProfit * 0.40;
+      const taxSavings = shieldedDividends * 0.153;
+
+      document.getElementById('corpSavingsDisplay').innerText = '$' + Math.round(taxSavings).toLocaleString();
+      document.getElementById('corpResultBox').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

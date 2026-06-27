@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SQL INSERT, UPDATE, and DELETE Explained — Beginner Guide | TheDailyo</title>
+  <meta name="description" content="Learn how SQL INSERT, UPDATE, and DELETE work with simple examples. Understand how to add, change, and remove rows safely in a database." />
+  <link rel="canonical" href="https://thedailyo.com/career/tech/sql/tutorials/insert-update-delete/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SQL INSERT, UPDATE, and DELETE Explained — Beginner Guide | TheDailyo" />
+  <meta property="og:description" content="A beginner-friendly SQL tutorial showing how INSERT, UPDATE, and DELETE work with examples and safety tips." />
+  <meta property="og:url" content="https://thedailyo.com/career/tech/sql/tutorials/insert-update-delete/" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .code-block {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      box-shadow: 0 12px 26px rgba(2,6,23,0.18);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .lesson-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .lesson-item strong {
+      color: var(--text-main);
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(15,23,42,0.06);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+    }
+
+    .toc a:hover {
+      border-color: rgba(79,124,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/insert-update-delete/#webpage",
+                       "url":  "https://thedailyo.com/career/tech/sql/tutorials/insert-update-delete/",
+                       "name":  "SQL INSERT, UPDATE, and DELETE Explained — Beginner Guide | TheDailyo",
+                       "description":  "Learn how SQL INSERT, UPDATE, and DELETE work with simple examples. Understand how to add, change, and remove rows safely in a database.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/career/tech/sql/tutorials/insert-update-delete/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Career",
+                                                   "item":  "https://thedailyo.com/career/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Tech",
+                                                   "item":  "https://thedailyo.com/career/tech/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Sql",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  5,
+                                                   "name":  "Tutorials",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  6,
+                                                   "name":  "Insert Update Delete",
+                                                   "item":  "https://thedailyo.com/career/tech/sql/tutorials/insert-update-delete/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-kicker">TheDailyo.com</div>
+      <h1 class="site-title">SQL INSERT, UPDATE, and DELETE Explained</h1>
+      <p class="site-subtitle">Learn how to add, change, and remove rows in SQL, with simple examples and beginner-safe habits.</p>
+      <div class="header-gradient-line"></div>
+
+      <nav class="nav-pills" aria-label="Primary navigation">
+        <a class="nav-pill" href="/">Home</a>
+        <a class="nav-pill" href="/finance/">Finance</a>
+        <a class="nav-pill" href="/career/">Career &amp; Income</a>
+        <a class="nav-pill" href="/tools/">Tools</a>
+        <a class="nav-pill" href="/health/">Health</a>
+        <a class="nav-pill" href="/business/">Business</a>
+        <a class="nav-pill" href="/about.html">About</a>
+        <a class="nav-pill" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="crumb-sep">›</span>
+        <a href="/career/">Career &amp; Income</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/">Tech</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">SQL</a> <span class="crumb-sep">›</span>
+        <a href="/career/tech/sql/">Tutorials</a> <span class="crumb-sep">›</span>
+        <span aria-current="page">INSERT, UPDATE, DELETE</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="panel prose">
+        <h2>Quick answer</h2>
+        <p>
+          <code class="k">INSERT</code> adds new rows.
+          <code class="k">UPDATE</code> changes existing rows.
+          <code class="k">DELETE</code> removes rows.
+        </p>
+        <p>
+          These are the main SQL commands used to modify data inside a table. They are essential, but they also require more caution than a normal <code class="k">SELECT</code> query because they change the database.
+        </p>
+
+        <div class="note">
+          <strong>Tip:</strong> Beginners should be extra careful with <code class="k">UPDATE</code> and <code class="k">DELETE</code>. A missing <code class="k">WHERE</code> clause can affect every row in the table.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>In this guide</h2>
+        <div class="toc">
+          <a href="#sample-table">Sample table</a>
+          <a href="#insert">How INSERT works</a>
+          <a href="#update">How UPDATE works</a>
+          <a href="#delete">How DELETE works</a>
+          <a href="#where-matters">Why WHERE matters</a>
+          <a href="#safe-workflow">Safe workflow</a>
+          <a href="#common-mistakes">Common mistakes</a>
+          <a href="#practice-questions">Practice questions</a>
+        </div>
+      </section>
+
+      <section class="panel prose" id="sample-table">
+        <h2>Sample table</h2>
+        <p>
+          Imagine you have a table called <code class="k">employees</code>:
+        </p>
+
+        <div class="table-wrap prose-table" aria-label="Employees table">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          We’ll use this table for all the examples below so you can clearly see what each command changes.
+        </div>
+      </section>
+
+      <section class="panel prose" id="insert">
+        <h2>How INSERT works</h2>
+        <p>
+          <code class="k">INSERT</code> adds a new row to a table.
+        </p>
+
+        <div class="code-block">
+<pre>INSERT INTO employees (employee_id, name, department, salary, city)
+VALUES (4, 'Dana', 'IT', 85000, 'Denver');</pre>
+        </div>
+
+        <p>
+          That query adds a brand-new employee row for Dana.
+        </p>
+
+        <h3>Why listing columns is a good habit</h3>
+        <p>
+          You can sometimes write an INSERT without explicitly listing column names, but beginners should avoid that. Listing the columns makes the query easier to read and much safer if the table structure changes later.
+        </p>
+
+        <div class="callout">
+          Beginner rule: always list the columns in <code class="k">INSERT INTO</code> unless you have a very specific reason not to.
+        </div>
+
+        <h3>What the table would look like after the INSERT</h3>
+        <div class="table-wrap prose-table" aria-label="Employees table after insert">
+          <table>
+            <thead>
+              <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>salary</th>
+                <th>city</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Sales</td>
+                <td>62000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ben</td>
+                <td>IT</td>
+                <td>78000</td>
+                <td>Dallas</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Chris</td>
+                <td>HR</td>
+                <td>56000</td>
+                <td>Chicago</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Dana</td>
+                <td>IT</td>
+                <td>85000</td>
+                <td>Denver</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel prose" id="update">
+        <h2>How UPDATE works</h2>
+        <p>
+          <code class="k">UPDATE</code> changes values in existing rows.
+        </p>
+
+        <div class="code-block">
+<pre>UPDATE employees
+SET city = 'Austin'
+WHERE employee_id = 2;</pre>
+        </div>
+
+        <p>
+          This changes Ben’s city from Dallas to Austin.
+        </p>
+
+        <h3>You can update other columns too</h3>
+        <div class="code-block">
+<pre>UPDATE employees
+SET salary = 60000
+WHERE name = 'Chris';</pre>
+        </div>
+
+        <p>
+          This changes Chris’s salary to 60000.
+        </p>
+
+        <h3>You can update multiple columns at once</h3>
+        <div class="code-block">
+<pre>UPDATE employees
+SET department = 'Finance',
+    city = 'Boston'
+WHERE employee_id = 1;</pre>
+        </div>
+
+        <div class="callout">
+          <code class="k">UPDATE</code> is powerful because it can change many rows at once, but that is also what makes it dangerous.
+        </div>
+      </section>
+
+      <section class="panel prose" id="delete">
+        <h2>How DELETE works</h2>
+        <p>
+          <code class="k">DELETE</code> removes rows from a table.
+        </p>
+
+        <div class="code-block">
+<pre>DELETE FROM employees
+WHERE employee_id = 3;</pre>
+        </div>
+
+        <p>
+          This removes Chris’s row from the table.
+        </p>
+
+        <p>
+          Unlike <code class="k">UPDATE</code>, which changes the values inside a row, <code class="k">DELETE</code> removes the whole row entirely.
+        </p>
+
+        <div class="callout">
+          If you only want to change a value, use <code class="k">UPDATE</code>. If you want the row gone, use <code class="k">DELETE</code>.
+        </div>
+      </section>
+
+      <section class="panel prose" id="where-matters">
+        <h2>Why WHERE matters</h2>
+        <p>
+          The <code class="k">WHERE</code> clause tells SQL which rows should be updated or deleted. Without it, SQL may apply the command to every row in the table.
+        </p>
+
+        <h3>Dangerous UPDATE example</h3>
+        <div class="code-block">
+<pre>UPDATE employees
+SET city = 'Miami';</pre>
+        </div>
+
+        <p>
+          That would change the city for every employee.
+        </p>
+
+        <h3>Dangerous DELETE example</h3>
+        <div class="code-block">
+<pre>DELETE FROM employees;</pre>
+        </div>
+
+        <p>
+          That would delete every row in the table.
+        </p>
+
+        <div class="warn">
+          Missing a <code class="k">WHERE</code> clause is one of the most common and costly beginner mistakes in SQL.
+        </div>
+      </section>
+
+      <section class="panel prose" id="safe-workflow">
+        <h2>Safe workflow before changing data</h2>
+        <p>
+          A smart habit is to preview the rows first with a <code class="k">SELECT</code> query using the same filter you plan to use in your UPDATE or DELETE.
+        </p>
+
+        <div class="code-block">
+<pre>SELECT *
+FROM employees
+WHERE employee_id = 2;</pre>
+        </div>
+
+        <p>
+          If that preview shows the exact row you want, then you can safely move on to:
+        </p>
+
+        <div class="code-block">
+<pre>UPDATE employees
+SET city = 'Austin'
+WHERE employee_id = 2;</pre>
+        </div>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>Step 1:</strong> Write the <code class="k">WHERE</code> clause.
+          </div>
+          <div class="lesson-item">
+            <strong>Step 2:</strong> Test it with <code class="k">SELECT</code>.
+          </div>
+          <div class="lesson-item">
+            <strong>Step 3:</strong> Use the same filter in <code class="k">UPDATE</code> or <code class="k">DELETE</code>.
+          </div>
+          <div class="lesson-item">
+            <strong>Step 4:</strong> Run the change only after the preview looks right.
+          </div>
+        </div>
+
+        <div class="callout">
+          Beginner rule: <strong>SELECT first, change second.</strong>
+        </div>
+      </section>
+
+      <section class="panel prose" id="common-mistakes">
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>Forgetting the <code class="k">WHERE</code> clause in an <code class="k">UPDATE</code></li>
+          <li>Forgetting the <code class="k">WHERE</code> clause in a <code class="k">DELETE</code></li>
+          <li>Inserting values in the wrong column order</li>
+          <li>Trying to insert a duplicate primary key value</li>
+          <li>Updating more rows than intended because the filter was too broad</li>
+          <li>Deleting a row when you really only meant to change one column</li>
+        </ul>
+
+        <div class="callout">
+          The most dangerous beginner mindset is “this query looks about right.” With data-changing commands, “about right” is not good enough.
+        </div>
+      </section>
+
+      <section class="panel prose" id="practice-questions">
+        <h2>Practice questions</h2>
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong>1.</strong> Insert a new employee named Evan in Sales with a salary of 59000 in Austin.
+          </div>
+          <div class="lesson-item">
+            <strong>2.</strong> Update Ana’s city to Denver.
+          </div>
+          <div class="lesson-item">
+            <strong>3.</strong> Raise Ben’s salary to 80000.
+          </div>
+          <div class="lesson-item">
+            <strong>4.</strong> Delete the employee with <code class="k">employee_id = 3</code>.
+          </div>
+          <div class="lesson-item">
+            <strong>5.</strong> Write the <code class="k">SELECT</code> query you would run first before updating a row.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Bottom line</h2>
+        <p>
+          <code class="k">INSERT</code> adds rows.
+          <code class="k">UPDATE</code> changes rows.
+          <code class="k">DELETE</code> removes rows.
+        </p>
+        <p>
+          These commands are core SQL skills, but they should always be used carefully because they change the real data in your tables.
+        </p>
+
+        <div class="callout">
+          Quick memory trick: <strong>INSERT = add</strong>, <strong>UPDATE = change</strong>, <strong>DELETE = remove</strong>.
+        </div>
+      </section>
+
+      <section class="panel prose">
+        <h2>Related SQL tutorials</h2>
+
+        <div class="lesson-list">
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/">SQL Hub</a></strong><br>
+            Start here for all SQL topics and tutorials.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/select-statement/">SELECT Statement</a></strong><br>
+            Learn how to read data before you start changing it.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/where-clause/">WHERE Clause</a></strong><br>
+            Understand how filtering works before using UPDATE or DELETE safely.
+          </div>
+
+          <div class="lesson-item">
+            <strong><a href="/career/tech/sql/tutorials/sql-query-examples/">SQL Exercises</a></strong><br>
+            Practice beginner-friendly SQL problems across common query patterns.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© 2026 TheDailyo — All Rights Reserved.</div>
+      <div class="site-footer-links" style="margin-top:6px;">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/about.html">About</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

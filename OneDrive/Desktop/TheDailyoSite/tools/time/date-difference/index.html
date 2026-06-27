@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/main.css?v=4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Difference Calculator — TheDailyo</title>
+    <meta
+      name="description"
+      content="Calculate the difference between two dates in days, weeks, months, and years. Compare dates with optional inclusive counting and copy a shareable link."
+    />
+    <link
+      rel="canonical"
+      href="https://thedailyo.com/tools/time/date-difference/"
+    />
+    <meta name="robots" content="index,follow" />
+    <!-- GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LW4W6PG84Q");
+    </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-2329893496371145"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .two-col {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+      .panel h2 {
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+      .form-grid {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.18);
+        background: #ffffff;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+      }
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 14px 28px rgba(79, 124, 255, 0.25);
+        transition:
+          transform 0.12s ease,
+          filter 0.12s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+      .btn-ghost {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        transition:
+          transform 0.12s ease,
+          border-color 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+      .btn-ghost:hover {
+        transform: translateY(-1px);
+        border-color: rgba(79, 124, 255, 0.35);
+        box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+      }
+      .warn {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 82, 82, 0.1);
+        border: 1px solid rgba(255, 82, 82, 0.25);
+        color: var(--text-main);
+        font-weight: 850;
+        display: none;
+        line-height: 1.55;
+      }
+      .result {
+        margin-top: 14px;
+        display: none;
+      }
+      .result h3 {
+        font-size: 1.02rem;
+        font-weight: 950;
+        color: var(--text-main);
+        margin-bottom: 10px;
+      }
+      .kpi-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kpi {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.08);
+      }
+      .kpi-label {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        font-weight: 850;
+      }
+      .kpi-value {
+        margin-top: 6px;
+        font-size: 1.1rem;
+        font-weight: 950;
+        color: var(--text-main);
+      }
+      .table-wrap {
+        margin-top: 12px;
+        overflow: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 12px 26px rgba(2, 6, 23, 0.06);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 760px;
+        background: #ffffff;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        font-size: 0.9rem;
+        text-align: right;
+        white-space: nowrap;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        color: var(--text-main);
+        font-weight: 950;
+        z-index: 1;
+      }
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+      tbody tr:hover td {
+        background: rgba(79, 124, 255, 0.06);
+      }
+      .small-note {
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .formula {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        color: var(--text-main);
+        line-height: 1.65;
+        overflow: auto;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: rgba(15, 23, 42, 0.06);
+        border-radius: 10px;
+        padding: 2px 6px;
+      }
+    </style>
+  
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://thedailyo.com/tools/time/date-difference/#webpage",
+                       "url":  "https://thedailyo.com/tools/time/date-difference/",
+                       "name":  "Date Difference Calculator — TheDailyo",
+                       "description":  "Calculate the difference between two dates in days, weeks, months, and years. Compare dates with optional inclusive counting and copy a shareable link.",
+                       "isPartOf":  {
+                                        "@id":  "https://thedailyo.com/#website"
+                                    },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://thedailyo.com/tools/time/date-difference/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://thedailyo.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://thedailyo.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Time",
+                                                   "item":  "https://thedailyo.com/tools/time/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  4,
+                                                   "name":  "Date Difference",
+                                                   "item":  "https://thedailyo.com/tools/time/date-difference/"
+                                               }
+                                           ]
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://thedailyo.com/tools/time/date-difference/#calculator",
+                       "name":  "Date Difference Calculator — TheDailyo",
+                       "applicationCategory":  "UtilityApplication",
+                       "operatingSystem":  "Web",
+                       "url":  "https://thedailyo.com/tools/time/date-difference/",
+                       "description":  "Calculate the difference between two dates in days, weeks, months, and years. Compare dates with optional inclusive counting and copy a shareable link.",
+                       "offers":  {
+                                      "@type":  "Offer",
+                                      "price":  "0",
+                                      "priceCurrency":  "USD"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://thedailyo.com/#organization"
+                                     }
+                   }
+               ]
+}
+  </script>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-kicker">TheDailyo.com</div>
+        <h1 class="site-title">Date Difference Calculator</h1>
+        <p class="site-subtitle">
+          Find the difference between two dates in days, weeks, months, and
+          years.
+        </p>
+        <div class="header-gradient-line"></div>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="nav-pill" href="/">Home</a>
+          <a class="nav-pill" href="/finance/">Finance</a>
+          <a class="nav-pill" href="/career/">Career &amp; Income</a>
+          <a class="nav-pill" href="/tools/">Tools</a>
+          <a class="nav-pill" href="/health/">Health</a>
+          <a class="nav-pill" href="/business/">Business</a>
+          <a class="nav-pill" href="/about.html">About</a>
+          <a class="nav-pill" href="/contact.html">Contact</a>
+        </nav>
+        <div class="breadcrumbs">
+          <a href="/">Home</a> <span class="crumb-sep">›</span>
+          <a href="/tools/">Tools</a> <span class="crumb-sep">›</span>
+          <a href="/tools/time/">Time</a> <span class="crumb-sep">›</span> Date
+          Difference Calculator
+        </div>
+      </header>
+      <main id="main">
+        <h2 class="section-title">Calculator</h2>
+        <p class="section-subtitle">
+          Choose two dates to calculate the exact difference between them. You
+          can compare whole calendar dates and optionally include both the start
+          and end date in the count.
+        </p>
+        <div class="two-col">
+          <section class="panel" aria-label="Calculator">
+            <h2>Inputs</h2>
+            <div class="form-grid">
+              <div>
+                <label for="startDate">Start date</label>
+                <input id="startDate" type="date" value="" />
+                <div class="small-note">
+                  The earlier date in the comparison.
+                </div>
+              </div>
+              <div>
+                <label for="endDate">End date</label>
+                <input id="endDate" type="date" value="" />
+                <div class="small-note">The later date in the comparison.</div>
+              </div>
+              <div>
+                <label for="inclusiveMode">Counting mode</label>
+                <select id="inclusiveMode">
+                  <option value="exclusive" selected>
+                    Exclude one endpoint
+                  </option>
+                  <option value="inclusive">Include both dates</option>
+                </select>
+                <div class="small-note">
+                  Inclusive mode adds 1 day to the total date count.
+                </div>
+              </div>
+              <div>
+                <label for="reverseMode">Date order</label>
+                <select id="reverseMode">
+                  <option value="auto" selected>Auto-order dates</option>
+                  <option value="strict">Keep exact order entered</option>
+                </select>
+                <div class="small-note">
+                  Auto-order prevents negative totals when the dates are
+                  reversed.
+                </div>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn-primary" id="calcBtn" type="button">
+                Calculate
+              </button>
+              <button class="btn-ghost" id="copyBtn" type="button">
+                Copy results
+              </button>
+              <button class="btn-ghost" id="shareBtn" type="button">
+                Copy share link
+              </button>
+              <button class="btn-ghost" id="resetBtn" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="warn" id="warn" aria-live="polite"></div>
+            <div class="result" id="result">
+              <h3>Results</h3>
+              <div class="kpi-grid">
+                <div class="kpi">
+                  <div class="kpi-label">Total days</div>
+                  <div class="kpi-value" id="kpiDays">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Weeks + days</div>
+                  <div class="kpi-value" id="kpiWeeksDays">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Calendar difference</div>
+                  <div class="kpi-value" id="kpiCalendar">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Approx. months</div>
+                  <div class="kpi-value" id="kpiMonths">—</div>
+                </div>
+              </div>
+              <div class="formula" id="summaryBox">—</div>
+              <div
+                class="table-wrap"
+                aria-label="Date difference breakdown table"
+              >
+                <table id="resultsTable">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Value</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody"></tbody>
+                </table>
+              </div>
+              <div class="small-note" id="tipBox">
+                Tip: Total days and calendar difference are related, but not the
+                same thing. Calendar difference focuses on years, months, and
+                days.
+              </div>
+            </div>
+          </section>
+          <aside class="panel" aria-label="Explanation">
+            <h2>How it works</h2>
+            <p>
+              This calculator measures the difference between two calendar
+              dates. It shows the gap in total days, weeks and days, and also as
+              a calendar breakdown in years, months, and days.
+            </p>
+            <div class="formula">
+              <strong>Total day count</strong><br />
+              <code>End date − Start date</code>
+            </div>
+            <div class="formula">
+              <strong>Inclusive day count</strong><br />
+              <code>(End date − Start date) + 1</code>
+            </div>
+            <details class="faq" style="margin-top: 12px">
+              <summary>
+                Why can total days differ from months and years?
+              </summary>
+              <p>
+                Because months have different lengths. Calendar difference shows
+                the human-style gap, while total days shows the raw day count.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>What does inclusive counting mean?</summary>
+              <p>
+                Inclusive counting includes both the start date and end date as
+                part of the total.
+              </p>
+            </details>
+            <details class="faq">
+              <summary>What if I enter the dates backwards?</summary>
+              <p>
+                Auto-order mode swaps them for you. Strict mode preserves the
+                order you entered and may show a negative total day count.
+              </p>
+            </details>
+            <p style="margin-top: 10px">
+              Related:
+              <a href="/tools/time/days-until/">Days Until Calculator</a>
+            </p>
+          </aside>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div>© 2026 TheDailyo — All Rights Reserved.</div>
+        <div class="site-footer-links" style="margin-top: 6px">
+          <a href="/privacy.html">Privacy Policy</a> ·
+          <a href="/terms.html">Terms</a> ·
+          <a href="/disclaimer.html">Disclaimer</a> ·
+          <a href="/contact.html">Contact</a> · <a href="/about.html">About</a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const el = (id) => document.getElementById(id);
+      const DAY_MS = 24 * 60 * 60 * 1000;
+      function setWarn(msg) {
+        const w = el("warn");
+        if (!msg) {
+          w.style.display = "none";
+          w.textContent = "";
+          return;
+        }
+        w.textContent = msg;
+        w.style.display = "block";
+      }
+      function toYMD(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      }
+      function parseDateInput(value) {
+        if (!value) return null;
+        const parts = value.split("-").map(Number);
+        if (parts.length !== 3 || parts.some((n) => !Number.isFinite(n)))
+          return null;
+        return new Date(parts[0], parts[1] - 1, parts[2]);
+      }
+      function diffDays(a, b) {
+        const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+        const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+        return Math.round((utcB - utcA) / DAY_MS);
+      }
+      function plural(n, word) {
+        return `${n} ${word}${Math.abs(n) === 1 ? "" : "s"}`;
+      }
+      function formatLongDate(d) {
+        return d.toLocaleDateString(undefined, {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function calendarDiff(start, end) {
+        let sign = 1;
+        let a = new Date(start);
+        let b = new Date(end);
+        if (a > b) {
+          sign = -1;
+          const temp = a;
+          a = b;
+          b = temp;
+        }
+        let years = b.getFullYear() - a.getFullYear();
+        let months = b.getMonth() - a.getMonth();
+        let days = b.getDate() - a.getDate();
+        if (days < 0) {
+          months -= 1;
+          const prevMonthLastDay = new Date(
+            b.getFullYear(),
+            b.getMonth(),
+            0,
+          ).getDate();
+          days += prevMonthLastDay;
+        }
+        if (months < 0) {
+          years -= 1;
+          months += 12;
+        }
+        return { years, months, days, sign };
+      }
+      function formatCalendarDiff(obj) {
+        const parts = [];
+        if (obj.years) parts.push(plural(obj.years, "year"));
+        if (obj.months) parts.push(plural(obj.months, "month"));
+        if (obj.days || parts.length === 0) parts.push(plural(obj.days, "day"));
+        if (parts.length === 1) return parts[0];
+        if (parts.length === 2) return `${parts[0]} and ${parts[1]}`;
+        return `${parts[0]}, ${parts[1]}, and ${parts[2]}`;
+      }
+      function fmtNum(n, d = 2) {
+        if (!isFinite(n)) return "—";
+        return Number(n).toLocaleString(undefined, {
+          minimumFractionDigits: d,
+          maximumFractionDigits: d,
+        });
+      }
+      function getParams() {
+        const sp = new URLSearchParams(window.location.search);
+        return {
+          s: sp.get("s"),
+          e: sp.get("e"),
+          i: sp.get("i"),
+          r: sp.get("r"),
+        };
+      }
+      function applyParams() {
+        const p = getParams();
+        const today = new Date();
+        const thirtyDaysLater = new Date();
+        thirtyDaysLater.setDate(today.getDate() + 30);
+        el("startDate").value = p.s || toYMD(today);
+        el("endDate").value = p.e || toYMD(thirtyDaysLater);
+        el("inclusiveMode").value =
+          p.i === "inclusive" ? "inclusive" : "exclusive";
+        el("reverseMode").value = p.r === "strict" ? "strict" : "auto";
+      }
+      function cleanURL() {
+        if (window.location.search) {
+          window.history.replaceState({}, "", window.location.pathname);
+        }
+      }
+      function buildShareURL(startDate, endDate, inclusiveMode, reverseMode) {
+        const sp = new URLSearchParams();
+        sp.set("s", startDate);
+        sp.set("e", endDate);
+        sp.set("i", inclusiveMode);
+        sp.set("r", reverseMode);
+        return `${window.location.origin}${window.location.pathname}?${sp.toString()}`;
+      }
+      function buildRows(
+        startDate,
+        endDate,
+        totalDays,
+        inclusiveDays,
+        weeks,
+        daysRemainder,
+        calendarText,
+        approxMonths,
+        orderedNote,
+      ) {
+        const tbody = el("tbody");
+        tbody.innerHTML = "";
+        const rows = [
+          [
+            "Start date",
+            formatLongDate(startDate),
+            "The first date used in the comparison.",
+          ],
+          [
+            "End date",
+            formatLongDate(endDate),
+            "The second date used in the comparison.",
+          ],
+          [
+            "Total days",
+            String(totalDays),
+            "Raw day difference between the two dates.",
+          ],
+          [
+            "Inclusive days",
+            String(inclusiveDays),
+            "Adds 1 if both dates are counted.",
+          ],
+          [
+            "Weeks + days",
+            `${weeks} week${weeks === 1 ? "" : "s"}, ${daysRemainder} day${daysRemainder === 1 ? "" : "s"}`,
+            "Useful for shorter ranges.",
+          ],
+          [
+            "Calendar difference",
+            calendarText,
+            "Human-style difference in years, months, and days.",
+          ],
+          [
+            "Approx. months",
+            fmtNum(approxMonths, 2),
+            "Uses average month length for a rough month estimate.",
+          ],
+          [
+            "Date order",
+            orderedNote,
+            "Shows whether the dates were auto-reordered or kept as entered.",
+          ],
+        ];
+        rows.forEach(([metric, value, notes]) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = ` <td>${metric}</td> <td><strong>${value}</strong></td> <td>${notes}</td> `;
+          tbody.appendChild(tr);
+        });
+      }
+      function calculate() {
+        setWarn("");
+        let startDate = parseDateInput(el("startDate").value);
+        let endDate = parseDateInput(el("endDate").value);
+        const inclusiveMode = el("inclusiveMode").value;
+        const reverseMode = el("reverseMode").value;
+        if (!startDate || !endDate) {
+          el("result").style.display = "none";
+          return setWarn("Choose valid start and end dates.");
+        }
+        let orderedNote = "Used exactly as entered";
+        if (reverseMode === "auto" && startDate > endDate) {
+          const temp = startDate;
+          startDate = endDate;
+          endDate = temp;
+          orderedNote = "Auto-swapped to keep start before end";
+        }
+        const rawDays = diffDays(startDate, endDate);
+        const totalDays = rawDays;
+        const inclusiveDays = totalDays >= 0 ? totalDays + 1 : totalDays - 1;
+        const absDays = Math.abs(totalDays);
+        const weeks = Math.floor(absDays / 7);
+        const daysRemainder = absDays % 7;
+        const cal = calendarDiff(startDate, endDate);
+        const calendarText = formatCalendarDiff(cal);
+        const approxMonths = absDays / 30.4375;
+        el("kpiDays").textContent = String(
+          inclusiveMode === "inclusive" ? inclusiveDays : totalDays,
+        );
+        el("kpiWeeksDays").textContent = `${weeks}w ${daysRemainder}d`;
+        el("kpiCalendar").textContent = calendarText;
+        el("kpiMonths").textContent = fmtNum(approxMonths, 2);
+        const summary = el("summaryBox");
+        if (totalDays === 0) {
+          summary.innerHTML = `<strong>Summary:</strong> The two dates are the same day.`;
+        } else if (inclusiveMode === "inclusive") {
+          summary.innerHTML = `<strong>Summary:</strong> The inclusive difference between <strong>${formatLongDate(startDate)}</strong> and <strong>${formatLongDate(endDate)}</strong> is <strong>${inclusiveDays}</strong> days.`;
+        } else {
+          summary.innerHTML = `<strong>Summary:</strong> The date difference between <strong>${formatLongDate(startDate)}</strong> and <strong>${formatLongDate(endDate)}</strong> is <strong>${totalDays}</strong> days.`;
+        }
+        buildRows(
+          startDate,
+          endDate,
+          totalDays,
+          inclusiveDays,
+          weeks,
+          daysRemainder,
+          calendarText,
+          approxMonths,
+          orderedNote,
+        );
+        const tipBox = el("tipBox");
+        if (totalDays === 0) {
+          tipBox.textContent =
+            "Tip: If both dates are the same, the exclusive difference is 0 days and the inclusive difference is 1 day.";
+        } else if (reverseMode === "strict" && totalDays < 0) {
+          tipBox.textContent =
+            "Tip: Strict order preserves the direction you entered. A negative day count means the end date is earlier than the start date.";
+        } else {
+          tipBox.textContent =
+            "Tip: Calendar difference is best for age or anniversary-style comparisons. Total days is best for raw elapsed time.";
+        }
+        el("result").style.display = "block";
+      }
+      async function copyResults() {
+        const result = el("result");
+        if (result.style.display === "none") {
+          calculate();
+        }
+        if (result.style.display === "none") return;
+        const text = [
+          `Start date: ${el("startDate").value}`,
+          `End date: ${el("endDate").value}`,
+          `Total days: ${el("kpiDays").textContent}`,
+          `Weeks + days: ${el("kpiWeeksDays").textContent}`,
+          `Calendar difference: ${el("kpiCalendar").textContent}`,
+          `Approx. months: ${el("kpiMonths").textContent}`,
+        ].join("\n");
+        try {
+          await navigator.clipboard.writeText(text);
+          setWarn("Copied results to clipboard.");
+          setTimeout(() => setWarn(""), 1800);
+        } catch {
+          setWarn("Copy failed. Try again or copy manually.");
+        }
+      }
+      async function copyShareLink() {
+        const shareURL = buildShareURL(
+          el("startDate").value,
+          el("endDate").value,
+          el("inclusiveMode").value,
+          el("reverseMode").value,
+        );
+        try {
+          await navigator.clipboard.writeText(shareURL);
+          setWarn("Copied share link to clipboard.");
+          setTimeout(() => setWarn(""), 1800);
+        } catch {
+          setWarn("Copy failed. You can copy the URL from the address bar.");
+        }
+      }
+      function reset() {
+        const today = new Date();
+        const thirtyDaysLater = new Date();
+        thirtyDaysLater.setDate(today.getDate() + 30);
+        el("startDate").value = toYMD(today);
+        el("endDate").value = toYMD(thirtyDaysLater);
+        el("inclusiveMode").value = "exclusive";
+        el("reverseMode").value = "auto";
+        setWarn("");
+        history.replaceState({}, "", location.pathname);
+        calculate();
+      }
+      el("calcBtn").addEventListener("click", calculate);
+      el("copyBtn").addEventListener("click", copyResults);
+      el("shareBtn").addEventListener("click", copyShareLink);
+      el("resetBtn").addEventListener("click", reset);
+      ["startDate", "endDate", "inclusiveMode", "reverseMode"].forEach((id) => {
+        el(id).addEventListener("change", calculate);
+      });
+      applyParams();
+      cleanURL();
+      calculate();
+    </script>
+  </body>
+</html>

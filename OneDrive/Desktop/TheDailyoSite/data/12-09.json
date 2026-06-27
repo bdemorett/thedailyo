@@ -1,0 +1,255 @@
+{
+  "date": "December 9",
+
+  "tech": [
+    {
+      "year": 1968,
+      "title": "Douglas Engelbart presents the “Mother of All Demos”",
+      "description": "Douglas Engelbart delivers a live public demonstration that introduces ideas far ahead of their time, including the computer mouse, windowed interfaces, hypertext linking, collaborative document editing, and video conferencing. The presentation reshapes how people imagine interacting with computers, moving them from calculation machines to tools for communication and creativity. Many concepts that define modern operating systems, productivity software, and online collaboration trace directly back to this single event.",
+      "link": "https://www.computerhistory.org/collections/catalog/102657970",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1995,
+      "title": "Java programming language is officially introduced",
+      "description": "Sun Microsystems publicly introduces Java, promoting its ability to run the same code across different hardware platforms. This portability makes Java especially attractive for enterprise software, web applications, and later mobile development. Over time, Java becomes one of the most widely used programming languages in the world and plays a major role in shaping modern backend systems, cloud services, and Android applications.",
+      "link": "https://www.oracle.com/java/technologies/javase-history.html",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2014,
+      "title": "NASA’s Orion spacecraft completes its first test flight",
+      "description": "NASA successfully launches and recovers the Orion spacecraft during Exploration Flight Test-1. The mission validates heat-shield performance, navigation systems, and recovery operations required for deep-space missions. Orion is designed to carry astronauts beyond low Earth orbit, including future missions to the Moon and Mars. The successful test marks a key milestone in NASA’s long-term human exploration program.",
+      "link": "https://www.nasa.gov/orion",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2007,
+      "title": "Amazon introduces the Kindle e-reader",
+      "description": "Amazon releases the first Kindle, helping accelerate the shift from physical books to digital reading. The device integrates wireless downloads, a large digital library, and electronic ink technology designed for extended reading. The Kindle significantly changes publishing, distribution, and reading habits, influencing how authors, publishers, and readers interact with written content.",
+      "link": "https://en.wikipedia.org/wiki/Amazon_Kindle",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "history": [
+    {
+      "year": 1948,
+      "title": "United Nations adopts the Genocide Convention",
+      "description": "The United Nations adopts the Convention on the Prevention and Punishment of the Crime of Genocide, establishing genocide as a crime under international law. The treaty commits signatory nations to prevent and punish acts intended to destroy national, ethnic, racial, or religious groups. It becomes a cornerstone of international human-rights law and influences later war-crimes tribunals and international courts.",
+      "link": "https://www.un.org/en/genocideprevention/genocide-convention.shtml",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1961,
+      "title": "Tanganyika gains independence from the United Kingdom",
+      "description": "Tanganyika becomes independent from British colonial rule, reflecting the broader wave of decolonization reshaping Africa in the mid-20th century. Independence sets the foundation for national governance and regional diplomacy. In 1964, Tanganyika unites with Zanzibar to form modern-day Tanzania, creating a lasting political union that continues to shape East African history.",
+      "link": "https://en.wikipedia.org/wiki/Tanganyika",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1990,
+      "title": "Lech Wałęsa is elected President of Poland",
+      "description": "Solidarity movement leader Lech Wałęsa wins Poland’s presidential election, becoming the country’s first democratically elected president after decades of communist rule. His victory symbolizes the collapse of Soviet influence in Eastern Europe and Poland’s transition toward democratic governance and market reforms.",
+      "link": "https://en.wikipedia.org/wiki/Lech_Wa%C5%82%C4%99sa",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1884,
+      "title": "Mark Twain’s 'The Adventures of Huckleberry Finn' is first published",
+      "description": "Mark Twain’s novel is first published in Canada ahead of its U.S. release. The book later becomes one of the most studied works in American literature, praised for its narrative voice and social commentary. Its publication marks a lasting moment in literary and cultural history.",
+      "link": "https://www.britannica.com/topic/The-Adventures-of-Huckleberry-Finn",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "crime_and_justice": [
+    {
+      "year": 2008,
+      "title": "Illinois Governor Rod Blagojevich is arrested on corruption charges",
+      "description": "Federal authorities arrest Illinois Governor Rod Blagojevich following allegations of corruption and abuse of public office. The case becomes a national political scandal and leads to impeachment and criminal prosecution. It highlights broader debates about ethics, transparency, and accountability in government leadership.",
+      "link": "https://www.justice.gov/opa/pr/illinois-governor-rod-blagojevich-arrested-federal-corruption-charges",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1981,
+      "title": "Mumia Abu-Jamal is arrested in Philadelphia",
+      "description": "Journalist and activist Mumia Abu-Jamal is arrested and later convicted in a case that becomes one of the most debated criminal trials in modern U.S. history. The case draws international attention and remains a frequent reference point in discussions about criminal justice reform and sentencing.",
+      "link": "https://en.wikipedia.org/wiki/Mumia_Abu-Jamal",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2022,
+      "title": "Brittney Griner is released in a U.S.–Russia prisoner exchange",
+      "description": "WNBA star Brittney Griner is released from Russian custody as part of a high-profile prisoner exchange between the United States and Russia. The case draws global attention to international legal systems, diplomatic negotiations, and the treatment of foreign detainees.",
+      "link": "https://apnews.com/article/brittney-griner-russia-prisoner-swap-8c7d0c3e7fbe3a2a6f0b2f0f5a8aeb1b",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "war_and_conflict": [
+    {
+      "year": 1941,
+      "title": "China formally declares war on Japan, Germany, and Italy",
+      "description": "The Republic of China formally declares war on Japan, Germany, and Italy following the widening of World War II. Although China had already been engaged in conflict with Japan for years, the declaration officially aligns it with the Allied powers and underscores its central role in the Asia-Pacific theater.",
+      "link": "https://en.wikipedia.org/wiki/China_in_World_War_II",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1987,
+      "title": "The First Intifada begins",
+      "description": "The First Intifada begins as a grassroots Palestinian uprising marked by protests, strikes, and civil resistance. The movement draws sustained global attention and reshapes political discourse surrounding the Israeli-Palestinian conflict, influencing later peace negotiations and regional politics.",
+      "link": "https://en.wikipedia.org/wiki/First_Intifada",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1992,
+      "title": "U.S. Marines land in Somalia for Operation Restore Hope",
+      "description": "U.S. Marines arrive in Somalia as part of a UN-backed humanitarian mission aimed at securing aid delivery during civil war and famine. The operation highlights the challenges of military involvement in humanitarian crises and influences future peacekeeping doctrine.",
+      "link": "https://en.wikipedia.org/wiki/Operation_Restore_Hope",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "disasters": [
+    {
+      "year": 1911,
+      "title": "Briceville coal mine disaster kills dozens in Tennessee",
+      "description": "An explosion at a coal mine near Briceville, Tennessee, kills dozens of miners and underscores the dangers of early industrial labor. Mining disasters like this contribute to public pressure for improved safety regulations, inspections, and emergency response standards.",
+      "link": "https://en.wikipedia.org/wiki/Briceville_mine_disaster",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2019,
+      "title": "Whakaari / White Island volcano erupts in New Zealand",
+      "description": "The Whakaari volcano erupts while visitors are present, causing fatalities and severe injuries. The disaster sparks global discussion about volcanic monitoring, tourism risk management, and emergency preparedness, and becomes one of New Zealand’s most studied natural disasters.",
+      "link": "https://en.wikipedia.org/wiki/2019_Whakaari_/_White_Island_eruption",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2004,
+      "title": "Indian Ocean tsunami recovery efforts continue",
+      "description": "In the aftermath of the devastating Indian Ocean tsunami, international recovery and rebuilding efforts continue across multiple countries. The disaster reshapes global disaster-response coordination and early-warning systems.",
+      "link": "https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "entertainment": [
+    {
+      "year": 1965,
+      "title": "'A Charlie Brown Christmas' premieres on television",
+      "description": "The animated holiday special premieres on CBS and becomes one of the most enduring seasonal programs in American television history. Its understated animation, jazz score, and reflective themes set it apart from typical holiday entertainment.",
+      "link": "https://en.wikipedia.org/wiki/A_Charlie_Brown_Christmas",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2005,
+      "title": "'Brokeback Mountain' is released",
+      "description": "The film 'Brokeback Mountain' is released to widespread critical acclaim, becoming a major cultural moment for its storytelling and performances. It influences discussions about representation and narrative depth in mainstream cinema.",
+      "link": "https://en.wikipedia.org/wiki/Brokeback_Mountain",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2015,
+      "title": "Star Wars: The Force Awakens premieres",
+      "description": "The premiere of 'Star Wars: The Force Awakens' marks the return of the franchise to theaters after a decade-long gap. The film becomes a global box-office phenomenon and reintroduces the series to a new generation of fans.",
+      "link": "https://en.wikipedia.org/wiki/Star_Wars:_The_Force_Awakens",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "sports": [
+    {
+      "year": 1934,
+      "title": "The NFL 'Sneakers Game' decides the league championship",
+      "description": "The New York Giants defeat the Chicago Bears in the 1934 NFL Championship Game after switching to sneakers for better traction on an icy field. The strategic decision leads to a dramatic comeback and cements the game as one of the most famous moments in early NFL history.",
+      "link": "https://en.wikipedia.org/wiki/Sneakers_Game",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1977,
+      "title": "Earl Campbell wins the Heisman Trophy",
+      "description": "University of Texas running back Earl Campbell wins the Heisman Trophy after a dominant season. Known for his powerful running style, Campbell becomes one of college football’s most celebrated players and later enjoys a Hall of Fame NFL career.",
+      "link": "https://en.wikipedia.org/wiki/Earl_Campbell",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2016,
+      "title": "Golden State Warriors set an NBA road-win record",
+      "description": "The Golden State Warriors continue their dominant season by setting a franchise road-win record, reinforcing their status as one of the NBA’s most successful modern teams. Their style of play helps redefine contemporary basketball strategy.",
+      "link": "https://www.nba.com",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1906,
+      "title": "Grace Hopper is born",
+      "description": "Grace Hopper is born and later becomes a pioneering computer scientist and U.S. Navy rear admiral. She plays a key role in the development of early programming languages and helps popularize machine-independent code, leaving a lasting impact on software development.",
+      "link": "https://en.wikipedia.org/wiki/Grace_Hopper",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 2012,
+      "title": "Jazz musician Dave Brubeck dies",
+      "description": "Dave Brubeck, one of the most influential jazz musicians of the 20th century, dies one day before his 92nd birthday. Known for experimenting with unusual time signatures, Brubeck helped bring jazz to mainstream audiences worldwide.",
+      "link": "https://en.wikipedia.org/wiki/Dave_Brubeck",
+      "category": "culture",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}

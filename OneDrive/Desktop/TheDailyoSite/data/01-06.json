@@ -1,0 +1,387 @@
+{
+  "date": "January 6",
+
+  "tech": [
+    {
+      "year": 2021,
+      "title": "Global internet infrastructure faces unprecedented strain",
+      "description": "As remote work, streaming, and cloud services surge worldwide, engineers warn that data centers and undersea cables are being pushed to their limits. Massive traffic spikes reveal how fragile global connectivity can be. The moment highlights how deeply modern life depends on largely invisible digital infrastructure.",
+      "link": "https://www.bbc.com/news/technology",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2016,
+      "title": "NASA confirms evidence of flowing liquid water on Mars",
+      "description": "NASA scientists announce that satellite images show liquid water may flow intermittently on the surface of Mars. The discovery excites researchers because water is considered essential for life. The finding reshapes scientific thinking about Mars and boosts interest in future exploration missions.",
+      "link": "https://mars.nasa.gov/news/confirmation-of-liquid-water-on-mars/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2005,
+      "title": "Scientists warn that a massive solar storm could cripple Earth’s power grids",
+      "description": "Researchers publish studies cautioning that an extreme solar eruption could disable satellites and knock out electrical grids. Experts compare the risk to the 1859 Carrington Event, which caused telegraph systems to spark and fail. The warnings stress that a similar storm today could produce trillions of dollars in global damage.",
+      "link": "https://www.nasa.gov/spaceweather/",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1997,
+      "title": "IBM’s Deep Blue lays groundwork for machines beating humans at complex tasks",
+      "description": "After the famous 1997 chess matches between IBM’s Deep Blue computer and Garry Kasparov, scientists begin debating the broader implications. Many realize that artificial intelligence may eventually outperform humans in other intellectual fields. The moment becomes an early cultural turning point in modern AI development.",
+      "link": "https://www.ibm.com/history/deep-blue",
+      "category": "tech",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "history": [
+    {
+      "year": 2012,
+      "title": "Suicide bombing at police station in Damascus, Syria",
+      "description": "A suicide bomber detonates explosives at a Syrian police facility amid the nation’s civil war. At least 26 people are killed and dozens wounded. The attack is widely condemned and illustrates the intensifying violence in the region.",
+      "link": "https://www.bbc.com/news/world-middle-east-16442133",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2005,
+      "title": "Graniteville train collision releases chlorine gas",
+      "description": "A freight train crash in Graniteville, South Carolina releases about 60 tons of deadly chlorine gas. The toxic cloud forces evacuations and causes multiple deaths. It becomes one of the worst hazardous-material accidents in recent American history.",
+      "link": "https://www.cdc.gov/niosh/topics/chlorine/",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1995,
+      "title": "Manila chemical fire reveals Project Bojinka terror plot",
+      "description": "A small apartment fire in Manila, Philippines unexpectedly exposes a planned terrorist operation. Investigators discover detailed documents outlining a coordinated attack to bomb multiple international airliners. The discovery helps prevent what could have been a massive global tragedy.",
+      "link": "https://www.fbi.gov/history/famous-cases/project-bojinka",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1974,
+      "title": "United States begins emergency early daylight saving time",
+      "description": "The U.S. government orders daylight saving time to begin months early as an energy-conservation effort. The decision comes directly from the global oil crisis of the 1970s. The unusual move affects millions of Americans’ daily schedules.",
+      "link": "https://www.transportation.gov/regulations/daylight-saving-time",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1951,
+      "title": "Ganghwa massacre begins in South Korea",
+      "description": "South Korean security forces begin executing suspected communist sympathizers during the Korean War. Estimates range from 200 to over 1,000 civilians killed. The massacre remains one of the darkest internal episodes of the conflict.",
+      "link": "https://www.hrw.org/asia/korean-war-history",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1947,
+      "title": "Pan American Airlines becomes first airline to offer round-the-world ticket",
+      "description": "Pan American Airlines launches a single ticket that allows passengers to travel around the world using its network and partners. The idea captures the postwar boom in international aviation and the public’s growing appetite for global travel.",
+      "link": "https://www.panam.org/",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1781,
+      "title": "British defeat French forces at the Battle of Jersey",
+      "description": "British defenders stop a surprise French landing on Jersey in the English Channel. The short but fierce battle ends with Britain maintaining control of the island.",
+      "link": "https://www.historic-uk.com/HistoryUK/HistoryofEngland/Battle-of-Jersey/",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1536,
+      "title": "Colegio de Santa Cruz de Tlatelolco is founded in Mexico City",
+      "description": "The Colegio de Santa Cruz de Tlatelolco is established in Mexico City as an early European-style center of higher learning in the Americas. It becomes known for educating Indigenous scholars and for producing important early colonial-era texts and scholarship.",
+      "link": "https://www.britannica.com/topic/Colegio-de-Santa-Cruz-de-Tlatelolco",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "world_events": [
+    {
+      "year": 2025,
+      "title": "Justin Trudeau announces resignation as Prime Minister of Canada",
+      "description": "Canadian Prime Minister Justin Trudeau publicly announces his intention to step down after nine years in power. His resignation triggers a major political transition and global media attention. The announcement marks the end of one of the longest-running modern administrations in Canadian history.",
+      "link": "https://www.cbc.ca/news/politics",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2017,
+      "title": "Mass shooting at Fort Lauderdale–Hollywood International Airport",
+      "description": "A lone gunman opens fire inside a busy airport terminal in Fort Lauderdale, Florida. The terrifying attack leaves five people dead and several others injured. The event becomes a globally reported tragedy and renews concerns over public-space security.",
+      "link": "https://www.cnn.com/2017/01/06/us/florida-airport-shooting/index.html",
+      "category": "world",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "crime_and_justice": [
+    {
+      "year": 2022,
+      "title": "Court records reveal massive digital evidence backlogs",
+      "description": "Judicial systems worldwide report overwhelming backlogs of digital evidence, including phone data and surveillance footage. Prosecutors warn that justice is being delayed due to sheer data volume. The issue forces courts to rethink how evidence is handled in the digital age.",
+      "link": "https://nij.ojp.gov/topics/articles/digital-evidence",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1994,
+      "title": "Nancy Kerrigan attacked at Detroit ice rink",
+      "description": "Figure skater Nancy Kerrigan is struck in the leg by an assailant connected to rival Tonya Harding’s ex-husband. The attack becomes a sensational criminal investigation and worldwide media scandal.",
+      "link": "https://www.history.com/this-day-in-history/january-6/skater-nancy-kerrigan-attacked",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1930,
+      "title": "Kidnapping victim survives being buried alive",
+      "description": "A woman survives hours trapped underground after criminals bury her in a coffin as part of a ransom plot. The horrifying case leads to stronger kidnapping prosecutions and long-running public fascination with the crime.",
+      "link": "https://www.smithsonianmag.com/history/",
+      "category": "crime",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "war_and_conflict": [
+    {
+      "year": 2022,
+      "title": "Modern warfare reveals vulnerability of tanks and traditional armor",
+      "description": "Footage from ongoing conflicts shows armored vehicles destroyed by relatively inexpensive drones and missiles. Military analysts conclude that decades-old assumptions about battlefield dominance are rapidly changing. The moment signals a technological shift in how wars are fought.",
+      "link": "https://www.reuters.com/world/",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1991,
+      "title": "Coalition forces prepare for Operation Desert Storm",
+      "description": "Coalition militaries finalize plans to expel Iraqi troops from Kuwait after diplomatic deadlines expire. The coming war will showcase unprecedented use of precision-guided weapons and large-scale coalition coordination.",
+      "link": "https://www.defense.gov/Multimedia/Experience/Desert-Storm/",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1945,
+      "title": "World War II enters its final months",
+      "description": "As 1945 begins, Allied forces push deeper into Axis territory with enormous civilian casualties. The true scale of destruction becomes obvious only after the war ends.",
+      "link": "https://www.britannica.com/event/World-War-II",
+      "category": "war",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "sports": [
+    {
+      "year": 1995,
+      "title": "Lenny Wilkens becomes the NBA’s all-time winningest coach (at the time)",
+      "description": "Lenny Wilkens records his 939th NBA regular-season coaching win, passing Red Auerbach for the all-time record at the time. The milestone solidifies his reputation as one of basketball’s most respected leaders. He finishes his career with well over 1,000 wins.",
+      "link": "https://www.nba.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1986,
+      "title": "The NBA’s famous “rainout” forces a game cancellation in Seattle",
+      "description": "A SuperSonics–Suns game is called off after rain leaks through the arena roof and makes the court unsafe. The bizarre incident becomes enduring NBA trivia because professional basketball is played indoors. It remains one of the strangest cancellations in league history.",
+      "link": "https://www.historylink.org/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1951,
+      "title": "NBA-record six-overtime game ends 75–73",
+      "description": "The Indianapolis Olympians outlast the Rochester Royals 75–73 in a game that reaches six overtimes, the most in NBA history. The marathon highlights how slow and exhausting late-game play could become in the pre–shot clock era. It remains one of pro basketball’s most extreme endurance tests.",
+      "link": "https://www.basketball-reference.com/",
+      "category": "sports",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "science": [
+    {
+      "year": 1968,
+      "title": "NASA launches Surveyor 7, the final Surveyor mission to the Moon",
+      "description": "Surveyor 7 launches as the last mission in NASA’s Surveyor program, designed to prove soft landings on the Moon were possible and to study lunar terrain. The mission helps refine knowledge of the lunar surface as Apollo-era planning accelerates.",
+      "link": "https://www.nasa.gov/",
+      "category": "space",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1912,
+      "title": "Alfred Wegener presents the theory of continental drift",
+      "description": "Alfred Wegener argues that continents move over geologic time rather than staying fixed in place. The idea is controversial for decades, but it later becomes a foundation of modern plate tectonics and Earth science.",
+      "link": "https://www.britannica.com/science/continental-drift",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1838,
+      "title": "Samuel Morse demonstrates an early telegraph system",
+      "description": "Samuel Morse demonstrates a working telegraph concept, showing how electrical signals can transmit coded messages over a wire. The breakthrough dramatically speeds up long-distance communication and helps set the stage for modern networks.",
+      "link": "https://www.history.com/this-day-in-history/january-6/morse-demonstrates-telegraph",
+      "category": "science",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "disasters": [
+    {
+      "year": 2010,
+      "title": "Aftershocks worsen devastation following major earthquake",
+      "description": "Survivors face continuing aftershocks that collapse already weakened structures. Rescue efforts become increasingly dangerous as infrastructure fails. The disaster exposes global gaps in emergency preparedness.",
+      "link": "https://reliefweb.int/",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1917,
+      "title": "Halifax Explosion devastates Canadian city",
+      "description": "A catastrophic explosion occurs after two ships collide in Halifax Harbor, Nova Scotia. The blast kills nearly 2,000 people and remains one of the largest non-nuclear explosions in history.",
+      "link": "https://www.britannica.com/event/Halifax-Explosion",
+      "category": "disaster",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "entertainment": [
+    {
+      "year": 2019,
+      "title": "The Golden Globe Awards are held",
+      "description": "The Golden Globes take place as a major stop on the film-and-TV awards circuit. The show often shapes awards-season momentum and influences what audiences watch next. It remains one of the year’s biggest red-carpet nights.",
+      "link": "https://www.goldenglobes.com/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1975,
+      "title": "Wheel of Fortune premieres on NBC",
+      "description": "Wheel of Fortune debuts as a daytime game show and begins a run that becomes one of the longest in television history. Its word-puzzle format turns into a staple of American TV culture and later becomes a syndication powerhouse.",
+      "link": "https://www.wheeloffortune.com/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1957,
+      "title": "Elvis Presley appears on The Ed Sullivan Show",
+      "description": "Elvis appears on The Ed Sullivan Show in a broadcast remembered for huge ratings and cultural controversy. The moment becomes one of the most iconic collisions between rock ’n’ roll and mainstream American television.",
+      "link": "https://www.edsullivan.com/artists/elvis-presley/",
+      "category": "entertainment",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "births": [
+    {
+      "year": 1984,
+      "title": "Eric Trump is born",
+      "description": "Eric Trump is born in Manhattan, New York. He later becomes an executive in the Trump Organization and an active participant in U.S. political campaigns.",
+      "link": "https://www.trump.com/leadership/eric-trump",
+      "category": "births",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1984,
+      "title": "Kate McKinnon is born",
+      "description": "Kate McKinnon is born in New York. She later grows into an Emmy-winning comedian and actress known for Saturday Night Live.",
+      "link": "https://www.biography.com/actors/kate-mckinnon",
+      "category": "births",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1960,
+      "title": "Howie Long is born",
+      "description": "NFL star Howie Long is born in Massachusetts. He later becomes a Hall of Fame player with the Raiders and a popular sports commentator.",
+      "link": "https://www.profootballhof.com/players/howie-long/",
+      "category": "births",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1412,
+      "title": "Joan of Arc is born",
+      "description": "Joan of Arc, future French saint and national heroine, is born in Domrémy, France. She later leads French armies before her martyrdom.",
+      "link": "https://www.britannica.com/biography/Saint-Joan-of-Arc",
+      "category": "births",
+      "image": "",
+      "youtube": ""
+    }
+  ],
+
+  "deaths": [
+    {
+      "year": 2022,
+      "title": "Sidney Poitier dies at age 94",
+      "description": "Sidney Poitier dies at age 94. He broke racial barriers in Hollywood and became the first Black man to win the Academy Award for Best Actor, leaving a legacy that reshaped American film.",
+      "link": "https://www.npr.org/2022/01/07/1071368876/sidney-poitier-dead",
+      "category": "deaths",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 2021,
+      "title": "Ashli Babbitt dies during U.S. Capitol riot",
+      "description": "Ashli Babbitt is shot and killed inside the Capitol Building during the January 6 unrest. Her death becomes a focal point of controversy and investigation.",
+      "link": "https://www.washingtonpost.com/january-6-investigation",
+      "category": "deaths",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1949,
+      "title": "Hollywood director Victor Fleming dies",
+      "description": "Victor Fleming, director of Gone with the Wind and The Wizard of Oz, dies at age 65. He remains one of classic cinema’s most influential filmmakers.",
+      "link": "https://www.britannica.com/biography/Victor-Fleming",
+      "category": "deaths",
+      "image": "",
+      "youtube": ""
+    },
+    {
+      "year": 1919,
+      "title": "Former President Theodore Roosevelt dies",
+      "description": "Theodore Roosevelt dies at his home in Oyster Bay, New York. The former president leaves behind a legacy as one of the most influential American leaders.",
+      "link": "https://www.history.com/topics/us-presidents/theodore-roosevelt",
+      "category": "deaths",
+      "image": "",
+      "youtube": ""
+    }
+  ]
+}
