@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Hourly Rate Optimization Engine | TheDailyo</title>
+  <link rel="stylesheet" href="../../style.css">
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145" crossorigin="anonymous"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <style>
+    .calc-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    @media (min-width: 768px) {
+      .calc-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .input-box, .result-box {
+      background: var(--card-bg, #1e293b);
+      border: 1px solid var(--border-color, #334155);
+      border-radius: 12px;
+      padding: 30px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-group input:focus {
+      border-color: var(--accent-blue, #3b82f6);
+      outline: none;
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid #334155;
+    }
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+    .metric-label {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    .metric-value {
+      color: #fff;
+      font-weight: 600;
+    }
+    .final-rate {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent-blue, #3b82f6);
+      line-height: 1;
+      margin: 20px 0 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header style="text-align: left; margin-bottom: 20px;">
+      <a href="../index.html" style="color: var(--accent-blue, #3b82f6); text-decoration: none; font-weight: 500; font-size: 0.9rem; display: inline-block; margin-bottom: 20px;">← Back to Business Suite</a>
+      <h1 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.04em; font-weight: 800;">Hourly Rate Optimization Engine</h1>
+      <p style="color: #e2e8f0; margin: 0; font-size: 1.05rem; line-height: 1.5;">Reverse-engineer target salaries against operational overhead, corporate tax drag, and realistic billable efficiency limits.</p>
+    </header>
+
+    <main class="calc-container">
+      
+      <section class="input-box">
+        <div class="form-group">
+          <label>Target Net Annual Take-Home ($)</label>
+          <input type="number" id="targetSalary" value="100000" oninput="if(this.value.length > 7) this.value = this.value.slice(0,7); calculateHourlyRate()">
+        </div>
+        
+        <div class="form-group">
+          <label>Annual Business Expenses / Overhead ($)</label>
+          <input type="number" id="overhead" value="15000" oninput="if(this.value.length > 6) this.value = this.value.slice(0,6); calculateHourlyRate()">
+        </div>
+
+        <div class="form-group">
+          <label>Estimated Tax Allocation Rate (%)</label>
+          <input type="number" id="taxRate" value="25" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2); calculateHourlyRate()">
+        </div>
+
+        <div class="form-group">
+          <label>Desired Billable Hours Per Week</label>
+          <input type="number" id="billableHours" value="25" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2); calculateHourlyRate()">
+        </div>
+
+        <div class="form-group">
+          <label>Billable Weeks Per Year (Minus Vacation/Sick Time)</label>
+          <input type="number" id="billableWeeks" value="48" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2); calculateHourlyRate()">
+        </div>
+      </section>
+
+      <section class="result-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <h3 style="margin: 0 0 20px 0; font-size: 1.2rem; font-weight: 700;">Rate Breakdown Matrix</h3>
+          
+          <div class="metric-row">
+            <span class="metric-label">Total Annual Billable Hours</span>
+            <span class="metric-value" id="totalHours">1,200 hrs</span>
+          </div>
+          
+          <div class="metric-row">
+            <span class="metric-label">Gross Income Target (Pre-Tax)</span>
+            <span class="metric-value" id="grossTarget">$148,333</span>
+          </div>
+
+          <div class="metric-row">
+            <span class="metric-label">Required Monthly Revenue</span>
+            <span class="metric-value" id="monthlyTarget">$12,361</span>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid #334155; padding-top: 25px; margin-top: 25px; text-align: center;">
+          <span style="font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; font-weight: 700;">Target Billable Rate</span>
+          <div class="final-rate" id="hourlyRateText">$123.61</div>
+          <span style="font-size: 0.85rem; color: #64748b;">per hour minimum requirement</span>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color, #334155); text-align: center;">
+      <p style="font-size: 0.85rem; color: #94a3b8;">© 2026 TheDailyo. Computational Utility Ecosystem.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function calculateHourlyRate() {
+      const salary = parseFloat(document.getElementById('targetSalary').value) || 0;
+      const overhead = parseFloat(document.getElementById('overhead').value) || 0;
+      const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+      const hoursPerWeek = parseFloat(document.getElementById('billableHours').value) || 0;
+      const weeksPerYear = parseFloat(document.getElementById('billableWeeks').value) || 0;
+
+      // Calculate total billable hours
+      const totalBillableHours = hoursPerWeek * weeksPerYear;
+      document.getElementById('totalHours').innerText = totalBillableHours.toLocaleString() + ' hrs';
+
+      // Reverse engineer gross salary needed based on tax rate formula: Net = Gross * (1 - TaxRate)
+      // So Gross Salary Needed = Net Salary / (1 - TaxRate)
+      let grossSalaryNeeded = salary;
+      if (taxRate < 100 && taxRate > 0) {
+        grossSalaryNeeded = salary / (1 - (taxRate / 100));
+      }
+
+      // True Gross Business Revenue Target = Pre-tax personal salary target + business overhead expenses
+      const totalGrossRevenueTarget = grossSalaryNeeded + overhead;
+      document.getElementById('grossTarget').innerText = '$' + Math.round(totalGrossRevenueTarget).toLocaleString();
+
+      // Monthly target
+      const monthlyRevenue = totalGrossRevenueTarget / 12;
+      document.getElementById('monthlyTarget').innerText = '$' + Math.round(monthlyRevenue).toLocaleString();
+
+      // Compute hourly rate
+      let hourlyRate = 0;
+      if (totalBillableHours > 0) {
+        hourlyRate = totalGrossRevenueTarget / totalBillableHours;
+      }
+
+      document.getElementById('hourlyRateText').innerText = '$' + hourlyRate.toFixed(2);
+    }
+
+    // Initialize layout math instantly
+    calculateHourlyRate();
+  </script>
+
+</body>
+</html>
