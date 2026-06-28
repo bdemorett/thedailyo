@@ -1,20 +1,15 @@
-<!-- =========================
-FILE: /finance/taxes/index.html
-UPDATED (FULL PAGE)
-Goal:
-- Match /finance/ hub layout (header/nav/breadcrumbs/footer/section rhythm)
-- Keep GA4 + AdSense consistent
-========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="/assets/css/main.css?v=4">
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google tag (gtag.js) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheDailyo | Strategic Optimization Engines</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Google AdSense Seller Verification -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145" crossorigin="anonymous"></script>
+  
+  <!-- Google Analytics Global Tracking (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,235 +18,220 @@ Goal:
     gtag('config', 'G-LW4W6PG84Q');
   </script>
 
-  <title>Tax Tools & Calculators — TheDailyo</title>
-  <meta name="description" content="Practical tax calculators for take-home pay, 1099 vs W-2 comparisons, self-employment tax, federal income tax estimates, and quarterly estimated payments." />
-  <link rel="canonical" href="https://thedailyo.com/finance/taxes/" />
-  <meta name="robots" content="index,follow" />
-
-  <!-- AdSense (keep consistent across site) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145"
-     crossorigin="anonymous"></script>
-
-  <script type="application/ld+json">
-{
-    "@context":  "https://schema.org",
-    "@graph":  [
-                   {
-                       "@type":  "WebPage",
-                       "@id":  "https://thedailyo.com/finance/taxes/#webpage",
-                       "url":  "https://thedailyo.com/finance/taxes/",
-                       "name":  "Tax Tools \u0026 Calculators — TheDailyo",
-                       "description":  "Practical tax calculators for take-home pay, 1099 vs W-2 comparisons, self-employment tax, federal income tax estimates, and quarterly estimated payments.",
-                       "isPartOf":  {
-                                        "@id":  "https://thedailyo.com/#website"
-                                    },
-                       "publisher":  {
-                                         "@id":  "https://thedailyo.com/#organization"
-                                     }
-                   },
-                   {
-                       "@type":  "BreadcrumbList",
-                       "@id":  "https://thedailyo.com/finance/taxes/#breadcrumb",
-                       "itemListElement":  [
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  1,
-                                                   "name":  "Home",
-                                                   "item":  "https://thedailyo.com/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  2,
-                                                   "name":  "Finance",
-                                                   "item":  "https://thedailyo.com/finance/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  3,
-                                                   "name":  "Taxes",
-                                                   "item":  "https://thedailyo.com/finance/taxes/"
-                                               }
-                                           ]
-                   },
-                   {
-                       "@type":  "SoftwareApplication",
-                       "@id":  "https://thedailyo.com/finance/taxes/#calculator",
-                       "name":  "Tax Tools \u0026 Calculators — TheDailyo",
-                       "applicationCategory":  "FinanceApplication",
-                       "operatingSystem":  "Web",
-                       "url":  "https://thedailyo.com/finance/taxes/",
-                       "description":  "Practical tax calculators for take-home pay, 1099 vs W-2 comparisons, self-employment tax, federal income tax estimates, and quarterly estimated payments.",
-                       "offers":  {
-                                      "@type":  "Offer",
-                                      "price":  "0",
-                                      "priceCurrency":  "USD"
-                                  },
-                       "publisher":  {
-                                         "@id":  "https://thedailyo.com/#organization"
-                                     }
-                   }
-               ]
-}
-  </script>
+  <style>
+    .master-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    @media (min-width: 992px) {
+      .master-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .left-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .dashboard-panel {
+      background: var(--card-bg, #1e293b);
+      border: 1px solid var(--border-color, #334155);
+      border-radius: 12px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .panel-header {
+      margin-bottom: 25px;
+    }
+    .panel-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: #fff;
+    }
+    .panel-desc {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+    }
+    .link-item {
+      margin-bottom: 12px;
+    }
+    .link-item a {
+      color: var(--accent-blue, #3b82f6);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+    .link-item a:hover {
+      color: #60a5fa;
+      text-decoration: underline;
+    }
+    .action-btn {
+      display: inline-block;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .action-btn:hover {
+      border-color: var(--accent-blue, #3b82f6);
+      background: #1e293b;
+    }
+    .util-input-group {
+      margin-bottom: 15px;
+    }
+    .util-input-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .util-input-group input {
+      width: 100%;
+      padding: 10px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="page">
-    <header class="site-header">
-      <div class="brand-kicker">TheDailyo.com</div>
-      <h1 class="site-title">Tax Tools &amp; Calculators</h1>
-      <p class="site-subtitle">
-        Estimate take-home pay, compare 1099 vs W-2 income, and plan quarterly payments with simple tools.
-      </p>
-      <div class="header-gradient-line"></div>
-
- <nav class="nav-pills" aria-label="Primary navigation">
-        <a class="nav-pill" href="/">Home</a>
-        <a class="nav-pill" href="/finance/">Finance</a>
-        <a class="nav-pill" href="/career/">Career &amp; Income</a>
-        <a class="nav-pill" href="/tools/">Tools</a>
-        <a class="nav-pill" href="/health/">Health</a>
-        <a class="nav-pill" href="/business/">Business</a>
-        <a class="nav-pill" href="/about.html">About</a>
-        <a class="nav-pill" href="/contact.html">Contact</a>
-      </nav>
-
-      <div class="breadcrumbs">
-        <a href="/">Home</a> <span class="crumb-sep">›</span>
-        <a href="/finance/">Finance</a> <span class="crumb-sep">›</span> Taxes
+  <div class="container">
+    
+    <header style="text-align: left; margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color, #334155); padding-bottom: 20px; margin-bottom: 40px;">
+        <div class="status-line" style="margin: 0; font-weight: 700; letter-spacing: 0.05em;">MASTER COMMAND DASHBOARD</div>
+        <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 600;">v2.0 // ACTIVE</div>
       </div>
+      <h1 style="font-size: 3.2rem; line-height: 1.05; margin-bottom: 15px; letter-spacing: -0.04em; font-weight: 800; color: #fff;">TheDailyo</h1>
+      <p style="color: #e2e8f0; margin: 0; font-size: 1.2rem; line-height: 1.6; max-width: 700px;">Data-driven computational utilities engineered to calculate tax drag, track operating overhead, and analyze growth margins with raw mathematical precision.</p>
     </header>
 
-    <main id="main">
-      <!-- START / PRIMARY FUNNEL -->
-      <h2 class="section-title">Start here</h2>
-      <p class="section-subtitle">
-        Most tax questions come down to: <strong>what will I owe</strong> and <strong>what will I take home</strong>.
-        Start with take-home pay, then compare 1099 vs W-2 if you’re considering contract work.
-      </p>
-
-      <!-- Tax season spotlight -->
-      <div class="note" style="margin-top: 14px;">
-        <strong>Tax season:</strong> If you have side income (DoorDash, freelancing, Etsy), run
-        <a href="/finance/taxes/self-employment-tax-calculator/">Self-Employment Tax</a> first, then plan
-        <a href="/finance/taxes/quarterly-estimated-tax-calculator/">Quarterly Payments</a>.
-      </div>
-
-      <div class="columns" aria-label="Primary tax tools">
-        <a class="card" href="/finance/taxes/take-home-pay-calculator/" aria-label="Take-home pay calculator">
-          <div class="card-title">Take-Home Pay Calculator</div>
-          <div class="card-desc">
-            Estimate net pay after federal income tax and payroll taxes (simple estimate).
+    <main class="master-layout">
+      
+      <!-- LEFT COLUMN: 2 Stacked Category Directories -->
+      <div class="left-stack">
+        
+        <!-- Box 1: Tax & Compliance Portfolio -->
+        <section class="dashboard-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Tax & Compliance Engines</h2>
+            <p class="panel-desc">Isolate localized state withholding anomalies, track corporate-to-contract transformations, and audit self-employment payroll variables.</p>
           </div>
-          <div class="card-meta">Plan your paycheck →</div>
-        </a>
+          <ul class="link-list">
+            <li class="link-item"><a href="finance/taxes/take-home-pay-calculator/index.html">→ 50-State Take-Home Pay Matrix</a></li>
+            <li class="link-item"><a href="finance/taxes/self-employment-tax-calculator/index.html">→ Self-Employment Drag Auditor</a></li>
+            <li class="link-item"><a href="finance/taxes/1099-vs-w2-tax-calculator/index.html">→ 1099 vs. W-2 Comparative Engine</a></li>
+          </ul>
+          <a href="finance/taxes/index.html" class="action-btn">Browse Tax Suite</a>
+        </section>
 
-        <a class="card" href="/finance/taxes/1099-vs-w2-tax-calculator/" aria-label="1099 vs W-2 tax calculator">
-          <div class="card-title">1099 vs W-2 Tax Calculator</div>
-          <div class="card-desc">
-            Compare estimated net income as an employee vs a contractor.
+        <!-- Box 2: Business & Capital Portfolio -->
+        <section class="dashboard-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Business & Capital Engines</h2>
+            <p class="panel-desc">Optimize pricing matrices, isolate net operating resource yields, and project utilization ratios within the contract ecosystem.</p>
           </div>
-          <div class="card-meta">Compare offers →</div>
-        </a>
+          <ul class="link-list">
+            <li class="link-item"><a href="business/hourly-rate-calculator/index.html">→ Freelance Hourly Rate Optimization Engine</a></li>
+            <li class="link-item"><span style="color: #64748b; font-size: 1rem;">→ Margin & ROI Auditor (In Development)</span></li>
+          </ul>
+          <a href="business/index.html" class="action-btn">Browse Business Suite</a>
+        </section>
 
-        <a class="card" href="/finance/taxes/self-employment-tax-calculator/" aria-label="Self-employment tax calculator">
-          <div class="card-title">Self-Employment Tax Calculator</div>
-          <div class="card-desc">
-            Estimate Social Security + Medicare taxes on 1099 net profit (Schedule C style).
+      </div>
+
+      <!-- RIGHT COLUMN: 1 Standalone Component (Interactive Math Widget) -->
+      <aside class="dashboard-panel">
+        <div>
+          <div class="panel-header">
+            <h2 class="panel-title">Fraction & Proportion Optimizer</h2>
+            <p class="panel-desc">A rapid global system utility to calculate instantaneous mathematical variations, percentage changes, and fractional divisions.</p>
           </div>
-          <div class="card-meta">Plan for SE tax →</div>
-        </a>
-      </div>
-
-      <!-- QUICK LINKS (Tier 1) -->
-      <h2 class="section-title">Tax calculators (quick links)</h2>
-      <p class="section-subtitle">
-        High-demand tools for filing season, paycheck planning, and self-employment.
-      </p>
-
-      <div class="list" aria-label="Tax calculators list">
-        <a class="list-item" href="/finance/taxes/take-home-pay-calculator/">
-          <div class="li-title">Take-Home Pay Calculator</div>
-          <div class="li-desc">Estimate net pay from gross pay (simple federal + payroll estimate).</div>
-        </a>
-
-        <a class="list-item" href="/finance/taxes/1099-vs-w2-tax-calculator/">
-          <div class="li-title">1099 vs W-2 Tax Calculator</div>
-          <div class="li-desc">Compare contractor vs employee take-home pay and taxes.</div>
-        </a>
-
-        <a class="list-item" href="/finance/taxes/self-employment-tax-calculator/">
-          <div class="li-title">Self-Employment Tax Calculator</div>
-          <div class="li-desc">Estimate SE tax from net profit.</div>
-        </a>
-
-        <a class="list-item" href="/finance/taxes/federal-income-tax-calculator/">
-          <div class="li-title">Federal Income Tax Calculator (2025)</div>
-          <div class="li-desc">Estimate federal income tax using filing status, standard deduction, and brackets.</div>
-        </a>
-
-        <a class="list-item" href="/finance/taxes/tax-bracket-calculator/">
-          <div class="li-title">Tax Bracket Calculator (2025)</div>
-          <div class="li-desc">Find your marginal bracket and estimate your effective rate.</div>
-        </a>
-
-        <a class="list-item" href="/finance/taxes/quarterly-estimated-tax-calculator/">
-          <div class="li-title">Quarterly Estimated Tax Calculator</div>
-          <div class="li-desc">Plan quarterly payments from an annual estimate and withholding.</div>
-        </a>
-      </div>
-
-      <div class="note">
-        Tip: If you’re switching jobs mid-year, run Take-Home Pay for both offers and sanity-check withholding.
-        Then use Tax Bracket to understand your marginal rate.
-      </div>
-
-      <!-- LEARN SECTION (REFERENCE PAGES) -->
-      <h2 class="section-title">Learn the basics (quick guides)</h2>
-      <p class="section-subtitle">
-        Short guides that explain the “why” behind the calculators and help Google understand your Taxes section.
-      </p>
-
-      <div class="list" aria-label="Tax guide pages">
-        <a class="list-item" href="/finance/taxes/guides/how-tax-brackets-work/">
-          <div class="li-title">How Tax Brackets Work</div>
-          <div class="li-desc">Marginal vs effective rate explained in plain English.</div>
-        </a>
-
-        <a class="list-item" href="/finance/taxes/guides/what-is-self-employment-tax/">
-          <div class="li-title">What Is Self-Employment Tax?</div>
-          <div class="li-desc">Why SE tax exists, what it covers, and what “net profit” means.</div>
-        </a>
-
-        <a class="list-item" href="/finance/taxes/guides/w2-vs-1099-explained/">
-          <div class="li-title">1099 vs W-2 Explained</div>
-          <div class="li-desc">Key differences: taxes, benefits, deductions, and stability.</div>
-        </a>
-      </div>
-
-      <!-- NEXT STEPS -->
-      <div class="note">
-        Next steps:
-        <a href="/finance/">Finance hub</a> ·
-        <a href="/career/salary/">Salary &amp; paycheck tools</a> ·
-        <a href="/finance/debt/">Pay off debt</a> ·
-        <a href="/business/">Business tools</a>
-      </div>
+          
+          <div style="background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155;">
+            <div class="util-input-group">
+              <label>Initial Value</label>
+              <input type="number" id="baseNum" value="50" oninput="if(this.value.length > 8) this.value = this.value.slice(0,8); calcGlobalPercent()">
+            </div>
+            <div class="util-input-group">
+              <label>Target Value</label>
+              <input type="number" id="targetNum" value="75" oninput="if(this.value.length > 8) this.value = this.value.slice(0,8); calcGlobalPercent()">
+            </div>
+            
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #1e293b; text-align: center;">
+              <div id="percentOutput" style="font-size: 2.8rem; font-weight: 800; color: var(--accent-blue, #3b82f6); line-height: 1;">+50.00%</div>
+              <div style="font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; font-weight: 700; margin-top: 5px;">Total Delta Shift</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 0.85rem; color: #64748b; text-align: center; line-height: 1.4;">
+          This real-time calculation matrix runs instantly client-side without any server processing delays.
+        </div>
+      </aside>
 
     </main>
 
-    <footer class="site-footer">
-      <div>© 2026 TheDailyo — All Rights Reserved.</div>
-      <div class="site-footer-links" style="margin-top:6px;">
-        <a href="/privacy.html">Privacy Policy</a> ·
-        <a href="/terms.html">Terms</a> ·
-        <a href="/disclaimer.html">Disclaimer</a> ·
-        <a href="/contact.html">Contact</a> ·
-        <a href="/about.html">About</a>
-      </div>
+    <footer style="margin-top: 100px; padding-top: 30px; border-top: 1px solid var(--border-color, #334155); text-align: center;">
+      <p style="font-size: 0.85rem; color: #94a3b8;">© 2026 TheDailyo. Core Deployment Framework.</p>
     </footer>
+
   </div>
+
+  <script>
+    function calcGlobalPercent() {
+      const base = parseFloat(document.getElementById('baseNum').value) || 0;
+      const target = parseFloat(document.getElementById('targetNum').value) || 0;
+      const out = document.getElementById('percentOutput');
+      
+      if (base === 0) {
+        out.innerText = '0.00%';
+        out.style.color = '#94a3b8';
+        return;
+      }
+      
+      const diff = target - base;
+      const percent = (diff / base) * 100;
+      
+      if (percent > 0) {
+        out.innerText = '+' + percent.toFixed(2) + '%';
+        out.style.color = 'var(--accent-green, #10b981)';
+      } else if (percent < 0) {
+        out.innerText = percent.toFixed(2) + '%';
+        out.style.color = '#ef4444';
+      } else {
+        out.innerText = '0.00%';
+        out.style.color = '#fff';
+      }
+    }
+    calcGlobalPercent();
+  </script>
+
 </body>
 </html>
