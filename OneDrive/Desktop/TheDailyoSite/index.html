@@ -121,18 +121,20 @@
 
   <div class="container">
     
-   <header style="text-align: left; margin-bottom: 20px;">
+    <header style="text-align: left; margin-bottom: 20px;">
       <div style="border-bottom: 1px solid var(--border-color, #334155); padding-bottom: 20px; margin-bottom: 40px;">
         <div class="status-line" style="margin: 0; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">THE DAILY OPTIMIZATION</div>
       </div>
       <h1 style="font-size: 3.2rem; line-height: 1.05; margin-bottom: 15px; letter-spacing: -0.04em; font-weight: 800; color: #fff;">TheDailyo</h1>
       <p style="color: #e2e8f0; margin: 0; font-size: 1.2rem; line-height: 1.6; max-width: 700px;">Data-driven computational utilities engineered to calculate tax drag, track operating overhead, and analyze growth margins with raw mathematical precision.</p>
     </header>
-<div style="margin: 30px 0 20px 0;">
+
+    <div style="margin: 30px 0 20px 0;">
       <div style="position: relative; max-width: 100%;">
         <input type="text" id="toolSearch" placeholder="Search calculators and engines (e.g., 1099, W2, hourly rate)..." oninput="filterTools()" style="width: 100%; padding: 18px 24px; background: var(--card-bg, #1e293b); border: 2px solid var(--border-color, #334155); border-radius: 12px; color: #fff; font-size: 1.2rem; box-sizing: border-box; outline: none; transition: border-color 0.2s, box-shadow 0.2s;" onfocus="this.style.borderColor='var(--accent-blue, #3b82f6)'; this.style.boxShadow='0 0 0 4px rgba(59, 130, 246, 0.15)';" onblur="this.style.borderColor='var(--border-color, #334155)'; this.style.boxShadow='none';">
       </div>
     </div>
+
     <main class="master-layout">
       
       <div class="left-stack">
@@ -157,7 +159,7 @@
           </div>
           <ul class="link-list">
             <li class="link-item"><a href="business/hourly-rate-calculator/index.html">→ Freelance Hourly Rate Optimization Engine</a></li>
-            <li class="link-item"><span style="color: #64748b; font-size: 1rem;">→ Margin & ROI Auditor (In Development)</span></li>
+            <li class="link-item"><a href="business/margin-roi-auditor/index.html">→ Profit Margin & ROI Auditor</a></li>
           </ul>
           <a href="business/index.html" class="action-btn">Browse Business Suite</a>
         </section>
@@ -183,4 +185,88 @@
             
             <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #1e293b; text-align: center;">
               <div id="percentOutput" style="font-size: 2.8rem; font-weight: 800; color: var(--accent-blue, #3b82f6); line-height: 1;">+50.00%</div>
-              <div style="font-size: 0.75rem; text-transform: uppercase; color: #94a3
+              <div style="font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; font-weight: 700; margin-top: 5px;">Total Delta Shift</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 0.85rem; color: #64748b; text-align: center; line-height: 1.4;">
+          This real-time calculation matrix runs instantly client-side without any server processing delays.
+        </div>
+      </aside>
+
+    </main>
+
+    <footer style="margin-top: 100px; padding-top: 30px; border-top: 1px solid var(--border-color, #334155); text-align: center;">
+      <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;">© 2026 TheDailyo. Core Deployment Framework.</p>
+      <a href="privacy.html" style="font-size: 0.85rem; color: var(--accent-blue, #3b82f6); text-decoration: none;">Privacy Policy & Terms</a>
+    </footer>
+
+  </div>
+
+  <script>
+    // 1. Search Filter Engine Logic
+    function filterTools() {
+      const query = document.getElementById('toolSearch').value.toLowerCase();
+      const panels = document.querySelectorAll('.dashboard-panel');
+      
+      panels.forEach(panel => {
+        const title = panel.querySelector('.panel-title') ? panel.querySelector('.panel-title').innerText.toLowerCase() : '';
+        const desc = panel.querySelector('.panel-desc') ? panel.querySelector('.panel-desc').innerText.toLowerCase() : '';
+        const links = panel.querySelectorAll('.link-item');
+        
+        let panelHasMatch = false;
+        
+        links.forEach(link => {
+          const text = link.innerText.toLowerCase();
+          if (text.includes(query)) {
+            link.style.display = 'block';
+            panelHasMatch = true;
+          } else {
+            link.style.display = 'none';
+          }
+        });
+        
+        if (title.includes(query) || desc.includes(query) || panelHasMatch) {
+          panel.style.display = 'flex';
+          if (!panelHasMatch && query !== '') {
+            links.forEach(link => link.style.display = 'block');
+          }
+        } else {
+          panel.style.display = 'none';
+        }
+      });
+    }
+
+    // 2. Fraction & Proportion Optimizer Widget Logic
+    function calcGlobalPercent() {
+      const base = parseFloat(document.getElementById('baseNum').value) || 0;
+      const target = parseFloat(document.getElementById('targetNum').value) || 0;
+      const out = document.getElementById('percentOutput');
+      
+      if (base === 0) {
+        out.innerText = '0.00%';
+        out.style.color = '#94a3b8';
+        return;
+      }
+      
+      const diff = target - base;
+      const percent = (diff / base) * 100;
+      
+      if (percent > 0) {
+        out.innerText = '+' + percent.toFixed(2) + '%';
+        out.style.color = 'var(--accent-green, #10b981)';
+      } else if (percent < 0) {
+        out.innerText = percent.toFixed(2) + '%';
+        out.style.color = '#ef4444';
+      } else {
+        out.innerText = '0.00%';
+        out.style.color = '#fff';
+      }
+    }
+    
+    calcGlobalPercent();
+  </script>
+
+</body>
+</html>
