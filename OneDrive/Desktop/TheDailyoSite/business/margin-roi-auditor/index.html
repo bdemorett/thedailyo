@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Margin & ROI Auditor | TheDailyo</title>
+  <link rel="stylesheet" href="../../style.css">
+  
+  <!-- Google AdSense Seller Verification -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2329893496371145" crossorigin="anonymous"></script>
+  
+  <!-- Google Analytics Global Tracking (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW4W6PG84Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LW4W6PG84Q');
+  </script>
+
+  <style>
+    .calc-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    @media (min-width: 768px) {
+      .calc-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .input-box, .result-box {
+      background: var(--card-bg, #1e293b);
+      border: 1px solid var(--border-color, #334155);
+      border-radius: 12px;
+      padding: 30px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-group input:focus {
+      border-color: var(--accent-blue, #3b82f6);
+      outline: none;
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid #334155;
+    }
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+    .metric-label {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    .metric-value {
+      color: #fff;
+      font-weight: 600;
+    }
+    .final-rate {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent-blue, #3b82f6);
+      line-height: 1;
+      margin: 20px 0 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header style="text-align: left; margin-bottom: 20px;">
+      <a href="../index.html" style="color: var(--accent-blue, #3b82f6); text-decoration: none; font-weight: 500; font-size: 0.9rem; display: inline-block; margin-bottom: 20px;">← Back to Business Suite</a>
+      <h1 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.04em; font-weight: 800;">Profit Margin & ROI Auditor</h1>
+      <p style="color: #e2e8f0; margin: 0; font-size: 1.05rem; line-height: 1.5;">Isolate true net margins, calculate return on capital allocations, and analyze cost structures with raw mathematical precision.</p>
+    </header>
+
+    <main class="calc-container">
+      
+      <!-- INPUT BLOCK -->
+      <section class="input-box">
+        <div class="form-group">
+          <label>Total Capital Invested / Costs ($)</label>
+          <input type="number" id="totalInvestment" value="10000" oninput="if(this.value.length > 7) this.value = this.value.slice(0,7); auditBusinessMetrics()">
+        </div>
+        
+        <div class="form-group">
+          <label>Gross Revenue Generated ($)</label>
+          <input type="number" id="grossRevenue" value="15000" oninput="if(this.value.length > 7) this.value = this.value.slice(0,7); auditBusinessMetrics()">
+        </div>
+      </section>
+
+      <!-- RESULTS BLOCK -->
+      <section class="result-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <h3 style="margin: 0 0 20px 0; font-size: 1.2rem; font-weight: 700;">Performance breakdown</h3>
+          
+          <div class="metric-row">
+            <span class="metric-label">Net Profit Yield</span>
+            <span class="metric-value" id="netProfit">$5,000</span>
+          </div>
+          
+          <div class="metric-row">
+            <span class="metric-label">Gross Profit Margin</span>
+            <span class="metric-value" id="grossMargin">33.33%</span>
+          </div>
+
+          <div class="metric-row">
+            <span class="metric-label">Markup Percentage</span>
+            <span class="metric-value" id="markupPercent">50.00%</span>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid #334155; padding-top: 25px; margin-top: 25px; text-align: center;">
+          <span style="font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; font-weight: 700;">Return on Investment (ROI)</span>
+          <div class="final-rate" id="roiText">50.00%</div>
+          <span style="font-size: 0.85rem; color: #64748b;">net efficiency ratio</span>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color, #334155); text-align: center;">
+      <p style="font-size: 0.85rem; color: #94a3b8;">© 2026 TheDailyo. Computational Utility Ecosystem.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function auditBusinessMetrics() {
+      const investment = parseFloat(document.getElementById('totalInvestment').value) || 0;
+      const revenue = parseFloat(document.getElementById('grossRevenue').value) || 0;
+
+      const netProfit = revenue - investment;
+      document.getElementById('netProfit').innerText = (netProfit >= 0 ? '$' : '-$') + Math.abs(netProfit).toLocaleString();
+
+      // Gross Margin = (Net Profit / Revenue) * 100
+      let grossMargin = 0;
+      if (revenue > 0) {
+        grossMargin = (netProfit / revenue) * 100;
+      }
+      document.getElementById('grossMargin').innerText = grossMargin.toFixed(2) + '%';
+
+      // Markup = (Net Profit / Investment) * 100
+      let markup = 0;
+      if (investment > 0) {
+        markup = (netProfit / investment) * 100;
+      }
+      document.getElementById('markupPercent').innerText = markup.toFixed(2) + '%';
+
+      // ROI = (Net Profit / Investment) * 100
+      let roi = 0;
+      if (investment > 0) {
+        roi = (netProfit / investment) * 100;
+      }
+      
+      const roiElement = document.getElementById('roiText');
+      roiElement.innerText = roi.toFixed(2) + '%';
+      if (roi > 0) {
+        roiElement.style.color = 'var(--accent-blue, #3b82f6)';
+      } else if (roi < 0) {
+        roiElement.style.color = '#ef4444';
+      } else {
+        roiElement.style.color = '#fff';
+      }
+    }
+
+    auditBusinessMetrics();
+  </script>
+
+</body>
+</html>
